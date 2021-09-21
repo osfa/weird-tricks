@@ -1,6 +1,5 @@
 <template>
   <Layout>
-    <g-link to="/blog">Blog</g-link>
     <Inbox class="mt-6"></Inbox>
   </Layout>
 </template>

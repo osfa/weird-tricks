@@ -1,7 +1,41 @@
 <template>
-  <v-main style="z-index: 5">
+  <div>
+    <GmapMap
+      v-if="true"
+      ref="mapRef"
+      :options="{
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        disableDefaultUi: false,
+        scrollwheel: false,
+      }"
+      :center="center"
+      :zoom="7"
+      map-type-id="terrain"
+      style="
+        width: 100%;
+        height: 100%;
+        will-change: transform;
+        transform: translateZ(0);
+        position: fixed;
+        z-index: 1;
+      "
+    >
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="markerClick(m)"
+      />
+    </GmapMap>
     <slot />
-  </v-main>
+  </div>
 </template>
 
 <static-query>

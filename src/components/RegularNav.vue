@@ -27,6 +27,12 @@
           </v-list-item-icon>
           <v-list-item-title>Other</v-list-item-title>
         </v-list-item>
+        <v-list-item link to="/blog/">
+          <v-list-item-icon>
+            <v-icon>mdi-access-point</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Blog</v-list-item-title>
+        </v-list-item>
         <v-list-item link to="/about/">
           <v-list-item-icon>
             <v-icon>mdi-star</v-icon>
