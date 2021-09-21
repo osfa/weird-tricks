@@ -2,25 +2,25 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 // v2.0
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-import DefaultLayout from '~/layouts/Default.vue'
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
+import DefaultLayout from "~/layouts/Default.vue";
 
-import colors from 'vuetify/lib/util/colors'
-import * as VueGoogleMaps from 'vue2-google-maps'
+import colors from "vuetify/lib/util/colors";
+import * as VueGoogleMaps from "vue2-google-maps";
 
 export default function (Vue, { appOptions, head }) {
   head.link.push({
-    rel: 'stylesheet',
-    href: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css',
-  })
-  
-  head.link.push({
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css",
   });
-  
-  const opts = { 
+
+  head.link.push({
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
+  });
+
+  const opts = {
     theme: {
       themes: {
         light: {
@@ -33,15 +33,14 @@ export default function (Vue, { appOptions, head }) {
           primary: colors.blue.lighten3,
         },
       },
-    }
-  }//opts includes, vuetify themes, icons, etc.
-  
-  Vue.use(Vuetify)
-  
+    },
+  }; //opts includes, vuetify themes, icons, etc.
+
+  Vue.use(Vuetify);
   Vue.use(VueGoogleMaps, {
     load: {
-      key: 'YOUR_API_TOKEN',
-      libraries: 'places', // This is required if you use the Autocomplete plugin
+      key: process.env.GRIDSOME_MAPS_KEY,
+      libraries: "places", // This is required if you use the Autocomplete plugin
       // OR: libraries: 'places,drawing'
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)
@@ -61,15 +60,13 @@ export default function (Vue, { appOptions, head }) {
     //// Vue.component('GmapMarker', GmapMarker)
     //// then set installComponents to 'false'.
     //// If you want to automatically install all the components this property must be set to 'true':
-    installComponents: true
-  })
-  
+    installComponents: true,
+  });
+
   appOptions.vuetify = new Vuetify(opts);
-  
+
   // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+  Vue.component("Layout", DefaultLayout);
 }
 
-
-import Vue from 'vue'
-
+import Vue from "vue";

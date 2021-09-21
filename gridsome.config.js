@@ -7,4 +7,5 @@
 module.exports = {
   siteName: "You wont believe it",
   plugins: [],
+  port: 8000,
 };

@@ -13,6 +13,8 @@
 
 - everything needs top happen on top of map? scrolls around on top?
 
+- random button actions do fif things? move around ranodmly on map? diff ui componetns popup and move you around to next node. global state stadck?
+
 so can close down?
 
 someimes just tons of mapp oonts spanwed.
