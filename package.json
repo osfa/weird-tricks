@@ -1,0 +1,17 @@
+{
+  "name": "my-gridsome-site",
+  "private": true,
+  "scripts": {
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "build": "gridsome build"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0",
+    "vue2-google-maps": "^0.10.7",
+    "vuetify": "^2.5.8"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^3.0.0"
+  }
+}
