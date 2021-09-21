@@ -1,13 +1,13 @@
 <template>
   <v-card max-width="450" class="mx-auto">
     <v-toolbar color="cyan" dark>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="forceNavigate()"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Inbox</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
+      <v-btn @click="forceNavigate()" icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-toolbar>
@@ -79,5 +79,17 @@ export default {
       },
     ],
   }),
+  methods: {
+    forceNavigate() {
+      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
+      console.log("emit to all");
+      this.$emit("force-nav");
+      let vm = this.$parent;
+      while (vm) {
+        vm.$emit("force-nav");
+        vm = vm.$parent;
+      }
+    },
+  },
 };
 </script>

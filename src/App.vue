@@ -1,9 +1,9 @@
 <template>
   <MainLayout>
     <v-app id="app">
-      <RegularNav style="z-index: 10"></RegularNav>
-      <transition appear name="bounce">
-        <router-view />
+      <RegularNav @force-nav="forceNav" style="z-index: 10"></RegularNav>
+      <transition mode="out-in" appear name="bounceLeft">
+        <router-view @force-nav="forceNav" style="animation-duration: 100ms" />
       </transition>
     </v-app>
   </MainLayout>
@@ -39,25 +39,24 @@ export default {
       ],
     };
   },
+  methods: {
+    forceNav() {
+      console.log("forceNav main");
+      // mutate state here?
+      // watch in components and cchange colors in nav
+      // watch in components and change  map based on that
+      // play sound
+      this.$router.push({ path: "/about" });
+    },
+  },
+  //   beforeRouteLeave(to, from, next) {
+  //     console.log("main route leave");
+  //     // called when the route that renders this component is about to
+  //     // be navigated away from.
+  //     // has access to `this` component instance.
+  //     next();
+  //   },
 };
 </script>
 
-<style>
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
-}
-.bounce-leave-active {
-  animation: bounce-in 0.5s reverse;
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-</style>
+<style></style>

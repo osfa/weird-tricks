@@ -7,10 +7,10 @@ import "vuetify/dist/vuetify.min.css";
 import DefaultLayout from "~/layouts/Default.vue";
 
 import colors from "vuetify/lib/util/colors";
-// import * as VueGoogleMaps from "vue2-google-maps";
 import * as GmapVue from "gmap-vue";
+import "~/assets/vue2-animate.min.css";
 
-export default function (Vue, { appOptions, head }) {
+export default function (Vue, { appOptions, head, router }) {
   head.link.push({
     rel: "stylesheet",
     href: "https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css",
@@ -19,6 +19,11 @@ export default function (Vue, { appOptions, head }) {
   head.link.push({
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
+  });
+
+  router.beforeEach((to, from, next) => {
+    console.log("route switch");
+    next();
   });
 
   const opts = {

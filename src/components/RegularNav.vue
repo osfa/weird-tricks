@@ -44,7 +44,9 @@
 
     <v-app-bar app color="pink" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>You wont believe it</v-toolbar-title>
+      <v-toolbar-title style="cursor: pointer" @click="home()"
+        >You wont believe it</v-toolbar-title
+      >
     </v-app-bar>
   </div>
 </template>
@@ -52,5 +54,14 @@
 <script>
 export default {
   data: () => ({ drawer: false }),
+  methods: {
+    home() {
+      console.log("home click");
+      // this.$emit("force-nav");
+      if (this.$route.name !== "home") {
+        this.$router.push({ path: "/" });
+      }
+    },
+  },
 };
 </script>
