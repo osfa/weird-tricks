@@ -1,7 +1,9 @@
 <template>
-  <div class="layout">
+  <v-app id="potatoe">
+    <RegularNav></RegularNav>
+    hello
     <slot />
-  </div>
+  </v-app>
 </template>
 
 <static-query>
@@ -11,5 +13,15 @@ query {
   }
 }
 </static-query>
+
+<script>
+import RegularNav from "~/components/RegularNav.vue";
+
+export default {
+  components: {
+    RegularNav,
+  },
+};
+</script>
 
 <style></style>

@@ -1,44 +1,92 @@
 <template>
-  <v-app id="about">
-    <SidebarHover></SidebarHover>
-
-    <v-main>
-      <GmapMap
-        ref="mapRef"
-        :center="{ lat: 10, lng: 10 }"
-        :zoom="7"
-        map-type-id="terrain"
-        style="width: 100%; height: 300px"
-      >
-        <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center = m.position"
-        />
-      </GmapMap>
-    </v-main>
-  </v-app>
+  <Layout>
+    <GmapMap
+      v-if="true"
+      ref="mapRef"
+      :options="{
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        disableDefaultUi: false,
+      }"
+      :center="center"
+      :zoom="7"
+      map-type-id="terrain"
+      style="
+        width: 100%;
+        height: 100%;
+        will-change: transform;
+        transform: translateZ(0);
+        position: fixed;
+        z-index: 0;
+      "
+    >
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="markerClick(m)"
+      />
+    </GmapMap>
+  </Layout>
 </template>
 
 <script>
-import BaseWireFrameLayout from "~/layouts/BaseWireFrameLayout.vue";
-import SidebarHover from "~/components/SidebarHover.vue";
-
 export default {
-  components: {
-    BaseWireFrameLayout,
-    SidebarHover,
-  },
-  data: () => ({ drawer: false }, { markers: [] }),
-  mounted: function () {
+  components: {},
+  data: () => ({
+    markers: [
+      {
+        position: {
+          lat: 15.0,
+          lng: 15.0,
+        },
+        weight: 100,
+      },
+      {
+        position: {
+          lat: 14.0,
+          lng: 13.0,
+        },
+        weight: 50,
+      },
+    ],
+    center: { lat: 10, lng: 10 },
+  }),
+  async mounted() {
     console.log(process.env.NODE_ENV);
-    console.log(process.env.GRIDSOME_MAPS_KEY);
-    this.$refs.mapRef.$mapPromise.then((map) => {
-      map.panTo({ lat: 1.38, lng: 103.8 });
-    });
+
+    // this.$refs.mapRef.$mapPromise.then((map) => {
+    //   map.panTo({ lat: 1.38, lng: 103.8 });
+    // });
+
+    // await this.$gmapApiPromiseLazy();
+    // this.markers = [
+    //   {
+    //     location: new google.maps.LatLng({ lat: 4.5, lng: 99 }),
+    //     weight: 100,
+    //   },
+    //   {
+    //     location: new google.maps.LatLng({ lat: 5, lng: 99 }),
+    //     weight: 50,
+    //   },
+    //   {
+    //     location: new google.maps.LatLng({ lat: 6, lng: 97 }),
+    //     weight: 80,
+    //   },
+    // ];
+  },
+  methods: {
+    markerClick(marker) {
+      console.log("potato");
+      this.center = marker.position;
+      this.$emit("markerClicked");
+    },
   },
 };
 </script>

@@ -1,7 +1,8 @@
 <template>
-  <div class="layout">
+  <v-app id="potatoe">
+    <RegularNav></RegularNav>
     <slot />
-  </div>
+  </v-app>
 </template>
 
 <static-query>
@@ -12,31 +13,14 @@ query {
 }
 </static-query>
 
-<style>
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-}
+<script>
+import RegularNav from "~/components/RegularNav.vue";
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+export default {
+  components: {
+    RegularNav,
+  },
+};
+</script>
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
-</style>
+<style></style>

@@ -7,7 +7,8 @@ import "vuetify/dist/vuetify.min.css";
 import DefaultLayout from "~/layouts/Default.vue";
 
 import colors from "vuetify/lib/util/colors";
-import * as VueGoogleMaps from "vue2-google-maps";
+// import * as VueGoogleMaps from "vue2-google-maps";
+import * as GmapVue from "gmap-vue";
 
 export default function (Vue, { appOptions, head }) {
   head.link.push({
@@ -37,7 +38,7 @@ export default function (Vue, { appOptions, head }) {
   }; //opts includes, vuetify themes, icons, etc.
 
   Vue.use(Vuetify);
-  Vue.use(VueGoogleMaps, {
+  Vue.use(GmapVue, {
     load: {
       key: process.env.GRIDSOME_MAPS_KEY,
       libraries: "places", // This is required if you use the Autocomplete plugin

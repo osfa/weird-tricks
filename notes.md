@@ -21,6 +21,8 @@ someimes just tons of mapp oonts spanwed.
 
 - need a serach?
 
+- all clicks emit map move evnt?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk
