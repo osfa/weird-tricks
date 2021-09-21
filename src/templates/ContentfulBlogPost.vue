@@ -4,7 +4,7 @@
       <h1>
         {{ $page.post.title }}
       </h1>
-      <g-image :src="$page.post.heroImage.file.url">
+      <g-image :src="$page.post.heroImage.file.url" />
       <div v-html="content" />
     </div>
   </Layout>
@@ -25,19 +25,19 @@
 </page-query>
 
 <script>
-import MarkdownIt from 'markdown-it'
+import MarkdownIt from "markdown-it";
 
 export default {
   metaInfo() {
     return {
       title: this.$page.post.title,
-    }
+    };
   },
   computed: {
     content() {
-      const md = new MarkdownIt()
-      return md.render(this.$page.post.body)
+      const md = new MarkdownIt();
+      return md.render(this.$page.post.body);
     },
   },
-}
+};
 </script>
