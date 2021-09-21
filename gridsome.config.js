@@ -21,5 +21,10 @@ module.exports = {
   templates: {
     ContentfulBlogPost: "/blog/:slug",
   },
+  chainWebpack(config, { isServer }) {
+    if (isServer) {
+      config.externals([/^(vue|vue-router|vue-meta)$/]);
+    }
+  },
   port: 8000,
 };
