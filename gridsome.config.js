@@ -6,6 +6,20 @@
 
 module.exports = {
   siteName: "You wont believe it",
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/source-contentful",
+      options: {
+        space: process.env.CTF_SPACE_ID, // required
+        accessToken: process.env.CTF_ACCESS_TOKEN, // required
+        host: "cdn.contentful.com",
+        environment: "master",
+        typeName: "Contentful",
+      },
+    },
+  ],
+  templates: {
+    ContentfulBlogPost: "/blog/:slug",
+  },
   port: 8000,
 };

@@ -29,6 +29,8 @@ someimes just tons of mapp oonts spanwed.
 
 - center evrything? or stack?
 
+- log and track all interactions for user?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk
