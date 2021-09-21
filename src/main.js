@@ -27,19 +27,19 @@ export default function (Vue, { appOptions, head, router }) {
   });
 
   const opts = {
-    theme: {
-      themes: {
-        light: {
-          primary: colors.purple,
-          secondary: colors.grey.darken1,
-          accent: colors.shades.black,
-          error: colors.red.accent3,
-        },
-        dark: {
-          primary: colors.blue.lighten3,
-        },
-      },
-    },
+    // theme: {
+    //   themes: {
+    //     light: {
+    //       primary: colors.purple,
+    //       secondary: colors.grey.darken1,
+    //       accent: colors.red.accent3,
+    //       error: colors.red.accent3,
+    //     },
+    //     dark: {
+    //       primary: colors.blue.lighten3,
+    //     },
+    //   },
+    // },
   }; //opts includes, vuetify themes, icons, etc.
 
   Vue.use(Vuetify);

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app color="yellow" light>
+    <v-navigation-drawer v-model="drawer" app :color="currentDrawerColor" dark>
       <v-list>
         <v-list-item class="px-2">
           <v-list-item-avatar>
@@ -42,7 +42,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="pink" dark>
+    <v-app-bar app :color="currentMainColor" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You wont believe it</v-toolbar-title
@@ -52,8 +52,14 @@
 </template>
 
 <script>
+import { randomMaterialColor } from "~/util";
+
 export default {
-  data: () => ({ drawer: false }),
+  data: () => ({
+    drawer: false,
+    currentDrawerColor: "yellow darken-2",
+    currentMainColor: "pink",
+  }),
   methods: {
     home() {
       console.log("home click");
@@ -61,6 +67,13 @@ export default {
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
       }
+    },
+  },
+  watch: {
+    $route: function () {
+      this.currentDrawerColor = randomMaterialColor();
+      this.currentMainColor = randomMaterialColor();
+      console.log("route changed");
     },
   },
 };

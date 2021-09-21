@@ -9,12 +9,12 @@
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
-        fullscreenControl: true,
+        fullscreenControl: false,
         disableDefaultUi: false,
         scrollwheel: false,
       }"
       :center="center"
-      :zoom="7"
+      :zoom="zoom"
       map-type-id="terrain"
       style="
         width: 100%;
@@ -53,6 +53,7 @@ export default {
     RegularNav,
   },
   data: () => ({
+    zoom: 10,
     markers: [
       {
         position: {
@@ -74,31 +75,27 @@ export default {
   async mounted() {
     console.log(process.env.NODE_ENV);
 
-    // this.$refs.mapRef.$mapPromise.then((map) => {
-    //   map.panTo({ lat: 1.38, lng: 103.8 });
-    // });
-
-    // await this.$gmapApiPromiseLazy();
-    // this.markers = [
-    //   {
-    //     location: new google.maps.LatLng({ lat: 4.5, lng: 99 }),
-    //     weight: 100,
-    //   },
-    //   {
-    //     location: new google.maps.LatLng({ lat: 5, lng: 99 }),
-    //     weight: 50,
-    //   },
-    //   {
-    //     location: new google.maps.LatLng({ lat: 6, lng: 97 }),
-    //     weight: 80,
-    //   },
-    // ];
+    await this.$gmapApiPromiseLazy();
   },
   methods: {
     markerClick(marker) {
       console.log("potato");
       this.center = marker.position;
       this.$emit("markerClicked");
+    },
+  },
+  watch: {
+    $route: function () {
+      function getRandomInRange(from, to, fixed) {
+        return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+      }
+
+      this.$refs.mapRef.$mapPromise.then((map) => {
+        map.panTo({
+          lat: getRandomInRange(-90, 90, 3),
+          lng: getRandomInRange(-180, 180, 3),
+        });
+      });
     },
   },
 };

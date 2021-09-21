@@ -33,6 +33,10 @@ someimes just tons of mapp oonts spanwed.
 
 - just two pages : about main, tree of CTF content? jumbled?
 
+- rabdom elements with random icons in nav drawer. some favoite stuff that acutally maps?
+
+- really long inbox? what emails?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk
