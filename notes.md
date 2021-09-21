@@ -31,6 +31,8 @@ someimes just tons of mapp oonts spanwed.
 
 - log and track all interactions for user?
 
+- just two pages : about main, tree of CTF content? jumbled?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk
