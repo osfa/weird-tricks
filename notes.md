@@ -23,6 +23,12 @@ someimes just tons of mapp oonts spanwed.
 
 - all clicks emit map move evnt?
 
+-- thinner map block and then overlay inside of that? fullscreen allow?
+
+- video / text whatever block below or hovering on top?
+
+- center evrything? or stack?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk

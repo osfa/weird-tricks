@@ -1,44 +1,15 @@
 <template>
   <Layout>
-    <GmapMap
-      v-if="true"
-      ref="mapRef"
-      :options="{
-        zoomControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: true,
-        disableDefaultUi: false,
-      }"
-      :center="center"
-      :zoom="7"
-      map-type-id="terrain"
-      style="
-        width: 100%;
-        height: 100%;
-        will-change: transform;
-        transform: translateZ(0);
-        position: fixed;
-        z-index: 0;
-      "
-    >
-      <GmapMarker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        :clickable="true"
-        :draggable="true"
-        @click="markerClick(m)"
-      />
-    </GmapMap>
+    <FloatingAction class="mt-6"></FloatingAction>
   </Layout>
 </template>
-
 <script>
+import FloatingAction from "~/components/FloatingAction.vue";
+
 export default {
-  components: {},
+  components: {
+    FloatingAction,
+  },
   data: () => ({
     markers: [
       {
@@ -58,29 +29,7 @@ export default {
     ],
     center: { lat: 10, lng: 10 },
   }),
-  async mounted() {
-    console.log(process.env.NODE_ENV);
-
-    // this.$refs.mapRef.$mapPromise.then((map) => {
-    //   map.panTo({ lat: 1.38, lng: 103.8 });
-    // });
-
-    // await this.$gmapApiPromiseLazy();
-    // this.markers = [
-    //   {
-    //     location: new google.maps.LatLng({ lat: 4.5, lng: 99 }),
-    //     weight: 100,
-    //   },
-    //   {
-    //     location: new google.maps.LatLng({ lat: 5, lng: 99 }),
-    //     weight: 50,
-    //   },
-    //   {
-    //     location: new google.maps.LatLng({ lat: 6, lng: 97 }),
-    //     weight: 80,
-    //   },
-    // ];
-  },
+  async mounted() {},
   methods: {
     markerClick(marker) {
       console.log("potato");

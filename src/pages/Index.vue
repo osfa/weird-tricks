@@ -1,19 +1,24 @@
 <template>
-  <v-app id="inspire">
-    <SidebarHover></SidebarHover>
-    <v-main>index</v-main>
-  </v-app>
+  <Layout>
+    <Inbox class="mt-6"></Inbox>
+  </Layout>
 </template>
 
 <script>
-import BaseWireFrameLayout from "~/layouts/BaseWireFrameLayout.vue";
-import SidebarHover from "~/components/SidebarHover.vue";
+import Inbox from "~/components/Inbox.vue";
 
 export default {
   components: {
-    BaseWireFrameLayout,
-    SidebarHover,
+    Inbox,
   },
-  data: () => ({ drawer: false }),
+  data: () => ({}),
+  async mounted() {},
+  methods: {
+    markerClick(marker) {
+      console.log("potato");
+      this.center = marker.position;
+      this.$emit("markerClicked");
+    },
+  },
 };
 </script>

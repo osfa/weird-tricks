@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <div>
     <v-navigation-drawer v-model="drawer" app color="yellow" light>
       <v-list>
         <v-list-item class="px-2">
@@ -40,7 +40,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>You wont believe it</v-toolbar-title>
     </v-app-bar>
-  </v-app>
+  </div>
 </template>
 
 <script>
