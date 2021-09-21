@@ -90,11 +90,15 @@ export default {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
       }
 
-      this.$refs.mapRef.$mapPromise.then((map) => {
-        map.panTo({
-          lat: getRandomInRange(-90, 90, 3),
-          lng: getRandomInRange(-180, 180, 3),
-        });
+      this.$nextTick(() => {
+        if (this.$refs.googleMap) {
+          this.$refs.mapRef.$mapPromise.then((map) => {
+            map.panTo({
+              lat: getRandomInRange(-90, 90, 3),
+              lng: getRandomInRange(-180, 180, 3),
+            });
+          });
+        }
       });
     },
   },
