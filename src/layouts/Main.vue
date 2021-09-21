@@ -91,7 +91,7 @@ export default {
       }
 
       this.$nextTick(() => {
-        if (this.$refs.googleMap) {
+        if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {
             map.panTo({
               lat: getRandomInRange(-90, 90, 3),
