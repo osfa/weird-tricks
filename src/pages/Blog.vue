@@ -28,7 +28,11 @@
 
     <v-container class="pt-lg-16" style="max-width: 900px; position: relative">
       <v-row dense>
-        <v-col v-for="{ node } in $page.posts.edges" :key="node.id" :cols="3">
+        <v-col
+          v-for="{ node } in $page.posts.edges"
+          :key="node.id"
+          :cols="colCount"
+        >
           <g-image v-if="false" :src="node.heroImage.file.url" />
 
           <v-card :to="`/blog/${node.slug}`" style="pointer-events: auto">
@@ -153,5 +157,10 @@ export default {
       },
     ],
   }),
+  computed: {
+    colCount() {
+      return 3;
+    },
+  },
 };
 </script>

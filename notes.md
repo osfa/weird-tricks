@@ -53,6 +53,8 @@ video
 
 copyright free audio and EDL cuts?
 
+- humans svg gpt3?
+
 ---
 
 8.725 -72.901
