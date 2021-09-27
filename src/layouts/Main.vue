@@ -39,12 +39,24 @@
 </template>
 
 <static-query>
-query {
-  metadata {
-    siteName
+  query BlogPost {
+    blogPosts: allContentfulBlogPost(sortBy: "published_at", order: DESC) {
+      edges {
+        node {
+          id
+          title
+          slug
+          heroImage {
+            file {
+              url
+            }
+          },
+        }
+      }
+    }
   }
-}
 </static-query>
+
 <script>
 import RegularNav from "~/components/nav/RegularNav.vue";
 
@@ -73,8 +85,7 @@ export default {
     center: { lat: 10, lng: 10 },
   }),
   async mounted() {
-    console.log(process.env.NODE_ENV);
-
+    this.$store.commit("setMainContent", this.$static.blogPosts.edges);
     await this.$gmapApiPromiseLazy();
   },
   methods: {

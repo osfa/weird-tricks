@@ -40,6 +40,8 @@
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
       </v-list>
+      <Tree v-if="false" />
+      <Expander v-else />
     </v-navigation-drawer>
 
     <v-app-bar app :color="currentMainColor" dark>
@@ -53,8 +55,14 @@
 
 <script>
 import { randomMaterialColor } from "~/util";
+import Tree from "./Tree.vue";
+import Expander from "./Expander.vue";
 
 export default {
+  components: {
+    Tree,
+    Expander,
+  },
   data: () => ({
     drawer: false,
     currentDrawerColor: "yellow darken-2",

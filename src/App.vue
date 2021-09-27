@@ -5,7 +5,7 @@
       <transition mode="out-in" appear name="bounceLeft">
         <router-view @force-nav="forceNav" style="animation-duration: 250ms" />
       </transition>
-      <FooterNav app style="z-index: 10"/>
+      <FooterNav app style="z-index: 10" />
     </v-app>
   </MainLayout>
 </template>
@@ -19,6 +19,13 @@ query {
 }
 </static-query>
 
+<page-query>
+  query Posts($page: Int) { posts: allContentfulBlogPost(sortBy: "date", order:
+  DESC, perPage: 200, page: $page) @paginate { totalCount pageInfo { totalPages
+  currentPage } edges { node { id title slug date(format:
+  "MMMM D, Y") } } } }
+</page-query>
+
 <script>
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
@@ -28,7 +35,7 @@ export default {
   components: {
     MainLayout,
     RegularNav,
-    FooterNav
+    FooterNav,
   },
   data: () => ({}),
   metaInfo() {
@@ -48,11 +55,14 @@ export default {
       console.log("forceNav main");
 
       // @TODO NEED ROUTES FROM CTF?
+      // READ idx? nav?
+
       const routes = ["/about", "/blog", "/other", "/"];
       let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       while (nextRoutePath === this.$route.path) {
         nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       }
+
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
@@ -61,7 +71,7 @@ export default {
       console.log(this.$store.state.currentBlockIdx);
       // trigger forceNav? based on watch? state?
     },
-      navigateBack() {
+    navigateBack() {
       console.log("navigateBack");
       this.$store.commit("navigateBack");
       console.log(this.$store.state.currentBlockIdx);
@@ -70,19 +80,19 @@ export default {
     nav(e) {
       switch (e.keyCode) {
         case 37: // left
-            this.forceNav()
-            break;
+          this.forceNav();
+          break;
         case 39: // right
-            this.forceNav()
-            break;
+          this.forceNav();
+          break;
       }
-    }
+    },
   },
-  created: function() {
-    window.addEventListener('keyup', this.nav);
+  created: function () {
+    window.addEventListener("keyup", this.nav);
   },
-  destroyed: function() {
-    window.removeEventListener('keyup', this.nav);
+  destroyed: function () {
+    window.removeEventListener("keyup", this.nav);
   },
   //   beforeRouteLeave(to, from, next) {
   //     console.log("main route leave");

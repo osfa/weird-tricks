@@ -60,6 +60,7 @@ export default function (Vue, { appOptions, head, router }) {
   // like the cards and shit.
   appOptions.store = new Vuex.Store({
     state: {
+      ctfBlocks: [],
       availableCommissionBlocks: [], // title, image url, body, author
       availableArticleBlocks: articleBlocks, // title & image url
       availableImageBlocks: collageBlocks, // large img url
@@ -79,6 +80,9 @@ export default function (Vue, { appOptions, head, router }) {
       navigateBack(state) {
         state.currentBlockIdx--;
         state.currentCoordinateIdx--;
+      },
+      setMainContent(state, payload) {
+        state.ctfBlocks = payload;
       },
     },
   });

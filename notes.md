@@ -45,12 +45,25 @@ someimes just tons of mapp oonts spanwed.
 
 - fake tweets? some gpt2?
 
+- binaural: https://github.com/yomansk8/binaural/blob/master/src/App.js
+
 ---
 
-- photogrammetrt from google potos of cwlwrity boarwalk
-- eveyrt other frame video mix
-- color grade and upscale sponge?
-- Sigma female trillionaire grindset
+video
 
-  8.725 -72.901
-  55.191 131.915
+copyright free audio and EDL cuts?
+
+---
+
+8.725 -72.901
+55.191 131.915
+59.65 61.412
+69.737 -131.859
+
+---
+
+GPT2 TOS?
+
+- flat gulag? mega collage?
+
+- bot content?

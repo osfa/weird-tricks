@@ -1,10 +1,12 @@
 <template>
   <Layout>
-    <div>
+    <div style="pointer-events: auto">
       <h1>
         {{ $page.post.title }}
       </h1>
-      <g-image :src="$page.post.heroImage.file.url" />
+      <g-image
+        :src="`${$page.post.heroImage.file.url}?fit=fill&w=1800&h=1200`"
+      />
       <div v-html="content" />
     </div>
   </Layout>

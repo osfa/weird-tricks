@@ -1,5 +1,5 @@
 <template>
-  <v-main style="z-index: 5">
+  <v-main style="z-index: 5; pointer-events: none">
     <slot />
   </v-main>
 </template>
