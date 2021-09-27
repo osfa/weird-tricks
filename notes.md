@@ -37,6 +37,14 @@ someimes just tons of mapp oonts spanwed.
 
 - really long inbox? what emails?
 
+- animate in text and things in menu? changes to clickbaity stuff
+
+- the entry into a world view, a sphere of links, an algoritumicl bubble
+
+- use keyboard to navigate, accessaibilty?
+
+- fake tweets? some gpt2?
+
 ---
 
 - photogrammetrt from google potos of cwlwrity boarwalk

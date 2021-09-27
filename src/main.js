@@ -6,6 +6,7 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 import DefaultLayout from "~/layouts/Default.vue";
 
+import Vuex from "vuex";
 import colors from "vuetify/lib/util/colors";
 import * as GmapVue from "gmap-vue";
 import "~/assets/vue2-animate.min.css";
@@ -41,6 +42,44 @@ export default function (Vue, { appOptions, head, router }) {
     //   },
     // },
   }; //opts includes, vuetify themes, icons, etc.
+
+  Vue.use(Vuex);
+
+  // all links n stuff in static file that can be read?
+  // state just index of where in this array? hmm
+  // or just seed store on load?
+
+  // all these diff blocks should be able to render in all components?
+
+  // force load in components on nav?
+  // uri or no...hmm. could have ids in store for blocks?
+
+  // need methods for splitting the article titles and populating? have sep store and splice into these components?
+  // like the cards and shit.
+  appOptions.store = new Vuex.Store({
+    state: {
+      availableCommissionBlocks: [], // title, image url, body, author
+      availableArticleBlocks: [], // title & image url
+      availableImageBlocks: [], // large img url
+      availableVideoBlocks: [], // video url
+      // availableMapBlocks: [],
+      availableCollageBlocks: [], // id, title, large img url
+      allBlocks: [],
+      currentBlockIdx: 0,
+      availableCoordinates: [],
+      currentCoordinateIdx: 0,
+    },
+    mutations: {
+      navigateForward(state) {
+        state.currentBlockIdx++;
+        state.currentCoordinateIdx++;
+      },
+      navigateBackward(state) {
+        state.currentBlockIdx--;
+        state.currentCoordinateIdx--;
+      },
+    },
+  });
 
   Vue.use(Vuetify);
   Vue.use(GmapVue, {

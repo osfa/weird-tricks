@@ -89,13 +89,15 @@ export default {
       function getRandomInRange(from, to, fixed) {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
       }
-
+      const lat = getRandomInRange(-90, 90, 3);
+      const lng = getRandomInRange(-180, 180, 3);
+      console.log(lat, lng);
       this.$nextTick(() => {
         if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {
             map.panTo({
-              lat: getRandomInRange(-90, 90, 3),
-              lng: getRandomInRange(-180, 180, 3),
+              lat,
+              lng,
             });
           });
         }

@@ -44,10 +44,10 @@ export default {
     forceNav() {
       console.log("forceNav main");
       // mutate state here?
+      this.increment();
 
       // watch in components and cchange colors in nav
       // watch in components and change  map based on that
-
       // play sound
 
       const routes = ["/about", "/blog", "/other", "/"];
@@ -55,8 +55,14 @@ export default {
       while (nextRoutePath === this.$route.path) {
         nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       }
-      //   console.log(this.$route.path);
+
+      // console.log(this.$route.path);
       this.$router.push({ path: nextRoutePath });
+    },
+    increment() {
+      console.log("inc");
+      this.$store.commit("navigateForward");
+      console.log(this.$store.state.currentBlockIdx);
     },
   },
   //   beforeRouteLeave(to, from, next) {
