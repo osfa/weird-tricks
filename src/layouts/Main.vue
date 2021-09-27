@@ -46,7 +46,7 @@ query {
 }
 </static-query>
 <script>
-import RegularNav from "~/components/RegularNav.vue";
+import RegularNav from "~/components/nav/RegularNav.vue";
 
 export default {
   components: {

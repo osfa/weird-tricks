@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <div class="mx-auto">
+      
       <v-card :loading="loading" class="my-6 mx-auto" max-width="374">
+
         <template slot="progress">
           <v-progress-linear
             color="deep-purple"

@@ -51,3 +51,6 @@ someimes just tons of mapp oonts spanwed.
 - eveyrt other frame video mix
 - color grade and upscale sponge?
 - Sigma female trillionaire grindset
+
+  8.725 -72.901
+  55.191 131.915

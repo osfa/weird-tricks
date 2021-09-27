@@ -10,6 +10,8 @@ import Vuex from "vuex";
 import colors from "vuetify/lib/util/colors";
 import * as GmapVue from "gmap-vue";
 import "~/assets/vue2-animate.min.css";
+import articleBlocks from "./content/article_blocks";
+import collageBlocks from "./content/collage_blocks";
 
 export default function (Vue, { appOptions, head, router }) {
   head.link.push({
@@ -59,11 +61,11 @@ export default function (Vue, { appOptions, head, router }) {
   appOptions.store = new Vuex.Store({
     state: {
       availableCommissionBlocks: [], // title, image url, body, author
-      availableArticleBlocks: [], // title & image url
-      availableImageBlocks: [], // large img url
+      availableArticleBlocks: articleBlocks, // title & image url
+      availableImageBlocks: collageBlocks, // large img url
       availableVideoBlocks: [], // video url
       // availableMapBlocks: [],
-      availableCollageBlocks: [], // id, title, large img url
+      availableCollageBlocks: collageBlocks, // id, title, large img url
       allBlocks: [],
       currentBlockIdx: 0,
       availableCoordinates: [],
@@ -74,7 +76,7 @@ export default function (Vue, { appOptions, head, router }) {
         state.currentBlockIdx++;
         state.currentCoordinateIdx++;
       },
-      navigateBackward(state) {
+      navigateBack(state) {
         state.currentBlockIdx--;
         state.currentCoordinateIdx--;
       },
