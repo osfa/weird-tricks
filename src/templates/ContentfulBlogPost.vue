@@ -2,7 +2,12 @@
   <Layout>
     <v-container
       class="pt-lg-16"
-      style="max-width: 50vw; pointer-events: auto; position: relative"
+      style="
+        width: 600px;
+        max-width: 50vw;
+        pointer-events: auto;
+        position: relative;
+      "
     >
       <v-card>
         <v-img

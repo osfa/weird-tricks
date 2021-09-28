@@ -11,20 +11,27 @@
 </template>
 
 <static-query>
-query {
-  metadata {
-    siteName
-    siteDescription
+  query {
+    metadata {
+      siteName
+      siteDescription
+    }
+    blogPosts: allContentfulBlogPost(sortBy: "published_at", order: DESC) {
+      edges {
+        node {
+          id
+          title
+          slug
+          heroImage {
+            file {
+              url
+            }
+          },
+        }
+      }
+    }
   }
-}
 </static-query>
-
-<page-query>
-  query Posts($page: Int) { posts: allContentfulBlogPost(sortBy: "date", order:
-  DESC, perPage: 200, page: $page) @paginate { totalCount pageInfo { totalPages
-  currentPage } edges { node { id title slug date(format:
-  "MMMM D, Y") } } } }
-</page-query>
 
 <script>
 import MainLayout from "~/layouts/Main.vue";
@@ -51,36 +58,43 @@ export default {
     };
   },
   methods: {
-    forceNav() {
+    forceNav(backwards) {
       console.log("forceNav main");
 
-      // @TODO NEED ROUTES FROM CTF?
-      // READ idx? nav?
-
-      const routes = ["/about", "/blog", "/other", "/"];
-      let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
-      while (nextRoutePath === this.$route.path) {
-        nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
+      // watch this.$store.state.currentBlockIdx instead?
+      if (backwards) {
+        this.navigateBack();
+      } else {
+        this.navigateForward();
       }
 
+      // dont need main layout load?
+      let nextPost =
+        this.$static.blogPosts.edges[this.$store.state.currentBlockIdx];
+
+      // const routes = ["/about", "/blog", "/other", "/"];
+      // let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
+      // while (nextRoutePath === this.$route.path) {
+      //   nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
+      // }
+
+      let nextRoutePath = `/blog/${nextPost.node.slug}`;
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
       console.log("navigateForward");
       this.$store.commit("navigateForward");
       console.log(this.$store.state.currentBlockIdx);
-      // trigger forceNav? based on watch? state?
     },
     navigateBack() {
       console.log("navigateBack");
       this.$store.commit("navigateBack");
       console.log(this.$store.state.currentBlockIdx);
-      // trigger forceNav? based on watch? state?
     },
     nav(e) {
       switch (e.keyCode) {
         case 37: // left
-          this.forceNav();
+          this.forceNav(true);
           break;
         case 39: // right
           this.forceNav();

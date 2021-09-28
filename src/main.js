@@ -25,7 +25,7 @@ export default function (Vue, { appOptions, head, router }) {
   });
 
   router.beforeEach((to, from, next) => {
-    console.log("route switch");
+    console.log("route switch: need to update nav stuff here?");
     next();
   });
 
@@ -74,12 +74,11 @@ export default function (Vue, { appOptions, head, router }) {
     },
     mutations: {
       navigateForward(state) {
-        state.currentBlockIdx++;
-        state.currentCoordinateIdx++;
+        state.currentBlockIdx = ++state.currentBlockIdx%state.ctfBlocks.length
       },
       navigateBack(state) {
-        state.currentBlockIdx--;
-        state.currentCoordinateIdx--;
+        if (--state.currentBlockIdx < 0) state.currentBlockIdx = state.ctfBlocks.length - 1;
+        state.currentBlockIdx = state.currentBlockIdx%state.ctfBlocks.length
       },
       setMainContent(state, payload) {
         state.ctfBlocks = payload;

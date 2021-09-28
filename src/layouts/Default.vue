@@ -38,12 +38,10 @@ export default {
     center: { lat: 10, lng: 10 },
   }),
   async mounted() {
-    console.log(process.env.NODE_ENV);
-
+    // console.log(process.env.NODE_ENV);
     // this.$refs.mapRef.$mapPromise.then((map) => {
     //   map.panTo({ lat: 1.38, lng: 103.8 });
     // });
-
     // await this.$gmapApiPromiseLazy();
     // this.markers = [
     //   {

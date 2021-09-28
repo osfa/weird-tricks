@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Inbox class="mt-6"></Inbox>
+    <Inbox v-if="false" class="mt-6"></Inbox>
   </Layout>
 </template>
 

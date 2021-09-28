@@ -51,6 +51,23 @@ someimes just tons of mapp oonts spanwed.
 
 ---
 
+landing page should be all mapp?
+randomly seed map with marekrs as you scroll?
+
+single weird button floating in center that takes you onwards?
+
+really need nav state in bottom somehow?
+
+animate icons in bottom nav on press?
+
+random dropshadow on load?
+
+- need map overlays? like heatmap but also transp pngs?
+
+- appear buttons on hover?
+
+---
+
 video
 
 copyright free audio and EDL cuts?
@@ -63,6 +80,9 @@ copyright free audio and EDL cuts?
 55.191 131.915
 59.65 61.412
 69.737 -131.859
+30.807 -11.996
+18.939 84.554
+-30.878 119.985
 
 ---
 
