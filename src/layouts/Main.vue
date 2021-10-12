@@ -13,9 +13,10 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
+        minZoom: 5,
       }"
       :center="center"
-      :zoom="zoom"
+      :zoom="8"
       :map-type-id="mapType"
       style="
         width: 100%;
@@ -26,7 +27,7 @@
         z-index: 1;
       "
     >
-      <GmapMarker
+      <!-- <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
         :position="m.position"
@@ -35,12 +36,12 @@
         :icon="m.icon"
         :label="m.label"
         @click="markerClick(m)"
-      />
+      /> -->
 
-      <gmap-custom-marker :marker="customMarker">
+      <!-- <gmap-custom-marker :marker="customMarker">
         <img src="http://lorempixel.com/50/50/nature/" />
         <span>WAZZZAP</span>
-      </gmap-custom-marker>
+      </gmap-custom-marker> -->
 
       <GmapMarker
         :key="index"
@@ -81,8 +82,8 @@
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 // import colors from "vuetify/lib/util/colors";
-import { generateRandomStyle } from "~/assets/colors/generateRandomStyle";
-
+import { generateRandomStyle } from "~/util";
+import { randomWords } from "random-words";
 const mapMarker = "http://lorempixel.com/100/100/nature/"; // require if assets
 
 export default {
@@ -125,14 +126,23 @@ export default {
   }),
   async mounted() {
     console.log("main mount");
-
     this.$store.commit("setMainContent", this.$static.blogPosts.edges);
     await this.$gmapApiPromiseLazy();
-    const circleCoords = [
+
+    const circleCoordsStatic = [
       ...this.drawCircle(new google.maps.LatLng(10, 10), 100, 1),
       ...this.drawCircle(new google.maps.LatLng(10, 10), 200, 1),
+      ...this.drawCircle(new google.maps.LatLng(10, 10), 300, 1),
+      ...this.drawCircle(new google.maps.LatLng(10, 10), 400, 1),
+      ...this.drawCircle(new google.maps.LatLng(10, 10), 500, 1),
     ];
-    this.circleMarkers = circleCoords.map((m) => {
+
+    const circleCoords = [...Array(20).keys()].map((i) => {
+      return this.drawCircle(new google.maps.LatLng(10, 10), (i + 1) * 200, 1);
+    });
+    var merged = [].concat.apply([], circleCoords);
+    console.log(merged);
+    this.circleMarkers = merged.map((m) => {
       return {
         position: {
           lat: m.lat(),
@@ -142,7 +152,12 @@ export default {
     });
   },
   props: {
-    currentStyle: { type: Object, default: generateRandomStyle() },
+    currentStyle: {
+      type: Array,
+      default() {
+        return generateRandomStyle();
+      },
+    },
   },
   computed: {
     mapStyles() {

@@ -1,3 +1,8 @@
+# dump
+
+stylized round markers? some larger? some smaller?
+weird telegram chats? like foodora felling?
+
 # sprint 1
 
 - page footer nav

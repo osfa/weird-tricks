@@ -55,6 +55,7 @@
 
 <script>
 import { randomMaterialColor } from "~/util";
+import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
 
@@ -68,6 +69,11 @@ export default {
     currentDrawerColor: "yellow darken-2",
     currentMainColor: "pink",
   }),
+  computed: {
+    randomText() {
+      return randomWords(2);
+    },
+  },
   methods: {
     home() {
       console.log("home click");

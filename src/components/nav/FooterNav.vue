@@ -3,54 +3,63 @@
     class="overflow-hidden"
     v-model="value"
     fixed
-    :background-color="color"
+    :background-color="backgroundColor"
     dark
     shift
   >
-    <v-btn>
-      <span>Video</span>
-
-      <v-icon>mdi-television-play</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Music</span>
-
-      <v-icon>mdi-music-note</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Book</span>
-
-      <v-icon>mdi-book</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Image</span>
-
-      <v-icon>mdi-image</v-icon>
+    <v-btn :key="index" v-for="(m, index) in menuItems" link :to="m.path">
+      <span>{{ m.label }}</span>
+      <v-icon>{{ m.icon }}</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>
 
 <script>
-export default {
-  data: () => ({ value: 1 }),
+import { randomMaterialColor, randomIcon } from "~/util";
+import randomWords from "random-words";
 
+const randomMenuItems = () => {
+  return [
+    {
+      label: randomWords(),
+      icon: randomIcon(),
+      path: "/blog/",
+    },
+    {
+      label: randomWords(),
+      icon: randomIcon(),
+      path: "/blog/",
+    },
+    {
+      label: randomWords(),
+      icon: randomIcon(),
+      path: "/blog/",
+    },
+    {
+      label: randomWords(),
+      icon: randomIcon(),
+      path: "/blog/",
+    },
+  ];
+};
+export default {
+  data: () => ({
+    value: 1,
+    dataColor: randomMaterialColor(),
+    currentMenuItems: randomMenuItems(),
+  }),
   computed: {
-    color() {
-      switch (this.value) {
-        case 0:
-          return "blue-grey";
-        case 1:
-          return "teal";
-        case 2:
-          return "orange";
-        case 3:
-          return "indigo";
-        default:
-          return "pink";
-      }
+    backgroundColor() {
+      return this.dataColor;
+    },
+    menuItems() {
+      return this.currentMenuItems;
+    },
+  },
+  watch: {
+    $route: function () {
+      this.dataColor = randomMaterialColor();
+      this.currentMenuItems = randomMenuItems();
     },
   },
 };
