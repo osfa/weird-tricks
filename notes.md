@@ -69,6 +69,8 @@ weird telegram chats? like foodora felling?
 
 ## map
 
+- black sites? what other objects? map pins as dashboard components?
+
 - landing page should be all map
 
 - someimes just tons of mapp poiints spanwed.

@@ -1,9 +1,9 @@
 <template>
   <v-card class="mx-auto" max-width="500">
-    <v-toolbar color="teal" dark>
+    <v-toolbar :color="mainColor" dark>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Topics</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -12,8 +12,9 @@
       </v-btn>
     </v-toolbar>
 
-    <v-list>
+    <v-list :color="drawerColor">
       <v-list-group
+        :color="mainColor"
         v-for="item in items"
         :key="item.title"
         v-model="item.active"
@@ -41,50 +42,77 @@
   </v-card>
 </template>
 <script>
+import { randomMaterialColor, randomIcon } from "~/util";
+import randomWords from "random-words";
+
+const randomMenuItemString = () => {
+  let str = randomWords({ min: 1, max: 2, join: " " });
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
 export default {
   data: () => ({
+    currentDrawerColor: "yellow darken-2",
+    currentMainColor: "pink",
     items: [
       {
-        action: "mdi-ticket",
-        items: [{ title: "List Item" }],
-        title: "Attractions",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-silverware-fork-knife",
+        action: randomIcon(),
         active: true,
         items: [
-          { title: "Breakfast & brunch" },
-          { title: "New American" },
-          { title: "Sushi" },
+          { title: randomMenuItemString() },
+          { title: randomMenuItemString() },
+          { title: randomMenuItemString() },
         ],
-        title: "Dining",
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-school",
-        items: [{ title: "List Item" }],
-        title: "Education",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-run",
-        items: [{ title: "List Item" }],
-        title: "Family",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-bottle-tonic-plus",
-        items: [{ title: "List Item" }],
-        title: "Health",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-content-cut",
-        items: [{ title: "List Item" }],
-        title: "Office",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
       {
-        action: "mdi-tag",
-        items: [{ title: "List Item" }],
-        title: "Promotions",
+        action: randomIcon(),
+        items: [{ title: randomMenuItemString() }],
+        title: randomMenuItemString(),
       },
     ],
   }),
+  computed: {
+    title() {
+      return randomMenuItemString();
+    },
+    mainColor() {
+      return this.currentMainColor;
+    },
+    drawerColor() {
+      return this.currentDrawerColor;
+    },
+  },
+  watch: {
+    $route: function () {
+      this.currentDrawerColor = randomMaterialColor();
+      this.currentMainColor = randomMaterialColor();
+      // this.currentMenuItems = randomMenuItems();
+    },
+  },
 };
 </script>

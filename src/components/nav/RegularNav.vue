@@ -15,29 +15,29 @@
 
       <!-- <g-link to="/about/">About us</g-link> -->
       <v-list nav dense>
-        <v-list-item link to="/">
+        <v-list-item link to="/blog/">
           <v-list-item-icon>
             <v-icon>mdi-folder</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item>
-        <v-list-item link to="/other/">
-          <v-list-item-icon>
-            <v-icon>mdi-account-multiple</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Other</v-list-item-title>
-        </v-list-item>
-        <v-list-item link to="/blog/">
-          <v-list-item-icon>
-            <v-icon>mdi-access-point</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Blog</v-list-item-title>
+          <v-list-item-title>Index</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/about/">
           <v-list-item-icon>
-            <v-icon>mdi-star</v-icon>
+            <v-icon>mdi-folder</v-icon>
           </v-list-item-icon>
           <v-list-item-title>About</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item
+          :key="index"
+          v-for="(m, index) in menuItems"
+          link
+          :to="m.path"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ m.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>{{ m.label }}</v-list-item-title>
         </v-list-item>
       </v-list>
       <Tree v-if="false" />
@@ -54,11 +54,35 @@
 </template>
 
 <script>
-import { randomMaterialColor } from "~/util";
+import { randomMaterialColor, randomIcon } from "~/util";
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
 
+const randomMenuItems = () => {
+  return [
+    {
+      label: randomWords({ min: 1, max: 2, join: " " }),
+      icon: randomIcon(),
+      path: "/other/", // vs just emit and nav?
+    },
+    {
+      label: randomWords({ min: 1, max: 2, join: " " }),
+      icon: randomIcon(),
+      path: "/blog/",
+    },
+    {
+      label: randomWords({ min: 1, max: 2, join: " " }),
+      icon: randomIcon(),
+      path: "/about/",
+    },
+    {
+      label: randomWords({ min: 1, max: 2, join: " " }),
+      icon: randomIcon(),
+      path: "/",
+    },
+  ];
+};
 export default {
   components: {
     Tree,
@@ -68,10 +92,11 @@ export default {
     drawer: false,
     currentDrawerColor: "yellow darken-2",
     currentMainColor: "pink",
+    currentMenuItems: randomMenuItems(),
   }),
   computed: {
-    randomText() {
-      return randomWords(2);
+    menuItems() {
+      return this.currentMenuItems;
     },
   },
   methods: {
@@ -87,6 +112,7 @@ export default {
     $route: function () {
       this.currentDrawerColor = randomMaterialColor();
       this.currentMainColor = randomMaterialColor();
+      this.currentMenuItems = randomMenuItems();
       console.log("route changed");
     },
   },

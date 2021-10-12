@@ -21,36 +21,36 @@ import randomWords from "random-words";
 const randomMenuItems = () => {
   return [
     {
-      label: randomWords(),
+      label: randomWords({ min: 1, max: 2, join: " " }),
+      icon: randomIcon(),
+      path: "/other/",
+    },
+    {
+      label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
       path: "/blog/",
     },
     {
-      label: randomWords(),
+      label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/blog/",
+      path: "/about/",
     },
     {
-      label: randomWords(),
+      label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/blog/",
-    },
-    {
-      label: randomWords(),
-      icon: randomIcon(),
-      path: "/blog/",
+      path: "/",
     },
   ];
 };
 export default {
   data: () => ({
     value: 1,
-    dataColor: randomMaterialColor(),
+    currentColor: randomMaterialColor(),
     currentMenuItems: randomMenuItems(),
   }),
   computed: {
     backgroundColor() {
-      return this.dataColor;
+      return this.currentColor;
     },
     menuItems() {
       return this.currentMenuItems;
@@ -58,7 +58,7 @@ export default {
   },
   watch: {
     $route: function () {
-      this.dataColor = randomMaterialColor();
+      this.currentColor = randomMaterialColor();
       this.currentMenuItems = randomMenuItems();
     },
   },
