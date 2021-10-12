@@ -4,15 +4,15 @@
       v-if="true"
       ref="mapRef"
       :options="{
-        zoomControl: true,
+        zoomControl: false,
         mapTypeControl: false,
-        scaleControl: true,
+        scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
         fullscreenControl: false,
         disableDefaultUi: false,
         scrollwheel: true,
-        styles: mapStyle.styles,
+        styles: mapStyles,
       }"
       :center="center"
       :zoom="zoom"
@@ -80,9 +80,8 @@
 <script>
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
-import colors from "vuetify/lib/util/colors";
-import { randomFromPalette } from "~/assets/colors/palette1";
-import { generatedStyle } from "~/assets/colors/template1";
+// import colors from "vuetify/lib/util/colors";
+import { generateRandomStyle } from "~/assets/colors/generateRandomStyle";
 
 const mapMarker = "http://lorempixel.com/100/100/nature/"; // require if assets
 
@@ -94,89 +93,6 @@ export default {
   data: () => ({
     zoom: 7,
     mapType: "terrain",
-    mapStyle: {
-      // other properties...
-      styles: [
-        { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-        {
-          featureType: "administrative.locality",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "geometry",
-          stylers: [{ color: "#263c3f" }],
-        },
-        {
-          featureType: "poi.park",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#6b9a76" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry",
-          stylers: [{ color: "#38414e" }],
-        },
-        {
-          featureType: "road",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#212a37" }],
-        },
-        {
-          featureType: "road",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#9ca5b3" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry",
-          stylers: [{ color: "#746855" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#1f2835" }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#f3d19c" }],
-        },
-        {
-          featureType: "transit",
-          elementType: "geometry",
-          stylers: [{ color: "#2f3948" }],
-        },
-        {
-          featureType: "transit.station",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#d59563" }],
-        },
-        {
-          featureType: "water",
-          elementType: "geometry",
-          stylers: [{ color: "#17263c" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#515c6d" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#17263c" }],
-        },
-      ],
-    },
     markers: [
       {
         position: {
@@ -209,7 +125,6 @@ export default {
   }),
   async mounted() {
     console.log("main mount");
-    console.log(randomFromPalette());
 
     this.$store.commit("setMainContent", this.$static.blogPosts.edges);
     await this.$gmapApiPromiseLazy();
@@ -225,14 +140,17 @@ export default {
         },
       };
     });
-    // console.log(potato);
-    // this.circleMarkers =
-    console.log("huh?", generatedStyle);
-    this.data.mapStyle.styles = generatedStyle;
+  },
+  props: {
+    currentStyle: { type: Object, default: generateRandomStyle() },
+  },
+  computed: {
+    mapStyles() {
+      return this.currentStyle;
+    },
   },
   methods: {
     markerClick(marker) {
-      console.log("potato");
       this.center = marker.position;
       this.$emit("markerClicked");
     },
@@ -273,6 +191,8 @@ export default {
       const lat = getRandomInRange(-90, 90, 3);
       const lng = getRandomInRange(-180, 180, 3);
       console.log(lat, lng);
+
+      this.currentStyle = generateRandomStyle();
       this.$nextTick(() => {
         if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {
