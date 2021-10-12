@@ -1,15 +1,44 @@
-# key features
-
-- a search
+# sprint 1
 
 - page footer nav
 
   - single weird button floating in center that takes you onwards?
   - use keyboard to navigate, accessaibilty?
 
-- change map colors (set colorschemes?)
+- change map colors (set colorschemes)
+
+- clickbait text shift: link and menu shifts : icons and text
+
+- custom markers
+
+  - weird svgs
+  - leylines stuff
+  - patterns
+  - single tile test
+
+- overlay test - clouds / single tiles
+
+- seed more content
+
+# key features
+
+- link block
+- image block
+- video block
+
+- a search
 
 - main about text?
+
+- favicon
+
+- tone gen
+
+- map movement animation
+
+- skeleton loader
+
+- heatmaps?
 
 ## features
 
@@ -21,10 +50,17 @@
 
 - binaural: https://github.com/yomansk8/binaural/blob/master/src/App.js
 
-- clickbait text shift
-
 - random dropshadow on load?
-  - cloud overlays? on site? or map?
+
+- cloud overlays? on site? or map?
+
+- fake mock apis and dashboards?
+
+- captchkas...
+
+- eclipsing humans with data...smart city
+
+- chatbots?
 
 ## map
 
@@ -78,6 +114,7 @@
 - copyright free audio and EDL cuts?
 - humans svg gpt3 : mangle vectors?
 - live stock data api
+- combine with edl? the aggregated video stuff? but really slow?
 
 ## content formats
 
@@ -110,6 +147,7 @@
 - cable data
 - cloud pngs
 - virtual map tiles
+- tsne?
 
 - dynamic searches or something?
 
@@ -130,6 +168,7 @@
   - bitcoin ads
   - yt thumb nails mud fish content? yt thumbs garbage
   - stock market charts behaving weirdly
+  - gan charts?https://www.google.com/search?q=def%20face%20race%20detetion%20stuff%3F&tbm=isch&tbs=rimg:CXSa22CJyWktYZSPYZsCQ5pJsgIGCgIIABAA&client=firefox-b-d&hl=en&sa=X&ved=0CBsQuIIBahcKEwj43PC107jzAhUAAAAAHQAAAAAQEg&biw=2545&bih=1332
 
 - network topography animations and js shit? http://paperjs.org/examples/candy-crash/ toys.prototyp.se?
 
@@ -163,6 +202,13 @@
 - clouds/mining
 - cal id
 
+....
+
+Or — to make it even clearer — in the case of climate change, we truly have all the data we need. The reports are clear. It is calamitous. You don’t even need a dataset to see it — I can walk up the hill from my home and see the wildfire smoke. I can feel the heat of the summers and the force of the hurricanes. Yet just this week the Biden administration claimed that the devastating IPCC report “does not present sufficient cause” to pause an expansion to offshore drilling.
+
+when the data says what we want
+nate silver tihng...
+
 # lat lngs
 
 8.725 -72.901
@@ -172,3 +218,5 @@
 30.807 -11.996
 18.939 84.554
 -30.878 119.985
+
+-- - different feed types investigation? cant source vs source?

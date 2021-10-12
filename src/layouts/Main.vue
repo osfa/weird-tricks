@@ -80,6 +80,9 @@
 <script>
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
+import colors from "vuetify/lib/util/colors";
+import { randomFromPalette } from "~/assets/colors/palette1";
+import { generatedStyle } from "~/assets/colors/template1";
 
 const mapMarker = "http://lorempixel.com/100/100/nature/"; // require if assets
 
@@ -205,6 +208,9 @@ export default {
     center: { lat: 10, lng: 10 },
   }),
   async mounted() {
+    console.log("main mount");
+    console.log(randomFromPalette());
+
     this.$store.commit("setMainContent", this.$static.blogPosts.edges);
     await this.$gmapApiPromiseLazy();
     const circleCoords = [
@@ -219,8 +225,10 @@ export default {
         },
       };
     });
-    console.log(potato);
+    // console.log(potato);
     // this.circleMarkers =
+    console.log("huh?", generatedStyle);
+    this.data.mapStyle.styles = generatedStyle;
   },
   methods: {
     markerClick(marker) {
