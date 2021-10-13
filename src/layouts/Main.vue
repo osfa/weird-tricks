@@ -117,8 +117,6 @@ export default {
     richFormatMarkers: [],
     center: { lat: 62.323907, lng: -150.109291 },
     groundOverlayBounds: undefined,
-    // groundOverlaySource:
-    // "https://developers.google.com/maps/documentation/javascript/examples/full/images/talkeetna.png",
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: generateRandomStyle(),
   }),
@@ -128,67 +126,6 @@ export default {
     await this.$gmapApiPromiseLazy();
 
     this.groundOverlayBounds = getTileBounds(google, this.center, this.zoom);
-    console.log(this.groundOverlayBounds.east);
-    console.log(google);
-
-    // this.$refs.mapRef.$mapPromise.then((map) => {
-    //   this.map = map;
-    //   // this.init();
-    // });
-
-    // // https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection/
-
-    // function tile2long(x, z) {
-    //   return (x / Math.pow(2, z)) * 360 - 180;
-    // }
-
-    // function tile2lat(y, z) {
-    //   var n = Math.PI - (2 * Math.PI * y) / Math.pow(2, z);
-    //   return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
-    // }
-
-    // console.log(this.google);
-
-    // this.center = { lat: 62.323907, lng: -150.109291 };
-
-    // const TILE_SIZE = 256;
-    // const currentZoom = this.zoom;
-    // const scale = 1 << this.zoom;
-    // const latLng = new google.maps.LatLng(this.center.lat, this.center.lng);
-
-    // const worldCoordinate = project(latLng);
-
-    // const pixelCoordinate = new google.maps.Point(
-    //   Math.floor(worldCoordinate.x * scale),
-    //   Math.floor(worldCoordinate.y * scale)
-    // );
-
-    // // The mapping between latitude, longitude and pixels is defined by the web
-    // // mercator projection.
-    // function project(latLng) {
-    //   let siny = Math.sin((latLng.lat() * Math.PI) / 180);
-    //   const TILE_SIZE = 256;
-    //   // Truncating to 0.9999 effectively limits latitude to 89.189. This is
-    //   // about a third of a tile past the edge of the world tile.
-    //   siny = Math.min(Math.max(siny, -0.9999), 0.9999);
-    //   return new google.maps.Point(
-    //     TILE_SIZE * (0.5 + latLng.lng() / 360),
-    //     TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI))
-    //   );
-    // }
-
-    // const tileCoordinate = new google.maps.Point(
-    //   Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
-    //   Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
-    // );
-    // console.log("before:", this.groundOverlayBounds);
-    // this.groundOverlayBounds = {
-    //   north: tile2lat(tileCoordinate.y, currentZoom),
-    //   south: tile2lat(tileCoordinate.y + 2, currentZoom),
-    //   east: tile2long(tileCoordinate.x + 2, currentZoom),
-    //   west: tile2long(tileCoordinate.x, currentZoom),
-    // };
-    // console.log("after:", this.groundOverlayBounds);
   },
   computed: {
     mapStyles() {

@@ -1,17 +1,36 @@
-
 // import { gmapApi as google } from 'gmap-vue';
 
 const mapMarker = "http://lorempixel.com/100/100/nature/"; // require if assets
 const cloudAsset1 = require("~/assets/imgs/cloud1.png"); // require if assets
 const cloudAsset2 = require("~/assets/imgs/cloud2.png"); // require if assets
 const cloudAsset3 = require("~/assets/imgs/cloud3.png"); // require if assets
-// https://khms1.google.com/kh/v=908?x=36&y=17&z=6
 
+// https://khms1.google.com/kh/v=908?x=36&y=17&z=6
 // https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection/
 
-export const getTileBounds = (google, center, zoomLevel) => {
+export const tile2long = (x, z) => {
+  return (x / Math.pow(2, z)) * 360 - 180;
+};
 
-  console.log('center?', center)
+export const tile2lat = (y, z) => {
+  var n = Math.PI - (2 * Math.PI * y) / Math.pow(2, z);
+  return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+};
+
+// The mapping between latitude, longitude and pixels is defined by the web
+// mercator projection.
+export const project = (latLng, tileSize) => {
+  let siny = Math.sin((latLng.lat() * Math.PI) / 180);
+  // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+  // about a third of a tile past the edge of the world tile.
+  siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+  return new google.maps.Point(
+    tileSize * (0.5 + latLng.lng() / 360),
+    tileSize * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI))
+  );
+};
+
+export const getTileBounds = (google, center, zoomLevel) => {
   const TILE_SIZE = 256;
   const currentZoom = zoomLevel;
   const scale = 1 << zoomLevel;
@@ -19,48 +38,17 @@ export const getTileBounds = (google, center, zoomLevel) => {
   const gLatLng = new google.maps.LatLng(center.lat, center.lng);
   const worldCoordinate = project(gLatLng, TILE_SIZE);
 
-    console.log("worldCoordinate:",  worldCoordinate)
-
-//   const pixelCoordinate = new google.maps.Point(
-//     Math.floor(worldCoordinate.x * scale),
-//     Math.floor(worldCoordinate.y * scale)
-//   );
-//   console.log("worldCoordinate". worldCoordinate)
-
-  function tile2long(x, z) {
-    return (x / Math.pow(2, z)) * 360 - 180;
-  }
-
-  function tile2lat(y, z) {
-    var n = Math.PI - (2 * Math.PI * y) / Math.pow(2, z);
-    return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
-  }
-
-  // The mapping between latitude, longitude and pixels is defined by the web
-  // mercator projection.
-  function project(latLng, tileSize) {
-    let siny = Math.sin((latLng.lat() * Math.PI) / 180);
-    // Truncating to 0.9999 effectively limits latitude to 89.189. This is
-    // about a third of a tile past the edge of the world tile.
-    siny = Math.min(Math.max(siny, -0.9999), 0.9999);
-    return new google.maps.Point(
-        tileSize * (0.5 + latLng.lng() / 360),
-        tileSize * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI))
-    );
-  }
-
   const tileCoordinate = new google.maps.Point(
     Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
     Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
   );
-  console.log("worldCoordinate". worldCoordinate)
 
   return {
     north: tile2lat(tileCoordinate.y, currentZoom),
     south: tile2lat(tileCoordinate.y + 2, currentZoom),
     east: tile2long(tileCoordinate.x + 2, currentZoom),
     west: tile2long(tileCoordinate.x, currentZoom),
-  }
+  };
 };
 
 export const availableMapTypes = ["roadmap", "satellite", "hybrid", "terrain"];
