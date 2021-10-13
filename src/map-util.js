@@ -30,7 +30,7 @@ export const project = (latLng, tileSize) => {
   );
 };
 
-export const getTileBounds = (google, center, zoomLevel) => {
+export const getTileBounds = (google, center, zoomLevel, tileExtent = 1) => {
   const TILE_SIZE = 256;
   const currentZoom = zoomLevel;
   const scale = 1 << zoomLevel;
@@ -45,8 +45,8 @@ export const getTileBounds = (google, center, zoomLevel) => {
 
   return {
     north: tile2lat(tileCoordinate.y, currentZoom),
-    south: tile2lat(tileCoordinate.y + 2, currentZoom),
-    east: tile2long(tileCoordinate.x + 2, currentZoom),
+    south: tile2lat(tileCoordinate.y + tileExtent, currentZoom),
+    east: tile2long(tileCoordinate.x + tileExtent, currentZoom),
     west: tile2long(tileCoordinate.x, currentZoom),
   };
 };

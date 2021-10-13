@@ -109,7 +109,7 @@ export default {
   },
   data: () => ({
     map: undefined,
-    zoom: 11,
+    zoom: 8,
     currentMapType: "terrain",
     imgMarkers: [],
     cloudMarkers: [], //cloudMarkers,
