@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app :color="currentDrawerColor" dark>
-      <v-list>
+      <v-list v-if="showAvatar">
         <v-list-item class="px-2">
           <v-list-item-avatar>
             <v-img
-              src="https://randomuser.me/api/portraits/women/85.jpg"
+              src="https://cdn.vox-cdn.com/thumbor/FNRQapctOr2iQ9BA0EAlpNzwiQA=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15788040/20150428-cloud-computing.0.1489222360.jpg"
             ></v-img>
           </v-list-item-avatar>
         </v-list-item>
       </v-list>
 
-      <v-divider></v-divider>
+      <v-divider v-if="showAvatar"></v-divider>
 
       <!-- <g-link to="/about/">About us</g-link> -->
       <v-list nav dense>
@@ -89,6 +89,7 @@ export default {
     Expander,
   },
   data: () => ({
+    showAvatar: false,
     drawer: false,
     currentDrawerColor: "yellow darken-2",
     currentMainColor: "pink",

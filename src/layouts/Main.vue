@@ -93,8 +93,9 @@
 <script>
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
-import { generateRandomStyle } from "~/util";
-import { cloudMarkers, availableMapTypes, getTileBounds } from "~/map-util";
+import { generateRandomStyle, generateTestStyle } from "~/util";
+import { customStyle } from "~/mapStyler";
+import { cloudMarkers, getTileBounds } from "~/map-util";
 import { gmapApi } from "gmap-vue";
 
 // import { randomWords } from "random-words";
@@ -109,23 +110,24 @@ export default {
   },
   data: () => ({
     map: undefined,
-    zoom: 8,
+    zoom: 12,
     currentMapType: "terrain",
     imgMarkers: [],
     cloudMarkers: [], //cloudMarkers,
     circleMarkers: [],
     richFormatMarkers: [],
-    center: { lat: 62.323907, lng: -150.109291 },
+    // center: { lat: 62.323907, lng: -150.109291 },
+    center: { lat: 59.3293, lng: 18.0686 },
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
-    currentStyle: generateRandomStyle(),
+    currentStyle: customStyle(),
   }),
   async mounted() {
     console.log("main mount");
+    console.log(customStyle());
     this.$store.commit("setMainContent", this.$static.blogPosts.edges);
     await this.$gmapApiPromiseLazy();
-
-    this.groundOverlayBounds = getTileBounds(google, this.center, this.zoom);
+    // this.groundOverlayBounds = getTileBounds(google, this.center, this.zoom);
   },
   computed: {
     mapStyles() {
@@ -154,6 +156,8 @@ export default {
       console.log("currently at:", lat, lng);
 
       this.currentStyle = generateRandomStyle();
+
+      const availableMapTypes = ["terrain", "roadmap"]; // ["roadmap", "satellite", "hybrid", "terrain"];
       this.currentMapType =
         availableMapTypes[Math.floor(Math.random() * availableMapTypes.length)];
 

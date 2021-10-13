@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <v-container
+      v-if="false"
       class="pt-lg-16"
       style="
         width: 600px;
