@@ -1,3 +1,9 @@
+# halp
+
+gridsome build
+netlify deploy --prod
+serve dist -l 9000
+
 # dump
 
 hover? https://diegoazh.github.io/gmap-vue/examples/status-bar-information.html#source-code
