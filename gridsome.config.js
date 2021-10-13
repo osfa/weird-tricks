@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "You wont believe it",
+  siteName: "You won't believe it",
   plugins: [
     {
       use: "@gridsome/source-contentful",
@@ -19,7 +19,7 @@ module.exports = {
     },
   ],
   templates: {
-    ContentfulBlogPost: "/blog/:slug",
+    ContentfulBlogPost: "/nodes/:slug",
   },
   chainWebpack(config, { isServer }) {
     if (isServer) {

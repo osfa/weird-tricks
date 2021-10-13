@@ -9,7 +9,7 @@
         >
           <g-image v-if="false" :src="node.heroImage.file.url" />
 
-          <v-card :to="`/blog/${node.slug}`" style="pointer-events: auto">
+          <v-card :to="`/nodes/${node.slug}`" style="pointer-events: auto">
             <v-img
               :src="node.heroImage.file.url"
               class="white--text align-end"
@@ -78,7 +78,7 @@ import { Pager } from "gridsome";
 
 export default {
   metaInfo: {
-    title: "Idx",
+    title: "Index",
   },
   components: {
     Pager,

@@ -31,7 +31,7 @@
           v-for="child in item.items"
           :key="child.title"
           link
-          to="/blog/"
+          to="/nodes/"
         >
           <v-list-item-content>
             <v-list-item-title v-text="child.title"></v-list-item-title>

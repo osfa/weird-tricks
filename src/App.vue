@@ -72,13 +72,13 @@ export default {
       let nextPost =
         this.$static.blogPosts.edges[this.$store.state.currentBlockIdx];
 
-      // const routes = ["/about", "/blog", "/other", "/"];
+      // const routes = ["/about", "/nodes", "/other", "/"];
       // let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       // while (nextRoutePath === this.$route.path) {
       //   nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       // }
 
-      let nextRoutePath = `/blog/${nextPost.node.slug}`;
+      let nextRoutePath = `/nodes/${nextPost.node.slug}`;
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
@@ -104,8 +104,6 @@ export default {
     },
   },
   created: function () {
-    console.log("huh?", process);
-    console.log(process.isClient, process.isServer);
     if (process.isClient) {
       window.addEventListener("keyup", this.nav);
     }

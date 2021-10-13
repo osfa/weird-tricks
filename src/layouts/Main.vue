@@ -18,6 +18,7 @@
       :center="center"
       :zoom="zoom"
       :map-type-id="mapType"
+      @click="mark"
       style="
         width: 100%;
         height: 100%;
@@ -110,14 +111,14 @@ export default {
   },
   data: () => ({
     map: undefined,
-    zoom: 12,
+    zoom: 15,
     currentMapType: "terrain",
     imgMarkers: [],
-    cloudMarkers: [], //cloudMarkers,
+    cloudMarkers: cloudMarkers,
     circleMarkers: [],
     richFormatMarkers: [],
     // center: { lat: 62.323907, lng: -150.109291 },
-    center: { lat: 59.3293, lng: 18.0686 },
+    center: { lat: 59.32181269185499, lng: 18.05670232773647 },
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: customStyle(),
@@ -145,25 +146,46 @@ export default {
       this.center = marker.position;
       this.$emit("markerClicked");
     },
+    mark(event) {
+      console.log("click at:", event.latLng.lat(), event.latLng.lng());
+    },
   },
   watch: {
     $route: function () {
       function getRandomInRange(from, to, fixed) {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
       }
-      const lat = getRandomInRange(-90, 90, 3);
-      const lng = getRandomInRange(-180, 180, 3);
-      console.log("currently at:", lat, lng);
+
+      let lat = getRandomInRange(-90, 90, 3);
+      let lng = getRandomInRange(-180, 180, 3);
+      console.log("random pos currently at:", lat, lng);
 
       this.currentStyle = generateRandomStyle();
 
-      const availableMapTypes = ["terrain", "roadmap"]; // ["roadmap", "satellite", "hybrid", "terrain"];
+      const availableMapTypes = ["terrain"]; // ["roadmap", "satellite", "hybrid", "terrain"];
       this.currentMapType =
         availableMapTypes[Math.floor(Math.random() * availableMapTypes.length)];
 
+      const somePositions = [
+        [8.725, -72.901],
+        [55.191, 131.915],
+        [59.65, 61.412],
+        [69.737, -131.859],
+        // [30.807, -11.996],
+        [18.939, 84.554],
+        [-30.878, 119.985],
+        [45.872, 110.432],
+        [61.905, 6.805],
+        [-76.61854793101789, -146.12874166143615],
+      ];
       this.$nextTick(() => {
         if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {
+            let chosen =
+              somePositions[Math.floor(Math.random() * somePositions.length)];
+            lat = chosen[0];
+            lng = chosen[1];
+            console.log("moving to:", lat, lng);
             map.panTo({
               lat,
               lng,

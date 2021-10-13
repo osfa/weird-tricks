@@ -15,19 +15,25 @@
 
       <!-- <g-link to="/about/">About us</g-link> -->
       <v-list nav dense>
-        <v-list-item link to="/blog/">
+        <v-list-item link to="/">
           <v-list-item-icon>
-            <v-icon>mdi-folder</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Index</v-list-item-title>
+          <v-list-item-title>/</v-list-item-title>
+        </v-list-item>
+        <v-list-item link to="/nodes/">
+          <v-list-item-icon>
+            <v-icon>mdi-format-list-bulleted-square</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>/nodes</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/about/">
           <v-list-item-icon>
-            <v-icon>mdi-folder</v-icon>
+            <v-icon>mdi-information-outline</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>About</v-list-item-title>
+          <v-list-item-title>/about</v-list-item-title>
         </v-list-item>
-
+        <v-divider class="my-4"></v-divider>
         <v-list-item
           :key="index"
           v-for="(m, index) in menuItems"
@@ -47,7 +53,7 @@
     <v-app-bar app :color="currentMainColor" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="cursor: pointer" @click="home()"
-        >You wont believe it</v-toolbar-title
+        >You won't believe it</v-toolbar-title
       >
     </v-app-bar>
   </div>
@@ -69,7 +75,7 @@ const randomMenuItems = () => {
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/blog/",
+      path: "/nodes/",
     },
     {
       label: randomWords({ min: 1, max: 2, join: " " }),

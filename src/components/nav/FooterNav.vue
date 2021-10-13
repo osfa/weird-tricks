@@ -28,7 +28,7 @@ const randomMenuItems = () => {
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/blog/",
+      path: "/nodes/",
     },
     {
       label: randomWords({ min: 1, max: 2, join: " " }),

@@ -1,10 +1,10 @@
 <template>
   <Layout>
     <v-container
-      v-if="false"
+      v-if="true"
       class="pt-lg-16"
       style="
-        width: 600px;
+        width: 200px;
         max-width: 50vw;
         pointer-events: auto;
         position: relative;
@@ -75,6 +75,14 @@ export default {
       title: this.$page.post.title,
     };
   },
+  data: () => ({
+    marker: {
+      position: {
+        lat: 15.0,
+        lng: 15.0,
+      },
+    },
+  }),
   computed: {
     content() {
       const md = new MarkdownIt();
