@@ -90,7 +90,7 @@ export default function (Vue, { appOptions, head, router }) {
   Vue.use(GmapVue, {
     load: {
       key: process.env.GRIDSOME_MAPS_KEY,
-      libraries: "places", // This is required if you use the Autocomplete plugin
+      libraries: "drawing, visualization", // This is required if you use the Autocomplete plugin
       // OR: libraries: 'places,drawing'
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)
@@ -113,6 +113,20 @@ export default function (Vue, { appOptions, head, router }) {
     installComponents: true,
   });
 
+  Vue.component('ground-overlay', GmapVue.MapElementFactory({
+    mappedProps: {
+      'opacity': {}
+    },
+    props: {
+      'source': { type: String },
+      'bounds': { type: Object }
+    },
+    events: ['click', 'dblclick'],
+    name: 'groundOverlay',
+    ctr: () => window.google.maps.GroundOverlay,
+    ctrArgs: (options, { source, bounds }) => [source, bounds, options]
+  }))
+  
   appOptions.vuetify = new Vuetify(opts);
 
   // Set default layout as a global component

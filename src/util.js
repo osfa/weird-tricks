@@ -2,20 +2,6 @@ import { randomFromPalette } from "~/assets/colors/palette1";
 import { iconList } from "~/assets/icons";
 export const randomMaterialColor = randomFromPalette;
 
-// () => {
-  // const availableColors = [
-  //   "red",
-  //   "blue",
-  //   "yellow darken-2",
-  //   "pink",
-  //   "purple",
-  //   "cyan",
-  //   "orange",
-  //   "teal",
-  // ];
-  // return availableColors[Math.floor(Math.random() * availableColors.length)];
-// }
-
 export const randomIcon = () => {
   return iconList[Math.floor(Math.random() * iconList.length)]
 }

@@ -1,7 +1,17 @@
 # dump
 
+hover? https://diegoazh.github.io/gmap-vue/examples/status-bar-information.html#source-code
 stylized round markers? some larger? some smaller?
+small clouds in circles? click to get fan sounds? other sounds?
+gpt babble? vs overlay clouds (seomtimes?)
+
 weird telegram chats? like foodora felling?
+
+floating clouds? clouds with drop shadow?
+
+bird chirps?
+
+just marquee clouds and put on top? vs drop shadow?
 
 # sprint 1
 
@@ -225,5 +235,7 @@ nate silver tihng...
 30.807 -11.996
 18.939 84.554
 -30.878 119.985
+45.872 110.432
+61.905 6.805
 
 -- - different feed types investigation? cant source vs source?
