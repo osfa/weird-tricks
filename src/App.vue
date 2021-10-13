@@ -92,6 +92,7 @@ export default {
       console.log(this.$store.state.currentBlockIdx);
     },
     nav(e) {
+      console.log("nav");
       switch (e.keyCode) {
         case 37: // left
           this.forceNav(true);
@@ -103,10 +104,16 @@ export default {
     },
   },
   created: function () {
-    window.addEventListener("keyup", this.nav);
+    console.log("huh?", process);
+    console.log(process.isClient, process.isServer);
+    if (process.isClient) {
+      window.addEventListener("keyup", this.nav);
+    }
   },
   destroyed: function () {
-    window.removeEventListener("keyup", this.nav);
+    if (process.isClient) {
+      window.removeEventListener("keyup", this.nav);
+    }
   },
   //   beforeRouteLeave(to, from, next) {
   //     console.log("main route leave");
