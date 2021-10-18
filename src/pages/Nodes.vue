@@ -22,9 +22,24 @@
           <v-card
             :to="`/nodes/${node.id}`"
             style="pointer-events: auto"
-            class="elevation-12"
+            :elevation="randomElevation()"
           >
-            <v-img :src="node.heroImage.file.url" class="white--text align-end">
+            <v-img
+              :key="node.heroImage.file.url"
+              :src="`${node.heroImage.file.url}?fit=scale&w=800`"
+            >
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0 p-10"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    :color="randomMaterialColor()"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
             </v-img>
 
             <v-card-actions>
@@ -81,7 +96,7 @@ query Posts($page: Int) {
 
 <script>
 import { Pager } from "gridsome";
-import { randomIcon } from "~/util";
+import { randomIcon, randomMaterialColor, random } from "~/util";
 
 export default {
   metaInfo: {
@@ -118,8 +133,14 @@ export default {
     },
   },
   methods: {
+    randomElevation() {
+      return random(1, 16);
+    },
     randomIcon() {
       return randomIcon();
+    },
+    randomMaterialColor() {
+      return randomMaterialColor();
     },
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {

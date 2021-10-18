@@ -125,7 +125,7 @@ export const getCircleMarkers = (
   const circleCoords = [...Array(ringCount).keys()].map((i) => {
     return getCircleCoordinates(
       new google.maps.LatLng(startLat, startLong),
-      i * radiusIncrease,
+      i * radiusIncrease, // ease func?
       1,
       point_count
     );

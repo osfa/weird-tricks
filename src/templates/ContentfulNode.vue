@@ -14,11 +14,21 @@
       <div class="row align-center justify-center">
         <v-card class="col-4 flex mb-16" style="pointer-events: auto">
           <v-img
+            :key="$page.post.heroImage.file.url"
+            @load="onImgLoad"
             :src="`${$page.post.heroImage.file.url}?fit=scale&w=1800`"
-            class="white--text align-end"
-            max-width="800"
+            min-height="200"
           >
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular
+                  indeterminate
+                  :color="randomMaterialColor()"
+                ></v-progress-circular>
+              </v-row>
+            </template>
           </v-img>
+
           <v-card-title v-text="$page.post.title"></v-card-title>
 
           <v-card-text v-if="false" v-html="content" />
@@ -102,17 +112,22 @@ export default {
     },
     currentIcon: randomIcon(),
     currentColor: randomMaterialColor(),
+    isLoaded: false,
   }),
-  computed: {
-    content() {
-      const md = new MarkdownIt();
-      return md.render(this.$page.post.body);
+  methods: {
+    onImgLoad() {
+      console.log("onImgLoad");
+      this.isLoaded = true;
+    },
+    randomMaterialColor() {
+      return randomMaterialColor();
     },
   },
   watch: {
     $route: function () {
       this.currentIcon = randomIcon();
       this.currentColor = randomMaterialColor();
+      this.isLoaded = false;
       // this.currentMenuItems = randomMenuItems();
     },
   },

@@ -152,6 +152,7 @@ export default {
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: customStyle(),
+    leyLinesColor: randomMaterialColor(),
     path: [
       // line 1
       { lat: centerStart.lat, lng: centerStart.lng },
@@ -187,7 +188,7 @@ export default {
       this.map.data.addGeoJson(rhombic);
 
       var featureStyle = {
-        strokeColor: "#ff0000", //randomMaterialColor(),
+        strokeColor: this.leyLinesColor, //randomMaterialColor(),
         strokeWeight: 1,
       };
 
