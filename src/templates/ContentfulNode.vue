@@ -1,11 +1,22 @@
 <template>
   <Layout>
+    <div
+      v-if="false"
+      :style="`background-image: url('${$page.post.heroImage.file.url}?fit=fill&w=1280&h=720'); 
+      position: fixed; top: 0; left: 0; 
+      width: 100%; height: 100%;
+      pointer-events:none;
+
+      opacity: 50%; background-size: cover;`"
+    ></div>
+
     <v-container class="fill-height fluid" style="position: relative">
       <div class="row align-center justify-center">
-        <v-card class="col-6 flex mb-16" style="pointer-events: auto">
+        <v-card class="col-4 flex mb-16" style="pointer-events: auto">
           <v-img
-            :src="`${$page.post.heroImage.file.url}?fit=fill&w=1800&h=1200`"
+            :src="`${$page.post.heroImage.file.url}?fit=scale&w=1800`"
             class="white--text align-end"
+            max-width="800"
           >
           </v-img>
           <v-card-title v-text="$page.post.title"></v-card-title>

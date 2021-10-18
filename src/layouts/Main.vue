@@ -178,12 +178,7 @@ export default {
     this.$store.commit("setMainContent", this.$static.nodes.edges);
     await this.$gmapApiPromiseLazy();
 
-    // this.circleMarkers = getCircleMarkers(
-    //   this.center.lat,
-    //   this.center.lng,
-    //   0.5, // radius, base on zoom level?
-    //   25 // ring count
-    // );
+    this.drawPatternMarkers(this.center.lat, this.center.lng);
 
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
@@ -285,12 +280,13 @@ export default {
     mark(event) {
       console.log("click at:", event.latLng.lat(), event.latLng.lng());
     },
-    redrawPatternMarkers() {
+    drawPatternMarkers(lat, lng) {
+      const offset = 1;
       this.circleMarkers = getCircleMarkers(
-        this.center.lat,
-        this.center.lng,
-        0.5, // radius, base on zoom level?
-        25 // ring count
+        lat - offset,
+        lng - offset,
+        random(1, this.zoom * 4), // radius, base on zoom level?
+        random(15, 30) // ring count
       );
     },
     strokeColor() {
@@ -309,7 +305,7 @@ export default {
 
       this.currentStyle = generateRandomStyle();
       this.zoom = random(6, 15);
-      const availableMapTypes = ["terrain"]; // ["roadmap", "satellite", "hybrid", "terrain"];
+      const availableMapTypes = ["roadmap", "satellite", "hybrid", "terrain"];
       this.currentMapType =
         availableMapTypes[Math.floor(Math.random() * availableMapTypes.length)];
 
@@ -340,8 +336,8 @@ export default {
               lat,
               lng,
             });
-            this.center = { position: { lat, lng } };
-            this.redrawPatternMarkers();
+            // this.center = { position: { lat: lat, lng: lng } };
+            this.drawPatternMarkers(lat, lng);
           });
         }
       });
