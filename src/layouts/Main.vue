@@ -116,15 +116,17 @@ import { customStyle } from "~/mapStyler";
 import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
 import { gmapApi } from "gmap-vue";
 
-import { data as yin } from "~/assets/geo/Yin_Lines";
-import { data as rhombic } from "~/assets/geo/Rhombic_Dodecahedron";
+import { data as yin } from "~/data/geo/Yin_Lines";
+import { data as rhombic } from "~/data/geo/Rhombic_Dodecahedron";
 
 const stockholm = { lat: 59.32181269185499, lng: 18.05670232773647 };
+
+const leyline1 = { lat: 25.489491583308883, lng: -4.7713413023755225 };
 const something = { lat: -28, lng: 137 };
 // import * as GmapVue from "gmap-vue";
 // import DirectionsRenderer from './DirectionsRenderer.js'
 
-const centerStart = stockholm;
+const centerStart = leyline1;
 const tilt = 90;
 
 export default {
@@ -134,7 +136,7 @@ export default {
   },
   data: () => ({
     map: undefined,
-    zoom: 10,
+    zoom: 8,
     currentMapType: "terrain",
     imgMarkers: [],
     cloudMarkers: [],
@@ -152,7 +154,7 @@ export default {
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: customStyle(),
-    leyLinesColor: randomMaterialColor(),
+    leyLinesColor: "#FFFFFF", //randomMaterialColor(),
     path: [
       // line 1
       { lat: centerStart.lat, lng: centerStart.lng },
@@ -190,6 +192,7 @@ export default {
       var featureStyle = {
         strokeColor: this.leyLinesColor, //randomMaterialColor(),
         strokeWeight: 1,
+        strokeOpacity: 0.5,
       };
 
       map.data.setStyle(featureStyle);
