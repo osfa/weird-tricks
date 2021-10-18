@@ -92,7 +92,8 @@ function getCircleCoordinates(point, radius, dir) {
   var r2d = 180 / Math.PI; // radians to degrees
   var earthsradius = 3963; // 3963 is the radius of the earth in miles
 
-  var points = 32;
+  var points = 32; // !!!
+
   // find the raidus in lat/lon
   var rlat = (radius / earthsradius) * r2d;
   var rlng = rlat / Math.cos(point.lat() * d2r);
@@ -117,22 +118,26 @@ function getCircleCoordinates(point, radius, dir) {
 export const getCircleMarkers = (
   startLat,
   startLong,
-  radiusIncrease = 100,
-  ringCount = 15
+  radiusIncrease = 5,
+  ringCount = 3
 ) => {
   const circleCoords = [...Array(ringCount).keys()].map((i) => {
     return getCircleCoordinates(
-      new google.maps.LatLng(10, 10),
+      new google.maps.LatLng(startLat, startLong),
       i * radiusIncrease,
       1
     );
   });
 
+  // console.log("circleCoords:", circleCoords);
   var merged = [].concat.apply([], circleCoords);
-
-  merged.map((m) => {
+  //console.log("merged?", merged);
+  // console.log(circleCoords.flat(1));
+  //console.log(merged[0].lat());
+  return merged.map((m, idx) => {
     return {
       position: {
+        id: idx,
         lat: m.lat(),
         lng: m.lng(),
       },

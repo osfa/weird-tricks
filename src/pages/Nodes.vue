@@ -6,7 +6,7 @@
         max-width: 900px;
         position: relative;
         padding-bottom: 200px;
-        pointer-events: auto;
+        <!-- pointer-events: auto; -->
       "
     >
       <v-row align="center">
@@ -14,6 +14,7 @@
           v-for="{ node } in shuffledContent"
           :key="node.id"
           :cols="colCount"
+          style="pointer-events: auto"
           class="col-12 col-sm-6 col-md-4"
         >
           <g-image v-if="false" :src="node.heroImage.file.url" />
@@ -49,7 +50,7 @@
         </v-col>
       </v-row>
       <pager
-        v-if="$page.posts.pageInfo.totalPages > 1 && false"
+        v-if="$page.posts.pageInfo.totalPages > 1"
         :info="$page.posts.pageInfo"
       />
     </v-container>

@@ -1,11 +1,8 @@
 <template>
   <Layout>
-    <v-container
-      class="fill-height fluid fluid"
-      style="pointer-events: auto; position: relative"
-    >
+    <v-container class="fill-height fluid" style="position: relative">
       <div class="row align-center justify-center">
-        <v-card class="col-6 flex mb-16">
+        <v-card class="col-6 flex mb-16" style="pointer-events: auto">
           <v-img
             :src="`${$page.post.heroImage.file.url}?fit=fill&w=1800&h=1200`"
             class="white--text align-end"

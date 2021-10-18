@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Folder><name>UVG_Grid_compiled_by_B_Hagens</name>
+</Folder>
+<Folder><name>Regular_Geometric_Figures</name>
+</Folder>
+<Folder><name>Triacontahedron</name>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999990023281,26.5699990372038 -112.7999871005,10.8099994720632 -148.80000221082,26.5700012005501 175.200020803176,52.6199989294998 139.199995961388,26.5700067752238 175.200006895632,10.8099994604997</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>142.869472862585,89.9999740642011 -112.79997726974,52.6199989304315 -76.7999925107155,26.569999693895 -40.7999977378486,10.8099890304554 -40.8000335131788,-26.5699982203117 -76.7999944546496,-52.6199989320157 -112.799984763483,-26.5699981311893 -76.7999959901039,-10.8100022409577</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>139.200002260704,-10.8099994658771 139.19999111172,26.5699996943067 175.200003612476,52.6199884901725 90.7190144022563,89.9999843441613 -40.7999944691319,52.6199884721373</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.200002783505,-26.5699996958243 103.200002263341,10.8099890231108</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>67.2000022594291,-10.8099994677965 103.200002783227,-26.5700101377362 67.2000055456695,-52.620009369577</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.79999159206922,-52.6200093736454 31.1999930187043,-26.5699996950802</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>67.2000027824847,26.5699996959802 103.200002263341,10.8099890231108 139.200002784178,26.5699892587968 103.200005542606,52.6199884922456</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.80000602711442,26.5699892578702 31.2000074539391,52.6199989338267 153.652401087233,89.9999866458371 103.200005543747,52.6199989327764 67.2000027815195,26.5699892592248 31.2001449639384,52.619978058318</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999972174143,26.5699892568817 -40.799994437937,52.6199989287571 -4.79999435726162,26.5699892578461 31.200004169314,10.8099890334483 31.2000046854739,-26.5699996961067 67.2000060224265,-10.8099994715156 67.200014450881,26.5699996956161 31.2000679193195,10.8100098999617</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.200018043838,-26.5700101307258 175.200006895979,10.8099890234294 -148.80000890678,26.5699892596473 -112.79997726974,52.6199989304315 -76.7999925107155,26.569999693895 -76.7999966868005,-10.8100044675522 -40.8000352383084,-26.5699996935305 -40.7999977359222,10.8099994611115 -4.79999435726162,26.5699892578461 -4.80000782721433,-10.8099994649216</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-148.799994449402,-52.6200093728224 175.200006372762,-26.5699996951145 -148.799987116045,-10.8099994660073 -112.79999721729,-26.5700101336673 -112.7999871005,10.8099994720632 -148.799997225818,26.5699997065204 -148.799998248199,-10.8099774722295</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Triacontahedron 1</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Triacontahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>56.8105652373234,-89.9999812934963 -148.799994454054,-52.619998933027 -112.799985541521,-26.5699996932842 -76.7999944555017,-52.6200093691155 3.58472441119734,-89.9999165380649 -4.79997437991778,-52.6199989317499 -40.7999855481352,-26.57001013306 -4.79999486880642,-10.8100098933195 31.2000046854739,-26.5699996961067 67.2000116436822,-52.619998931315 62.0395816929398,-89.999911384669 139.200005542525,-52.6200093875151 175.200006372762,-26.5699996951145 139.20000226263,-10.810009902829 103.200014486373,-26.5700101470841 139.200125989485,-52.6199884936614</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>Rhombic_Dodecahedron</name>
+  <Placemark>
+	<name>5 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000074539391,52.6199989338267 -76.7999931271603,58.2799883431634 -112.799997191763,10.8099879009582</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>5 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.200020802724,52.6200093665373 -76.7999931271603,58.2799883431634 -40.7999971702501,10.8099994675498</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>5 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>139.200012886535,-10.8099994658646 103.199987008454,-58.2800092218951 -4.79999159206922,-52.6200093736454 -76.7999846485542,-31.7199993135398 -112.799997725252,10.809989015552 -166.799997833033,0.0 139.200000235071,-10.8100007571653 103.200017536094,31.719999309479 31.2000246425921,52.6199989309936 13.2000050263408,0.0 -4.79999825755154,-52.6199965872895</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>5 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>67.2000022447916,-10.8100098992522 103.200006867353,-58.2800092221664 -148.799994453699,-52.6199989333104 -76.7999969180599,-31.7200097507574 -40.7999977359222,10.8099994611115 13.2000050263408,0.0 67.1999979259379,-10.8099994687508 103.200000403862,31.7200000743299 175.20005951944,52.6199989287943 -166.79999783299,-0.000010441822517 -148.80000991972,-52.6199955896903</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>4 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-40.799994437937,52.6199989287571 -22.7999940178983,0.0 -4.79999159206922,-52.6200093736454 -112.799993124493,-58.2799987844491 -148.799987116045,-10.8099994660073</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>4 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000147940685,10.8099994663232 -22.8000070086331,-0.000015522789874 -76.7999934740604,-10.8100026685476 -112.800057829299,-58.2799987798646 139.200039934752,-52.6199989367656 67.2000153459342,-31.7200097780084 31.1999883755366,10.810005349781 67.2000068742226,58.2799883426143 175.200003173146,52.6199989327317 157.200002167983,0.0 139.20000824511,-52.6199989320447</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>4 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.79995719376949,-52.6200198159249 67.2000153687464,-31.7199992957376 103.200002263633,10.8100099040532 157.200002167983,0.0 -148.799997744663,-10.8099994662088 -112.79998465603,31.7199993126489 -40.7999878330441,52.6199804526145 67.2000068742226,58.2799883426143 103.199984207927,10.8100108414956</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>4 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999790374565,-10.8100466412124 -112.79998465603,31.7199993126489 175.200027420878,52.6199989336591</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>3 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999944555017,-52.6200093691155 175.200002284931,-58.2799987809942 139.200012886535,-10.8099994658646</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>3 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.200005543747,52.6199989327764 85.2000126036686,0.0 67.2000055456695,-52.620009369577</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>3 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.79999405597799,-31.7200097726897 31.2000147941302,10.8099890296679 -4.79999026858744,58.2799987784667 -40.7999812195314,10.809999467292</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>3 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799994457174,52.6199989305505 175.20000111764,31.7199993141296 139.200002260704,-10.8099994658771 85.2000021683954,0.0 31.2000147940685,10.8099994663232 -4.79997277090797,-31.7199993036852 67.2000055451032,-52.6199989307297 175.200002284931,-58.2799987809942 -148.799997744663,-10.8099994662088 -94.7999902087174,0.0 -40.7999977359222,10.8099994611115 -4.80000613935108,-31.7200026976282 -76.7999944546496,-52.6199989320157 -94.8000037836953,0.000004777599675 -112.800001341317,52.620013456082 -4.79999026858744,58.2799987784667 103.200005543747,52.6199989327764 175.199992695197,31.7200090741755 -148.800009123246,-10.8099899230258</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000074500258,52.6199884942887 -40.7999821267519,31.7199874499228 -4.79999486880642,-10.8100098933195</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999951042114,-10.8100030691691 -40.7999015293365,31.7199993206491 -112.800011643081,52.6200093680334</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>49.2000059822787,-0.000010441822528 -4.79999487939019,-10.8099994643575 -40.7999732445365,-58.2799987795013 67.2000227355542,-52.620009368432</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>139.200006869597,58.2799987788217 -112.799994457174,52.6199989305505 -130.799974764919,0.0 -76.7999980910891,-10.8100027146813 -40.799948303532,-58.2800563626001 -148.799994453699,-52.6199989333104</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>49.2000059822787,-0.000010441822528 31.2000074500258,52.6199884942887 139.200006869597,58.2799987788217 103.200002263341,10.8099890231108 49.1999994987689,0.000005061830085 67.2000055451032,-52.6199989307297 139.200003082345,-31.719999312367 103.199992646589,10.8100051031891 139.200013131005,58.2800026699678 175.20000123963,10.8099994669616 139.200012242201,-31.7199924658389 -148.799971903653,-52.6199989291866 -130.799997834119,0.0 175.199984094269,10.8099994670866</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799987091125,10.809989016707 -58.7999940230142,0.0 -76.7999772656491,-52.6200093689841</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.200005543747,52.6199989327764 -148.799988561082,58.2799987796773 -40.799994437937,52.6199989287571 31.2000172575925,31.7199888781361 -4.79999487939019,-10.8099994643575 -58.799994018121,-0.000010434675986 -40.8000062006629,52.6199938251066</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>139.200039973134,-52.6200093853237 121.200009795117,0.0 175.200006895632,10.8099994604997 -148.799996911276,-31.720009749522 -112.799997737258,10.8099994458545 -148.799993128997,58.2799987802686 175.199999908074,10.8100155743091</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 Rhombic Dodec</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rhombic_Dodecahedron">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000049930319,31.7199888791019 -4.79999487939019,-10.8099994643575 31.2000087696472,-58.2800092235117 67.2000128736562,-10.8100099027137 31.2000026017711,31.7200056831198 103.200005543747,52.6199989327764 121.200012196784,0.0 67.2000022844692,-10.8099994697356 31.2000352898179,-58.2799936691603 139.200005542525,-52.6200093875151 -148.799996913675,-31.7199993120244 -76.7999944555017,-52.6200093691155 31.2000286341461,-58.2799257021296</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>Icosahedral_Great_Circle_Set</name>
+</Folder>
+<Folder><name>Yin_Lines</name>
+  <Placemark>
+	<name>41 - 16</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-148.799997228197,26.5699892623852 121.200020235385,-0.000020873869273 31.200004685774,-26.570020570101 -58.7999940231699,-0.000020866245898 -148.799915496263,26.5699892580173 103.199999891574,31.7199996769317 31.2000630268383,-26.5699788236599 -76.7999715853148,-31.7200171572935 -148.799880474547,26.5699161705577 67.2000068740147,58.2799779057954 31.2001084747236,-26.5695421868802 -112.799986082599,-58.2800344760176 -148.799973869551,26.5699161824182 -4.79997042931876,58.2799883464169 31.2000280406142,-26.5700832316698 175.200029179497,-58.2800166308997 -148.800055603386,26.5699474596798 -40.7999968793447,31.7199784301236 31.2001097269881,-26.5699996943691 139.200015349864,-31.7200097492044 -148.800136936638,26.56989884447</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>45 - 20</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.199994705502,-26.569999693887 -112.799996919331,31.7199993123918 -4.79998269104641,26.5699892573247 67.2000057655772,-31.7200292907721 175.199936356852,-26.5700414437977 -148.7999732778,58.2799570319853 -4.80000933444991,26.5700978475851 31.199984601934,-58.2800137722694 175.199959696044,-26.5701144996996 139.200006869597,58.2799987788217 -4.79983370565618,26.5703400471744 -40.7999888394675,-58.2800137816897 175.200041379569,-26.5700727537259 103.200001153359,31.720000617652 -4.80006436823585,26.5699683853703 -76.7999766178878,-31.7200143043097 175.20014640131,-26.570093627778 85.2000021683954,0.0 -4.79956927463975,26.5699996957797 -94.7999879318205,-0.000014989181464 175.200064717741,-26.5699996985241</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>43 - 18</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.200014486373,-26.5700101470841 67.1999870229343,58.279977905815 -76.7999972123946,26.5699892511703 -112.799993129253,-58.2800196683652 103.20003783208,-26.5700728093146 31.2000049930319,31.7199888791019 -76.8000555627256,26.5699475104486 -148.799996911276,-31.720009749522 103.200107877324,-26.5700832654289 13.2000050263408,0.0 -76.7998481106993,26.5699996955013 -166.799987397197,0.0 103.200084532699,-26.5700101508189 -4.79999405709351,-31.7199993066751 -76.7998921956245,26.5699370739313 175.20000606624,31.7199888701761 103.200107885924,-26.5699474696323 -40.7999732792589,-58.2800196751616 -76.7999738558152,26.5699265807772 139.200006869597,58.2799987788217 103.200057244331,-26.5698056847016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>49 - 14</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-40.7999855482284,-26.5699996922523 67.2000153618886,-31.7200201917436 139.200002784178,26.5699892587968 -112.799984658241,31.7199888823176 -40.8001166405293,-26.5699442782255 49.2000059822787,-0.000010441822528 139.199932768041,26.5700101306145 -130.799987394323,0.0 -40.8000905732563,-26.5700101332652 31.2000049906331,31.7199784416043 139.199964385239,26.5700123589766 -148.799996911276,-31.720009749522 -40.8000232456076,-26.570027788405 -4.79997042931876,58.2799883464169 139.19995699065,26.5700997667023 175.20000228667,-58.2800196629196 -40.8000227542715,-26.5700651461476 -76.8000129770706,58.2799779058315 139.200055040647,26.5701151511555 103.200026726253,-58.2800092224346 -40.7999505399168,-26.5701144973442</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>47 -12</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799998998018,-26.5700021141352 -40.7999846250416,31.7199784354358 67.2000027815195,26.5699892592248 139.200015349864,-31.7200097492044 -112.800030172482,-26.570021738638 -76.7999931271603,58.2799883431634 67.1999328208994,26.5699892670747 103.200012407192,-58.2800312351252 -112.800022378636,-26.5700028382735 -148.799993129004,58.2799779063206 67.2000513713492,26.5700429621687 31.2000142874988,-58.2800150087176 -112.799985535959,-26.5700727915519 175.200006065125,31.7199784268567 67.1997431856377,26.5699041325193 -4.79998178080704,-31.7199993031684 -112.799915493457,-26.5700623602959 157.199991729886,-0.000000003105669 67.2003740660667,26.5699996951936 -22.7999911172643,-0.000016216480989 -112.799845402525,-26.5700101363416</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>61 - 62  thru Octahedron Vertices</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yin_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>92.1561474268311,89.9999947781236 121.20000980255,0.0 92.1561476440761,-89.9999947780889 -58.7999940230142,0.0 -47.0828008752069,89.9999936024936 -22.7999940178983,0.0 -4.0966223039796,-89.9999269521859 157.200002166728,-0.000010441822527 153.496470697847,89.9999181462879 13.2000050263408,0.0 52.4248329487212,-89.9998662902761 -166.79999783299,-0.000010441822517 -157.443759467491,89.9999319818212 49.200005975354,0.0 110.944113772382,-89.9998826651867 -130.799997834119,0.0 98.9081938102657,89.9999313350047 85.200002165072,0.0 -166.005899880007,-89.999935263643 -94.7999901941773,-0.000010453508734 -98.9081850217266,89.9999313349375</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>Yang_Lines</name>
+  <Placemark>
+	<name>21 - 31 thru Octahedra Vertices</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000001545549,10.8099999772526 -40.7999882369752,-58.2800143132238 -148.799999923146,-10.8100000604404 139.200004435058,58.2799999052911 31.1999999395429,10.8099973371894 -58.7999940230142,0.0 -148.799999311142,-10.8100037828512 121.200009795117,0.0 31.2000000526701,10.809999984203 -76.7999931271603,58.2799883431634 -148.800000941536,-10.8099971657101 103.200006866223,-58.2799987803972 31.1999999921363,10.8100000047608</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>25 - 35</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999995988253,-10.8099994656806 -166.799974263698,0.0 103.200000316568,10.8100002004276 13.2000154625678,0.0 -76.7998945910932,-10.8099994662351 175.200066970625,-58.2801139438029 103.199996513723,10.8099994669862 -4.79996062281116,58.2799779741256 -76.8000038599061,-10.8100002609712 31.1999988406535,-58.2801136018998 103.200000531765,10.8099924253274 -148.800022846455,58.2799675646048 -76.80005085792,-10.8096707586397</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>29 - 39</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.200000708191,10.8100000919442 85.2000073535947,-0.00001040847199 -4.79999974497444,-10.809999464412 -94.7999954286053,-0.000010400147879 175.199997313991,10.809999921936 67.2000167400765,58.2799779680789 -4.79999715778627,-10.8100004690716 -112.80000305782,-58.280030015072 175.200002722624,10.8100000444474 -76.8000228432895,58.2799883746043 -4.80000153047912,-10.8100003331622 103.200036554037,-58.2800195981015 175.199999083669,10.8100011104614</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>37 - 27</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-40.799999545868,10.8099998409645 -130.799992650762,0.0 139.20001813445,-10.8099994659274 49.2000035444687,0.000001054359069 -40.7999932891157,10.810000200685 -148.799963470315,58.2799779698689 139.200001257193,-10.8100005230847 31.2000186404827,-58.2800196005447 -40.8000023825079,10.8100001195787 67.2000255930924,58.2799837200972 139.200000088785,-10.8099997740215 -112.80000305782,-58.280030015072 -40.7999997911513,10.8099998678289</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>33 - 23</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799999345948,10.8100000692388 -4.79998040356956,58.2799883753018 67.2000025178062,-10.8100005577967 175.199992414832,-58.280030009454 -112.800004315966,10.8099988470144 -22.7999888398364,0.0 67.1999993484511,-10.810007074279 157.200007355425,0.0 -112.799999921622,10.8100009930459 -112.799999890374,10.8099976525897 -40.7999832324862,-58.2800091920236 67.1999917300674,-10.8099936836867 139.200016730204,58.2799883765358 -112.800002441704,10.810004876601</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>8 - 52</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799995348675,52.6199989340487 -148.799996911276,-31.720009749522 67.2000055456695,-52.620009369577 31.2000049930319,31.7199888791019 -112.799979932684,52.6200022336919 157.200006378025,-0.000018859497079 67.1999993889392,-52.6199930023889 -22.7999940178983,0.0 -112.79998895322,52.6199994498121 103.200006450717,31.7199993132014 67.2000024810515,-52.620002516738 -76.7999846476705,-31.7200097504174 -112.799925685015,52.6199363056888</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>4 - 58</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.19999694949,52.6199989358343 67.2000148083051,-31.7200145417457 -76.7999859120195,-52.6199989317428 -112.799980374331,31.7200174427481 103.200012759657,52.6200277289357 13.2000026642428,0.0 -76.7999432775081,-52.6199989311011 -166.800000112726,-0.000002944622685 103.20004239034,52.6200019986075 -40.7999954607892,31.7199896015987 -76.7999972818302,-52.620000098633 139.200008271056,-31.7199969567538 103.200002369639,52.6200044177252</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>2 - 56</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000007723573,52.620000096871 -58.7999992342482,0.0 -148.799999137647,-52.6200001210198 121.199999181476,-0.000002697828742 31.2000142243533,52.6199989324028 -112.799998936989,31.7199969807543 -148.799984879835,-52.61999341519 67.2000044785839,-31.7200025001203 31.2000078415398,52.6200084806928 175.200000889725,31.7199993126087 -148.800010354264,-52.619998934203 -4.80000090612728,-31.7200020742564 31.1999860324107,52.6199927057642</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>10 - 54</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-40.8000003654746,52.6199989320627 -130.799992646362,-0.000010408471994 139.200014108592,-52.6200093575035 49.2000001158979,0.000000201777315 -40.7999755017893,52.6199989230677 175.200012202414,31.7199889016019 139.200004260648,-52.6199967069514 -4.79998795559123,-31.7200097170897 -40.7999830821813,52.6200075835287 103.20000119097,31.7199993132756 139.199932967939,-52.6199600686418 -76.7999908195992,-31.7200097192791 -40.8000150165577,52.619991663942</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>6 - 60</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Yang_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.200012206,52.6199989296202 139.200021410899,-31.7200097181229 -4.79997948798241,-52.6200114965365 -40.7999908459877,31.7199888953404 175.200012205498,52.6200171169019 85.1999969484934,-0.000000003105669 -4.79999725550194,-52.6200007101208 -94.799995429852,0.0 175.200038345502,52.6200034640302 -148.800003047006,-31.7200097179933 -4.80002987851077,-52.6200169475252 31.1999866217916,31.7199889086092 175.199983324929,52.6200193914484</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>Balance_Lines</name>
+  <Placemark>
+	<name>38 - 28 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-22.7999940178983,0.0 -58.8000044561106,-0.000000003105527 -94.7999902076103,-0.000010453508734 -130.799997831898,-0.000010441822527 -166.79999783299,-0.000010441822517 157.200002167983,0.0 121.199999361073,-0.000010441822524 85.200002166095,-0.000010441822523 49.1999955450078,-0.000000003105669 13.200005026821,-0.000010440901424 -22.7998769621799,0.0</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>17 - 42 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-112.799990627958,31.7199781765735 -166.799997833033,0.0 139.200015349864,-31.7200097492044 67.2000043686463,-31.7200119052604 13.200005026821,-0.000010440901424 -40.7999934878678,31.719999296038 -112.799898953712,31.7200097322406</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>15 - 50 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>175.20000606624,31.7199888701761 121.200009801082,-0.000010441822524 67.2000030868053,-31.7200097256327 -4.79999405709351,-31.7199993066751 -58.799994018121,-0.000010434675986 -112.799972402262,31.7199888835751 175.200153401908,31.720017792877</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>13 - 48 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>103.200001742217,31.7199993124077 49.2000294840811,0.0 -4.79999405709351,-31.7199993066751 -76.7999846485542,-31.7199993135398 -130.799987394323,0.0 175.200006067356,31.7199993134956 103.20000802135,31.7200018211828</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>7 - 51 (2)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-148.799985484626,58.2799987790883 67.2000068744304,58.279998779214 49.2000062495568,0.0 31.2000087696472,-58.2800092235117 -112.799993124493,-58.2799987844491 -130.799997834119,0.0 -148.799973283262,58.2799152855589</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>7 - 51 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-148.799992070525,58.279998778584 139.199987022466,58.2799987790307 103.200003818963,31.7199961613097 85.2000254720453,0.0 67.2000030708523,-31.7199993118975 31.2000087717832,-58.2799987832986 -40.7999931051993,-58.2800196665682 -76.7999969170336,-31.7199993136796 -94.8000006493213,0.000000005218972 -112.79998465603,31.7199993126489 -148.799809826843,58.2799064210281</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>9 - 53 (4)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.799993126971,58.2799987791313 139.200006869597,58.2799987788217 121.199993802184,-0.000021547550042 103.200006867353,-58.2800092221664 -40.7999732261115,-58.2800092261561 -58.7999940230142,0.0 -76.7999534262532,58.2799361596596</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>9 - 53 (2)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.799993126971,58.2799987791313 -148.799992070525,58.279998778584 175.200006067356,31.7199993134956 157.20001260357,-0.000010441822527 139.200003082933,-31.7200097481787 103.200008938812,-58.2800113846428 31.2000087696472,-58.2800092235117 -4.79998178080704,-31.7199993031684 -22.7999940178983,0.0 -40.799984620111,31.7199888670859 -76.7998938938613,58.2799466051561</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>9 - 53 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-76.7999732775812,58.2799779066559 -94.7999896464865,0.0 -112.799993124493,-58.2799987844491 103.200006867353,-58.2800092221664 85.2000126013333,-0.000020873869271 67.2000068742226,58.2799883426143 -76.7999335921088,58.280071819137</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>11 - 55 (3)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.79997042931876,58.2799883464169 -22.799994011076,-0.000010453508634 -40.7999732261115,-58.2800092261561 175.200002279479,-58.2800092225963 157.200002167983,0.0 139.200006869597,58.2799987788217 -4.79993090908418,58.2800508179599</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>11 - 55 (2)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.7999902670055,58.2799883419299 -40.7999946479703,31.7199849968972 -58.799994018121,-0.000010434675986 -76.7999969178599,-31.7199888769087 -112.799993124493,-58.2799987844491 175.200002279479,-58.2800092225963 139.200003082933,-31.7200097481787 121.199998276055,-0.000000003105669 103.199968198283,31.7200482231944 67.2000068744304,58.279998779214 -4.79985197126223,58.2800403417135</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>11 - 55 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-4.79999026858744,58.2799987784667 -148.799989457471,58.2799987807957 -166.799997833033,0.0 175.200022134468,-58.2800196641787 31.2000286379861,-58.2800092208563 13.2000050263408,0.0 -4.79997038047618,58.2799360861556</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 - 46 (4)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000200319166,31.7199632853984 -4.79999026858744,58.2799987784667 -76.7999732783727,58.2799987796633 -112.79998465603,31.7199993126489 -130.799993818821,0.0 -148.799996913675,-31.7199993120244 175.200002279479,-58.2800092225963 103.200006867353,-58.2800092221664 67.2000030868053,-31.7200097256327 49.2000059800578,0.0 31.2000540660056,31.7198949443021</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 - 46 (3)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000326238214,31.7199418705816 -40.7999846356753,31.719999309355 -94.8000006493213,0.000000005218972 -148.799996913675,-31.7199993120244 139.200003082933,-31.7200097481787 31.2001247703096,31.71991110703</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 - 46 (2)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000053043533,31.7199883474634 -22.799994011076,-0.000010453508634 -76.7999969178599,-31.7199888769087 -148.799996911276,-31.720009749522 157.200002167983,0.0 103.200000488957,31.7200033243973 31.2005053383554,31.7201142010109</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>1 - 46 (1)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Balance_Lines">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>31.2000049930319,31.7199888791019 13.2000050263408,0.0 -4.79999405597799,-31.7200097726897 -40.7999931036234,-58.279998788088 -112.799993124493,-58.2799987844491 -148.799996913675,-31.7199993120244 -166.799997833033,0.0 175.20000606624,31.7199888701761 139.199987022466,58.2799987790307 67.2000068742226,58.2799883426143 31.2000568871575,31.7200541656718</coordinates></LineString>
+  </Placemark>
+</Folder>
+<Folder><name>Jim_Alison_Circle_Projection</name>
+  <Placemark>
+	<name>North Axis to Nazca</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-138.599999697962,59.6300002751727 -75.1173218428467,-14.7565994141396</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Alison Great Circle</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>-138.600008989732,-30.3666772299352 131.400014373628,0.0 41.4000075740195,30.3666667958685 -48.600010318576,-0.0000160580523 -138.599912220493,-30.3666772288232</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<name>Alison Great Circle Marker (4)</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-138.599990844727,-30.3666667938232</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Alison Great Circle Marker (3)</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>131.400009155273,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Alison Great Circle Marker (2)</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>41.4000015258789,30.3666667938232</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Alison Great Circle Marker (1)</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-48.6000022888184,0.0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>Gizeh</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>31.1499955007021,29.9833544624745</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<name>7A</name>
+	<ExtendedData><SchemaData schemaUrl="#Jim_Alison_Circle_Projection">
+		<SimpleData name="tessellate">-1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-138.599999681587,59.6300003878819</coordinates></Point>
+  </Placemark>
+</Folder>
+<Schema name="Triacontahedron" id="Triacontahedron">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+<Schema name="Rhombic_Dodecahedron" id="Rhombic_Dodecahedron">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+<Schema name="Yin_Lines" id="Yin_Lines">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+<Schema name="Yang_Lines" id="Yang_Lines">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+<Schema name="Balance_Lines" id="Balance_Lines">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+<Schema name="Jim_Alison_Circle_Projection" id="Jim_Alison_Circle_Projection">
+	<SimpleField name="tessellate" type="int"></SimpleField>
+</Schema>
+</Document></kml>

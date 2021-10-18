@@ -74,11 +74,13 @@ export default function (Vue, { appOptions, head, router }) {
     },
     mutations: {
       navigateForward(state) {
-        state.currentBlockIdx = ++state.currentBlockIdx%state.ctfBlocks.length
+        state.currentBlockIdx =
+          ++state.currentBlockIdx % state.ctfBlocks.length;
       },
       navigateBack(state) {
-        if (--state.currentBlockIdx < 0) state.currentBlockIdx = state.ctfBlocks.length - 1;
-        state.currentBlockIdx = state.currentBlockIdx%state.ctfBlocks.length
+        if (--state.currentBlockIdx < 0)
+          state.currentBlockIdx = state.ctfBlocks.length - 1;
+        state.currentBlockIdx = state.currentBlockIdx % state.ctfBlocks.length;
       },
       setMainContent(state, payload) {
         state.ctfBlocks = payload;
@@ -90,7 +92,7 @@ export default function (Vue, { appOptions, head, router }) {
   Vue.use(GmapVue, {
     load: {
       key: process.env.GRIDSOME_MAPS_KEY,
-      libraries: "drawing, visualization", // This is required if you use the Autocomplete plugin
+      libraries: "drawing,visualization,geometry", // This is required if you use the Autocomplete plugin
       // OR: libraries: 'places,drawing'
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)
@@ -113,20 +115,24 @@ export default function (Vue, { appOptions, head, router }) {
     installComponents: true,
   });
 
-  Vue.component('ground-overlay', GmapVue.MapElementFactory({
-    mappedProps: {
-      'opacity': {}
-    },
-    props: {
-      'source': { type: String },
-      'bounds': { type: Object }
-    },
-    events: ['click', 'dblclick'],
-    name: 'groundOverlay',
-    ctr: () => window.google.maps.GroundOverlay,
-    ctrArgs: (options, { source, bounds }) => [source, bounds, options]
-  }))
-  
+  Vue.component(
+    "ground-overlay",
+    GmapVue.MapElementFactory({
+      mappedProps: {
+        opacity: {},
+      },
+      props: {
+        source: { type: String },
+        bounds: { type: Object },
+      },
+      events: ["click", "dblclick"],
+      name: "groundOverlay",
+      ctr: () => window.google.maps.GroundOverlay,
+      ctrArgs: (options, { source, bounds }) => [source, bounds, options],
+    })
+  );
+  Vue.component("google-kml-layer", GmapVue.KmlLayer);
+
   appOptions.vuetify = new Vuetify(opts);
 
   // Set default layout as a global component

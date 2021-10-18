@@ -1,11 +1,20 @@
 <template>
   <MainLayout>
     <v-app id="app">
-      <RegularNav @force-nav="forceNav" style="z-index: 10"></RegularNav>
+      <RegularNav
+        v-show="showHeader"
+        @force-nav="forceNav"
+        style="z-index: 10"
+      ></RegularNav>
       <transition mode="out-in" appear name="bounceLeft">
         <router-view @force-nav="forceNav" style="animation-duration: 250ms" />
       </transition>
-      <FooterNav app @force-nav="forceNav" style="z-index: 10" />
+      <FooterNav
+        v-show="showFooter"
+        app
+        @force-nav="forceNav"
+        style="z-index: 10"
+      />
     </v-app>
   </MainLayout>
 </template>
@@ -43,7 +52,10 @@ export default {
     RegularNav,
     FooterNav,
   },
-  data: () => ({}),
+  data: () => ({
+    showHeader: true,
+    showFooter: true,
+  }),
   metaInfo() {
     return {
       title: this.$static.metadata.siteName,

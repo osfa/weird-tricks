@@ -6,6 +6,12 @@ export const randomIcon = () => {
   return iconList[Math.floor(Math.random() * iconList.length)];
 };
 
+export const random = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
 export const generateRandomStyle = () => {
   const scheme = [
     {
