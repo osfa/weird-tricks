@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <v-container
+      class="pt-12"
       style="
         max-width: 900px;
         position: relative;
@@ -13,6 +14,7 @@
           v-for="{ node } in shuffledContent"
           :key="node.id"
           :cols="colCount"
+          class="col-12 col-sm-6 col-md-4"
         >
           <g-image v-if="false" :src="node.heroImage.file.url" />
 

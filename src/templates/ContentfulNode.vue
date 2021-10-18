@@ -17,7 +17,7 @@
 
           <v-btn
             fab
-            color="blue accent-2"
+            :color="currentColor"
             dark
             bottom
             right
@@ -25,13 +25,26 @@
             :href="$page.post.hyperlink"
             target="_blank"
           >
-            <v-icon>mdi-link</v-icon>
+            <v-icon>{{ currentIcon }}</v-icon>
           </v-btn>
 
+          <!-- <v-btn
+            fab
+            :color="currentColor"
+            dark
+            bottom
+            left
+            absolute
+            :href="$page.post.hyperlink"
+            target="_blank"
+          >
+            <v-icon>{{ currentIcon }}</v-icon>
+          </v-btn> -->
+          <!-- mdi-link -->
           <v-card-actions v-if="false">
             <v-flex class="text-right">
               <v-btn
-                color="blue"
+                :color="randomMaterialColor"
                 text
                 :href="$page.post.hyperlink"
                 target="_blank"
@@ -61,12 +74,16 @@
 
 <script>
 import MarkdownIt from "markdown-it";
+import { randomIcon, randomMaterialColor } from "~/util";
 
 export default {
   metaInfo() {
     return {
       title: this.$page.post.title,
     };
+  },
+  mounted() {
+    console.log("====== node mount");
   },
   data: () => ({
     marker: {
@@ -75,11 +92,20 @@ export default {
         lng: 15.0,
       },
     },
+    currentIcon: randomIcon(),
+    currentColor: randomMaterialColor(),
   }),
   computed: {
     content() {
       const md = new MarkdownIt();
       return md.render(this.$page.post.body);
+    },
+  },
+  watch: {
+    $route: function () {
+      this.currentIcon = randomIcon();
+      this.currentColor = randomMaterialColor();
+      // this.currentMenuItems = randomMenuItems();
     },
   },
 };
