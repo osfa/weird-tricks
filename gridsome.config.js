@@ -19,7 +19,7 @@ module.exports = {
     },
   ],
   templates: {
-    ContentfulBlogPost: "/nodes/:slug",
+    ContentfulNode: "/nodes/:id",
   },
   chainWebpack(config, { isServer }) {
     if (isServer) {

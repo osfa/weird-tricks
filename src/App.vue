@@ -5,7 +5,7 @@
       <transition mode="out-in" appear name="bounceLeft">
         <router-view @force-nav="forceNav" style="animation-duration: 250ms" />
       </transition>
-      <FooterNav app style="z-index: 10" />
+      <FooterNav app @force-nav="forceNav" style="z-index: 10" />
     </v-app>
   </MainLayout>
 </template>
@@ -16,12 +16,11 @@
       siteName
       siteDescription
     }
-    blogPosts: allContentfulBlogPost(sortBy: "published_at", order: DESC) {
+    nodes: allContentfulNode(sortBy: "published_at", order: DESC) {
       edges {
         node {
           id
           title
-          slug
           heroImage {
             file {
               url
@@ -70,7 +69,7 @@ export default {
 
       // dont need main layout load?
       let nextPost =
-        this.$static.blogPosts.edges[this.$store.state.currentBlockIdx];
+        this.$static.nodes.edges[this.$store.state.currentBlockIdx];
 
       // const routes = ["/about", "/nodes", "/other", "/"];
       // let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
@@ -78,7 +77,7 @@ export default {
       //   nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
       // }
 
-      let nextRoutePath = `/nodes/${nextPost.node.slug}`;
+      let nextRoutePath = `/nodes/${nextPost.node.id}`;
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {

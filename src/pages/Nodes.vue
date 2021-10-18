@@ -1,42 +1,46 @@
 <template>
   <Layout>
-    <v-container class="pt-lg-16" style="max-width: 900px; position: relative">
-      <v-row dense>
+    <v-container
+      style="
+        max-width: 900px;
+        position: relative;
+        padding-bottom: 200px;
+        pointer-events: auto;
+      "
+    >
+      <v-row align="center">
         <v-col
-          v-for="{ node } in $page.posts.edges"
+          v-for="{ node } in shuffledContent"
           :key="node.id"
           :cols="colCount"
         >
           <g-image v-if="false" :src="node.heroImage.file.url" />
 
-          <v-card :to="`/nodes/${node.slug}`" style="pointer-events: auto">
-            <v-img
-              :src="node.heroImage.file.url"
-              class="white--text align-end"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-              height="200px"
-            >
-              <v-card-title v-text="node.title"></v-card-title>
+          <v-card
+            :to="`/nodes/${node.id}`"
+            style="pointer-events: auto"
+            class="elevation-12"
+          >
+            <v-img :src="node.heroImage.file.url" class="white--text align-end">
             </v-img>
 
-            <v-card-text>
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu
-              leo quam. Pellentesque ornare sem lacinia quam venenatis
-              vestibulum. Donec sed odio dui. Vivamus sagittis lacus vel augue
-              laoreet rutrum faucibus dolor auctor.
-            </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
 
               <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
-
-              <v-btn icon>
-                <v-icon>mdi-bookmark</v-icon>
+                <v-icon>{{ randomIcon() }}</v-icon>
               </v-btn>
               <v-btn icon>
-                <v-icon>mdi-share-variant</v-icon>
+                <v-icon>{{ randomIcon() }}</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon>{{ randomIcon() }}</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon>{{ randomIcon() }}</v-icon>
+              </v-btn>
+              <v-btn icon>
+                <v-icon>{{ randomIcon() }}</v-icon>
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -52,7 +56,7 @@
 
 <page-query>
 query Posts($page: Int) { 
-  posts: allContentfulBlogPost(sortBy: "date", order: DESC, perPage: 200, page: $page) 
+  posts: allContentfulNode(sortBy: "date", order: DESC, perPage: 10, page: $page) 
   @paginate { 
     totalCount pageInfo 
     { totalPages currentPage } 
@@ -60,7 +64,6 @@ query Posts($page: Int) {
         node { 
           id 
           title 
-          slug 
           date(format: "MMMM D, Y")
           heroImage {
             file {
@@ -75,6 +78,7 @@ query Posts($page: Int) {
 
 <script>
 import { Pager } from "gridsome";
+import { randomIcon } from "~/util";
 
 export default {
   metaInfo: {
@@ -104,7 +108,22 @@ export default {
   }),
   computed: {
     colCount() {
-      return 3;
+      return 4;
+    },
+    shuffledContent() {
+      return this.shuffleArray(this.$page.posts.edges);
+    },
+  },
+  methods: {
+    randomIcon() {
+      return randomIcon();
+    },
+    shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     },
   },
 };

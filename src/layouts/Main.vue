@@ -13,7 +13,7 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
-        //minZoom: 5,
+        minZoom: 5,
       }"
       :center="center"
       :zoom="zoom"
@@ -73,13 +73,12 @@
 </template>
 
 <static-query>
-  query BlogPost {
-    blogPosts: allContentfulBlogPost(sortBy: "published_at", order: DESC) {
+  query Node {
+    nodes: allContentfulNode(sortBy: "published_at", order: DESC) {
       edges {
         node {
           id
           title
-          slug
           heroImage {
             file {
               url
@@ -126,7 +125,7 @@ export default {
   async mounted() {
     console.log("main mount");
     console.log(customStyle());
-    this.$store.commit("setMainContent", this.$static.blogPosts.edges);
+    this.$store.commit("setMainContent", this.$static.nodes.edges);
     await this.$gmapApiPromiseLazy();
     // this.groundOverlayBounds = getTileBounds(google, this.center, this.zoom);
   },
@@ -177,6 +176,9 @@ export default {
         [45.872, 110.432],
         [61.905, 6.805],
         [-76.61854793101789, -146.12874166143615],
+        [-76.6633538306274, -145.91635401881496],
+        [38.29694761047134, 45.42145298326993],
+        [33.862490337877226, 73.90984347581889],
       ];
       this.$nextTick(() => {
         if (this.$refs.mapRef) {

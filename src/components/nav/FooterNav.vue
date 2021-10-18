@@ -7,7 +7,12 @@
     dark
     shift
   >
-    <v-btn :key="index" v-for="(m, index) in menuItems" link :to="m.path">
+    <v-btn
+      :key="index"
+      v-for="(m, index) in menuItems"
+      link
+      @click="forceNavigate"
+    >
       <span>{{ m.label }}</span>
       <v-icon>{{ m.icon }}</v-icon>
     </v-btn>
@@ -54,6 +59,19 @@ export default {
     },
     menuItems() {
       return this.currentMenuItems;
+    },
+  },
+  methods: {
+    forceNavigate() {
+      console.log("emit?");
+      // map methods?
+      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
+      this.$emit("force-nav");
+      let vm = this.$parent;
+      while (vm) {
+        vm.$emit("force-nav");
+        vm = vm.$parent;
+      }
     },
   },
   watch: {

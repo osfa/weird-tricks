@@ -31,7 +31,7 @@
           v-for="child in item.items"
           :key="child.title"
           link
-          to="/nodes/"
+          :to="`/nodes/${Math.floor(Math.random() * 5) + 1}`"
         >
           <v-list-item-content>
             <v-list-item-title v-text="child.title"></v-list-item-title>

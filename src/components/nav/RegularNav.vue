@@ -38,7 +38,7 @@
           :key="index"
           v-for="(m, index) in menuItems"
           link
-          :to="m.path"
+          @click="forceNavigate"
         >
           <v-list-item-icon>
             <v-icon>{{ m.icon }}</v-icon>
@@ -70,22 +70,18 @@ const randomMenuItems = () => {
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/other/", // vs just emit and nav?
     },
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/nodes/",
     },
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/about/",
     },
     {
       label: randomWords({ min: 1, max: 2, join: " " }),
       icon: randomIcon(),
-      path: "/",
     },
   ];
 };
@@ -112,6 +108,17 @@ export default {
       // this.$emit("force-nav");
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
+      }
+    },
+    forceNavigate() {
+      console.log("emit?");
+      // map methods?
+      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
+      this.$emit("force-nav");
+      let vm = this.$parent;
+      while (vm) {
+        vm.$emit("force-nav");
+        vm = vm.$parent;
       }
     },
   },
