@@ -19,7 +19,7 @@
 import { random } from "~/util";
 export default {
   data: () => ({
-    seedVal: random(0, 10000),
+    seedVal: undefined,
   }),
   props: {
     speed: { type: Number, default: 120 },
@@ -34,12 +34,9 @@ export default {
     // box shadow vals
     // blurVal: { type: Number, default: 19 },
     // spreadVal: { type: Number, default: 40 },
-
-    //
     // scaleVal: { type: Number, default: 120 },
     // numOctavesVal: { type: Number, default: 5 },
     // baseFrequencyVal: { type: Number, default: 0.011 },
-    // seedVal: { type: Number, default: 8517 },
 
     // hazy
     blurVal: { type: Number, default: 100 },
@@ -48,12 +45,13 @@ export default {
     scaleVal: { type: Number, default: 220 },
     numOctavesVal: { type: Number, default: 8 },
     baseFrequencyVal: { type: Number, default: 0.01 },
-    // seedVal: { type: Number, default: 0 },
   },
-  methods: {},
+  mounted() {
+    this.seedVal = random(0, 10000);
+  },
   computed: {
     filterId() {
-      return `cloud-filter-${this._uid}`;
+      return `cf-${this.seedVal}`;
     },
     cloudStyles() {
       console.log(this.blurVal);
