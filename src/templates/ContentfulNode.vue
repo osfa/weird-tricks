@@ -1,13 +1,13 @@
 <template>
   <Layout>
     <div
-      v-if="false"
+      v-if="true"
       :style="`background-image: url('${$page.post.heroImage.file.url}?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
       pointer-events:none;
 
-      opacity: 50%; background-size: cover;`"
+      opacity: 10%; background-size: cover;`"
     ></div>
 
     <v-container class="fill-height fluid" style="position: relative">
@@ -33,6 +33,36 @@
 
           <v-card-text v-if="false" v-html="content" />
 
+          <v-dialog
+            eager
+            height="100vh"
+            scrollable
+            v-model="dialog"
+            class="fill-height"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </template>
+
+            <v-card>
+              <iframe
+                id="ifrm"
+                src="https://www.dn.se/"
+                style="height: 100vh; width: 100%"
+              ></iframe>
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" text @click="dialog = false">
+                  I accept
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
           <v-btn
             fab
             :color="currentColor"
@@ -102,6 +132,7 @@ export default {
   },
   mounted() {
     console.log("====== node mount");
+    this.sendImageToIframe();
   },
   data: () => ({
     marker: {
@@ -121,6 +152,14 @@ export default {
     },
     randomMaterialColor() {
       return randomMaterialColor();
+    },
+    sendImageToIframe() {
+      let iframe = document.getElementById("ifrm").contentWindow; //return NULL... why?
+      //sends the image to the iframe
+      iframe.postMessage({
+        action: "updateAll",
+        data: "https://news.bitcoin.com/these-dutch-researchers-are-mining-cryptocurrencies-with-body-heat/",
+      });
     },
   },
   watch: {
