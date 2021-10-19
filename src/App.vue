@@ -5,10 +5,12 @@
         v-show="showHeader"
         @force-nav="forceNav"
         style="z-index: 10"
+        @click.native="toggleAudio"
       ></RegularNav>
       <transition mode="out-in" appear name="bounceLeft">
         <router-view @force-nav="forceNav" style="animation-duration: 250ms" />
       </transition>
+
       <FooterNav
         v-show="showFooter"
         app
@@ -45,6 +47,9 @@
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
+import * as Tone from "tone";
+
+const INITIAL_FREQ = 2;
 
 export default {
   components: {
@@ -55,6 +60,12 @@ export default {
   data: () => ({
     showHeader: true,
     showFooter: true,
+    volume: -30,
+    rainVolume: -10,
+    leftEar: undefined,
+    rightEar: undefined,
+    binauralBeat: INITIAL_FREQ,
+    audioCtx: undefined,
   }),
   metaInfo() {
     return {
@@ -72,22 +83,16 @@ export default {
     forceNav(backwards) {
       console.log("forceNav main");
 
-      // watch this.$store.state.currentBlockIdx instead?
+      //!!!!!! watch this.$store.state.currentBlockIdx instead?
       if (backwards) {
         this.navigateBack();
       } else {
         this.navigateForward();
       }
 
-      // dont need main layout load?
-      let nextPost =
-        this.$static.nodes.edges[this.$store.state.currentBlockIdx];
-
-      // const routes = ["/about", "/nodes", "/other", "/"];
-      // let nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
-      // while (nextRoutePath === this.$route.path) {
-      //   nextRoutePath = routes[Math.floor(Math.random() * routes.length)];
-      // }
+      const allNodes = this.$static.nodes.edges;
+      // let nextPost = allNodes[this.$store.state.currentBlockIdx];
+      let nextPost = allNodes.sample();
 
       let nextRoutePath = `/nodes/${nextPost.node.id}`;
       this.$router.push({ path: nextRoutePath });
@@ -113,17 +118,85 @@ export default {
           break;
       }
     },
+    toggleAudio() {
+      console.log("toggle", this.audioCtx);
+      if (this.audioCtx.state === "running") {
+        this.audioCtx.suspend().then(function () {
+          console.log("suspended audio");
+        });
+      } else if (this.audioCtx.state === "suspended") {
+        this.audioCtx.resume().then(function () {
+          console.log("resumed audio");
+        });
+      }
+    },
+    setVolume() {
+      Tone.getDestination().volume.rampTo(
+        this.volume === -100 ? -Infinity : this.volume,
+        0
+      );
+    },
+    setRainVolume(rainMaker) {
+      // rainMaker.volume.value = -Infinity; //.rampTo(-Infinity, 10);
+      let volume = this.rainVolume === -100 ? -Infinity : this.rainVolume;
+      rainMaker.volume.value = volume;
+    },
+    setFrequencies() {
+      const freqs = this.calculateFrequencies(this.binauralBeat);
+      console.log("setting: ", freqs);
+      this.leftEar.frequency.value = freqs.leftFrequency;
+      this.rightEar.frequency.value = freqs.rightFrequency;
+    },
+    calculateCarrierFrequency(binauralBeat) {
+      // Formula retrieved by using excel on Oster's curve. Can be enhanced with real maths ;)
+      // y = -0,2085x2 + 18,341x + 56,31
+      return (
+        -0.2085 * Math.pow(binauralBeat, 2) + 18.341 * binauralBeat + 56.31
+      );
+    },
+    calculateFrequencies(binauralBeat) {
+      const carrierFreq = this.calculateCarrierFrequency(binauralBeat);
+      return {
+        leftFrequency: carrierFreq + binauralBeat / 2,
+        rightFrequency: carrierFreq - binauralBeat / 2,
+      };
+    },
+    handleFrequencyChange(actualFrequency) {
+      const { leftFrequency, rightFrequency } =
+        this.calculateFrequencies(actualFrequency);
+    },
   },
-  created: function () {
+  created() {
     if (process.isClient) {
       window.addEventListener("keyup", this.nav);
     }
   },
-  destroyed: function () {
+  mounted() {
+    console.log("App mount");
+
+    const context = new Tone.Context();
+    Tone.setContext(context);
+    this.audioCtx = context.rawContext;
+
+    //the AudioContext is "suspended". Invoke Tone.start() from a user action to start the audio.
+
+    const merge = new Tone.Merge().toDestination();
+
+    this.leftEar = new Tone.Oscillator().connect(merge, 0, 0).start();
+    this.rightEar = new Tone.Oscillator().connect(merge, 0, 1).start();
+
+    const rainMaker = new Tone.Noise("brown").start().toDestination();
+
+    this.setRainVolume(rainMaker);
+    this.setVolume();
+    this.setFrequencies();
+  },
+  destroyed() {
     if (process.isClient) {
       window.removeEventListener("keyup", this.nav);
     }
   },
+
   //   beforeRouteLeave(to, from, next) {
   //     console.log("main route leave");
   //     // called when the route that renders this component is about to

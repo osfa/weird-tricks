@@ -5,21 +5,21 @@
       :left="randPosVal()"
       :width="randWidthVal()"
       :height="randHeightVal()"
-      :speed="speed"
+      :speed="100"
     />
     <CloudSimple
       :top="randPosVal()"
       :left="randPosVal()"
       :width="randWidthVal()"
       :height="randHeightVal()"
-      :speed="speed"
+      :speed="200"
     />
     <CloudSimple
       :top="randPosVal()"
       :left="randPosVal()"
       :width="randWidthVal()"
       :height="randHeightVal()"
-      :speed="speed"
+      :speed="300"
     />
   </div>
 </template>

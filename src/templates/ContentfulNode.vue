@@ -12,12 +12,16 @@
 
     <v-container class="fill-height fluid" style="position: relative">
       <div class="row align-center justify-center">
-        <v-card class="col-4 flex mb-16" style="pointer-events: auto">
+        <v-card
+          class="col-6 col-lg-4 col-xl-4 flex mb-16"
+          style="pointer-events: auto"
+        >
           <v-img
             :key="$page.post.heroImage.file.url"
             @load="onImgLoad"
-            :src="`${$page.post.heroImage.file.url}?fit=scale&w=1800`"
+            :src="`${$page.post.heroImage.file.url}?fit=scale&w=1600`"
             min-height="200"
+            max-height="70vh"
           >
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
@@ -41,15 +45,23 @@
             class="fill-height"
           >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
-                <v-icon>mdi-plus</v-icon>
+              <v-btn
+                color="yellow darken-2"
+                :elevation="3"
+                large
+                dark
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon>mdi-link</v-icon>
               </v-btn>
             </template>
 
             <v-card>
               <iframe
+                v-if="iframeUrl"
                 id="ifrm"
-                src="https://www.dn.se/"
+                :src="iframeUrl"
                 style="height: 100vh; width: 100%"
               ></iframe>
 
@@ -64,14 +76,13 @@
             </v-card>
           </v-dialog>
           <v-btn
+            @click="forceNav"
             fab
             :color="currentColor"
             dark
             bottom
             right
             absolute
-            :href="$page.post.hyperlink"
-            target="_blank"
           >
             <v-icon>{{ currentIcon }}</v-icon>
           </v-btn>
@@ -132,7 +143,11 @@ export default {
   },
   mounted() {
     console.log("====== node mount");
-    this.sendImageToIframe();
+    if (this.$page.post.hyperlink != "null") {
+      // STRING NULL
+      console.log("what the actual fuck");
+      this.iframeUrl = this.$page.post.hyperlink;
+    }
   },
   data: () => ({
     dialog: false,
@@ -145,6 +160,7 @@ export default {
     currentIcon: randomIcon(),
     currentColor: randomMaterialColor(),
     isLoaded: false,
+    iframeUrl: "https://www.dn.se/",
   }),
   methods: {
     onImgLoad() {
@@ -154,13 +170,13 @@ export default {
     randomMaterialColor() {
       return randomMaterialColor();
     },
-    sendImageToIframe() {
-      let iframe = document.getElementById("ifrm").contentWindow; //return NULL... why?
-      //sends the image to the iframe
-      iframe.postMessage({
-        action: "updateAll",
-        data: "https://news.bitcoin.com/these-dutch-researchers-are-mining-cryptocurrencies-with-body-heat/",
-      });
+    forceNav() {
+      this.$emit("force-nav");
+      let vm = this.$parent;
+      while (vm) {
+        vm.$emit("force-nav");
+        vm = vm.$parent;
+      }
     },
   },
   watch: {

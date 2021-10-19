@@ -13,6 +13,10 @@ import "~/assets/vue2-animate.min.css";
 // import articleBlocks from "./content/article_blocks";
 // import collageBlocks from "./content/collage_blocks";
 
+Array.prototype.sample = function () {
+  return this[Math.floor(Math.random() * this.length)];
+};
+
 export default function (Vue, { appOptions, head, router }) {
   head.link.push({
     rel: "stylesheet",

@@ -12,6 +12,7 @@
     "gridsome": "^0.7.0",
     "markdown-it": "^12.2.0",
     "random-words": "^1.1.1",
+    "tone": "^14.7.77",
     "vue2-animate": "^2.1.4",
     "vue2-gmap-custom-marker": "^6.0.1",
     "vuetify": "^2.5.8",
