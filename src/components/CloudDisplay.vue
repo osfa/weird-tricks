@@ -1,5 +1,12 @@
 <template>
-  <div id="cloud-overlay">
+  <div
+    id="cloud-overlay"
+    :style="[
+      {
+        zIndex: 3,
+      },
+    ]"
+  >
     <CloudSimple
       :top="randPosVal()"
       :left="randPosVal()"
@@ -35,7 +42,7 @@ export default {
   }),
   methods: {
     randPosVal() {
-      return random(0, 100);
+      return random(-30, 100);
     },
     randWidthVal() {
       return random(300, 800);
@@ -55,7 +62,6 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
   opacity: 0.75;
   /* background: blue; need sky? */
 }

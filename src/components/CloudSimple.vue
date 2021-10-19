@@ -62,7 +62,7 @@ export default {
         width: `${this.width}px`,
         height: `${this.height}px`,
 
-        animation: `movecloud ${this.speed}s linear infinite`,
+        animation: `movecloud ${this.speed / 2}s ease infinite`,
 
         filter: `url(#${this.filterId})`,
 
@@ -88,7 +88,7 @@ export default {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(-250vw, 0);
+    transform: translate(-100vw, 0);
   }
 }
 </style>

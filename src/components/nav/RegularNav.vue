@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div
+    :style="[
+      {
+        zIndex: randomZ, // below or above clouds
+      },
+    ]"
+  >
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -66,7 +72,7 @@
 </template>
 
 <script>
-import { randomMaterialColor, randomIcon } from "~/util";
+import { randomMaterialColor, randomIcon, random } from "~/util";
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
@@ -103,6 +109,7 @@ export default {
     currentDrawerColor: "yellow darken-2",
     currentMainColor: "pink",
     currentMenuItems: randomMenuItems(),
+    randomZ: random(3, 5),
   }),
   computed: {
     menuItems() {
@@ -134,6 +141,7 @@ export default {
       this.currentDrawerColor = randomMaterialColor();
       this.currentMainColor = randomMaterialColor();
       this.currentMenuItems = randomMenuItems();
+      this.randomZ = random(3, 5);
       console.log("route changed");
     },
   },

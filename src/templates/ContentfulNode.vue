@@ -1,16 +1,25 @@
 <template>
   <Layout>
+    <!-- background image overlay -->
     <div
       v-if="true"
       :style="`background-image: url('${$page.post.heroImage.file.url}?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
       pointer-events:none;
-
+      z-index: 2;
       opacity: 10%; background-size: cover;`"
     ></div>
 
-    <v-container class="fill-height fluid" style="position: relative">
+    <v-container
+      class="fill-height fluid"
+      style="position: relative"
+      :style="[
+        {
+          zIndex: randomZ, // below or above clouds
+        },
+      ]"
+    >
       <div class="row align-center justify-center">
         <v-card
           class="col-6 col-lg-4 col-xl-4 flex mb-16"
@@ -43,12 +52,13 @@
             scrollable
             v-model="dialog"
             class="fill-height"
+            max-width="1200"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 color="yellow darken-2"
                 :elevation="3"
-                large
+                x-large
                 dark
                 v-bind="attrs"
                 v-on="on"
@@ -132,8 +142,7 @@
 </page-query>
 
 <script>
-import MarkdownIt from "markdown-it";
-import { randomIcon, randomMaterialColor } from "~/util";
+import { random, randomIcon, randomMaterialColor } from "~/util";
 
 export default {
   metaInfo() {
@@ -144,8 +153,6 @@ export default {
   mounted() {
     console.log("====== node mount");
     if (this.$page.post.hyperlink != "null") {
-      // STRING NULL
-      console.log("what the actual fuck");
       this.iframeUrl = this.$page.post.hyperlink;
     }
   },
@@ -161,6 +168,7 @@ export default {
     currentColor: randomMaterialColor(),
     isLoaded: false,
     iframeUrl: "https://www.dn.se/",
+    randomZ: random(3, 4), // below or above clouds
   }),
   methods: {
     onImgLoad() {
@@ -183,9 +191,11 @@ export default {
     $route: function () {
       this.currentIcon = randomIcon();
       this.currentColor = randomMaterialColor();
+      this.randomZ = random(3, 5);
       this.isLoaded = false;
       // this.currentMenuItems = randomMenuItems();
     },
+    // deep: true,
   },
 };
 </script>

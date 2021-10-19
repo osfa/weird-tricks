@@ -4,19 +4,13 @@
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
-        style="z-index: 10"
         @click.native="toggleAudio"
       ></RegularNav>
       <transition mode="out-in" appear name="bounceLeft">
         <router-view @force-nav="forceNav" style="animation-duration: 250ms" />
       </transition>
 
-      <FooterNav
-        v-show="showFooter"
-        app
-        @force-nav="forceNav"
-        style="z-index: 10"
-      />
+      <FooterNav v-show="showFooter" app @force-nav="forceNav" />
     </v-app>
   </MainLayout>
 </template>

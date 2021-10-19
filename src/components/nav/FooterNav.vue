@@ -6,6 +6,11 @@
     :background-color="backgroundColor"
     dark
     shift
+    :style="[
+      {
+        zIndex: randomZ, // below or above clouds
+      },
+    ]"
   >
     <v-btn
       :key="index"
@@ -20,7 +25,7 @@
 </template>
 
 <script>
-import { randomMaterialColor, randomIcon } from "~/util";
+import { randomMaterialColor, randomIcon, random } from "~/util";
 import randomWords from "random-words";
 
 const randomMenuItems = () => {
@@ -52,6 +57,7 @@ export default {
     value: 1,
     currentColor: randomMaterialColor(),
     currentMenuItems: randomMenuItems(),
+    randomZ: random(3, 5),
   }),
   computed: {
     backgroundColor() {
@@ -78,6 +84,7 @@ export default {
     $route: function () {
       this.currentColor = randomMaterialColor();
       this.currentMenuItems = randomMenuItems();
+      this.randomZ = random(3, 5);
     },
   },
 };

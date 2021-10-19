@@ -5,6 +5,12 @@ export const randomMaterialColor = randomFromPalette;
 export const randomIcon = () => {
   return iconList[Math.floor(Math.random() * iconList.length)];
 };
+// export const Zindices Colors = Object.freeze({
+//   TOP_NAV:   Symbol("red"),
+//   TRANSP_IMAGE:
+//   CLOUDS:  Symbol("blue"),
+//   CARD: Symbol("green")
+// });
 
 export const random = (min, max) => {
   min = Math.ceil(min);
