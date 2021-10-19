@@ -37,6 +37,7 @@
       </ground-overlay>
 
       <gmap-polyline
+        v-if="false"
         v-bind:path.sync="path"
         v-bind:options="{ strokeColor: strokeColor() }"
       >
@@ -61,13 +62,6 @@
         <img src="http://lorempixel.com/50/50/nature/" />
         <span v-if="m.label">{{ m.label }}</span>
       </gmap-custom-marker> -->
-
-      <!-- <google-kml-layer
-        :key="`kml-${index}`"
-        v-for="(l, index) in kmlLayers"
-        :url="l.url"
-        :clickable="true"
-      ></google-kml-layer> -->
 
       <GmapMarker
         :key="`circle-${index}`"
@@ -116,13 +110,12 @@ import { customStyle } from "~/mapStyler";
 import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
 import { gmapApi } from "gmap-vue";
 
-import { data as yin } from "~/data/geo/Yin_Lines";
-import { data as rhombic } from "~/data/geo/Rhombic_Dodecahedron";
+import { data as allLeyLinesData } from "~/data/geo/Leylines";
 
 const stockholm = { lat: 59.32181269185499, lng: 18.05670232773647 };
-
 const leyline1 = { lat: 25.489491583308883, lng: -4.7713413023755225 };
 const something = { lat: -28, lng: 137 };
+
 // import * as GmapVue from "gmap-vue";
 // import DirectionsRenderer from './DirectionsRenderer.js'
 
@@ -142,14 +135,6 @@ export default {
     cloudMarkers: [],
     circleMarkers: [],
     richFormatMarkers: [],
-    kmlLayers: [
-      {
-        // url: "https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml",
-        // url: "http://drive.google.com/uc?id=12nOsw-xWiu1yNRKzLwauTS82Ba_DsBGd", //leylines.kml'
-        // url: "http://drive.google.com/uc?id=1Pjob1Xz1vIBb6NLC-9hBAgHhxjhqXbiN", // UV kmz
-        // url: "http://drive.google.com/uc?id=1tRpEmpognGp_ExbaCpbvdoNOcO4wjvUG", // yinlines
-      },
-    ],
     center: centerStart,
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
@@ -170,13 +155,6 @@ export default {
     ],
   }),
   async mounted() {
-    // let recaptchaScript = document.createElement("script");
-    // recaptchaScript.setAttribute(
-    //   "src",
-    //   "http://www.geocodezip.com/scripts/v3_epoly.js"
-    // );
-    // document.head.appendChild(recaptchaScript);
-
     console.log("main mount");
     this.$store.commit("setMainContent", this.$static.nodes.edges);
     await this.$gmapApiPromiseLazy();
@@ -186,29 +164,54 @@ export default {
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
 
-      this.map.data.addGeoJson(yin);
-      this.map.data.addGeoJson(rhombic);
+      this.map.data.addGeoJson(allLeyLinesData);
 
       var featureStyle = {
-        strokeColor: this.leyLinesColor, //randomMaterialColor(),
-        strokeWeight: 1,
-        strokeOpacity: 0.5,
+        strokeColor: this.leyLinesColor,
+        strokeWeight: 1, // rand?
+        strokeOpacity: 0.5, // rand?
       };
 
       map.data.setStyle(featureStyle);
+      map.data.setStyle((feature) => {
+        let color = this.leyLinesColor;
+        let strokeWeight = 0.5;
+        const leyLineLayers = [
+          ["Octahedrons", randomMaterialColor()],
+          ["Rhombic Dodec", randomMaterialColor()],
+          ["Alison", randomMaterialColor()],
+          ["Icosahedron", randomMaterialColor()],
+          ["Dodecahedron", randomMaterialColor()],
+          ["I_Octahedron", randomMaterialColor()],
+          ["Cube", randomMaterialColor()],
+          ["Tetrahedron", randomMaterialColor()],
+          ["Triacontahedron", randomMaterialColor()],
+          ["--", randomMaterialColor()], // haagens
+          // ["--", randomMaterialColor()], // haagens
+          // ["--", randomMaterialColor()], // haagens
+        ];
 
-      // this.map.data.loadGeoJson(
-      //   "https://storage.googleapis.com/mapsdevsite/json/google.json"
-      // );
+        leyLineLayers.forEach((leylineType) => {
+          if (feature.getProperty("Name").includes(leylineType[0])) {
+            color = leylineType[1];
+          }
+        });
 
-      // this.zoom = 5;
-      // let kml = new google.maps.KmlLayer({
-      //   url: "http://drive.google.com/uc?id=12nOsw-xWiu1yNRKzLwauTS82Ba_DsBGd", //leylines.kml'
-      //   // url: "http://drive.google.com/uc?id=1Pjob1Xz1vIBb6NLC-9hBAgHhxjhqXbiN", // UV kmz
-      //   // url: "http://drive.google.com/uc?id=1tRpEmpognGp_ExbaCpbvdoNOcO4wjvUG", // yinlines
-      //   preserveViewport: true,
-      //   map: this.map,
-      // });
+        if (feature.getProperty("Name").includes("Yang")) {
+          color = "black";
+          strokeWeight = 2;
+        }
+
+        if (feature.getProperty("Name").includes("Yin")) {
+          color = "white";
+          strokeWeight = 2;
+        }
+
+        return {
+          strokeColor: color,
+          strokeWeight: strokeWeight,
+        };
+      });
     });
 
     var startLatLng = new google.maps.LatLng(

@@ -65,7 +65,7 @@
         </v-col>
       </v-row>
       <pager
-        v-if="$page.posts.pageInfo.totalPages > 1"
+        v-if="$page.posts.pageInfo.totalPages > 1 && false"
         :info="$page.posts.pageInfo"
       />
     </v-container>

@@ -21,7 +21,13 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "Tetrahedron 10", description: null, tessellate: 1 },
+      properties: {
+        Name: "Tetrahedron 10",
+        description: null,
+        tessellate: 1,
+        strokeColor: "#ff0000",
+        strokeWeight: 2,
+      },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -888,7 +894,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "41 - 16", description: null, tessellate: 1 },
+      properties: { Name: "41 - 16 -- x", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -904,7 +910,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "16 - 41", description: null, tessellate: 1 },
+      properties: { Name: "16 - 41 -- x", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -920,7 +926,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "55 - 11", description: null, tessellate: 1 },
+      properties: { Name: "55 - 11 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -935,7 +941,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "11 - 55", description: null, tessellate: 1 },
+      properties: { Name: "11 - 55 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -950,7 +956,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "59 - 5", description: null, tessellate: 1 },
+      properties: { Name: "59 - 5 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -965,7 +971,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "5 - 59", description: null, tessellate: 1 },
+      properties: { Name: "5 - 59 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -980,7 +986,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "58 - 4", description: null, tessellate: 1 },
+      properties: { Name: "58 - 4 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -995,7 +1001,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "4 - 58", description: null, tessellate: 1 },
+      properties: { Name: "4 - 58 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1010,7 +1016,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "47 - 12", description: null, tessellate: 1 },
+      properties: { Name: "47 - 12 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1026,7 +1032,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "12 - 47", description: null, tessellate: 1 },
+      properties: { Name: "12 - 47 --", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1042,7 +1048,7 @@ export const data = {
     {
       type: "Feature",
       properties: {
-        Name: "46 - 1 (Orienting Ring)",
+        Name: "46 - 1 (Orienting Ring) --",
         description: null,
         tessellate: 1,
       },
@@ -1061,7 +1067,7 @@ export const data = {
     {
       type: "Feature",
       properties: {
-        Name: "1 - 46 (Orienting Ring)",
+        Name: "1 - 46 (Orienting Ring) --",
         description: null,
         tessellate: 1,
       },
@@ -1081,7 +1087,7 @@ export const data = {
     {
       type: "Feature",
       properties: {
-        Name: "21 - 31 thru Octahedra Vertices",
+        Name: "Yang 21 - 31 thru Octahedra Vertices",
         description: null,
         tessellate: 1,
       },
@@ -1106,7 +1112,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "25 - 35", description: null, tessellate: 1 },
+      properties: { Name: "Yang 25 - 35", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1128,7 +1134,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "29 - 39", description: null, tessellate: 1 },
+      properties: { Name: "Yang 29 - 39", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1150,7 +1156,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "37 - 27", description: null, tessellate: 1 },
+      properties: { Name: "Yang 37 - 27", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1195,7 +1201,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "8 - 52", description: null, tessellate: 1 },
+      properties: { Name: "Yang 8 - 52", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1217,7 +1223,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "4 - 58", description: null, tessellate: 1 },
+      properties: { Name: "Yang 4 - 58", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1239,7 +1245,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "2 - 56", description: null, tessellate: 1 },
+      properties: { Name: "Yang 2 - 56", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1261,7 +1267,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "10 - 54", description: null, tessellate: 1 },
+      properties: { Name: "Yang 10 - 54", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1283,7 +1289,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "6 - 60", description: null, tessellate: 1 },
+      properties: { Name: "Yang 6 - 60", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1306,7 +1312,7 @@ export const data = {
     // YIN
     {
       type: "Feature",
-      properties: { Name: "41 - 16", description: null, tessellate: 1 },
+      properties: { Name: "Yin 41 - 16", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1336,7 +1342,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "45 - 20", description: null, tessellate: 1 },
+      properties: { Name: "Yin 45 - 20", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1366,7 +1372,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "43 - 18", description: null, tessellate: 1 },
+      properties: { Name: "Yin 43 - 18", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1396,7 +1402,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "49 - 14", description: null, tessellate: 1 },
+      properties: { Name: "Yin 49 - 14", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1426,7 +1432,7 @@ export const data = {
     },
     {
       type: "Feature",
-      properties: { Name: "47 -12", description: null, tessellate: 1 },
+      properties: { Name: "Yin 47 -12", description: null, tessellate: 1 },
       geometry: {
         type: "LineString",
         coordinates: [
@@ -1457,7 +1463,7 @@ export const data = {
     {
       type: "Feature",
       properties: {
-        Name: "61 - 62  thru Octahedron Vertices",
+        Name: "Yin 61 - 62  thru Octahedron Vertices",
         description: null,
         tessellate: 1,
       },

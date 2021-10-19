@@ -1,12 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      :color="currentDrawerColor"
-      dark
-      :permanent="!$vuetify.breakpoint.mdAndUp"
-    >
+    <v-navigation-drawer v-model="drawer" app :color="currentDrawerColor" dark>
       <v-list v-if="showAvatar">
         <v-list-item class="px-2">
           <v-list-item-avatar>
@@ -70,6 +64,7 @@ import { randomMaterialColor, randomIcon } from "~/util";
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
+// :permanent="$vuetify.breakpoint.mdAndUp"
 
 const randomMenuItems = () => {
   return [

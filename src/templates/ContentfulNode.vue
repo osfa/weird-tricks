@@ -135,6 +135,7 @@ export default {
     this.sendImageToIframe();
   },
   data: () => ({
+    dialog: false,
     marker: {
       position: {
         lat: 15.0,
