@@ -14,6 +14,21 @@
         />
       </transition>
 
+      <v-fab-transition>
+        <v-btn
+          color="primary"
+          :key="muteState.icon"
+          fab
+          large
+          dark
+          top
+          right
+          fixed
+          @click.native="toggleAudio"
+        >
+          <v-icon>{{ muteState.icon }}</v-icon>
+        </v-btn>
+      </v-fab-transition>
       <FooterNav v-show="showFooter" app @force-nav="forceNav" />
     </v-app>
   </MainLayout>
@@ -42,6 +57,8 @@
 </static-query>
 
 <script>
+import { random, randomIcon, randomMaterialColor } from "~/util";
+
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
@@ -64,6 +81,7 @@ export default {
     rightEar: undefined,
     binauralBeat: INITIAL_FREQ,
     audioCtx: undefined,
+    isMuted: false,
   }),
   metaInfo() {
     return {
@@ -76,6 +94,20 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    muteState() {
+      return {
+        icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
+        color: randomMaterialColor(),
+      }; // mdi-volumne-medium /low
+      // switch (this.tabs) {
+      //   case 'one': return { color: 'success', icon: 'mdi-share-variant' }
+      //   case 'two': return { color: 'red', icon: 'mdi-pencil' }
+      //   case 'three': return { color: 'green', icon: 'mdi-chevron-up' }
+      //   default: return {}
+      // }
+    },
   },
   methods: {
     forceNav(backwards) {
@@ -117,15 +149,16 @@ export default {
       }
     },
     toggleAudio() {
-      console.log("toggle", this.audioCtx);
       if (this.audioCtx.state === "running") {
         this.audioCtx.suspend().then(function () {
           console.log("suspended audio");
         });
+        this.isMuted = true;
       } else if (this.audioCtx.state === "suspended") {
         this.audioCtx.resume().then(function () {
           console.log("resumed audio");
         });
+        this.isMuted = false;
       }
     },
     setVolume() {

@@ -85,7 +85,7 @@ export default {
 /* translate more efficient? */
 @keyframes movecloud {
   0% {
-    transform: translate(0, 0);
+    transform: translate(0vw, 0);
   }
   100% {
     transform: translate(-100vw, 0);

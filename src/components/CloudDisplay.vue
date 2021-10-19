@@ -26,21 +26,7 @@
       :left="randPosVal()"
       :width="randWidthVal()"
       :height="randHeightVal()"
-      :speed="300"
-    />
-    <CloudSimple
-      :top="randPosVal()"
-      :left="randPosVal()"
-      :width="randWidthVal()"
-      :height="randHeightVal()"
-      :speed="400"
-    />
-    <CloudSimple
-      :top="randPosVal()"
-      :left="randPosVal()"
-      :width="randWidthVal()"
-      :height="randHeightVal()"
-      :speed="500"
+      :speed="200"
     />
   </div>
 </template>
@@ -59,10 +45,10 @@ export default {
       return random(-30, 100);
     },
     randWidthVal() {
-      return random(300, 800);
+      return random(500, 1000);
     },
     randHeightVal() {
-      return random(100, 400);
+      return random(200, 600);
     },
   },
 };
@@ -76,7 +62,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.75;
+  opacity: 0.8;
   /* background: blue; need sky? */
 }
 </style>
