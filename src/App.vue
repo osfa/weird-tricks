@@ -1,6 +1,7 @@
 <template>
   <MainLayout>
     <v-app id="app">
+      <CloudPng />
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
@@ -62,12 +63,15 @@ import { random, randomIcon, randomMaterialColor } from "~/util";
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
+import CloudPng from "~/components/CloudPng.vue";
+
 import * as Tone from "tone";
 
 const INITIAL_FREQ = 2;
 
 export default {
   components: {
+    CloudPng,
     MainLayout,
     RegularNav,
     FooterNav,
@@ -202,6 +206,7 @@ export default {
       window.addEventListener("keyup", this.nav);
     }
   },
+
   mounted() {
     console.log("App mount");
 

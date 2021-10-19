@@ -77,7 +77,7 @@
 
     <slot />
 
-    <CloudDisplay v-if="true" />
+    <CloudDisplay v-if="false" />
   </div>
 </template>
 
