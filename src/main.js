@@ -10,8 +10,8 @@ import Vuex from "vuex";
 import colors from "vuetify/lib/util/colors";
 import * as GmapVue from "gmap-vue";
 import "~/assets/vue2-animate.min.css";
-import articleBlocks from "./content/article_blocks";
-import collageBlocks from "./content/collage_blocks";
+// import articleBlocks from "./content/article_blocks";
+// import collageBlocks from "./content/collage_blocks";
 
 export default function (Vue, { appOptions, head, router }) {
   head.link.push({
@@ -61,12 +61,12 @@ export default function (Vue, { appOptions, head, router }) {
   appOptions.store = new Vuex.Store({
     state: {
       ctfBlocks: [],
-      availableCommissionBlocks: [], // title, image url, body, author
-      availableArticleBlocks: articleBlocks, // title & image url
-      availableImageBlocks: collageBlocks, // large img url
-      availableVideoBlocks: [], // video url
+      // availableCommissionBlocks: [], // title, image url, body, author
+      // availableArticleBlocks: articleBlocks, // title & image url
+      // availableImageBlocks: collageBlocks, // large img url
+      // availableVideoBlocks: [], // video url
       // availableMapBlocks: [],
-      availableCollageBlocks: collageBlocks, // id, title, large img url
+      // availableCollageBlocks: collageBlocks, // id, title, large img url
       allBlocks: [],
       currentBlockIdx: 0,
       availableCoordinates: [],
