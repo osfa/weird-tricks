@@ -13,7 +13,7 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
-        //minZoom: 5,
+        minZoom: 6,
       }"
       :center="center"
       :zoom="zoom"
@@ -187,8 +187,6 @@ export default {
           ["Tetrahedron", randomMaterialColor()],
           ["Triacontahedron", randomMaterialColor()],
           ["--", randomMaterialColor()], // haagens
-          // ["--", randomMaterialColor()], // haagens
-          // ["--", randomMaterialColor()], // haagens
         ];
 
         leyLineLayers.forEach((leylineType) => {
@@ -199,17 +197,18 @@ export default {
 
         if (feature.getProperty("Name").includes("Yang")) {
           color = "black";
-          strokeWeight = 2;
+          strokeWeight = 1.5;
         }
 
         if (feature.getProperty("Name").includes("Yin")) {
           color = "white";
-          strokeWeight = 2;
+          strokeWeight = 1.5;
         }
 
         return {
           strokeColor: color,
           strokeWeight: strokeWeight,
+          strokeOpacity: 0.5, // rand?
         };
       });
     });
@@ -321,7 +320,6 @@ export default {
         [55.191, 131.915],
         [59.65, 61.412],
         [69.737, -131.859],
-        // [30.807, -11.996],
         [18.939, 84.554],
         [-30.878, 119.985],
         [45.872, 110.432],
