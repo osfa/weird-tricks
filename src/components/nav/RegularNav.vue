@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app :color="currentDrawerColor" dark>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      :color="currentDrawerColor"
+      dark
+      :elevation="12"
+    >
       <v-list v-if="showAvatar">
         <v-list-item class="px-2">
           <v-list-item-avatar>

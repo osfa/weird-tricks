@@ -5,7 +5,7 @@
       ref="mapRef"
       :options="{
         zoomControl: false,
-        mapTypeControl: true,
+        mapTypeControl: false,
         scaleControl: true,
         streetViewControl: false,
         rotateControl: false,
@@ -76,6 +76,9 @@
     </GmapMap>
 
     <slot />
+
+    <CloudsSimple v-if="true" />
+    <!-- <CloudDisplay /> -->
   </div>
 </template>
 
@@ -98,6 +101,9 @@
 </static-query>
 
 <script>
+import CloudsSimple from "~/components/CloudsSimple.vue";
+import CloudDisplay from "~/components/CloudDisplay.vue";
+
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 import {
@@ -124,6 +130,8 @@ const tilt = 90;
 
 export default {
   components: {
+    CloudsSimple,
+    CloudDisplay,
     RegularNav,
     "gmap-custom-marker": GmapCustomMarker,
   },
