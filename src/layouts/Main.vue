@@ -77,8 +77,7 @@
 
     <slot />
 
-    <CloudsSimple v-if="true" />
-    <!-- <CloudDisplay /> -->
+    <CloudDisplay v-if="true" />
   </div>
 </template>
 
@@ -101,7 +100,6 @@
 </static-query>
 
 <script>
-import CloudsSimple from "~/components/CloudsSimple.vue";
 import CloudDisplay from "~/components/CloudDisplay.vue";
 
 import RegularNav from "~/components/nav/RegularNav.vue";
@@ -130,7 +128,6 @@ const tilt = 90;
 
 export default {
   components: {
-    CloudsSimple,
     CloudDisplay,
     RegularNav,
     "gmap-custom-marker": GmapCustomMarker,

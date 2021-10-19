@@ -1,24 +1,62 @@
 <template>
-  <div class="cloud-model-container"></div>
+  <div id="cloud-overlay">
+    <CloudSimple
+      :top="randPosVal()"
+      :left="randPosVal()"
+      :width="randWidthVal()"
+      :height="randHeightVal()"
+      :speed="speed"
+    />
+    <CloudSimple
+      :top="randPosVal()"
+      :left="randPosVal()"
+      :width="randWidthVal()"
+      :height="randHeightVal()"
+      :speed="speed"
+    />
+    <CloudSimple
+      :top="randPosVal()"
+      :left="randPosVal()"
+      :width="randWidthVal()"
+      :height="randHeightVal()"
+      :speed="speed"
+    />
+  </div>
 </template>
 
 <script>
+import CloudSimple from "~/components/CloudSimple.vue";
+import { random } from "~/util";
+
 export default {
-  components: {},
-  data: () => ({}),
+  components: { CloudSimple },
+  data: () => ({
+    speed: 200,
+  }),
+  methods: {
+    randPosVal() {
+      return random(0, 100);
+    },
+    randWidthVal() {
+      return random(300, 800);
+    },
+    randHeightVal() {
+      return random(100, 400);
+    },
+  },
 };
 </script>
 
 <style>
-.cloud-model-container {
-  z-index: 1;
-  justify-self: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
+#cloud-overlay {
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
   left: 0;
-  z-index: 2;
-  overflow: hidden;
+  z-index: 1000;
+  opacity: 0.75;
+  /* background: blue; need sky? */
 }
 </style>
