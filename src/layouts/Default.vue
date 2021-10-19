@@ -1,5 +1,5 @@
 <template>
-  <v-main style="pointer-events: none">
+  <v-main id="main">
     <slot />
   </v-main>
 </template>
@@ -68,4 +68,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#main {
+  pointer-events: none;
+}
+</style>

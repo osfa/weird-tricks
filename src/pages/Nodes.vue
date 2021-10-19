@@ -1,5 +1,11 @@
 <template>
-  <Layout>
+  <Layout
+    :style="[
+      {
+        zIndex: randomZ, // below or above clouds
+      },
+    ]"
+  >
     <v-container
       class="pt-12"
       style="
@@ -106,23 +112,7 @@ export default {
     Pager,
   },
   data: () => ({
-    cards: [
-      {
-        title: "Pre-fab homes",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-        flex: 12,
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 6,
-      },
-      {
-        title: "Best airlines",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 6,
-      },
-    ],
+    randomZ: random(3, 5),
   }),
   computed: {
     colCount() {
@@ -148,6 +138,11 @@ export default {
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
+    },
+  },
+  watch: {
+    $route: function () {
+      this.randomZ = random(3, 5);
     },
   },
 };

@@ -28,6 +28,20 @@
       :height="randHeightVal()"
       :speed="300"
     />
+    <CloudSimple
+      :top="randPosVal()"
+      :left="randPosVal()"
+      :width="randWidthVal()"
+      :height="randHeightVal()"
+      :speed="400"
+    />
+    <CloudSimple
+      :top="randPosVal()"
+      :left="randPosVal()"
+      :width="randWidthVal()"
+      :height="randHeightVal()"
+      :speed="500"
+    />
   </div>
 </template>
 
