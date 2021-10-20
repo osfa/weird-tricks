@@ -315,7 +315,7 @@ export default {
       console.log("random pos currently at:", lat, lng);
 
       this.currentStyle = generateRandomStyle();
-      this.zoom = random(6, 15);
+      this.zoom = random(4, 15);
       const availableMapTypes = ["roadmap", "satellite", "hybrid", "terrain"];
       this.currentMapType =
         availableMapTypes[Math.floor(Math.random() * availableMapTypes.length)];
