@@ -130,7 +130,12 @@
 </page-query>
 
 <script>
-import { random, randomIcon, randomMaterialColor } from "~/util";
+import {
+  random,
+  randomIcon,
+  randomMaterialColor,
+  randomAnimation,
+} from "~/util";
 
 export default {
   metaInfo() {
@@ -157,36 +162,7 @@ export default {
     isLoaded: false,
     iframeUrl: "https://www.dn.se/",
     randomZ: random(3, 5), // below or above clouds
-    currentAnimation: [
-      "bounce",
-      "bounceDown",
-      "bounceLeft",
-      "bounceRight",
-      "bounceUp",
-      "fade",
-      "fadeDown",
-      "fadeDownBig",
-      "fadeLeft",
-      "fadeLeftBig",
-      "fadeRight",
-      "fadeRightBig",
-      "fadeUp",
-      "fadeUpBig",
-      "rotate",
-      "rotateDownLeft",
-      "rotateDownRight",
-      "rotateUpLeft",
-      "rotateUpRight",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "zoom",
-      "zoomDown",
-      "zoomUp",
-      "zoomLeft",
-      "zoomRight",
-    ].sample(),
+    currentAnimation: randomAnimation(),
   }),
   methods: {
     onImgLoad() {

@@ -11,7 +11,7 @@
       app
       :color="currentDrawerColor"
       dark
-      :elevation="12"
+      :elevation="randomElevation()"
     >
       <v-list v-if="showAvatar">
         <v-list-item class="px-2">
@@ -62,7 +62,12 @@
       <Expander v-else />
     </v-navigation-drawer>
 
-    <v-app-bar app :color="currentMainColor" dark>
+    <v-app-bar
+      app
+      :color="currentMainColor"
+      dark
+      :elevation="randomElevation()"
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You won't believe it</v-toolbar-title
@@ -72,7 +77,12 @@
 </template>
 
 <script>
-import { randomMaterialColor, randomIcon, random } from "~/util";
+import {
+  randomMaterialColor,
+  randomIcon,
+  random,
+  randomElevation,
+} from "~/util";
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
@@ -123,6 +133,9 @@ export default {
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
       }
+    },
+    randomElevation() {
+      return randomElevation();
     },
     forceNavigate() {
       console.log("emit?");

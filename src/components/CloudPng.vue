@@ -17,11 +17,13 @@
 
 <script>
 import { random } from "~/util";
+const animated = false;
 export default {
   data: () => ({
+    isAnimated: animated,
     id: undefined,
-    top: random(-20, 50),
-    left: random(-50, 20),
+    top: random(-50, 50),
+    left: animated ? random(-50, 20) : random(-20, 50),
     objects: [],
     computedWeights: [],
     cloudBase: undefined,
@@ -30,6 +32,8 @@ export default {
     dims: 512,
     speed: 100,
     layerCount: 3,
+    opacityBase: 0.5,
+    mainOpacity: 0.9,
     textures: [
       {
         name: "white cloud",
@@ -80,7 +84,7 @@ export default {
             src = this.computedWeights[k].src;
           }
         }
-        cloud.opacity = Math.random() * (1.0 - 0.5) + 0.6;
+        cloud.opacity = Math.random() * (1.0 - 0.5) + this.opacityBase;
         cloud.src = src;
         cloud.className = "cloudLayer";
 
@@ -124,7 +128,7 @@ export default {
             accum += w;
           }
         }
-        console.log(this.createCloud());
+        this.createCloud();
       }
     },
   },
@@ -136,9 +140,12 @@ export default {
       return {
         width: `${this.width}px`,
         height: `${this.height}px`,
-        animation: `movecloud ${this.speed * 3}s linear infinite`,
+        animation: this.isAnimated
+          ? `movecloud ${this.speed * 3}s linear infinite`
+          : "",
         top: `${this.top}vh`,
         left: `${this.left}vw`,
+        opacity: this.mainOpacity,
       };
     },
     cloudLayerStyle() {

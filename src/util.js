@@ -35,6 +35,43 @@ export const shuffle = (array) => {
   return array;
 };
 
+export const randomAnimation = (array) => {
+  return [
+    "bounce",
+    "bounceDown",
+    "bounceLeft",
+    "bounceRight",
+    "bounceUp",
+    "fade",
+    "fadeDown",
+    "fadeDownBig",
+    "fadeLeft",
+    "fadeLeftBig",
+    "fadeRight",
+    "fadeRightBig",
+    "fadeUp",
+    "fadeUpBig",
+    "rotate",
+    "rotateDownLeft",
+    "rotateDownRight",
+    "rotateUpLeft",
+    "rotateUpRight",
+    "slideDown",
+    "slideUp",
+    "slideLeft",
+    "slideRight",
+    "zoom",
+    "zoomDown",
+    "zoomUp",
+    "zoomLeft",
+    "zoomRight",
+  ].sample();
+};
+
+export const randomElevation = (array) => {
+  return random(0, 24);
+};
+
 export const generateRandomStyle = () => {
   const scheme = [
     {

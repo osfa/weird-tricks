@@ -5,6 +5,7 @@
         v-show="showHeader"
         @force-nav="forceNav"
         @click.native="toggleAudio"
+        :elevation="randomElevation()"
       ></RegularNav>
       <transition mode="out-in" appear name="bounceLeft">
         <router-view
@@ -16,6 +17,7 @@
 
       <v-fab-transition>
         <v-btn
+          :elevation="randomElevation()"
           :color="muteState.color"
           :key="muteState.icon"
           fab
@@ -29,9 +31,21 @@
           <v-icon>{{ muteState.icon }}</v-icon>
         </v-btn>
       </v-fab-transition>
-      <FooterNav v-show="showFooter" app @force-nav="forceNav" />
-      <CloudPng />
-      <CloudPng />
+      <FooterNav
+        v-show="showFooter"
+        app
+        @force-nav="forceNav"
+        :elevation="randomElevation()"
+      />
+      <transition mode="out-in" appear :name="currentAnimation"
+        ><CloudPng :key="$route.fullPath"
+      /></transition>
+      <transition mode="out-in" appear :name="currentAnimation"
+        ><CloudPng :key="$route.fullPath"
+      /></transition>
+      <transition mode="out-in" appear :name="currentAnimation"
+        ><CloudPng :key="$route.fullPath"
+      /></transition>
     </v-app>
   </MainLayout>
 </template>
@@ -59,7 +73,13 @@
 </static-query>
 
 <script>
-import { random, randomIcon, randomMaterialColor } from "~/util";
+import {
+  random,
+  randomIcon,
+  randomMaterialColor,
+  randomAnimation,
+  randomElevation,
+} from "~/util";
 
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
@@ -87,6 +107,7 @@ export default {
     binauralBeat: INITIAL_FREQ,
     audioCtx: undefined,
     isMuted: false,
+    currentAnimation: randomAnimation(),
   }),
   metaInfo() {
     return {
@@ -115,8 +136,12 @@ export default {
     },
   },
   methods: {
+    randomElevation() {
+      return randomElevation();
+    },
     forceNav(backwards) {
       console.log("forceNav main");
+      this.currentAnimation = randomAnimation();
 
       //!!!!!! watch this.$store.state.currentBlockIdx instead?
       if (backwards) {

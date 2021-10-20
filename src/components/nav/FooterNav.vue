@@ -1,5 +1,6 @@
 <template>
   <v-bottom-navigation
+    :elevation="randomElevation"
     class="overflow-hidden"
     v-model="value"
     fixed
@@ -25,7 +26,12 @@
 </template>
 
 <script>
-import { randomMaterialColor, randomIcon, random } from "~/util";
+import {
+  randomMaterialColor,
+  randomIcon,
+  random,
+  randomElevation,
+} from "~/util";
 import randomWords from "random-words";
 
 const randomMenuItems = () => {
@@ -78,6 +84,9 @@ export default {
         vm.$emit("force-nav");
         vm = vm.$parent;
       }
+    },
+    randomElevation() {
+      return randomElevation();
     },
   },
   watch: {
