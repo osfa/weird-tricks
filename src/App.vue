@@ -17,7 +17,7 @@
 
       <v-fab-transition>
         <v-btn
-          color="primary"
+          :color="muteState.color"
           :key="muteState.icon"
           fab
           large
@@ -103,7 +103,7 @@ export default {
     muteState() {
       return {
         icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
-        color: randomMaterialColor(),
+        color: this.isMuted ? "red" : "primary",
       }; // mdi-volumne-medium /low
       // switch (this.tabs) {
       //   case 'one': return { color: 'success', icon: 'mdi-share-variant' }

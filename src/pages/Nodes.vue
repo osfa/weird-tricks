@@ -1,5 +1,6 @@
 <template>
   <Layout
+    :key="$route.fullPath"
     :style="[
       {
         zIndex: randomZ, // below or above clouds
@@ -138,11 +139,6 @@ export default {
         [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
-    },
-  },
-  watch: {
-    $route: function () {
-      this.randomZ = random(3, 5);
     },
   },
 };
