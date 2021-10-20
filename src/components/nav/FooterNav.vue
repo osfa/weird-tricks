@@ -1,6 +1,6 @@
 <template>
   <v-bottom-navigation
-    :elevation="randomElevation"
+    :elevation="randomElevation()"
     class="overflow-hidden"
     v-model="value"
     fixed
