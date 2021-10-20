@@ -38,13 +38,13 @@
         :elevation="randomElevation()"
       />
       <transition mode="out-in" appear :name="currentAnimation"
-        ><CloudPng :key="$route.fullPath"
+        ><CloudPng v-if="random(0, 2) > 0" :key="$route.fullPath"
       /></transition>
       <transition mode="out-in" appear :name="currentAnimation"
-        ><CloudPng :key="$route.fullPath"
+        ><CloudPng v-if="random(0, 2) > 0" :key="$route.fullPath"
       /></transition>
       <transition mode="out-in" appear :name="currentAnimation"
-        ><CloudPng :key="$route.fullPath"
+        ><CloudPng v-if="random(0, 2) > 0" :key="$route.fullPath"
       /></transition>
     </v-app>
   </MainLayout>
@@ -138,6 +138,9 @@ export default {
   methods: {
     randomElevation() {
       return randomElevation();
+    },
+    random(min, max) {
+      return random(min, max);
     },
     forceNav(backwards) {
       console.log("forceNav main");
