@@ -1,7 +1,6 @@
 <template>
   <MainLayout>
     <v-app id="app">
-      <CloudPng />
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
@@ -31,6 +30,8 @@
         </v-btn>
       </v-fab-transition>
       <FooterNav v-show="showFooter" app @force-nav="forceNav" />
+      <CloudPng />
+      <CloudPng />
     </v-app>
   </MainLayout>
 </template>

@@ -6,7 +6,10 @@
         :key="index"
         :src="c.src"
         :class="c.className"
-        :style="[{ transform: c.transform, opacity: 1.0 }, cloudLayerStyle]"
+        :style="[
+          { transform: c.transform, opacity: c.opacity },
+          cloudLayerStyle,
+        ]"
       />
     </div>
   </div>
@@ -18,6 +21,7 @@ export default {
   data: () => ({
     id: undefined,
     top: random(-20, 50),
+    left: random(-50, 20),
     objects: [],
     computedWeights: [],
     cloudBase: undefined,
@@ -30,19 +34,19 @@ export default {
       {
         name: "white cloud",
         file: require("~/assets/imgs/cloud.png"),
-        opacity: 1,
+        // opacity: 1,
         weight: 1,
       },
       {
         name: "dark cloud",
         file: require("~/assets/imgs/darkCloud.png"),
-        opacity: 0.5,
-        weight: 0,
+        // opacity: 0.5,
+        weight: 1,
       },
       {
         name: "smoke cloud",
         file: require("~/assets/imgs/smoke.png"),
-        opacity: 1,
+        // opacity: 1,
         weight: 0,
       },
       { name: "explosion", file: "explosion.png", opacity: 1, weight: 0 },
@@ -60,15 +64,8 @@ export default {
       var x = this.dims / 2 - Math.random() * this.dims;
       var y = this.dims / 2 - Math.random() * this.dims;
       var z = this.dims / 2 - Math.random() * this.dims;
-      var t =
-        "translateX( " +
-        x +
-        "px ) translateY( " +
-        y +
-        "px ) translateZ( " +
-        z +
-        "px )";
-      this.cloudBase.transform = t;
+
+      this.cloudBase.transform = `translate3d(${x}px,${y}px,${z}px)`;
       this.cloudBase.cloudLayers = [];
 
       for (var j = 0; j < this.layerCount; j++) {
@@ -83,7 +80,7 @@ export default {
             src = this.computedWeights[k].src;
           }
         }
-        cloud.opacity = Math.random() * (1.0 - 0.5) + 0.5;
+        cloud.opacity = Math.random() * (1.0 - 0.5) + 0.6;
         cloud.src = src;
         cloud.className = "cloudLayer";
 
@@ -102,20 +99,7 @@ export default {
           s: s,
           speed: 0.1 * Math.random(),
         };
-        var t =
-          "translateX( " +
-          x +
-          "px ) translateY( " +
-          y +
-          "px ) translateZ( " +
-          z +
-          "px ) rotateZ( " +
-          a +
-          "deg ) scale( " +
-          s +
-          " )";
-
-        cloud.transform = t;
+        cloud.transform = `translate3d(${x}px,${y}px,${z}px) rotateZ(${a}deg) scale(${s})`;
         this.cloudBase.cloudLayers.push(cloud);
       }
       return this.cloudBase;
@@ -154,6 +138,7 @@ export default {
         height: `${this.height}px`,
         animation: `movecloud ${this.speed * 3}s linear infinite`,
         top: `${this.top}vh`,
+        left: `${this.left}vw`,
       };
     },
     cloudLayerStyle() {
@@ -171,10 +156,10 @@ export default {
 <style>
 @keyframes movecloud {
   0% {
-    transform: translate(50vw, 0);
+    transform: translate3d(50vw, 0, 0);
   }
   100% {
-    transform: translate(-50vw, 0);
+    transform: translate3d(-50vw, 0, 0);
   }
 }
 .cloudContainer {

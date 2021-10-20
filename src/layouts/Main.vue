@@ -13,7 +13,7 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
-        minZoom: 6,
+        minZoom: 4,
       }"
       :center="center"
       :zoom="zoom"
@@ -180,7 +180,7 @@ export default {
       map.data.setStyle(featureStyle);
       map.data.setStyle((feature) => {
         let color = this.leyLinesColor;
-        let strokeWeight = 0.5;
+        let strokeWeight = random(1, 4);
         const leyLineLayers = [
           ["Octahedrons", randomMaterialColor()],
           ["Rhombic Dodec", randomMaterialColor()],
