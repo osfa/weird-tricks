@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import CloudSimple from "~/components/CloudSimple.vue";
+import CloudSimple from "~/components/clouds/CloudSimple.vue";
 import { random } from "~/util";
 
 export default {

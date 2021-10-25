@@ -84,7 +84,7 @@ import {
 import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
-import CloudPng from "~/components/CloudPng.vue";
+import CloudPng from "~/components/clouds/CloudPng.vue";
 
 import * as Tone from "tone";
 

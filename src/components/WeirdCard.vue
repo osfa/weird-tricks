@@ -7,9 +7,9 @@
   ></component>
 </template>
 <script>
-import Inbox from "~/components/Inbox.vue";
-import Dialog from "~/components/Dialog.vue";
-import BaseCard from "~/components/BaseCard.vue";
+import Inbox from "~/components/nodeTypes/Inbox.vue";
+import Dialog from "~/components/nodeTypes/Dialog.vue";
+import BaseCard from "~/components/nodeTypes/BaseCard.vue";
 
 const availableComponents = ["BaseCard", "Inbox", "Dialog"];
 export default {

@@ -4,7 +4,7 @@
   </Layout>
 </template>
 <script>
-import FloatingAction from "~/components/FloatingAction.vue";
+import FloatingAction from "~/components/nodeTypes/FloatingAction.vue";
 
 export default {
   components: {

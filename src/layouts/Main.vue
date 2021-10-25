@@ -13,7 +13,7 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
-        minZoom: 4,
+        minZoom: 5,
       }"
       :center="center"
       :zoom="zoom"
@@ -100,8 +100,7 @@
 </static-query>
 
 <script>
-import CloudDisplay from "~/components/CloudDisplay.vue";
-
+import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 import {
@@ -296,7 +295,7 @@ export default {
       this.circleMarkers = getCircleMarkers(
         lat - offset,
         lng - offset,
-        random(1, this.zoom * 10), // radius, base on zoom level?
+        random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
         random(5, 10) // ring count
       );
     },
