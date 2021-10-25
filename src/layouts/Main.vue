@@ -180,7 +180,7 @@ export default {
       map.data.setStyle(featureStyle);
       map.data.setStyle((feature) => {
         let color = this.leyLinesColor;
-        let strokeWeight = random(1, 4);
+        let strokeWeight = random(1, 2);
         const leyLineLayers = [
           ["Octahedrons", randomMaterialColor()],
           ["Rhombic Dodec", randomMaterialColor()],
@@ -202,12 +202,12 @@ export default {
 
         if (feature.getProperty("Name").includes("Yang")) {
           color = "black";
-          strokeWeight = 1.5;
+          strokeWeight = 1.2;
         }
 
         if (feature.getProperty("Name").includes("Yin")) {
           color = "white";
-          strokeWeight = 1.5;
+          strokeWeight = 1.2;
         }
 
         return {
@@ -296,8 +296,8 @@ export default {
       this.circleMarkers = getCircleMarkers(
         lat - offset,
         lng - offset,
-        random(1, this.zoom * 4), // radius, base on zoom level?
-        random(15, 30) // ring count
+        random(1, this.zoom * 10), // radius, base on zoom level?
+        random(5, 10) // ring count
       );
     },
     strokeColor() {

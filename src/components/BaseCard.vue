@@ -21,11 +21,19 @@
     <v-card-text v-if="false">
       <node-dialog :iframe-url="hyperlink" />
     </v-card-text>
-    <v-btn @click="forceNav" fab :color="currentColor" dark top left absolute>
+    <v-btn
+      @click="forceNavigate"
+      fab
+      :color="randomMaterialColor()"
+      dark
+      top
+      left
+      absolute
+    >
       <v-icon>{{ randomIcon() }}</v-icon>
     </v-btn>
     <v-btn
-      @click="forceNav"
+      @click="forceNavigate"
       fab
       :color="randomMaterialColor()"
       dark
@@ -36,7 +44,7 @@
       <v-icon>{{ randomIcon() }}</v-icon>
     </v-btn>
     <v-btn
-      @click="forceNav"
+      @click="forceNavigate"
       fab
       :color="randomMaterialColor()"
       dark
@@ -48,7 +56,7 @@
     </v-btn>
     <v-card-actions>
       <v-flex class="text-right">
-        <v-btn :color="randomMaterialColor()" text @click="forceNav">
+        <v-btn :color="randomMaterialColor()" text @click="forceNavigate">
           <weird-text />
         </v-btn>
       </v-flex>
@@ -59,37 +67,23 @@
 import { random, randomIcon, randomMaterialColor } from "~/util";
 import NodeDialog from "~/components/NodeDialog.vue";
 import WeirdText from "~/components/WeirdText.vue";
+import { cardMixin } from "~/cardMixin";
 
 export default {
   components: { NodeDialog, WeirdText },
+  mixins: [cardMixin],
   props: {
     title: { type: String, default: "title" },
     heroImgUrl: { type: String, default: "" },
     hyperlink: { type: String },
   },
   data: () => ({
-    currentIcon: randomIcon(),
-    currentColor: randomMaterialColor(),
     isLoaded: false,
   }),
   methods: {
     onImgLoad() {
       console.log("onImgLoad");
       this.isLoaded = true;
-    },
-    randomMaterialColor() {
-      return randomMaterialColor();
-    },
-    randomIcon() {
-      return randomIcon();
-    },
-    forceNav() {
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
     },
   },
 };

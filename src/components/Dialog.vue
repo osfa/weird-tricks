@@ -2,7 +2,12 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="720">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+        <v-btn
+          :color="randomMaterialColor()"
+          :elevation="randomElevation()"
+          v-bind="attrs"
+          v-on="on"
+        >
           <weird-text />
         </v-btn>
       </template>
@@ -30,25 +35,22 @@
 
 <script>
 import WeirdText from "~/components/WeirdText.vue";
+import {
+  randomMaterialColor,
+  randomIcon,
+  random,
+  randomElevation,
+} from "~/util";
+import { cardMixin } from "~/cardMixin";
 
 export default {
   components: { WeirdText },
+  mixins: [cardMixin],
   data() {
     return {
       dialog: false,
     };
   },
-  methods: {
-    forceNavigate() {
-      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-      console.log("emit to all");
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
-    },
-  },
+  methods: {},
 };
 </script>

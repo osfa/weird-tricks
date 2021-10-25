@@ -1,9 +1,9 @@
 <template>
   <component
-    v-bind:is="currentTabComponent"
-    :title="$page.post.title"
-    :heroImgUrl="$page.post.heroImage.file.url"
-    :hyperlink="$page.post.hyperlink"
+    v-bind:is="currentComponentType"
+    :title="title"
+    :heroImgUrl="heroImgUrl"
+    :hyperlink="hyperlink"
   ></component>
 </template>
 <script>
@@ -20,19 +20,7 @@ export default {
     hyperlink: { type: String, default: "./" },
   },
   data: () => ({
-    currentTabComponent: availableComponents.sample(),
+    currentComponentType: availableComponents.sample(),
   }),
-  methods: {
-    forceNavigate() {
-      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-      console.log("emit to all");
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
-    },
-  },
 };
 </script>

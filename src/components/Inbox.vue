@@ -1,6 +1,10 @@
 <template>
   <v-card class="mx-auto">
-    <v-toolbar color="cyan" dark>
+    <v-toolbar
+      :color="randomMaterialColor()"
+      :elevation="randomElevation()"
+      dark
+    >
       <v-app-bar-nav-icon @click="forceNavigate()"></v-app-bar-nav-icon>
 
       <v-toolbar-title><weird-text /></v-toolbar-title>
@@ -47,7 +51,14 @@
 </template>
 <script>
 import WeirdText from "~/components/WeirdText.vue";
-import { random, randomClickBait, randomText } from "~/util";
+import {
+  random,
+  randomMaterialColor,
+  randomElevation,
+  randomText,
+} from "~/util";
+
+import { cardMixin } from "~/cardMixin";
 
 export default {
   components: { WeirdText },
@@ -56,6 +67,7 @@ export default {
     heroImgUrl: { type: String, default: "" },
     hyperlink: { type: String, default: "./" },
   },
+  mixins: [cardMixin],
   data: function () {
     const items = [
       { header: "Today" },
@@ -80,17 +92,6 @@ export default {
     ];
     return { items };
   },
-  methods: {
-    forceNavigate() {
-      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-      console.log("emit to all");
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
-    },
-  },
+  methods: {},
 };
 </script>
