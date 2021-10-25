@@ -29,23 +29,23 @@
       <v-list nav dense>
         <v-list-item link to="/">
           <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
+            <v-icon color="black">mdi-home</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/</v-list-item-title>
+          <v-list-item-title class="black--text">/</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/nodes/">
           <v-list-item-icon>
-            <v-icon>mdi-format-list-bulleted-square</v-icon>
+            <v-icon color="black">mdi-format-list-bulleted-square</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/nodes</v-list-item-title>
+          <v-list-item-title class="black--text">/***</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/about/">
           <v-list-item-icon>
-            <v-icon>mdi-information-outline</v-icon>
+            <v-icon color="black">mdi-information-outline</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/about</v-list-item-title>
+          <v-list-item-title class="black--text">/???</v-list-item-title>
         </v-list-item>
-        <v-divider class="my-4"></v-divider>
+        <v-divider class="black my-4"></v-divider>
         <v-list-item
           :key="index"
           v-for="(m, index) in menuItems"

@@ -31,7 +31,7 @@ export default {
     height: 1024,
     dims: 512,
     speed: 100,
-    layerCount: 4,
+    layerCount: 5,
     opacityBase: 0.5,
     mainOpacity: 0.9,
     textures: [
