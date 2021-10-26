@@ -13,7 +13,7 @@
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
-        minZoom: 5,
+        minZoom: 4,
       }"
       :center="center"
       :zoom="zoom"
@@ -42,7 +42,7 @@
       >
       </gmap-polyline> -->
 
-      <GmapMarker
+      <!-- <GmapMarker
         :key="`cloud-${index}`"
         v-for="(m, index) in cloudMarkers"
         :position="m.position"
@@ -51,7 +51,7 @@
         :icon="m.icon"
         :label="m.label"
         @click="markerClick(m)"
-      />
+      /> -->
 
       <!-- <gmap-custom-marker
         :key="index"
@@ -112,7 +112,12 @@ import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
 import { gmapApi } from "gmap-vue";
 
 import { data as allLeyLinesData } from "~/data/geo/Leylines";
+import { data as currys } from "~/data/geo/Currys";
 
+// if (feature.getGeometry().getType() === "Point") {
+//       console.log("sync?");
+//       this.curryPointsGLatLng.push(feature.getGeometry().g);
+//     }
 const stockholm = { lat: 59.32181269185499, lng: 18.05670232773647 };
 const leyline1 = { lat: 25.489491583308883, lng: -4.7713413023755225 };
 const something = { lat: -28, lng: 137 };
@@ -133,9 +138,12 @@ export default {
     zoom: 8,
     currentMapType: "terrain",
     imgMarkers: [],
-    cloudMarkers: [],
+    // cloudMarkers: [],
     circleMarkers: [],
-    richFormatMarkers: [],
+    curryPoints: currys.map((e) => [
+      e.geometry.coordinates[1],
+      e.geometry.coordinates[0],
+    ]),
     center: centerStart,
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
@@ -158,157 +166,15 @@ export default {
   async mounted() {
     console.log("main mount");
     this.$store.commit("setMainContent", this.$static.nodes.edges);
-    await this.$gmapApiPromiseLazy();
+    // await this.$gmapApiPromiseLazy();
 
     // this.drawPatternMarkers(this.center.lat, this.center.lng);
 
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
+      this.drawLeyLines();
+      this.drawLocationArrows();
 
-      // // geojson
-      // this.map.data.addGeoJson(allLeyLinesData);
-
-      // var featureStyle = {
-      //   strokeColor: this.leyLinesColor,
-      //   strokeWeight: 1, // rand?
-      //   strokeOpacity: 0.5, // rand?
-      // };
-
-      //!!!1
-      // map.data.addListener('addfeature', function(e) {
-      //   //when it's a Line
-      //   if(e.feature.getGeometry().getType()==='LineString'){
-      //     //hide the feature
-      //     map.data.overrideStyle(e.feature, {visible: false});
-      //     //add a polyline
-      //     new google.maps.Polyline({path    : e.feature.getGeometry().getArray(),
-      //                               map     : this.getMap(),
-      //                               geodesic: true});
-      //   }
-      // });
-      /// !!
-
-      // map.data.setStyle(featureStyle);
-      // map.data.setStyle((feature) => {
-      //   let color = this.leyLinesColor;
-      //   let strokeWeight = random(1, 2);
-      //   const leyLineLayers = [
-      //     ["Octahedrons", randomMaterialColor()],
-      //     ["Rhombic Dodec", randomMaterialColor()],
-      //     ["Alison", randomMaterialColor()],
-      //     ["Icosahedron", randomMaterialColor()],
-      //     ["Dodecahedron", randomMaterialColor()],
-      //     ["I_Octahedron", randomMaterialColor()],
-      //     ["Cube", randomMaterialColor()],
-      //     ["Tetrahedron", randomMaterialColor()],
-      //     ["Triacontahedron", randomMaterialColor()],
-      //     ["--", randomMaterialColor()], // haagens
-      //   ];
-
-      //   leyLineLayers.forEach((leylineType) => {
-      //     if (feature.getProperty("Name").includes(leylineType[0])) {
-      //       color = leylineType[1];
-      //     }
-      //   });
-
-      //   if (feature.getProperty("Name").includes("Yang")) {
-      //     color = "black";
-      //     strokeWeight = 1.2;
-      //   }
-
-      //   if (feature.getProperty("Name").includes("Yin")) {
-      //     color = "white";
-      //     strokeWeight = 1.2;
-      //   }
-
-      //   return {
-      //     strokeColor: color,
-      //     strokeWeight: strokeWeight,
-      //     strokeOpacity: 0.5, // rand?
-      //   };
-      // });
-      // // geojson
-
-      var startLatLng = new google.maps.LatLng(
-        this.center.lat,
-        this.center.lng
-      );
-      var endLatLng = new google.maps.LatLng(
-        this.center.lat,
-        this.center.lng + 45
-      );
-
-      // normal middle
-      // var normalPolyline = new google.maps.Polyline({
-      //   path: [startLatLng, endLatLng],
-      //   strokeColor: "#0000FF",
-      //   strokeOpacity: 0.5,
-      //   strokeWeight: 2,
-      //   map: this.map,
-      // });
-      // console.log(startLatLng);
-
-      // var normalCenterPoint = normalPolyline.GetPointAtDistance(
-      //   startLatLng.distanceFrom(endLatLng) / 2
-      // );
-      // console.log("normalCenterPoint: ", normalCenterPoint);
-
-      // this.cloudMarkers = [
-      //   {
-      //     position: {
-      //       lat: normalCenterPoint.lat(),
-      //       lng: normalCenterPoint.lng(),
-      //     },
-      //   },
-      // ];
-      function geodesicPolyline(start, end) {
-        var points = 50;
-        // bounds.extend(start);
-        // bounds.extend(end);
-
-        var geodesicPoints = new Array();
-        // with (Math) {
-        var lat1 = start.lat() * (Math.PI / 180);
-        var lon1 = start.lng() * (Math.PI / 180);
-        var lat2 = end.lat() * (Math.PI / 180);
-        var lon2 = end.lng() * (Math.PI / 180);
-
-        var d =
-          2 *
-          Math.asin(
-            Math.sqrt(
-              Math.pow(Math.sin((lat1 - lat2) / 2), 2) +
-                Math.cos(lat1) *
-                  Math.cos(lat2) *
-                  Math.pow(Math.sin((lon1 - lon2) / 2), 2)
-            )
-          );
-
-        for (var n = 0; n < points + 1; n++) {
-          var f = (1 / points) * n;
-          // f = f.toFixed(6);
-          var A = Math.sin((1 - f) * d) / Math.sin(d);
-          var B = Math.sin(f * d) / Math.sin(d);
-          var x =
-            A * Math.cos(lat1) * Math.cos(lon1) +
-            B * Math.cos(lat2) * Math.cos(lon2);
-          var y =
-            A * Math.cos(lat1) * Math.sin(lon1) +
-            B * Math.cos(lat2) * Math.sin(lon2);
-          var z = A * Math.sin(lat1) + B * Math.sin(lat2);
-
-          var latN = Math.atan2(z, Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)));
-          var lonN = Math.atan2(y, x);
-          var p = new google.maps.LatLng(
-            latN / (Math.PI / 180),
-            lonN / (Math.PI / 180)
-          );
-          geodesicPoints.push(p);
-          // bounds.extend(p);
-        }
-        // }
-        return geodesicPoints;
-      }
       // var geodesicPoly = new google.maps.Polyline({
       //   path: [startLatLng, endLatLng],
       //   strokeColor: "#00FF00",
@@ -317,71 +183,7 @@ export default {
       //   geodesic: true,
       //   map: this.map,
       // });
-      // console.log("reg:", geodesicPoly.getPath());
-
-      var lineCoordinates = [
-        new google.maps.LatLng(53.215556, 56.949219),
-        new google.maps.LatLng(75.797201, 125.003906),
-        new google.maps.LatLng(37.7833, 144.9667),
-        new google.maps.LatLng(-24.797201, 26.003906),
-        new google.maps.LatLng(27.797201, -101.003906),
-      ];
-
-      // https://developers.google.com/maps/documentation/javascript/symbols#predefined
-      var lineSymbol = {
-        path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-      };
-
-      var domain = [new google.maps.LatLng(this.center.lat, this.center.lng)];
-      for (let i = 0; i < lineCoordinates.length; i++) {
-        const line = new google.maps.Polyline({
-          path: [lineCoordinates[i], domain[0]],
-          strokeOpacity: 0.8,
-          strokeWeight: 1,
-          strokeColor: randomMaterialColor(),
-          geodesic: true,
-          map: this.map,
-          icons: [
-            {
-              icon: lineSymbol,
-              offset: "80%",
-              repeat: "30px",
-            },
-          ],
-        });
-        // line.setMap(this.map);
-        // lines.push(line);
-      } //end of for loop
-
-      // var calcGeodesic = geodesicPolyline(startLatLng, endLatLng);
-      // console.log("returned?", calcGeodesic);
-      // var calcGeodesicPolyline = new google.maps.Polyline({
-      //   path: calcGeodesic,
-      //   strokeColor: "#FF0000",
-      //   strokeOpacity: 0.5,
-      //   strokeWeight: 2,
-      //   geodesic: true,
-      //   map: this.map,
-      // });
-
-      // console.log("calced:", calcGeodesicPolyline.getPath());
-
       // this.path = geodesicPolyline(startLatLng, endLatLng);
-
-      // var geodesicCenterPoint = calcGeodesicPolyline.GetPointAtDistance(
-      //   startLatLng.distanceFrom(endLatLng) / 2
-      // );
-
-      // var projection = map.getProjection();
-      // var startPoint = projection.fromLatLngToPoint(startLatLng);
-      // var endPoint = projection.fromLatLngToPoint(endLatLng);
-
-      // var midPoint = new google.maps.Point(
-      //   (startPoint.x + endPoint.x) / 2,
-      //   (startPoint.y + endPoint.y) / 2
-      // );
-      // var midLatLng = projection.fromPointToLatLng(midPoint);
-      // console.log(midLatLng);
     });
   },
   computed: {
@@ -411,6 +213,104 @@ export default {
         random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
         random(5, 10) // ring count
       );
+    },
+    drawLocationArrows() {
+      // draw new arrow for each moevemnt? diff color diff pattern?
+      var lineCoordinates = [
+        new google.maps.LatLng(53.215556, 56.949219),
+        new google.maps.LatLng(75.797201, 125.003906),
+        new google.maps.LatLng(37.7833, 144.9667),
+        new google.maps.LatLng(-24.797201, 26.003906),
+        new google.maps.LatLng(27.797201, -101.003906),
+      ];
+
+      // https://developers.google.com/maps/documentation/javascript/symbols#predefined
+      var lineSymbol = {
+        path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+      };
+
+      const curryPointsGLatLng = this.curryPoints.map(
+        (c) => new google.maps.LatLng(c[0], c[1])
+      );
+      lineCoordinates = curryPointsGLatLng;
+      const gCenter = new google.maps.LatLng(this.center.lat, this.center.lng);
+      lineCoordinates.forEach((l) => {
+        const line = new google.maps.Polyline({
+          path: [l, gCenter],
+          strokeOpacity: 0.5,
+          strokeWeight: 0.5,
+          strokeColor: "#ff0000",
+          geodesic: true,
+          map: this.map,
+          icons: [
+            {
+              icon: lineSymbol,
+              offset: "80%",
+              repeat: "30px",
+            },
+          ],
+        });
+      });
+    },
+    async drawLeyLines() {
+      this.map.data.addGeoJson(allLeyLinesData);
+
+      var featureStyle = {
+        strokeColor: this.leyLinesColor,
+        strokeWeight: 1, // rand?
+        strokeOpacity: 0.5, // rand?
+      };
+
+      this.map.data.addListener("addfeature", function (e) {
+        if (e.feature.getGeometry().getType() === "LineString") {
+          map.data.overrideStyle(e.feature, { visible: false });
+          new google.maps.Polyline({
+            path: e.feature.getGeometry().getArray(),
+            map: this.map,
+            geodesic: true,
+          });
+        }
+      });
+
+      this.map.data.setStyle(featureStyle);
+      this.map.data.setStyle((feature) => {
+        let color = this.leyLinesColor;
+        let strokeWeight = random(1, 2);
+        const leyLineLayers = [
+          ["Octahedrons", randomMaterialColor()],
+          ["Rhombic Dodec", randomMaterialColor()],
+          ["Alison", randomMaterialColor()],
+          ["Icosahedron", randomMaterialColor()],
+          ["Dodecahedron", randomMaterialColor()],
+          ["I_Octahedron", randomMaterialColor()],
+          ["Cube", randomMaterialColor()],
+          ["Tetrahedron", randomMaterialColor()],
+          ["Triacontahedron", randomMaterialColor()],
+          ["--", randomMaterialColor()], // haagens
+        ];
+
+        leyLineLayers.forEach((leylineType) => {
+          if (feature.getProperty("Name").includes(leylineType[0])) {
+            color = leylineType[1];
+          }
+        });
+
+        if (feature.getProperty("Name").includes("Yang")) {
+          color = "black";
+          strokeWeight = 1;
+        }
+
+        if (feature.getProperty("Name").includes("Yin")) {
+          color = "white";
+          strokeWeight = 1;
+        }
+
+        return {
+          strokeColor: color,
+          strokeWeight: strokeWeight,
+          strokeOpacity: 0.5, // rand?
+        };
+      });
     },
     strokeColor() {
       return randomMaterialColor();
@@ -445,7 +345,9 @@ export default {
         [-76.6633538306274, -145.91635401881496],
         [38.29694761047134, 45.42145298326993],
         [33.862490337877226, 73.90984347581889],
+        ...this.curryPoints,
       ];
+
       this.$nextTick(() => {
         if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {

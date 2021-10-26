@@ -1,7 +1,7 @@
 <template>
   <div class="clock-container font-weight-light">
     <div v-if="isUnixTime" class="clock-inner">
-      <div class="hour">{{ unix }}</div>
+      <div class="hour text-black">{{ unix }}</div>
     </div>
     <div v-else class="clock-inner">
       <div class="hour">{{ hours }}</div>
@@ -32,11 +32,11 @@ export default {
     setTime() {
       setInterval(() => {
         const date = new Date();
-        this.unix = Math.round(date.getTime() / 1000);
+        this.unix = Math.round(date.getTime() / 100);
         this.hours = date.getHours();
         this.minutes = this.checkSingleDigit(date.getMinutes());
         this.seconds = this.checkSingleDigit(date.getSeconds());
-      }, 1000);
+      }, 100);
     },
     checkSingleDigit(digit) {
       return ("0" + digit).slice(-2);
@@ -57,8 +57,8 @@ export default {
   flex-direction: column;
   z-index: 1000;
   position: fixed;
-  bottom: 80px;
-  right: 130px;
+  bottom: 70px;
+  right: 20px;
   font-family: "Roboto";
   color: white;
 }
@@ -66,7 +66,7 @@ export default {
 .min,
 .secs,
 .dots {
-  font-size: 24px;
+  font-size: 16px;
 }
 .clock-inner {
   display: flex;

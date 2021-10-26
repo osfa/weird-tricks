@@ -7,6 +7,7 @@
           :elevation="randomElevation()"
           v-bind="attrs"
           v-on="on"
+          dark
         >
           <weird-text />
         </v-btn>
