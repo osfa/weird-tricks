@@ -18,11 +18,11 @@
       </template>
     </v-img>
 
-    <v-card-title v-text="$page.post.title"></v-card-title>
+    <v-card-title v-if="false" v-text="$page.post.title"></v-card-title>
     <v-card-text v-if="false">
       <node-dialog :iframe-url="hyperlink" />
     </v-card-text>
-    <v-btn
+    <!-- <v-btn
       @click="forceNavigate"
       fab
       :color="randomMaterialColor()"
@@ -43,7 +43,7 @@
       absolute
     >
       <v-icon>{{ randomIcon() }}</v-icon>
-    </v-btn>
+    </v-btn> -->
     <v-btn
       @click="forceNavigate"
       fab

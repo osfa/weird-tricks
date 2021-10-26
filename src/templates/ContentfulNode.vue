@@ -55,6 +55,8 @@
         }
       },
       hyperlink
+      youTubeEmbed
+      title
     }
   }
 </page-query>

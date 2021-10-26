@@ -57,7 +57,7 @@ export default {
   flex-direction: column;
   z-index: 1000;
   position: fixed;
-  bottom: 70px;
+  bottom: 68px;
   right: 20px;
   font-family: "Roboto";
   color: white;
@@ -66,7 +66,7 @@ export default {
 .min,
 .secs,
 .dots {
-  font-size: 16px;
+  font-size: 14.5px;
 }
 .clock-inner {
   display: flex;
