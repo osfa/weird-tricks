@@ -28,7 +28,7 @@
     <v-card>
       <iframe
         id="ifrm"
-        :src="iframeUrl"
+        :src="iframeSrc"
         style="height: 100vh; width: 100%"
       ></iframe>
 
@@ -55,10 +55,10 @@ export default {
   data: () => ({
     dialog: false,
   }),
-  mounted() {
-    if (this.iframeUrl === "null") {
-      this.iframeUrl = "http://www.dn.se";
-    }
+  computed: {
+    iframeSrc() {
+      return this.iframeUrl === "null" ? "http://www.dn.se" : this.iframeUrl;
+    },
   },
   methods: {},
 };

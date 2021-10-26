@@ -36,12 +36,11 @@
       >
       </ground-overlay>
 
-      <gmap-polyline
-        v-if="false"
+      <!-- <gmap-polyline
         v-bind:path.sync="path"
-        v-bind:options="{ strokeColor: strokeColor() }"
+        v-bind:options="{ strokeColor: strokeColor(), geodesic: true }"
       >
-      </gmap-polyline>
+      </gmap-polyline> -->
 
       <GmapMarker
         :key="`cloud-${index}`"
@@ -161,113 +160,229 @@ export default {
     this.$store.commit("setMainContent", this.$static.nodes.edges);
     await this.$gmapApiPromiseLazy();
 
-    this.drawPatternMarkers(this.center.lat, this.center.lng);
+    // this.drawPatternMarkers(this.center.lat, this.center.lng);
 
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
 
-      this.map.data.addGeoJson(allLeyLinesData);
+      // // geojson
+      // this.map.data.addGeoJson(allLeyLinesData);
 
-      var featureStyle = {
-        strokeColor: this.leyLinesColor,
-        strokeWeight: 1, // rand?
-        strokeOpacity: 0.5, // rand?
+      // var featureStyle = {
+      //   strokeColor: this.leyLinesColor,
+      //   strokeWeight: 1, // rand?
+      //   strokeOpacity: 0.5, // rand?
+      // };
+
+      //!!!1
+      // map.data.addListener('addfeature', function(e) {
+      //   //when it's a Line
+      //   if(e.feature.getGeometry().getType()==='LineString'){
+      //     //hide the feature
+      //     map.data.overrideStyle(e.feature, {visible: false});
+      //     //add a polyline
+      //     new google.maps.Polyline({path    : e.feature.getGeometry().getArray(),
+      //                               map     : this.getMap(),
+      //                               geodesic: true});
+      //   }
+      // });
+      /// !!
+
+      // map.data.setStyle(featureStyle);
+      // map.data.setStyle((feature) => {
+      //   let color = this.leyLinesColor;
+      //   let strokeWeight = random(1, 2);
+      //   const leyLineLayers = [
+      //     ["Octahedrons", randomMaterialColor()],
+      //     ["Rhombic Dodec", randomMaterialColor()],
+      //     ["Alison", randomMaterialColor()],
+      //     ["Icosahedron", randomMaterialColor()],
+      //     ["Dodecahedron", randomMaterialColor()],
+      //     ["I_Octahedron", randomMaterialColor()],
+      //     ["Cube", randomMaterialColor()],
+      //     ["Tetrahedron", randomMaterialColor()],
+      //     ["Triacontahedron", randomMaterialColor()],
+      //     ["--", randomMaterialColor()], // haagens
+      //   ];
+
+      //   leyLineLayers.forEach((leylineType) => {
+      //     if (feature.getProperty("Name").includes(leylineType[0])) {
+      //       color = leylineType[1];
+      //     }
+      //   });
+
+      //   if (feature.getProperty("Name").includes("Yang")) {
+      //     color = "black";
+      //     strokeWeight = 1.2;
+      //   }
+
+      //   if (feature.getProperty("Name").includes("Yin")) {
+      //     color = "white";
+      //     strokeWeight = 1.2;
+      //   }
+
+      //   return {
+      //     strokeColor: color,
+      //     strokeWeight: strokeWeight,
+      //     strokeOpacity: 0.5, // rand?
+      //   };
+      // });
+      // // geojson
+
+      var startLatLng = new google.maps.LatLng(
+        this.center.lat,
+        this.center.lng
+      );
+      var endLatLng = new google.maps.LatLng(
+        this.center.lat,
+        this.center.lng + 45
+      );
+
+      // normal middle
+      // var normalPolyline = new google.maps.Polyline({
+      //   path: [startLatLng, endLatLng],
+      //   strokeColor: "#0000FF",
+      //   strokeOpacity: 0.5,
+      //   strokeWeight: 2,
+      //   map: this.map,
+      // });
+      // console.log(startLatLng);
+
+      // var normalCenterPoint = normalPolyline.GetPointAtDistance(
+      //   startLatLng.distanceFrom(endLatLng) / 2
+      // );
+      // console.log("normalCenterPoint: ", normalCenterPoint);
+
+      // this.cloudMarkers = [
+      //   {
+      //     position: {
+      //       lat: normalCenterPoint.lat(),
+      //       lng: normalCenterPoint.lng(),
+      //     },
+      //   },
+      // ];
+      function geodesicPolyline(start, end) {
+        var points = 50;
+        // bounds.extend(start);
+        // bounds.extend(end);
+
+        var geodesicPoints = new Array();
+        // with (Math) {
+        var lat1 = start.lat() * (Math.PI / 180);
+        var lon1 = start.lng() * (Math.PI / 180);
+        var lat2 = end.lat() * (Math.PI / 180);
+        var lon2 = end.lng() * (Math.PI / 180);
+
+        var d =
+          2 *
+          Math.asin(
+            Math.sqrt(
+              Math.pow(Math.sin((lat1 - lat2) / 2), 2) +
+                Math.cos(lat1) *
+                  Math.cos(lat2) *
+                  Math.pow(Math.sin((lon1 - lon2) / 2), 2)
+            )
+          );
+
+        for (var n = 0; n < points + 1; n++) {
+          var f = (1 / points) * n;
+          // f = f.toFixed(6);
+          var A = Math.sin((1 - f) * d) / Math.sin(d);
+          var B = Math.sin(f * d) / Math.sin(d);
+          var x =
+            A * Math.cos(lat1) * Math.cos(lon1) +
+            B * Math.cos(lat2) * Math.cos(lon2);
+          var y =
+            A * Math.cos(lat1) * Math.sin(lon1) +
+            B * Math.cos(lat2) * Math.sin(lon2);
+          var z = A * Math.sin(lat1) + B * Math.sin(lat2);
+
+          var latN = Math.atan2(z, Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)));
+          var lonN = Math.atan2(y, x);
+          var p = new google.maps.LatLng(
+            latN / (Math.PI / 180),
+            lonN / (Math.PI / 180)
+          );
+          geodesicPoints.push(p);
+          // bounds.extend(p);
+        }
+        // }
+        return geodesicPoints;
+      }
+      // var geodesicPoly = new google.maps.Polyline({
+      //   path: [startLatLng, endLatLng],
+      //   strokeColor: "#00FF00",
+      //   strokeOpacity: 0.5,
+      //   strokeWeight: 2,
+      //   geodesic: true,
+      //   map: this.map,
+      // });
+      // console.log("reg:", geodesicPoly.getPath());
+
+      var lineCoordinates = [
+        new google.maps.LatLng(53.215556, 56.949219),
+        new google.maps.LatLng(75.797201, 125.003906),
+        new google.maps.LatLng(37.7833, 144.9667),
+        new google.maps.LatLng(-24.797201, 26.003906),
+        new google.maps.LatLng(27.797201, -101.003906),
+      ];
+
+      // https://developers.google.com/maps/documentation/javascript/symbols#predefined
+      var lineSymbol = {
+        path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
       };
 
-      map.data.setStyle(featureStyle);
-      map.data.setStyle((feature) => {
-        let color = this.leyLinesColor;
-        let strokeWeight = random(1, 2);
-        const leyLineLayers = [
-          ["Octahedrons", randomMaterialColor()],
-          ["Rhombic Dodec", randomMaterialColor()],
-          ["Alison", randomMaterialColor()],
-          ["Icosahedron", randomMaterialColor()],
-          ["Dodecahedron", randomMaterialColor()],
-          ["I_Octahedron", randomMaterialColor()],
-          ["Cube", randomMaterialColor()],
-          ["Tetrahedron", randomMaterialColor()],
-          ["Triacontahedron", randomMaterialColor()],
-          ["--", randomMaterialColor()], // haagens
-        ];
-
-        leyLineLayers.forEach((leylineType) => {
-          if (feature.getProperty("Name").includes(leylineType[0])) {
-            color = leylineType[1];
-          }
+      var domain = [new google.maps.LatLng(this.center.lat, this.center.lng)];
+      for (let i = 0; i < lineCoordinates.length; i++) {
+        const line = new google.maps.Polyline({
+          path: [lineCoordinates[i], domain[0]],
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          strokeColor: randomMaterialColor(),
+          geodesic: true,
+          map: this.map,
+          icons: [
+            {
+              icon: lineSymbol,
+              offset: "80%",
+              repeat: "30px",
+            },
+          ],
         });
+        // line.setMap(this.map);
+        // lines.push(line);
+      } //end of for loop
 
-        if (feature.getProperty("Name").includes("Yang")) {
-          color = "black";
-          strokeWeight = 1.2;
-        }
+      // var calcGeodesic = geodesicPolyline(startLatLng, endLatLng);
+      // console.log("returned?", calcGeodesic);
+      // var calcGeodesicPolyline = new google.maps.Polyline({
+      //   path: calcGeodesic,
+      //   strokeColor: "#FF0000",
+      //   strokeOpacity: 0.5,
+      //   strokeWeight: 2,
+      //   geodesic: true,
+      //   map: this.map,
+      // });
 
-        if (feature.getProperty("Name").includes("Yin")) {
-          color = "white";
-          strokeWeight = 1.2;
-        }
+      // console.log("calced:", calcGeodesicPolyline.getPath());
 
-        return {
-          strokeColor: color,
-          strokeWeight: strokeWeight,
-          strokeOpacity: 0.5, // rand?
-        };
-      });
+      // this.path = geodesicPolyline(startLatLng, endLatLng);
+
+      // var geodesicCenterPoint = calcGeodesicPolyline.GetPointAtDistance(
+      //   startLatLng.distanceFrom(endLatLng) / 2
+      // );
+
+      // var projection = map.getProjection();
+      // var startPoint = projection.fromLatLngToPoint(startLatLng);
+      // var endPoint = projection.fromLatLngToPoint(endLatLng);
+
+      // var midPoint = new google.maps.Point(
+      //   (startPoint.x + endPoint.x) / 2,
+      //   (startPoint.y + endPoint.y) / 2
+      // );
+      // var midLatLng = projection.fromPointToLatLng(midPoint);
+      // console.log(midLatLng);
     });
-
-    var startLatLng = new google.maps.LatLng(
-      this.path[1].lat,
-      this.path[1].lng
-    );
-    var endLatLng = new google.maps.LatLng(this.path[0].lat, this.path[0].lng);
-
-    // normal middle
-    // var normalPolyline = new google.maps.Polyline({
-    //   path: [startLatLng, endLatLng],
-    //   strokeColor: "#0000FF",
-    //   strokeOpacity: 0.5,
-    //   strokeWeight: 2,
-    //   map: this.map,
-    // });
-    // console.log(startLatLng);
-
-    // var normalCenterPoint = normalPolyline.GetPointAtDistance(
-    //   startLatLng.distanceFrom(endLatLng) / 2
-    // );
-    // console.log("normalCenterPoint: ", normalCenterPoint);
-
-    // this.cloudMarkers = [
-    //   {
-    //     position: {
-    //       lat: normalCenterPoint.lat(),
-    //       lng: normalCenterPoint.lng(),
-    //     },
-    //   },
-    // ];
-
-    // var geodesicPoly = new google.maps.Polyline({
-    //   path: [startLatLng, endLatLng],
-    //   strokeColor: "#00FF00",
-    //   strokeOpacity: 0.5,
-    //   strokeWeight: 2,
-    //   geodesic: true,
-    //   map: this.map,
-    // });
-
-    // var geodesicCenterPoint = calcGeodesicPolyline.GetPointAtDistance(
-    //   startLatLng.distanceFrom(endLatLng) / 2
-    // );
-
-    // var projection = map.getProjection();
-    // var startPoint = projection.fromLatLngToPoint(startLatLng);
-    // var endPoint = projection.fromLatLngToPoint(endLatLng);
-
-    // var midPoint = new google.maps.Point(
-    //   (startPoint.x + endPoint.x) / 2,
-    //   (startPoint.y + endPoint.y) / 2
-    // );
-    // var midLatLng = projection.fromPointToLatLng(midPoint);
-    // console.log(midLatLng);
   },
   computed: {
     mapStyles() {
