@@ -1,6 +1,7 @@
 <template>
   <MainLayout>
     <v-app id="app">
+      <Clock />
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
@@ -85,6 +86,7 @@ import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
 import CloudPng from "~/components/clouds/CloudPng.vue";
+import Clock from "~/components/Clock.vue";
 
 import * as Tone from "tone";
 
@@ -96,6 +98,7 @@ export default {
     MainLayout,
     RegularNav,
     FooterNav,
+    Clock,
   },
   data: () => ({
     showHeader: true,

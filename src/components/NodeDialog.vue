@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         style="z-index: 50; pointer-events: auto"
-        :class="isFixed ? 'mb-16' : ''"
+        :style="isFixed ? 'bottom: 75px;' : ''"
         :color="isFixed ? 'yellow darken-2' : 'primary'"
         :elevation="3"
         x-large
@@ -19,7 +19,6 @@
         v-on="on"
         :fixed="isFixed"
         right
-        bottom
         mt-2
       >
         <v-icon>mdi-link</v-icon>
