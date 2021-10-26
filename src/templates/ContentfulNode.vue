@@ -3,6 +3,7 @@
     <!-- background image overlay -->
     <!-- COMPONENT -->
     <div
+      v-if="$page.post.heroImage"
       :style="`background-image: url('${$page.post.heroImage.file.url}?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
@@ -33,6 +34,7 @@
             style="pointer-events: auto"
           >
             <weird-card
+              v-if="$page.post.heroImage"
               :title="$page.post.title"
               :heroImgUrl="$page.post.heroImage.file.url"
               :hyperlink="$page.post.hyperlink"

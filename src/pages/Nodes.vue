@@ -32,6 +32,7 @@
             :elevation="randomElevation()"
           >
             <v-img
+              v-if="node.heroImage"
               :key="node.heroImage.file.url"
               :src="`${node.heroImage.file.url}?fit=scale&w=800`"
             >

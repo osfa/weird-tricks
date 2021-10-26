@@ -12,6 +12,7 @@
     >
       <v-card>
         <v-img
+          v-if="$page.post.heroImage"
           :src="`${$page.post.heroImage.file.url}?fit=fill&w=1800&h=1200`"
           class="white--text align-end"
           height="600px"

@@ -1,6 +1,7 @@
 <template>
   <v-card>
     <v-img
+      v-if="$page.post.heroImage"
       :key="$page.post.heroImage.file.url"
       @load="onImgLoad"
       :src="`${$page.post.heroImage.file.url}?fit=scale&w=1600`"
