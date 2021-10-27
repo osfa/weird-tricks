@@ -15,7 +15,7 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-img :src="`${this.heroImgUrl}?fit=scale&w=1600`"> </v-img>
+    <content-block />
     <v-list three-line>
       <template v-for="(item, index) in items">
         <v-subheader
@@ -51,6 +51,8 @@
 </template>
 <script>
 import WeirdText from "~/components/WeirdText.vue";
+import ContentBlock from "~/components/ContentBlock.vue";
+
 import {
   random,
   randomMaterialColor,
@@ -61,7 +63,7 @@ import {
 import { cardMixin } from "~/cardMixin";
 
 export default {
-  components: { WeirdText },
+  components: { WeirdText, ContentBlock },
   props: {
     title: { type: String, default: "title" },
     heroImgUrl: { type: String, default: "" },

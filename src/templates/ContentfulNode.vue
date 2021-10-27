@@ -34,9 +34,7 @@
             style="pointer-events: auto"
           >
             <weird-card
-              v-if="$page.post.heroImage"
               :title="$page.post.title"
-              :heroImgUrl="$page.post.heroImage.file.url"
               :hyperlink="$page.post.hyperlink"
             />
           </div>

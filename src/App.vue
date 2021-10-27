@@ -104,7 +104,7 @@ export default {
     showHeader: true,
     showFooter: true,
     volume: -30,
-    rainVolume: -10,
+    rainVolume: -5,
     leftEar: undefined,
     rightEar: undefined,
     binauralBeat: INITIAL_FREQ,
