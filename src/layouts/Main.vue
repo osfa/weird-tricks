@@ -75,8 +75,6 @@
     </GmapMap>
 
     <slot />
-
-    <CloudDisplay v-if="false" />
   </div>
 </template>
 
@@ -99,7 +97,6 @@
 </static-query>
 
 <script>
-import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 import {
   generateRandomStyle,
@@ -130,7 +127,6 @@ const tilt = 90;
 
 export default {
   components: {
-    CloudDisplay,
     "gmap-custom-marker": GmapCustomMarker,
   },
   data: () => ({

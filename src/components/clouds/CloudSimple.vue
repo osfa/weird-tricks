@@ -29,7 +29,7 @@ export default {
     width: { type: Number, default: 500 },
     height: { type: Number, default: 100 },
 
-    opacity: { type: Number, default: 0.9 },
+    opacity: { type: Number, default: 0.95 },
 
     // box shadow vals
     // blurVal: { type: Number, default: 19 },
@@ -39,7 +39,7 @@ export default {
     // baseFrequencyVal: { type: Number, default: 0.011 },
 
     // hazy
-    blurVal: { type: Number, default: 100 },
+    blurVal: { type: Number, default: 80 },
     spreadVal: { type: Number, default: 50 },
 
     scaleVal: { type: Number, default: 220 },
@@ -62,7 +62,7 @@ export default {
         width: `${this.width}px`,
         height: `${this.height}px`,
 
-        animation: `movecloud ${this.speed / 2}s ease infinite`,
+        // animation: `movecloud ${this.speed}s ease infinite`,
 
         filter: `url(#${this.filterId})`,
 

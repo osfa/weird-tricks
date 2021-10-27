@@ -47,6 +47,7 @@
       <transition mode="out-in" appear :name="currentAnimation"
         ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
       /></transition>
+      <!-- <CloudDisplay /> -->
     </v-app>
   </MainLayout>
 </template>
@@ -86,6 +87,7 @@ import MainLayout from "~/layouts/Main.vue";
 import RegularNav from "~/components/nav/RegularNav.vue";
 import FooterNav from "~/components/nav/FooterNav.vue";
 import CloudPng from "~/components/clouds/CloudPng.vue";
+import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import Clock from "~/components/Clock.vue";
 
 import * as Tone from "tone";
@@ -95,6 +97,7 @@ const INITIAL_FREQ = 2;
 export default {
   components: {
     CloudPng,
+    CloudDisplay,
     MainLayout,
     RegularNav,
     FooterNav,

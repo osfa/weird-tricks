@@ -14,12 +14,10 @@
       </template>
       <v-card>
         <v-card-title class="text-h5">
-          Use Google's location service?
+          <weird-text />
         </v-card-title>
-        <v-card-text
-          >Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.</v-card-text
-        >
+        <v-card-text><ContentBlock /></v-card-text>
+        <v-card-text><weird-text /></v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" text @click="forceNavigate()">
@@ -43,9 +41,10 @@ import {
   randomElevation,
 } from "~/util";
 import { cardMixin } from "~/cardMixin";
+import ContentBlock from "~/components/ContentBlock.vue";
 
 export default {
-  components: { WeirdText },
+  components: { WeirdText, ContentBlock },
   mixins: [cardMixin],
   data() {
     return {
