@@ -1,3 +1,30 @@
+# unixstamp of node on top of clock?
+
+# some sort of score that goes up and counts upp?
+
+- mega content seed?
+
+- different small markers...
+
+- ramp volume?
+- dialog bug...dark somehow when closing?
+
+- farm wad datasets? imagenet segmentaitons etc?
+
+- sometimes just elements (like thre centered buttons) sometimes content?
+
+- buttons in nav that go to certain leylines? shine up?
+
+- write long lat in coords at top? save positions and show somehow?
+
+- animate color on link button or some other attribute have fixed floating? like floating action animate?
+
+- randomized pages in the expander menu? with humaans ranomdizer etc
+
+- important to have docked compeontn sometimes? like bottom bar? so u can see better
+
+- gan people stockphoto
+
 # clouds / layers / tilsets
 
 - star map layer? star charts? horoscopes?
@@ -61,7 +88,7 @@ naming: weird card, weird text, weird icon, etc - need a weirdcard and weirdcomp
 
 - just make lots of types of cards? and render with vid or pic? -> link. rest generated somehow.
 - just use whatever is in the vuetify demo? and randomly add image and ulr. text just garbled? **\*\***
-  WeirdText with type etc - just the toal collapse of meaning of symbols and value? ltters int he graph etc? func that retunrs random data return? ****\*\***** numbers, gpt sentence, icon? icon pattern? url. link button. link button needs to be consistent? searc hits just url or title? what is the readble thing? redaction and cenersoign covering text in colors?
+  WeirdText with type etc - just the toal collapse of meaning of symbols and value? ltters int he graph etc? func that retunrs random data return? \***\*\*\*\*\*** numbers, gpt sentence, icon? icon pattern? url. link button. link button needs to be consistent? searc hits just url or title? what is the readble thing? redaction and cenersoign covering text in colors?
 
 - anything that is a number ranomdize?
 
