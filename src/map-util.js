@@ -5,6 +5,17 @@ const cloudAsset1 = require("~/assets/imgs/cloud1.png"); // require if assets
 const cloudAsset2 = require("~/assets/imgs/cloud2.png"); // require if assets
 const cloudAsset3 = require("~/assets/imgs/cloud3.png"); // require if assets
 
+const googleMarkers = [
+  require("~/assets/markers/blue-dot.png"),
+  require("~/assets/markers/green-dot.png"),
+  require("~/assets/markers/ltblue-dot.png"),
+  require("~/assets/markers/orange-dot.png"),
+  require("~/assets/markers/pink-dot.png"),
+  require("~/assets/markers/purple-dot.png"),
+  require("~/assets/markers/red-dot.png"),
+  require("~/assets/markers/yellow-dot.png"),
+];
+
 // https://khms1.google.com/kh/v=908?x=36&y=17&z=6
 // https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection/
 
@@ -142,6 +153,11 @@ export const getCircleMarkers = (
         id: idx,
         lat: m.lat(),
         lng: m.lng(),
+      },
+      icon: {
+        url: googleMarkers.sample(),
+        size: { width: 32, height: 32, f: "px", b: "px" },
+        scaledSize: { width: 16, height: 16, f: "px", b: "px" },
       },
     };
   });

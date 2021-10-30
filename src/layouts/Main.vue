@@ -164,12 +164,11 @@ export default {
     this.$store.commit("setMainContent", this.$static.nodes.edges);
     // await this.$gmapApiPromiseLazy();
 
-    // this.drawPatternMarkers(this.center.lat, this.center.lng);
-
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
       this.drawLeyLines();
       this.drawLocationArrows();
+      this.drawPatternMarkers(this.center.lat, this.center.lng);
 
       // var geodesicPoly = new google.maps.Polyline({
       //   path: [startLatLng, endLatLng],
@@ -202,12 +201,13 @@ export default {
       console.log("click at:", event.latLng.lat(), event.latLng.lng());
     },
     drawPatternMarkers(lat, lng) {
-      const offset = 1;
+      const offset = 0;
       this.circleMarkers = getCircleMarkers(
         lat - offset,
         lng - offset,
-        random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
+        parseInt(this.zoom / 8) * 100, // random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
         random(5, 10) // ring count
+        // 10
       );
     },
     drawLocationArrows() {
