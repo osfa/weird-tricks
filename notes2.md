@@ -61,7 +61,7 @@ naming: weird card, weird text, weird icon, etc - need a weirdcard and weirdcomp
 
 - just make lots of types of cards? and render with vid or pic? -> link. rest generated somehow.
 - just use whatever is in the vuetify demo? and randomly add image and ulr. text just garbled? **\*\***
-  WeirdText with type etc - just the toal collapse of meaning of symbols and value? ltters int he graph etc? func that retunrs random data return? ****\*\***** numbers, gpt sentence, icon? icon pattern? url. link button. link button needs to be consistent? searc hits just url or title? what is the readble thing? redaction and cenersoign covering text in colors?
+  WeirdText with type etc - just the toal collapse of meaning of symbols and value? ltters int he graph etc? func that retunrs random data return? \***\*\*\*\*\*** numbers, gpt sentence, icon? icon pattern? url. link button. link button needs to be consistent? searc hits just url or title? what is the readble thing? redaction and cenersoign covering text in colors?
 
 - anything that is a number ranomdize?
 
@@ -82,3 +82,83 @@ also index with patterns of the same objects? like circles and squares and just 
 
 38.29694761047134 45.42145298326993
 33.862490337877226 73.90984347581889
+
+      var div = document.createElement("div");
+      div.className = "cloudBase";
+      var x = 256 - Math.random() * 512;
+      var y = 256 - Math.random() * 512;
+      var z = 256 - Math.random() * 512;
+      var t =
+        "translateX( " +
+        x +
+        "px ) translateY( " +
+        y +
+        "px ) translateZ( " +
+        z +
+        "px )";
+      div.style.webkitTransform =
+        div.style.MozTransform =
+        div.style.oTransform =
+        div.style.transform =
+          t;
+      document.body.appendChild(div);
+
+      for (var j = 0; j < 5 + Math.round(Math.random() * 10); j++) {
+        var cloud = document.createElement("img");
+        cloud.style.opacity = 0;
+        var r = Math.random();
+        var src = "troll.png";
+        for (var k = 0; k < computedWeights.length; k++) {
+          if (r >= computedWeights[k].min && r <= computedWeights[k].max) {
+            (function (img) {
+              img.addEventListener("load", function () {
+                img.style.opacity = 0.8;
+              });
+            })(cloud);
+            src = computedWeights[k].src;
+          }
+        }
+        if (computedWeights.length === 0) {
+          cloud.style.opacity = 0.8;
+        }
+        cloud.setAttribute("src", src);
+        cloud.className = "cloudLayer";
+
+        var x = 256 - Math.random() * 512;
+        var y = 256 - Math.random() * 512;
+        var z = 100 - Math.random() * 200;
+        var a = Math.random() * 360;
+        var s = 0.25 + Math.random();
+        x *= 0.2;
+        y *= 0.2;
+        cloud.data = {
+          x: x,
+          y: y,
+          z: z,
+          a: a,
+          s: s,
+          speed: 0.1 * Math.random(),
+        };
+        var t =
+          "translateX( " +
+          x +
+          "px ) translateY( " +
+          y +
+          "px ) translateZ( " +
+          z +
+          "px ) rotateZ( " +
+          a +
+          "deg ) scale( " +
+          s +
+          " )";
+        cloud.style.webkitTransform =
+          cloud.style.MozTransform =
+          cloud.style.oTransform =
+          cloud.style.transform =
+            t;
+
+        div.appendChild(cloud);
+        layers.push(cloud);
+      }
+
+      return div;
