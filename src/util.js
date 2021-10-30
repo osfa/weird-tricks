@@ -1,4 +1,6 @@
 import { randomFromPalette } from "~/assets/colors/palette1";
+import randomWords from "random-words";
+
 import { iconList } from "~/assets/icons";
 export const randomMaterialColor = randomFromPalette;
 
@@ -33,6 +35,68 @@ export const shuffle = (array) => {
   }
 
   return array;
+};
+
+export const randomAnimation = (array) => {
+  return [
+    "bounce",
+    "bounceDown",
+    "bounceLeft",
+    "bounceRight",
+    "bounceUp",
+    "fade",
+    "fadeDown",
+    "fadeDownBig",
+    "fadeLeft",
+    "fadeLeftBig",
+    "fadeRight",
+    "fadeRightBig",
+    "fadeUp",
+    "fadeUpBig",
+    "rotate",
+    "rotateDownLeft",
+    "rotateDownRight",
+    "rotateUpLeft",
+    "rotateUpRight",
+    "slideDown",
+    "slideUp",
+    "slideLeft",
+    "slideRight",
+    "zoom",
+    "zoomDown",
+    "zoomUp",
+    "zoomLeft",
+    "zoomRight",
+  ].sample();
+};
+
+export const randomElevation = (array) => {
+  return random(0, 24);
+};
+
+export const randomClickBait = (array) => {
+  return "clickbait";
+};
+
+export const randomText = (configuration) => {
+  switch (configuration.type) {
+    case "sentence":
+      return randomWords({
+        min: 2,
+        max: 4,
+        join: " ",
+      });
+      break;
+    case "title":
+      return randomWords({
+        min: 1,
+        max: 2,
+        join: " ",
+      });
+      break;
+    default:
+      return "default";
+  }
 };
 
 export const generateRandomStyle = () => {

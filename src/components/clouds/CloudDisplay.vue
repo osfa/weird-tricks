@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import CloudSimple from "~/components/CloudSimple.vue";
+import CloudSimple from "~/components/clouds/CloudSimple.vue";
 import { random } from "~/util";
 
 export default {
@@ -62,7 +62,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.8;
+  opacity: 0.9;
   /* background: blue; need sky? */
 }
 </style>

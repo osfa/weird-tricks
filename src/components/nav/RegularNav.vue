@@ -11,7 +11,7 @@
       app
       :color="currentDrawerColor"
       dark
-      :elevation="12"
+      :elevation="randomElevation()"
     >
       <v-list v-if="showAvatar">
         <v-list-item class="px-2">
@@ -29,23 +29,23 @@
       <v-list nav dense>
         <v-list-item link to="/">
           <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
+            <v-icon color="black">mdi-home</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/</v-list-item-title>
+          <v-list-item-title class="black--text">/</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/nodes/">
           <v-list-item-icon>
-            <v-icon>mdi-format-list-bulleted-square</v-icon>
+            <v-icon color="black">mdi-format-list-bulleted-square</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/nodes</v-list-item-title>
+          <v-list-item-title class="black--text">/***</v-list-item-title>
         </v-list-item>
         <v-list-item link to="/about/">
           <v-list-item-icon>
-            <v-icon>mdi-information-outline</v-icon>
+            <v-icon color="black">mdi-information-outline</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>/about</v-list-item-title>
+          <v-list-item-title class="black--text">/???</v-list-item-title>
         </v-list-item>
-        <v-divider class="my-4"></v-divider>
+        <v-divider class="black my-4"></v-divider>
         <v-list-item
           :key="index"
           v-for="(m, index) in menuItems"
@@ -62,7 +62,12 @@
       <Expander v-else />
     </v-navigation-drawer>
 
-    <v-app-bar app :color="currentMainColor" dark>
+    <v-app-bar
+      app
+      :color="currentMainColor"
+      dark
+      :elevation="randomElevation()"
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You won't believe it</v-toolbar-title
@@ -72,7 +77,12 @@
 </template>
 
 <script>
-import { randomMaterialColor, randomIcon, random } from "~/util";
+import {
+  randomMaterialColor,
+  randomIcon,
+  random,
+  randomElevation,
+} from "~/util";
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
@@ -123,6 +133,9 @@ export default {
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
       }
+    },
+    randomElevation() {
+      return randomElevation();
     },
     forceNavigate() {
       console.log("emit?");

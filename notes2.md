@@ -1,3 +1,30 @@
+# unixstamp of node on top of clock?
+
+# some sort of score that goes up and counts upp?
+
+- mega content seed?
+
+- different small markers...
+
+- ramp volume?
+- dialog bug...dark somehow when closing?
+
+- farm wad datasets? imagenet segmentaitons etc?
+
+- sometimes just elements (like thre centered buttons) sometimes content?
+
+- buttons in nav that go to certain leylines? shine up?
+
+- write long lat in coords at top? save positions and show somehow?
+
+- animate color on link button or some other attribute have fixed floating? like floating action animate?
+
+- randomized pages in the expander menu? with humaans ranomdizer etc
+
+- important to have docked compeontn sometimes? like bottom bar? so u can see better
+
+- gan people stockphoto
+
 # clouds / layers / tilsets
 
 - star map layer? star charts? horoscopes?
