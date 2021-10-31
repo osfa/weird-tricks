@@ -8,6 +8,7 @@
         @click.native="toggleAudio"
         :elevation="randomElevation()"
       ></RegularNav>
+
       <transition mode="out-in" appear name="bounceLeft">
         <router-view
           :key="$route.fullPath"
@@ -15,23 +16,64 @@
           style="animation-duration: 250ms"
         />
       </transition>
-
-      <v-fab-transition>
+      <div class="button-bar flex flex-column">
+        <v-fab-transition>
+          <v-btn
+            class="mb-8"
+            :elevation="randomElevation()"
+            :color="muteState.color"
+            :key="muteState.icon"
+            fab
+            large
+            dark
+            @click.native="toggleAudio"
+          >
+            <v-icon>{{ muteState.icon }}</v-icon>
+          </v-btn>
+        </v-fab-transition>
         <v-btn
+          class="mt-4"
           :elevation="randomElevation()"
-          :color="muteState.color"
-          :key="muteState.icon"
+          :color="randomMaterialColor()"
           fab
           large
           dark
-          top
-          right
-          fixed
-          @click.native="toggleAudio"
         >
-          <v-icon>{{ muteState.icon }}</v-icon>
+          <v-icon>{{ randomIcon() }}</v-icon>
         </v-btn>
-      </v-fab-transition>
+        <v-btn
+          class="mt-4"
+          :elevation="randomElevation()"
+          :color="randomMaterialColor()"
+          fab
+          large
+          dark
+        >
+          <v-icon>{{ randomIcon() }}</v-icon>
+        </v-btn>
+
+        <v-btn
+          class="mt-4"
+          :elevation="randomElevation()"
+          :color="randomMaterialColor()"
+          fab
+          large
+          dark
+        >
+          <v-icon>{{ randomIcon() }}</v-icon>
+        </v-btn>
+
+        <v-btn
+          class="mt-4"
+          :elevation="randomElevation()"
+          :color="randomMaterialColor()"
+          fab
+          large
+          dark
+        >
+          <v-icon>{{ randomIcon() }}</v-icon>
+        </v-btn>
+      </div>
       <FooterNav
         v-show="showFooter"
         app
@@ -89,12 +131,16 @@ import FooterNav from "~/components/nav/FooterNav.vue";
 import CloudPng from "~/components/clouds/CloudPng.vue";
 import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import Clock from "~/components/Clock.vue";
+import SearchBar from "~/components/SearchBar.vue";
+import { cardMixin } from "~/cardMixin";
 
 import * as Tone from "tone";
 
 const INITIAL_FREQ = 2;
 
 export default {
+  mixins: [cardMixin],
+
   components: {
     CloudPng,
     CloudDisplay,
@@ -102,6 +148,7 @@ export default {
     RegularNav,
     FooterNav,
     Clock,
+    SearchBar,
   },
   data: () => ({
     showHeader: true,
@@ -235,6 +282,22 @@ export default {
       const { leftFrequency, rightFrequency } =
         this.calculateFrequencies(actualFrequency);
     },
+    initAudio() {
+      const context = new Tone.Context();
+      Tone.setContext(context);
+      this.audioCtx = context.rawContext;
+
+      const merge = new Tone.Merge().toDestination();
+
+      this.leftEar = new Tone.Oscillator().connect(merge, 0, 0).start();
+      this.rightEar = new Tone.Oscillator().connect(merge, 0, 1).start();
+
+      const rainMaker = new Tone.Noise("brown").start().toDestination();
+
+      this.setRainVolume(rainMaker);
+      this.setVolume();
+      this.setFrequencies();
+    },
   },
   created() {
     if (process.isClient) {
@@ -244,23 +307,8 @@ export default {
 
   mounted() {
     console.log("App mount");
-
-    const context = new Tone.Context();
-    Tone.setContext(context);
-    this.audioCtx = context.rawContext;
-
-    //the AudioContext is "suspended". Invoke Tone.start() from a user action to start the audio.
-
-    const merge = new Tone.Merge().toDestination();
-
-    this.leftEar = new Tone.Oscillator().connect(merge, 0, 0).start();
-    this.rightEar = new Tone.Oscillator().connect(merge, 0, 1).start();
-
-    const rainMaker = new Tone.Noise("brown").start().toDestination();
-
-    this.setRainVolume(rainMaker);
-    this.setVolume();
-    this.setFrequencies();
+    this.initAudio();
+    this.toggleAudio();
   },
   destroyed() {
     if (process.isClient) {
@@ -281,5 +329,13 @@ export default {
 <style>
 html {
   overflow-y: auto;
+}
+.button-bar {
+  position: fixed;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
 }
 </style>

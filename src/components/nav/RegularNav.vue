@@ -67,12 +67,56 @@
       :color="currentMainColor"
       dark
       :elevation="randomElevation()"
+      :extension-height="70"
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You won't believe it</v-toolbar-title
       >
+      <template v-slot:extension v-if="false">
+        <SearchBar class="" />
+      </template>
+      <!-- <v-autocomplete dark filled dense hide-details></v-autocomplete> -->
+      <v-spacer></v-spacer>
+
+      <v-btn icon @click="extended = !extended">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
     </v-app-bar>
+    <transition mode="out-in" appear name="fade">
+      <v-card
+        v-if="extended"
+        flat
+        fab
+        style="
+          z-index: 1000;
+          width: 300px;
+          top: 85px;
+          right: 16px;
+          position: fixed;
+        "
+      >
+        <v-toolbar dense class="flex-grow-0">
+          <v-text-field
+            hide-details
+            prepend-icon="mdi-magnify"
+            single-line
+          ></v-text-field>
+
+          <v-btn icon>
+            <v-icon>mdi-crosshairs-gps</v-icon>
+          </v-btn>
+        </v-toolbar>
+      </v-card>
+    </transition>
   </div>
 </template>
 
@@ -86,6 +130,8 @@ import {
 import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
+import SearchBar from "~/components/SearchBar.vue";
+
 // :permanent="$vuetify.breakpoint.mdAndUp"
 
 const randomMenuItems = () => {
@@ -112,6 +158,7 @@ export default {
   components: {
     Tree,
     Expander,
+    SearchBar,
   },
   data: () => ({
     showAvatar: false,
@@ -120,6 +167,7 @@ export default {
     currentMainColor: "pink",
     currentMenuItems: randomMenuItems(),
     randomZ: random(3, 5),
+    extended: false,
   }),
   computed: {
     menuItems() {

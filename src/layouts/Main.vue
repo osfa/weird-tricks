@@ -6,10 +6,10 @@
       :options="{
         zoomControl: false,
         mapTypeControl: false,
-        scaleControl: true,
+        scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
-        fullscreenControl: true,
+        fullscreenControl: false,
         disableDefaultUi: false,
         scrollwheel: true,
         styles: mapStyles,
