@@ -98,7 +98,7 @@ export const cloudMarkers = [
   },
 ];
 
-function getCircleCoordinates(point, radius, dir, point_count = 32) {
+function getCircleCoordinates(point, radius, dir, point_count = 64) {
   var d2r = Math.PI / 180; // degrees to radians
   var r2d = 180 / Math.PI; // radians to degrees
   var earthsradius = 3963; // 3963 is the radius of the earth in miles
@@ -129,24 +129,20 @@ function getCircleCoordinates(point, radius, dir, point_count = 32) {
 export const getCircleMarkers = (
   startLat,
   startLong,
-  radiusIncrease = 5,
+  currentZoom = 5,
   ringCount = 3,
   point_count = 8
 ) => {
   const circleCoords = [...Array(ringCount).keys()].map((i) => {
     return getCircleCoordinates(
       new google.maps.LatLng(startLat, startLong),
-      i * radiusIncrease, // ease func?
+      i * currentZoom, // ease func?
       1,
-      point_count
+      point_count * i
     );
   });
 
-  // console.log("circleCoords:", circleCoords);
   var merged = [].concat.apply([], circleCoords);
-  //console.log("merged?", merged);
-  // console.log(circleCoords.flat(1));
-  //console.log(merged[0].lat());
   return merged.map((m, idx) => {
     return {
       position: {

@@ -75,11 +75,15 @@ export default function (Vue, { appOptions, head, router }) {
       currentBlockIdx: 0,
       availableCoordinates: [],
       currentCoordinateIdx: 0,
+      mapIdx: 0,
     },
     mutations: {
       navigateForward(state) {
         state.currentBlockIdx =
           ++state.currentBlockIdx % state.ctfBlocks.length;
+      },
+      mapNav(state) {
+        state.mapIdx += 1;
       },
       navigateBack(state) {
         if (--state.currentBlockIdx < 0)

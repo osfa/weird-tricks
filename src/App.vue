@@ -16,64 +16,8 @@
           style="animation-duration: 250ms"
         />
       </transition>
-      <div class="button-bar flex flex-column">
-        <v-fab-transition>
-          <v-btn
-            class="mb-8"
-            :elevation="randomElevation()"
-            :color="muteState.color"
-            :key="muteState.icon"
-            fab
-            large
-            dark
-            @click.native="toggleAudio"
-          >
-            <v-icon>{{ muteState.icon }}</v-icon>
-          </v-btn>
-        </v-fab-transition>
-        <v-btn
-          class="mt-4"
-          :elevation="randomElevation()"
-          :color="randomMaterialColor()"
-          fab
-          large
-          dark
-        >
-          <v-icon>{{ randomIcon() }}</v-icon>
-        </v-btn>
-        <v-btn
-          class="mt-4"
-          :elevation="randomElevation()"
-          :color="randomMaterialColor()"
-          fab
-          large
-          dark
-        >
-          <v-icon>{{ randomIcon() }}</v-icon>
-        </v-btn>
 
-        <v-btn
-          class="mt-4"
-          :elevation="randomElevation()"
-          :color="randomMaterialColor()"
-          fab
-          large
-          dark
-        >
-          <v-icon>{{ randomIcon() }}</v-icon>
-        </v-btn>
-
-        <v-btn
-          class="mt-4"
-          :elevation="randomElevation()"
-          :color="randomMaterialColor()"
-          fab
-          large
-          dark
-        >
-          <v-icon>{{ randomIcon() }}</v-icon>
-        </v-btn>
-      </div>
+      <ActionBar @map-nav="mapNav" @toggle-audio="toggleAudio" />
       <FooterNav
         v-show="showFooter"
         app
@@ -132,6 +76,8 @@ import CloudPng from "~/components/clouds/CloudPng.vue";
 import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import Clock from "~/components/Clock.vue";
 import SearchBar from "~/components/SearchBar.vue";
+import ActionBar from "~/components/ActionBar.vue";
+
 import { cardMixin } from "~/cardMixin";
 
 import * as Tone from "tone";
@@ -142,6 +88,7 @@ export default {
   mixins: [cardMixin],
 
   components: {
+    ActionBar,
     CloudPng,
     CloudDisplay,
     MainLayout,
@@ -175,18 +122,13 @@ export default {
     };
   },
   computed: {
-    muteState() {
-      return {
-        icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
-        color: this.isMuted ? "red" : "primary",
-      }; // mdi-volumne-medium /low
-      // switch (this.tabs) {
-      //   case 'one': return { color: 'success', icon: 'mdi-share-variant' }
-      //   case 'two': return { color: 'red', icon: 'mdi-pencil' }
-      //   case 'three': return { color: 'green', icon: 'mdi-chevron-up' }
-      //   default: return {}
-      // }
-    },
+    // switch (this.tabs) {
+    //   case 'one': return { color: 'success', icon: 'mdi-share-variant' }
+    //   case 'two': return { color: 'red', icon: 'mdi-pencil' }
+    //   case 'three': return { color: 'green', icon: 'mdi-chevron-up' }
+    //   default: return {}
+    // }
+    // },
   },
   methods: {
     randomElevation() {
@@ -194,6 +136,9 @@ export default {
     },
     random(min, max) {
       return random(min, max);
+    },
+    mapNav() {
+      this.$store.commit("mapNav");
     },
     forceNav(backwards) {
       console.log("forceNav main");
@@ -235,6 +180,7 @@ export default {
       }
     },
     toggleAudio() {
+      console.log("toggleAudio");
       if (this.audioCtx.state === "running") {
         this.audioCtx.suspend().then(function () {
           console.log("suspended audio");

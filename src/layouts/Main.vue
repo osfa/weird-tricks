@@ -107,6 +107,7 @@ import {
 import { customStyle } from "~/mapStyler";
 import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
 import { gmapApi } from "gmap-vue";
+import ActionBar from "~/components/ActionBar.vue";
 
 import { data as allLeyLinesData } from "~/data/geo/Leylines";
 import { data as currys } from "~/data/geo/Currys";
@@ -128,6 +129,7 @@ const tilt = 90;
 export default {
   components: {
     "gmap-custom-marker": GmapCustomMarker,
+    // ActionBar,
   },
   data: () => ({
     map: undefined,
@@ -145,6 +147,7 @@ export default {
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: customStyle(),
     leyLinesColor: "#FFFFFF", //randomMaterialColor(),
+    lastPos: undefined,
     path: [
       // line 1
       { lat: centerStart.lat, lng: centerStart.lng },
@@ -167,7 +170,7 @@ export default {
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.map = map;
       this.drawLeyLines();
-      this.drawLocationArrows();
+      // this.drawLocationArrows();
       this.drawPatternMarkers(this.center.lat, this.center.lng);
 
       // var geodesicPoly = new google.maps.Polyline({
@@ -203,16 +206,24 @@ export default {
     drawPatternMarkers(lat, lng) {
       const offset = 0;
       this.circleMarkers = getCircleMarkers(
-        lat - offset,
-        lng - offset,
-        parseInt(this.zoom / 8) * 100, // random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
+        lat || this.center.lat - offset,
+        lng || this.center.lng - offset,
+        this.zoom, // random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
         random(5, 10) // ring count
         // 10
       );
     },
+    mapNav() {
+      let sampled = this.curryPoints.sample();
+      this.map.panTo({
+        lat: sampled[0],
+        lng: sampled[1],
+      });
+      // this.center = { lat, lng };
+    },
     drawLocationArrows() {
       // draw new arrow for each moevemnt? diff color diff pattern?
-      var lineCoordinates = [
+      let lineCoordinates = [
         new google.maps.LatLng(53.215556, 56.949219),
         new google.maps.LatLng(75.797201, 125.003906),
         new google.maps.LatLng(37.7833, 144.9667),
@@ -221,7 +232,7 @@ export default {
       ];
 
       // https://developers.google.com/maps/documentation/javascript/symbols#predefined
-      var lineSymbol = {
+      const lineSymbol = {
         path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
       };
 
@@ -229,12 +240,14 @@ export default {
         (c) => new google.maps.LatLng(c[0], c[1])
       );
       lineCoordinates = curryPointsGLatLng;
+      lineCoordinates = [this.lastPos];
+
       const gCenter = new google.maps.LatLng(this.center.lat, this.center.lng);
       lineCoordinates.forEach((l) => {
         const line = new google.maps.Polyline({
           path: [l, gCenter],
-          strokeOpacity: 0.5,
-          strokeWeight: 0.5,
+          strokeOpacity: 1,
+          strokeWeight: 2,
           strokeColor: "#ff0000",
           geodesic: true,
           map: this.map,
@@ -313,6 +326,10 @@ export default {
     },
   },
   watch: {
+    "$store.state.mapIdx": function () {
+      console.log(this.$store.state.mapIdx);
+      this.mapNav();
+    },
     $route: function () {
       function getRandomInRange(from, to, fixed) {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
@@ -347,6 +364,7 @@ export default {
       this.$nextTick(() => {
         if (this.$refs.mapRef) {
           this.$refs.mapRef.$mapPromise.then((map) => {
+            this.lastPos = this.center;
             let chosen =
               somePositions[Math.floor(Math.random() * somePositions.length)];
             lat = chosen[0];
@@ -356,8 +374,11 @@ export default {
               lat,
               lng,
             });
-            // this.center = { position: { lat: lat, lng: lng } };
+
+            this.center = { lat, lng };
+
             this.drawPatternMarkers(lat, lng);
+            this.drawLocationArrows();
           });
         }
       });

@@ -1,6 +1,7 @@
 <template>
   <div class="clock-container font-weight-light">
     <div v-if="isUnixTime" class="clock-inner">
+      <div class="hour" style="color: black">16357097402</div>
       <div class="hour text-black">{{ unix }}</div>
     </div>
     <div v-else class="clock-inner">
@@ -72,5 +73,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 </style>

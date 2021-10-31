@@ -10,7 +10,7 @@
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         style="z-index: 50; pointer-events: auto"
-        :style="isFixed ? 'bottom: 105px;' : ''"
+        :style="isFixed ? 'bottom: 120px;' : ''"
         :color="isFixed ? 'yellow darken-2' : 'primary'"
         :elevation="3"
         x-large
