@@ -240,6 +240,22 @@ export default {
 
       const rainMaker = new Tone.Noise("brown").start().toDestination();
 
+      const crossFade = new Tone.CrossFade().toDestination();
+      crossFade.fade.value = 0.5;
+
+      const player = new Tone.Player(
+        "https://tonejs.github.io/audio/berklee/gong_1.mp3"
+      ).connect(crossFade.a);
+
+      player.autostart = true;
+      player.loop = true;
+
+      const player2 = new Tone.Player(
+        "https://tonejs.github.io/audio/casio/A1.mp3"
+      ).connect(crossFade.b);
+      player2.autostart = true;
+      player2.loop = true;
+
       this.setRainVolume(rainMaker);
       this.setVolume();
       this.setFrequencies();
