@@ -229,9 +229,9 @@ export const getCircleMarkers = (
 ) => {
   const circleCoords = [...Array(ringCount).keys()].map((i) => {
     return getCircleCoordinates(
-      new google.maps.LatLng(startLat, startLong),
-      i * Math.pow(16 - currentZoom + 2, 2), // maxzoom 15
-      1,
+      new google.maps.LatLng(startLat, startLong), // point
+      i * Math.pow(16 - currentZoom + 2, 2), // maxzoom 15 // radius
+      1, // dir
       point_count * i * 3
     );
   });

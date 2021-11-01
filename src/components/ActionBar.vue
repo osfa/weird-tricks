@@ -98,6 +98,7 @@ export default {
 </script>
 <style>
 .button-bar {
+  pointer-events: none;
   position: fixed;
   right: 20px;
   z-index: 2000;
@@ -105,5 +106,8 @@ export default {
   height: 100vh;
   justify-content: center;
   top: 0;
+}
+.v-btn {
+  pointer-events: auto;
 }
 </style>
