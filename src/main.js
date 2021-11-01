@@ -76,6 +76,7 @@ export default function (Vue, { appOptions, head, router }) {
       availableCoordinates: [],
       currentCoordinateIdx: 0,
       mapIdx: 0,
+      center: { lat: 0.0, lng: 0.0 },
     },
     mutations: {
       navigateForward(state) {
@@ -92,6 +93,9 @@ export default function (Vue, { appOptions, head, router }) {
       },
       setMainContent(state, payload) {
         state.ctfBlocks = payload;
+      },
+      setCenter(state, payload) {
+        state.center = payload;
       },
     },
   });

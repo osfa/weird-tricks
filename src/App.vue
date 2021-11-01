@@ -108,6 +108,9 @@ export default {
     audioCtx: undefined,
     isMuted: false,
     currentAnimation: randomAnimation(),
+    crossFade: undefined,
+    crossDirection: false,
+    crossFadeInterval: undefined,
   }),
   metaInfo() {
     return {
@@ -193,6 +196,18 @@ export default {
         this.isMuted = false;
       }
     },
+    doCrossFade() {
+      if (this.crossFade.fade.value === 1.0 || this.crossFade.fade.value <= 0) {
+        this.crossDirection = !this.crossDirection;
+      }
+      if (this.crossDirection) {
+        const val = Math.min(parseFloat(this.crossFade.fade.value + 0.1), 1);
+        this.crossFade.fade.value = val;
+      } else {
+        const val = Math.max(parseFloat(this.crossFade.fade.value - 0.1), 0);
+        this.crossFade.fade.value = val;
+      }
+    },
     setVolume() {
       Tone.getDestination().volume.rampTo(
         this.volume === -100 ? -Infinity : this.volume,
@@ -240,21 +255,22 @@ export default {
 
       const rainMaker = new Tone.Noise("brown").start().toDestination();
 
-      const crossFade = new Tone.CrossFade().toDestination();
-      crossFade.fade.value = 0.5;
+      this.crossFade = new Tone.CrossFade().toDestination();
+      this.crossFade.fade.value = 0.5; // 0-a
 
-      const player = new Tone.Player(
-        "https://tonejs.github.io/audio/berklee/gong_1.mp3"
-      ).connect(crossFade.a);
+      const sample1 = new Tone.Player(
+        require("~/assets/audio/tapping2.mp3")
+      ).connect(this.crossFade.a);
+      sample1.autostart = true;
+      sample1.loop = true;
 
-      player.autostart = true;
-      player.loop = true;
+      const sample2 = new Tone.Player(
+        require("~/assets/audio/ocean.mp3")
+      ).connect(this.crossFade.b);
+      sample2.autostart = true;
+      sample2.loop = true;
 
-      const player2 = new Tone.Player(
-        "https://tonejs.github.io/audio/casio/A1.mp3"
-      ).connect(crossFade.b);
-      player2.autostart = true;
-      player2.loop = true;
+      this.crossFadeInterval = setInterval(this.doCrossFade, 5000);
 
       this.setRainVolume(rainMaker);
       this.setVolume();
@@ -266,25 +282,16 @@ export default {
       window.addEventListener("keyup", this.nav);
     }
   },
-
   mounted() {
     console.log("App mount");
     this.initAudio();
-    this.toggleAudio();
   },
   destroyed() {
     if (process.isClient) {
       window.removeEventListener("keyup", this.nav);
     }
+    clearInterval(this.crossFadeInterval);
   },
-
-  //   beforeRouteLeave(to, from, next) {
-  //     console.log("main route leave");
-  //     // called when the route that renders this component is about to
-  //     // be navigated away from.
-  //     // has access to `this` component instance.
-  //     next();
-  //   },
 };
 </script>
 

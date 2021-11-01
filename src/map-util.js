@@ -4,16 +4,110 @@ const mapMarker = "http://lorempixel.com/100/100/nature/"; // require if assets
 const cloudAsset1 = require("~/assets/imgs/cloud1.png"); // require if assets
 const cloudAsset2 = require("~/assets/imgs/cloud2.png"); // require if assets
 const cloudAsset3 = require("~/assets/imgs/cloud3.png"); // require if assets
-
+const heavyScaler = 12;
+const midSCaler = 4;
 const googleMarkers = [
-  require("~/assets/markers/blue-dot.png"),
-  require("~/assets/markers/green-dot.png"),
-  require("~/assets/markers/ltblue-dot.png"),
-  require("~/assets/markers/orange-dot.png"),
-  require("~/assets/markers/pink-dot.png"),
-  require("~/assets/markers/purple-dot.png"),
-  require("~/assets/markers/red-dot.png"),
-  require("~/assets/markers/yellow-dot.png"),
+  { url: require("~/assets/markers/blue-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/green-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/ltblue-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/orange-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/pink-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/purple-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/red-dot.png"), width: 32, height: 32 },
+  { url: require("~/assets/markers/yellow-dot.png"), width: 32, height: 32 },
+  // current
+  {
+    url: require("~/assets/markers/current-pin.svg"),
+    width: 20 * 2,
+    height: 35 * 2,
+  },
+  {
+    url: require("~/assets/markers/current-pin.svg"),
+    width: 20 * 3,
+    height: 35 * 3,
+  },
+  {
+    url: require("~/assets/markers/base-marker-color.png"),
+    width: 54,
+    height: 86,
+  },
+
+  // off brand
+  {
+    url: require("~/assets/markers/black-pin.png"),
+    width: 512 / heavyScaler,
+    height: 512 / heavyScaler,
+  },
+  { url: require("~/assets/markers/blue-pin.svg"), width: 64, height: 64 },
+  {
+    url: require("~/assets/markers/google-logo-pin.svg"),
+    width: 64,
+    height: 64,
+  },
+  {
+    url: require("~/assets/markers/google-maps-grey-marker-w-shadow-th.png"),
+    width: 100,
+    height: 79,
+  },
+  {
+    url: require("~/assets/markers/green-pin1.png"),
+    width: 400 / heavyScaler,
+    height: 512 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/green-pin2.png"),
+    width: 570 / heavyScaler,
+    height: 870 / heavyScaler,
+  },
+  { url: require("~/assets/markers/green-pin3.png"), width: 22, height: 40 },
+  { url: require("~/assets/markers/marker.png"), width: 20, height: 34 },
+
+  {
+    url: require("~/assets/markers/orange-pin1.png"),
+    width: 545 / heavyScaler,
+    height: 638 / heavyScaler,
+  },
+
+  {
+    url: require("~/assets/markers/red-pin1.png"),
+    width: 366 / heavyScaler,
+    height: 591 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/red-pin2.png"),
+    width: 512 / heavyScaler,
+    height: 512 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/red-pin3.png"),
+    width: 512 / heavyScaler,
+    height: 512 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/red-pin4-hi.png"),
+    width: 372 / heavyScaler,
+    height: 594 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/white-pin.png"),
+    width: 512 / heavyScaler,
+    height: 512 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/yellow-pin1.png"),
+    width: 372 / heavyScaler,
+    height: 594 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/yellow-pin2.png"),
+    width: 515 / heavyScaler,
+    height: 769 / heavyScaler,
+  },
+  {
+    url: require("~/assets/markers/yellow-pin3.png"),
+    width: 685 / heavyScaler,
+    height: 1025 / heavyScaler,
+  },
 ];
 
 // https://khms1.google.com/kh/v=908?x=36&y=17&z=6
@@ -136,14 +230,15 @@ export const getCircleMarkers = (
   const circleCoords = [...Array(ringCount).keys()].map((i) => {
     return getCircleCoordinates(
       new google.maps.LatLng(startLat, startLong),
-      i * currentZoom, // ease func?
+      i * Math.pow(16 - currentZoom + 2, 2), // maxzoom 15
       1,
-      point_count * i
+      point_count * i * 3
     );
   });
 
   var merged = [].concat.apply([], circleCoords);
   return merged.map((m, idx) => {
+    const marker = googleMarkers.sample();
     return {
       position: {
         id: idx,
@@ -151,9 +246,13 @@ export const getCircleMarkers = (
         lng: m.lng(),
       },
       icon: {
-        url: googleMarkers.sample(),
-        size: { width: 32, height: 32, f: "px", b: "px" },
-        scaledSize: { width: 16, height: 16, f: "px", b: "px" },
+        url: marker.url,
+        scaledSize: {
+          width: marker.width / 2,
+          height: marker.height / 2,
+          f: "px",
+          b: "px",
+        },
       },
     };
   });

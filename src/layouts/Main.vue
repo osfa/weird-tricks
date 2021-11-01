@@ -142,7 +142,7 @@ export default {
       e.geometry.coordinates[1],
       e.geometry.coordinates[0],
     ]),
-    center: centerStart,
+    center: centerStart, // move to vuex?
     groundOverlayBounds: undefined,
     groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
     currentStyle: customStyle(),
@@ -165,6 +165,8 @@ export default {
   async mounted() {
     console.log("main mount");
     this.$store.commit("setMainContent", this.$static.nodes.edges);
+    this.setCenter(this.center);
+
     // await this.$gmapApiPromiseLazy();
 
     this.$refs.mapRef.$mapPromise.then((map) => {
@@ -172,16 +174,6 @@ export default {
       this.drawLeyLines();
       // this.drawLocationArrows();
       this.drawPatternMarkers(this.center.lat, this.center.lng);
-
-      // var geodesicPoly = new google.maps.Polyline({
-      //   path: [startLatLng, endLatLng],
-      //   strokeColor: "#00FF00",
-      //   strokeOpacity: 0.5,
-      //   strokeWeight: 2,
-      //   geodesic: true,
-      //   map: this.map,
-      // });
-      // this.path = geodesicPolyline(startLatLng, endLatLng);
     });
   },
   computed: {
@@ -197,20 +189,22 @@ export default {
   },
   methods: {
     markerClick(marker) {
-      this.center = marker.position;
+      this.setCenter(marker.position);
       this.$emit("markerClicked");
+    },
+    setCenter(center) {
+      this.center = center;
+      this.$store.commit("setCenter", this.center);
     },
     mark(event) {
       console.log("click at:", event.latLng.lat(), event.latLng.lng());
     },
     drawPatternMarkers(lat, lng) {
-      const offset = 0;
       this.circleMarkers = getCircleMarkers(
-        lat || this.center.lat - offset,
-        lng || this.center.lng - offset,
-        this.zoom, // random(this.zoom * 2, this.zoom * 7), // radius, base on zoom level?
-        random(5, 10) // ring count
-        // 10
+        lat || this.center.lat,
+        lng || this.center.lng,
+        this.zoom,
+        random(6, 12) // ring count
       );
     },
     mapNav() {
@@ -219,7 +213,7 @@ export default {
         lat: sampled[0],
         lng: sampled[1],
       });
-      // this.center = { lat, lng };
+      this.setCenter({ lat: sampled[0], lng: sampled[1] });
     },
     drawLocationArrows() {
       // draw new arrow for each moevemnt? diff color diff pattern?
@@ -375,7 +369,7 @@ export default {
               lng,
             });
 
-            this.center = { lat, lng };
+            this.setCenter({ lat, lng });
 
             this.drawPatternMarkers(lat, lng);
             this.drawLocationArrows();

@@ -1,8 +1,12 @@
 <template>
   <div class="clock-container font-weight-light">
     <div v-if="isUnixTime" class="clock-inner">
-      <div class="hour" style="color: black">16357097402</div>
+      <div class="hour" style="color: red">16357097402</div>
       <div class="hour text-black">{{ unix }}</div>
+      <div class="hour" style="color: black">
+        {{ this.$store.state.center.lat.toFixed(2) }}°,
+        {{ this.$store.state.center.lng.toFixed(2) }}°
+      </div>
     </div>
     <div v-else class="clock-inner">
       <div class="hour">{{ hours }}</div>
