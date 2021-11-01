@@ -5,7 +5,6 @@
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
-        @click.native="toggleAudio"
         :elevation="randomElevation()"
       ></RegularNav>
 
@@ -49,6 +48,7 @@
         node {
           id
           title
+          hyperlink
           heroImage {
             file {
               url

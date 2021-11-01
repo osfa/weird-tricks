@@ -14,6 +14,9 @@ export const cardMixin = {
     randomElevation() {
       return randomElevation();
     },
+    randomText() {
+      return randomText();
+    },
     randomIcon() {
       return randomIcon();
     },

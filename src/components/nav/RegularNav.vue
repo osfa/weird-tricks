@@ -67,23 +67,36 @@
       :color="currentMainColor"
       dark
       :elevation="randomElevation()"
-      :extension-height="70"
+      :extension-height="60"
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <!--         v-show="$vuetify.breakpoint.smAndUp || !extended"
+ -->
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You won't believe it</v-toolbar-title
       >
-      <template v-slot:extension v-if="false">
-        <SearchBar class="" />
-      </template>
-      <!-- <v-autocomplete dark filled dense hide-details></v-autocomplete> -->
+
+      <!-- <template v-slot:extension v-if="extended">
+        <SearchBar />
+      </template> -->
+      <!-- <v-autocomplete
+        dark
+        filled
+        dense
+        hide-details
+        v-if="extended"
+      ></v-autocomplete> -->
+
       <v-spacer></v-spacer>
 
-      <v-btn icon @click="extended = !extended">
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <SearchBar class="mx-auto" v-show="extended || true" />
 
-      <v-btn icon>
+      <!-- <v-btn icon @click="extended = !extended">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn> -->
+
+      <v-btn icon v-show="$vuetify.breakpoint.mdAndUp">
         <v-icon>mdi-heart</v-icon>
       </v-btn>
 
@@ -91,7 +104,9 @@
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
-    <transition mode="out-in" appear name="fade">
+
+    <!-- floating search -->
+    <!-- <transition mode="out-in" appear name="fade">
       <v-card
         v-if="extended"
         flat
@@ -116,7 +131,7 @@
           </v-btn>
         </v-toolbar>
       </v-card>
-    </transition>
+    </transition> -->
   </div>
 </template>
 
@@ -131,6 +146,7 @@ import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
 import SearchBar from "~/components/SearchBar.vue";
+import { cardMixin } from "~/cardMixin";
 
 // :permanent="$vuetify.breakpoint.mdAndUp"
 
@@ -155,6 +171,8 @@ const randomMenuItems = () => {
   ];
 };
 export default {
+  mixins: [cardMixin],
+
   components: {
     Tree,
     Expander,

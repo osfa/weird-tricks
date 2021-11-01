@@ -70,7 +70,6 @@ import {
   randomAnimation,
   randomElevation,
 } from "~/util";
-import SearchBar from "~/components/SearchBar.vue";
 import { cardMixin } from "~/cardMixin";
 
 import * as Tone from "tone";

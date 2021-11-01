@@ -85,6 +85,7 @@
         node {
           id
           title
+          hyperlink
           heroImage {
             file {
               url

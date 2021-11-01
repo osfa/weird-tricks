@@ -1,66 +1,52 @@
 <template>
-  <!-- <div>
-    <div v-if="searchResults.length > 0">
-      <article v-for="post in searchResults" :key="post.node.id">
-        <h1>
-          <g-link :to="post.node.path">{{ post.node.title }}</g-link>
-        </h1>
-      </article>
-    </div>
-
-    <div v-else>
-      <p>Your search didn't return any results. Please try again.</p>
-    </div>
-  </div> -->
+  <!-- <v-col cols="12" md="6"> -->
   <v-autocomplete
     v-model="model"
     :items="items"
     :loading="isLoading"
     :search-input.sync="search"
-    clearable
     hide-details
     hide-selected
     item-text="name"
-    item-value="symbol"
-    label="Search for a node..."
-    solo-inverted
+    item-value="id"
+    :label="!$vuetify.breakpoint.smAndUp ? title : '...***'"
+    dense
+    dark
+    filled
+    append-icon="mdi-magnify"
+    :menu-props="{ closeOnContentClick: true }"
   >
+    <!-- mdi-map-marker -->
+    <!-- <v-icon slot="append-icon" large color="primary">comment</v-icon> -->
+    <!-- clearable solo-inverted     append-outer-icon="search"
+-->
     <template v-slot:no-data>
       <v-list-item>
         <v-list-item-title>
-          Search for your favorite
-          <strong>Node</strong>
+          <!-- <WeirdText /> -->
+          null
         </v-list-item-title>
       </v-list-item>
     </template>
-    <!-- <template v-slot:selection="{ attr, on, item, selected }">
-      <v-chip
-        v-bind="attr"
-        :input-value="selected"
-        color="blue-grey"
-        class="white--text"
-        v-on="on"
-      >
-        <v-icon left> {{ randomIcon() }} </v-icon>
-        <span v-text="item.name"></span>
-      </v-chip>
-    </template> -->
     <template v-slot:item="{ item }">
-      <v-list-item-avatar
-        color="indigo"
-        class="text-h5 font-weight-light white--text"
-      >
-        {{ item.name.charAt(0) }}
-      </v-list-item-avatar>
-      <v-list-item-content>
-        <v-list-item-title v-text="item.name"></v-list-item-title>
-        <v-list-item-subtitle v-text="item.symbol"></v-list-item-subtitle>
-      </v-list-item-content>
-      <v-list-item-action>
-        <v-icon>{{ randomIcon() }}</v-icon>
-      </v-list-item-action>
+      <v-list-item link :to="'/nodes/' + item.id">
+        <v-list-item-avatar
+          :color="randomMaterialColor()"
+          class="font-weight-light white--text"
+        >
+          <span class="mb-1">{{ item.name.charAt(0) }}</span>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title v-text="item.name"></v-list-item-title>
+          <v-list-item-subtitle v-text="item.hyperlink"></v-list-item-subtitle>
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-icon>{{ randomIcon() }}</v-icon>
+        </v-list-item-action>
+      </v-list-item>
     </template>
   </v-autocomplete>
+  <!-- </v-col> -->
 </template>
 <script>
 import {
@@ -69,13 +55,18 @@ import {
   randomMaterialColor,
   randomAnimation,
   randomElevation,
+  randomText,
 } from "~/util";
+import WeirdText from "~/components/WeirdText.vue";
+import { cardMixin } from "~/cardMixin";
 
 export default {
-  components: {},
+  mixins: [cardMixin],
+  components: { WeirdText },
   props: {},
   data() {
     return {
+      title: "..........",
       isLoading: false,
       items: [],
       model: null,
@@ -85,6 +76,9 @@ export default {
   methods: {
     randomIcon() {
       return randomIcon();
+    },
+    getRandomText() {
+      return randomText();
     },
   },
   watch: {
@@ -99,9 +93,15 @@ export default {
           .toLowerCase()
           .includes(this.search.toLowerCase().trim());
       });
-      console.log(filteredResults);
+
+      // console.log(filteredResults);
+
       this.items = filteredResults.map((n) => {
-        return { id: n.node.id, symbol: n.node.id, name: n.node.title };
+        return {
+          id: n.node.id,
+          hyperlink: n.node.hyperlink,
+          name: n.node.title,
+        };
       });
 
       this.isLoading = false;
