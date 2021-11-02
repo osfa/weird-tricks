@@ -9,11 +9,11 @@
     hide-selected
     item-text="name"
     item-value="id"
-    :label="!$vuetify.breakpoint.smAndUp ? title : '...***'"
+    :label="!$vuetify.breakpoint.smAndUp ? title : '...'"
     dense
     dark
     filled
-    append-icon="mdi-magnify"
+    append-outer-icon="mdi-magnify"
     :menu-props="{ closeOnContentClick: true }"
   >
     <!-- mdi-map-marker -->
@@ -24,12 +24,15 @@
       <v-list-item>
         <v-list-item-title>
           <!-- <WeirdText /> -->
-          null
+          ...
         </v-list-item-title>
       </v-list-item>
     </template>
     <template v-slot:item="{ item }">
-      <v-list-item link :to="'/nodes/' + item.id">
+      <v-list-item
+        link
+        :to="'/nodes/' + item.name.replace(' ', '-').toLowerCase()"
+      >
         <v-list-item-avatar
           :color="randomMaterialColor()"
           class="font-weight-light white--text"
@@ -98,7 +101,7 @@ export default {
 
       this.items = filteredResults.map((n) => {
         return {
-          id: n.node.id,
+          id: n.node.id, // ctf id
           hyperlink: n.node.hyperlink,
           name: n.node.title,
         };

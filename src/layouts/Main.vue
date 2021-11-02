@@ -205,7 +205,7 @@ export default {
         lat || this.center.lat,
         lng || this.center.lng,
         this.zoom,
-        random(6, 12) // ring count
+        random(3, 8) // ring count
       );
     },
     mapNav() {
@@ -257,6 +257,23 @@ export default {
       });
     },
     async drawLeyLines() {
+      this.map.data.addListener("addfeature", function (e) {
+        const isYinYang =
+          e.feature.getProperty("Name").includes("Yang") ||
+          e.feature.getProperty("Name").includes("Yin");
+        if (e.feature.getGeometry().getType() === "LineString" && !isYinYang) {
+          this.map.data.overrideStyle(e.feature, { visible: false });
+          new google.maps.Polyline({
+            path: e.feature.getGeometry().getArray(),
+            map: this.map,
+            geodesic: true,
+            strokeColor: randomMaterialColor(),
+            strokeWeight: 1,
+            strokeOpacity: 1,
+          });
+        }
+      });
+
       this.map.data.addGeoJson(allLeyLinesData);
 
       var featureStyle = {
@@ -264,17 +281,6 @@ export default {
         strokeWeight: 1, // rand?
         strokeOpacity: 0.5, // rand?
       };
-
-      this.map.data.addListener("addfeature", function (e) {
-        if (e.feature.getGeometry().getType() === "LineString") {
-          map.data.overrideStyle(e.feature, { visible: false });
-          new google.maps.Polyline({
-            path: e.feature.getGeometry().getArray(),
-            map: this.map,
-            geodesic: true,
-          });
-        }
-      });
 
       this.map.data.setStyle(featureStyle);
       this.map.data.setStyle((feature) => {

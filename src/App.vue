@@ -158,7 +158,7 @@ export default {
       // let nextPost = allNodes[this.$store.state.currentBlockIdx];
       let nextPost = allNodes.sample();
 
-      let nextRoutePath = `/nodes/${nextPost.node.id}`;
+      let nextRoutePath = `/nodes/${nextPost.node.id.toLowerCase()}`;
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
@@ -263,12 +263,14 @@ export default {
       ).connect(this.crossFade.a);
       sample1.autostart = true;
       sample1.loop = true;
+      sample1.volume.value = 12;
 
       const sample2 = new Tone.Player(
         require("~/assets/audio/ocean.mp3")
       ).connect(this.crossFade.b);
       sample2.autostart = true;
       sample2.loop = true;
+      sample2.volume.value = 6;
 
       this.crossFadeInterval = setInterval(this.doCrossFade, 5000);
 
