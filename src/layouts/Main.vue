@@ -171,6 +171,8 @@ export default {
     // await this.$gmapApiPromiseLazy();
 
     this.$refs.mapRef.$mapPromise.then((map) => {
+      this.$store.commit("setIsLoading", false);
+
       this.map = map;
       this.drawLeyLines();
       // this.drawLocationArrows();
@@ -332,6 +334,8 @@ export default {
       this.mapNav();
     },
     $route: function () {
+      this.$store.commit("setIsLoading", true);
+
       function getRandomInRange(from, to, fixed) {
         return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
       }
@@ -382,6 +386,7 @@ export default {
             this.drawLocationArrows();
           });
         }
+        this.$store.commit("setIsLoading", false);
       });
     },
   },

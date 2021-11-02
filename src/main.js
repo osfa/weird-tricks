@@ -77,6 +77,7 @@ export default function (Vue, { appOptions, head, router }) {
       currentCoordinateIdx: 0,
       mapIdx: 0,
       center: { lat: 0.0, lng: 0.0 },
+      isLoading: false,
     },
     mutations: {
       navigateForward(state) {
@@ -96,6 +97,9 @@ export default function (Vue, { appOptions, head, router }) {
       },
       setCenter(state, payload) {
         state.center = payload;
+      },
+      setIsLoading(state, payload) {
+        state.isLoading = payload;
       },
     },
   });

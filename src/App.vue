@@ -283,6 +283,7 @@ export default {
     if (process.isClient) {
       window.addEventListener("keyup", this.nav);
     }
+    this.$store.commit("setIsLoading", true);
   },
   mounted() {
     console.log("App mount");

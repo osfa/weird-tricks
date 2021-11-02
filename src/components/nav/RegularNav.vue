@@ -76,6 +76,13 @@
       <v-toolbar-title style="cursor: pointer" @click="home()"
         >You won't believe it</v-toolbar-title
       >
+      <v-progress-linear
+        :active="loading"
+        :indeterminate="loading"
+        absolute
+        bottom
+        :color="currentDrawerColor"
+      ></v-progress-linear>
 
       <!-- <template v-slot:extension v-if="extended">
         <SearchBar />
@@ -186,11 +193,15 @@ export default {
     currentMenuItems: randomMenuItems(),
     randomZ: random(3, 5),
     extended: false,
+    loading: true,
   }),
   computed: {
     menuItems() {
       return this.currentMenuItems;
     },
+  },
+  mounted() {
+    this.loading = this.$store.state.isLoading;
   },
   methods: {
     home() {
@@ -216,6 +227,9 @@ export default {
     },
   },
   watch: {
+    "$store.state.isLoading": function () {
+      this.loading = this.$store.state.isLoading;
+    },
     $route: function () {
       this.currentDrawerColor = randomMaterialColor();
       this.currentMainColor = randomMaterialColor();
