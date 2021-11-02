@@ -84,9 +84,9 @@
         :color="currentDrawerColor"
       ></v-progress-linear>
 
-      <!-- <template v-slot:extension v-if="extended">
-        <SearchBar />
-      </template> -->
+      <template v-slot:extension v-if="extended">
+        <GameBar />
+      </template>
       <!-- <v-autocomplete
         dark
         filled
@@ -153,6 +153,7 @@ import randomWords from "random-words";
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
 import SearchBar from "~/components/SearchBar.vue";
+import GameBar from "~/components/GameBar.vue";
 import { cardMixin } from "~/cardMixin";
 
 // :permanent="$vuetify.breakpoint.mdAndUp"
@@ -184,6 +185,7 @@ export default {
     Tree,
     Expander,
     SearchBar,
+    GameBar,
   },
   data: () => ({
     showAvatar: false,
@@ -192,7 +194,7 @@ export default {
     currentMainColor: "pink",
     currentMenuItems: randomMenuItems(),
     randomZ: random(3, 5),
-    extended: false,
+    extended: true,
     loading: true,
   }),
   computed: {

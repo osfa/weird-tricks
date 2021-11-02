@@ -334,6 +334,7 @@ export default {
       this.mapNav();
     },
     $route: function () {
+      this.$store.commit("addPoints");
       this.$store.commit("setIsLoading", true);
 
       function getRandomInRange(from, to, fixed) {

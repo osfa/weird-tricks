@@ -78,11 +78,14 @@ export default function (Vue, { appOptions, head, router }) {
       mapIdx: 0,
       center: { lat: 0.0, lng: 0.0 },
       isLoading: false,
+      points: 0,
+      jumps: 0,
     },
     mutations: {
       navigateForward(state) {
         state.currentBlockIdx =
           ++state.currentBlockIdx % state.ctfBlocks.length;
+        // state.points += state.points + 100
       },
       mapNav(state) {
         state.mapIdx += 1;
@@ -100,6 +103,10 @@ export default function (Vue, { appOptions, head, router }) {
       },
       setIsLoading(state, payload) {
         state.isLoading = payload;
+      },
+      addPoints(state) {
+        state.points += state.points + 100;
+        state.jumps += 1;
       },
     },
   });
