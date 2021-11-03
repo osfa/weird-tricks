@@ -4,121 +4,9 @@ gridsome build
 netlify deploy --prod
 serve dist -l 8000
 
-# dump
-
-hover? https://diegoazh.github.io/gmap-vue/examples/status-bar-information.html#source-code
-stylized round markers? some larger? some smaller?
-small clouds in circles? click to get fan sounds? other sounds?
-gpt babble? vs overlay clouds (seomtimes?)
-
-weird telegram chats? like foodora felling?
-
-floating clouds? clouds with drop shadow?
-
-bird chirps?
-
-just marquee clouds and put on top? vs drop shadow?
-
-# sprint 1
-
-- page footer nav
-
-  - single weird button floating in center that takes you onwards?
-  - use keyboard to navigate, accessaibilty?
-
-- change map colors (set colorschemes)
-
-- clickbait text shift: link and menu shifts : icons and text
-
-- custom markers
-
-  - weird svgs
-  - leylines stuff
-  - patterns
-  - single tile test
-
-- overlay test - clouds / single tiles
-
-- seed more content
-
-# key features
-
-- link block
-- image block
-- video block
-
-- a search
-
-- main about text?
-
-- favicon
-
-- tone gen
-
-- map movement animation
-
-- skeleton loader
-
-- heatmaps?
-
-## features
-
-- randomize/animate icons on nav
-
-- random gan face in menu?
-
-- def nav sounds between.. random sound on transition, random sound on button press? emit events?
-
-- binaural: https://github.com/yomansk8/binaural/blob/master/src/App.js
-
-- random dropshadow on load?
-
-- cloud overlays? on site? or map?
-
-- fake mock apis and dashboards?
-
-- captchkas...
-
-- eclipsing humans with data...smart city
-
-- chatbots?
-
-## map
-
-- black sites? what other objects? map pins as dashboard components?
-
-- landing page should be all map
-
-- someimes just tons of mapp poiints spanwed.
-- color shift
-- virtual map overlays?
-
-- need map overlays? like heatmap but also transp pngs?
-
-- randomly seed map with marekrs as you scroll?
-
-- leylines draw raster of lines? empty markers?
-
-  - https://www.pinterest.se/pin/298082069064797892/
-  - place markers along the lines?
+# map
 
 - more tile based? hover on tiles? so images that are squares on top? depending on zoom level?
-
-- make thing that bleeds into real lake? data lake to lake? to swamp? whatever?
-
-## general
-
-- like a spam bot site? all the different links and menu items randomly select aiatcles aetc? weird article content in stringse etc?
-
-- mix in some gpt3 headline stuff?
-
-- the entry into a world view, a sphere of links, an algoritumicl bubble
-
-- emit open link : opens archived link thing? all img hotlinked? have nice 404 thing thoought? hotlinked mage stuff?
-
-## idea seeds
-
-- log and track all interactions for user?
 
 # content
 
@@ -246,3 +134,13 @@ nate silver tihng...
 [-76.61854793101789 -146.12874166143615],
 
 -- - different feed types investigation? cant source vs source?
+
+## background
+
+- like a spam bot site? all the different links and menu items randomly select aiatcles aetc? weird article content in stringse etc?
+
+- mix in some gpt3 headline stuff?
+
+- the entry into a world view, a sphere of links, an algoritumicl bubble
+
+- emit open link : opens archived link thing? all img hotlinked? have nice 404 thing thoought? hotlinked mage stuff?

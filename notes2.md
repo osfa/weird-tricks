@@ -40,10 +40,6 @@ clouds as markers vs layer, hmm
 
 - data lake pics (collages and reg?)
 
-- styleized datestamps on cards? or at bottom in footer?
-
-  - use correct dates for marker? for article?
-
 - collapse model prediction image? and link..
 
 - nft screens as well?
