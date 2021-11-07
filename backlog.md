@@ -1,14 +1,6 @@
-# pages
+# Backlog
 
-- randomize svg humaans
-- captchkas
-- bot chat?
-- autocut edlvids?
-
-- live stock data api
-- stovckvid blend scell scenarios cartton effects?
-
-# content
+## content
 
 - more software screens
 - telegram chats
@@ -18,9 +10,60 @@
 
 - pinterest links? pinterest cuts in popup?
 
-## fiverr
+## node components
 
--- fiverr essays on site? prmotps? scavenger hunt? you find and piece the little parts together?
+- col offset listing stuff for nodes
+- button grids etc
+- snackbar
+- https://vuetifyjs.com/en/components/text-fields/#icons
+
+## major feature
+
+- gpt2 text stuff?
+  - https://www.one-tab.com/page/eRG3WeTzQDq_GM6oAUfqwA
+  - https://www.one-tab.com/page/feR2gsWeTSyacN8rdnbBow
+  - ** === just use whatever is in the vuetify demo? and randomly add image and ulr. text just garbled? **\*\*\*\*
+    -- make some strings be contitnous sentences in menu
+
+## fixes
+
+- clouds and movement
+
+- search
+
+  - multiple weird seraches?
+  - search result page?
+
+- ui panic hide eveyrtihing button?
+
+- real share buttons that copies link?
+
+### map
+
+- more map data: https://www.one-tab.com/page/XqEvbRxGQU28HfRriw9lTQ
+
+- heatmaps?
+- place markers along leylines?
+- better with just svg overlays in cricles? not pins? or keep static size? how did i do it with readme?
+
+- how and when are markers drawn? on click instead?
+- more markers? use sheet as tile? https://stackoverflow.com/questions/8248077/google-maps-v3-standard-icon-shadow-names-equiv-of-g-default-icon-in-v2
+
+https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png&text=A&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1
+
+## pages
+
+- randomize svg humaans
+- captchkas
+- bot chat?
+- autocut edlvids?
+
+- live stock data api
+- stovckvid blend scell scenarios cartton effects?
+
+## idea seeds
+
+- log and track all interactions for user?
 
 ## maybe
 
@@ -36,9 +79,11 @@
 
 - tts audio?
 
-## idea seeds
+- exif data for some of the miages just?
 
-- log and track all interactions for user?
+## fiverr
+
+-- fiverr essays on site? prmotps? scavenger hunt? you find and piece the little parts together?
 
 ### dump
 
@@ -49,18 +94,6 @@ known black sites? some things thare are just map places?
 twitter embeds?
 
 should def mutate main title prop?
-
----
-
-global is cloud shown? or just turn off anim?
-
-covid & fire data? 2much?
-
-have tone slowlywloswl shitft..
-
-change leyline color on move?
-
-ui clicks sounds : superposition test
 
 https://developers.google.com/maps/documentation/javascript/examples/map-coordinates map markers based on this? bounds?
 
@@ -74,12 +107,4 @@ some just bkg imgage..
 
 click to change center and draw arror?
 
-ui panic hide eveyrtihing button?
-
-real share buttons that copies link?
-
 symbols in markers?
-
-# content
-
-- exif data for some of the miages just?
