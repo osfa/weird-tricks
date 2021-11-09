@@ -84,9 +84,9 @@
         :color="currentDrawerColor"
       ></v-progress-linear>
 
-      <template v-slot:extension v-if="extended">
+      <!-- <template v-slot:extension v-if="extended">
         <GameBar />
-      </template>
+      </template> -->
       <!-- <v-autocomplete
         dark
         filled
@@ -215,17 +215,6 @@ export default {
     },
     randomElevation() {
       return randomElevation();
-    },
-    forceNavigate() {
-      console.log("emit?");
-      // map methods?
-      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
     },
   },
   watch: {
