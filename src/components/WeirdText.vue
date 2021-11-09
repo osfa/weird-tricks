@@ -1,5 +1,5 @@
 <template>
-  <span>{{ generateText() }}</span>
+  <span>{{ generateChars() }}</span>
 </template>
 <script>
 import randomWords from "random-words";
@@ -24,7 +24,7 @@ export default {
       //  Math.random().toString(36).substring(2, 15);
       const chars = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"];
       const charCount = 5;
-      [...Array(charChount)].map(
+      return [...Array(charCount)].map(
         (i) => chars[(Math.random() * chars.length) | 0]
       ).join``;
     },

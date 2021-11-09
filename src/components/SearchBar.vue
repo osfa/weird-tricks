@@ -10,7 +10,7 @@
     item-text="name"
     item-value="id"
     :label="!$vuetify.breakpoint.smAndUp ? title : title"
-    dense
+    :dense="!$vuetify.breakpoint.mdAndUp"
     dark
     append-outer-icon="mdi-magnify"
     :menu-props="{ closeOnContentClick: true }"
