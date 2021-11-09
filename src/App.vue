@@ -111,6 +111,7 @@ export default {
     crossFade: undefined,
     crossDirection: false,
     crossFadeInterval: undefined,
+    rainMaker: undefined,
   }),
   metaInfo() {
     return {
@@ -184,6 +185,11 @@ export default {
     },
     toggleAudio() {
       console.log("toggleAudio");
+      if (!this.audioCtx) {
+        this.initAudio();
+        return;
+      }
+
       if (this.audioCtx.state === "running") {
         this.audioCtx.suspend().then(function () {
           console.log("suspended audio");
@@ -214,10 +220,10 @@ export default {
         0
       );
     },
-    setRainVolume(rainMaker) {
+    setRainVolume() {
       // rainMaker.volume.value = -Infinity; //.rampTo(-Infinity, 10);
       let volume = this.rainVolume === -100 ? -Infinity : this.rainVolume;
-      rainMaker.volume.value = volume;
+      this.rainMaker.volume.value = volume;
     },
     setFrequencies() {
       const freqs = this.calculateFrequencies(this.binauralBeat);
@@ -250,10 +256,10 @@ export default {
 
       const merge = new Tone.Merge().toDestination();
 
-      this.leftEar = new Tone.Oscillator().connect(merge, 0, 0).start();
-      this.rightEar = new Tone.Oscillator().connect(merge, 0, 1).start();
+      this.leftEar = new Tone.Oscillator().connect(merge, 0, 0);
+      this.rightEar = new Tone.Oscillator().connect(merge, 0, 1);
 
-      const rainMaker = new Tone.Noise("brown").start().toDestination();
+      this.rainMaker = new Tone.Noise("brown").toDestination();
 
       this.crossFade = new Tone.CrossFade().toDestination();
       this.crossFade.fade.value = 0.5; // 0-a
@@ -274,9 +280,13 @@ export default {
 
       this.crossFadeInterval = setInterval(this.doCrossFade, 5000);
 
-      this.setRainVolume(rainMaker);
+      this.setRainVolume();
       this.setVolume();
       this.setFrequencies();
+
+      this.leftEar.start();
+      this.rightEar.start();
+      this.rainMaker.start();
     },
   },
   created() {
@@ -287,7 +297,6 @@ export default {
   },
   mounted() {
     console.log("App mount");
-    this.initAudio();
   },
   destroyed() {
     if (process.isClient) {

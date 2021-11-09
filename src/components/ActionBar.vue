@@ -77,7 +77,7 @@ import * as Tone from "tone";
 export default {
   mixins: [cardMixin],
   data: () => ({
-    isMuted: false,
+    isMuted: true,
   }),
   computed: {
     muteState() {
