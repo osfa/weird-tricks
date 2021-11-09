@@ -304,6 +304,12 @@ export default {
     }
     clearInterval(this.crossFadeInterval);
   },
+  watch: {
+    "$store.state.mapIdx": function () {
+      console.log(this.$store.state.mapIdx);
+      this.mapNav();
+    },
+  },
 };
 </script>
 
