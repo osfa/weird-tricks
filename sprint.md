@@ -25,6 +25,8 @@
 
 - use correct dates and links for article
 
+- button placement mobile...
+
 ## autocollage / tilesets
 
 - just try loading these autocollages into tiles?

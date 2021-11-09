@@ -148,12 +148,11 @@ export default {
       console.log("forceNav main");
       this.currentAnimation = randomAnimation();
 
-      //!!!!!! watch this.$store.state.currentBlockIdx instead?
-      if (backwards) {
-        this.navigateBack();
-      } else {
-        this.navigateForward();
-      }
+      // if (backwards) {
+      //   this.navigateBack();
+      // } else {
+      //   this.navigateForward();
+      // }
 
       const allNodes = this.$static.nodes.edges;
       // let nextPost = allNodes[this.$store.state.currentBlockIdx];
@@ -305,9 +304,9 @@ export default {
     clearInterval(this.crossFadeInterval);
   },
   watch: {
-    "$store.state.mapIdx": function () {
-      console.log(this.$store.state.mapIdx);
-      this.mapNav();
+    "$store.state.currentBlockIdx": function () {
+      console.log(this.$store.state.currentBlockIdx);
+      this.forceNav();
     },
   },
 };
