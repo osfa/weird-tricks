@@ -12,6 +12,7 @@
       :color="currentDrawerColor"
       dark
       :elevation="randomElevation()"
+      hide-overlay
     >
       <v-list v-if="showAvatar">
         <v-list-item class="px-2">
@@ -74,7 +75,7 @@
       <!--         v-show="$vuetify.breakpoint.smAndUp || !extended"
  -->
       <v-toolbar-title style="cursor: pointer" @click="home()"
-        >You won't believe it</v-toolbar-title
+        >10 Weird Tricks</v-toolbar-title
       >
       <v-progress-linear
         :active="loading"
@@ -85,7 +86,7 @@
       ></v-progress-linear>
 
       <!-- <template v-slot:extension v-if="extended">
-        <GameBar />
+        <SearchBar />
       </template> -->
       <!-- <v-autocomplete
         dark
@@ -97,24 +98,29 @@
 
       <v-spacer></v-spacer>
 
-      <SearchBar class="mx-auto" v-show="extended || true" />
+      <!-- <SearchBar class="mx-auto" v-show="extended || true" /> -->
 
-      <!-- <v-btn icon @click="extended = !extended">
+      <v-btn icon @click="extended = !extended" v-if="!extended">
         <v-icon>mdi-magnify</v-icon>
-      </v-btn> -->
-
-      <v-btn icon v-show="$vuetify.breakpoint.mdAndUp">
-        <v-icon>mdi-heart</v-icon>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn
+        @click.native="toggleAudio"
+        icon
+        v-show="$vuetify.breakpoint.mdAndUp || true"
+      >
+        <!-- <v-icon>mdi-heart</v-icon> -->
+        <v-icon>{{ muteState.icon }}</v-icon>
+      </v-btn>
+
+      <!-- <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      </v-btn> -->
     </v-app-bar>
 
     <!-- floating search -->
-    <!-- <transition mode="out-in" appear name="fade">
-      <v-card
+    <transition mode="out-in" appear name="fade">
+      <div
         v-if="extended"
         flat
         fab
@@ -126,7 +132,8 @@
           position: fixed;
         "
       >
-        <v-toolbar dense class="flex-grow-0">
+        <SearchBar />
+        <!-- <v-toolbar dense class="flex-grow-0">
           <v-text-field
             hide-details
             prepend-icon="mdi-magnify"
@@ -136,9 +143,16 @@
           <v-btn icon>
             <v-icon>mdi-crosshairs-gps</v-icon>
           </v-btn>
-        </v-toolbar>
-      </v-card>
-    </transition> -->
+        </v-toolbar> -->
+        <!-- <v-autocomplete
+        dark
+        filled
+        dense
+        hide-details
+        v-if="extended"
+      ></v-autocomplete> -->
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -194,12 +208,19 @@ export default {
     currentMainColor: "pink",
     currentMenuItems: randomMenuItems(),
     randomZ: random(3, 5),
-    extended: true,
+    extended: false,
     loading: true,
+    isMuted: true,
   }),
   computed: {
     menuItems() {
       return this.currentMenuItems;
+    },
+    muteState() {
+      return {
+        icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
+        color: this.isMuted ? "red" : "primary",
+      }; // mdi-volumne-medium /low
     },
   },
   mounted() {
@@ -216,6 +237,10 @@ export default {
     randomElevation() {
       return randomElevation();
     },
+    toggleAudio() {
+      this.isMuted = !this.isMuted;
+      this.$emit("toggle-audio");
+    },
   },
   watch: {
     "$store.state.isLoading": function () {
@@ -226,6 +251,7 @@ export default {
       this.currentMainColor = randomMaterialColor();
       this.currentMenuItems = randomMenuItems();
       this.randomZ = random(3, 5);
+      this.extended = false;
       console.log("route changed");
     },
   },

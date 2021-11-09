@@ -5,6 +5,7 @@
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
+        @toggle-audio="toggleAudio"
         :elevation="randomElevation()"
       ></RegularNav>
 

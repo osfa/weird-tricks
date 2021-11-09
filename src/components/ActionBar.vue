@@ -1,6 +1,6 @@
 <template>
   <div class="button-bar flex flex-column">
-    <v-fab-transition>
+    <v-fab-transition v-if="false">
       <v-btn
         class="mb-8"
         :elevation="randomElevation()"
@@ -20,7 +20,7 @@
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      large
+      :large="$vuetify.breakpoint.mdAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>
@@ -31,19 +31,7 @@
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      large
-      dark
-    >
-      <v-icon>{{ randomIcon() }}</v-icon>
-    </v-btn>
-
-    <v-btn
-      class="mt-4"
-      :elevation="randomElevation()"
-      :color="randomMaterialColor()"
-      @click="$emit('map-nav')"
-      fab
-      large
+      :large="$vuetify.breakpoint.mdAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>
@@ -55,7 +43,19 @@
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      large
+      :large="$vuetify.breakpoint.mdAndUp"
+      dark
+    >
+      <v-icon>{{ randomIcon() }}</v-icon>
+    </v-btn>
+
+    <v-btn
+      class="mt-4"
+      :elevation="randomElevation()"
+      :color="randomMaterialColor()"
+      @click="$emit('map-nav')"
+      fab
+      :large="$vuetify.breakpoint.mdAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>

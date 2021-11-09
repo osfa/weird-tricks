@@ -9,10 +9,9 @@
     hide-selected
     item-text="name"
     item-value="id"
-    :label="!$vuetify.breakpoint.smAndUp ? title : '...'"
+    :label="!$vuetify.breakpoint.smAndUp ? title : title"
     dense
     dark
-    filled
     append-outer-icon="mdi-magnify"
     :menu-props="{ closeOnContentClick: true }"
   >
@@ -24,7 +23,7 @@
       <v-list-item>
         <v-list-item-title>
           <!-- <WeirdText /> -->
-          ...
+          Nothing
         </v-list-item-title>
       </v-list-item>
     </template>
@@ -69,7 +68,7 @@ export default {
   props: {},
   data() {
     return {
-      title: "..........",
+      title: "You won't believe it",
       isLoading: false,
       items: [],
       model: null,

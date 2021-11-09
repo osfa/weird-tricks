@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "You won't believe it",
+  siteName: "Weird Tricks",
   plugins: [
     {
       use: "@gridsome/source-contentful",
