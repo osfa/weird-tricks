@@ -29,10 +29,11 @@
       "
     >
       <ground-overlay
-        v-if="groundOverlayBounds"
-        :source="groundOverlaySource"
-        :bounds="groundOverlayBounds"
-        :opacity="1.0"
+        v-for="(o, index) in groundOverlays"
+        :key="`bound-${index}`"
+        :source="o.source"
+        :bounds="o.bounds"
+        :opacity="o.opacity"
       >
       </ground-overlay>
 
@@ -53,6 +54,16 @@
         @click="markerClick(m)"
       /> -->
 
+      <GmapMarker
+        :key="`center-${index}`"
+        v-for="(m, index) in centerMarkers"
+        :position="m.position"
+        :clickable="true"
+        :icon="m.icon"
+        :label="m.label"
+        @click="markerClick(m)"
+      />
+
       <!-- <gmap-custom-marker
         :key="index"
         v-for="(m, index) in richFormatMarkers"
@@ -70,7 +81,6 @@
         :draggable="false"
         :icon="m.icon"
         :label="m.label"
-        @click="markerClick(m)"
       />
     </GmapMap>
 
@@ -104,6 +114,7 @@ import {
   randomMaterialColor,
   random,
   randomIcon,
+  randomFloat,
 } from "~/util";
 import { customStyle } from "~/mapStyler";
 import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
@@ -138,14 +149,20 @@ export default {
     currentMapType: "terrain",
     imgMarkers: [],
     // cloudMarkers: [],
+    centerMarkers: [],
     circleMarkers: [],
+    availableOverlays: [
+      require("~/assets/tiles/complete1.png"),
+      require("~/assets/tiles/complete2.png"),
+      require("~/assets/tiles/complete3.png"),
+      // "https://khms3.google.com/kh/v=908?x=164&y=395&z=10", // cupertino
+    ],
     curryPoints: currys.map((e) => [
       e.geometry.coordinates[1],
       e.geometry.coordinates[0],
     ]),
     center: centerStart, // move to vuex?
-    groundOverlayBounds: undefined,
-    groundOverlaySource: "https://khms1.google.com/kh/v=908?x=36&y=17&z=6",
+    groundOverlays: [],
     currentStyle: customStyle(),
     leyLinesColor: "#FFFFFF", //randomMaterialColor(),
     lastPos: undefined,
@@ -166,17 +183,21 @@ export default {
   async mounted() {
     console.log("main mount");
     this.$store.commit("setMainContent", this.$static.nodes.edges);
-    this.setCenter(this.center);
+    // falokorxizgajhqf7iwz
+
+    console.log(this.$static.nodes.edges);
 
     // await this.$gmapApiPromiseLazy();
 
     this.$refs.mapRef.$mapPromise.then((map) => {
       this.$store.commit("setIsLoading", false);
+      this.setCenter(this.center);
 
       this.map = map;
       this.drawLeyLines();
       // this.drawLocationArrows();
       this.drawPatternMarkers(this.center.lat, this.center.lng);
+      this.drawOverlay();
     });
   },
   computed: {
@@ -198,6 +219,21 @@ export default {
     setCenter(center) {
       this.center = center;
       this.$store.commit("setCenter", this.center);
+
+      var icon = {
+        path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+        fillColor: "#FFFFFF",
+        fillOpacity: 0.9,
+        anchor: new google.maps.Point(0, 0),
+        strokeWeight: 0,
+        scale: 0.5,
+      };
+      var centerMarker = new google.maps.Marker({
+        position: { lat: this.center.lat, lng: this.center.lng },
+        draggable: false,
+        icon: icon,
+      });
+      this.centerMarkers.push(centerMarker);
     },
     mark(event) {
       console.log("click at:", event.latLng.lat(), event.latLng.lng());
@@ -217,6 +253,24 @@ export default {
         lng: sampled[1],
       });
       this.setCenter({ lat: sampled[0], lng: sampled[1] });
+    },
+    drawOverlay() {
+      console.log("draw at:", this.center);
+      const tileExtent = random(0, 3);
+
+      console.log("tilextent: ", tileExtent);
+      const tileSource = `https://khms3.google.com/kh/v=908?x=${random(
+        140,
+        164
+      )}&y=${random(380, 400)}&z=${random(9, 10)}`;
+
+      this.groundOverlays.push({
+        // source: this.availableOverlays.sample(),
+        source: tileSource,
+        bounds: getTileBounds(this.center, this.zoom, tileExtent),
+        opacity: randomFloat(0.8, 1.0),
+      });
+      // https://khms3.google.com/kh/v=908?x=164&y=395&z=10 cupertino
     },
     drawLocationArrows() {
       // draw new arrow for each moevemnt? diff color diff pattern?
@@ -385,6 +439,7 @@ export default {
 
             this.drawPatternMarkers(lat, lng);
             this.drawLocationArrows();
+            this.drawOverlay();
           });
         }
         this.$store.commit("setIsLoading", false);

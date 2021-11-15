@@ -2,12 +2,13 @@
 
 - number id or hash in node key
 
-- if satellite, more opacity
+- if satellite, more opacity. if opacity, no tile draw?
+
 - collapsaible node components
 - ui panic hide eveyrtihing button?
 - image lightbox...
 
-- safari mobile crash bug...
+#- safari mobile crash bug...
 
 - obfuscate sarch
 

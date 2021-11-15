@@ -21,7 +21,7 @@
     <transition mode="out-in" appear :name="currentAnimation">
       <v-container
         class="fill-height fluid"
-        style="position: relative"
+        style="position: relative; display: none"
         :style="[
           {
             zIndex: randomZ, // below or above clouds

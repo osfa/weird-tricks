@@ -20,6 +20,10 @@ export const random = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
+export const randomFloat = (min, max) => {
+  return Math.random() * (max - min) + min;
+};
+
 export const shuffle = (array) => {
   let currentIndex = array.length,
     randomIndex;

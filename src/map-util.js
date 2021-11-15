@@ -111,6 +111,7 @@ const googleMarkers = [
 ];
 
 // https://khms1.google.com/kh/v=908?x=36&y=17&z=6
+// https://khms3.google.com/kh/v=908?x=164&y=395&z=10
 // https://www.maptiler.com/google-maps-coordinates-tile-bounds-projection/
 
 export const tile2long = (x, z) => {
@@ -135,7 +136,7 @@ export const project = (latLng, tileSize) => {
   );
 };
 
-export const getTileBounds = (google, center, zoomLevel, tileExtent = 1) => {
+export const getTileBounds = (center, zoomLevel, tileExtent = 1) => {
   const TILE_SIZE = 256;
   const currentZoom = zoomLevel;
   const scale = 1 << zoomLevel;
@@ -147,6 +148,8 @@ export const getTileBounds = (google, center, zoomLevel, tileExtent = 1) => {
     Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
     Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
   );
+
+  console.log("tile coordinate:", tileCoordinate);
 
   return {
     north: tile2lat(tileCoordinate.y, currentZoom),
