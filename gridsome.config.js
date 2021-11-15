@@ -6,6 +6,7 @@
 
 module.exports = {
   siteName: "Weird Tricks",
+  titleTemplate: "%s", // %s - <siteName> is default
   plugins: [
     {
       use: "@gridsome/source-contentful",

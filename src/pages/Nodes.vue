@@ -19,7 +19,7 @@
       <v-row align="center">
         <v-col
           v-for="{ node } in shuffledContent"
-          :key="node.id"
+          :key="node.title"
           :cols="colCount"
           style="pointer-events: auto"
           class="col-12 col-sm-6 col-md-4"
@@ -27,7 +27,7 @@
           <g-image v-if="false" :src="node.heroImage.file.url" />
 
           <v-card
-            :to="`/nodes/${node.id}`"
+            :to="`/nodes/${node.title}`"
             style="pointer-events: auto"
             :elevation="randomElevation()"
           >
@@ -88,7 +88,7 @@ query Posts($page: Int) {
     { totalPages currentPage } 
     edges { 
         node { 
-          id 
+          name 
           title 
           date(format: "MMMM D, Y")
           heroImage {

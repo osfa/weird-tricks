@@ -88,25 +88,6 @@
   </div>
 </template>
 
-<static-query>
-  query Node {
-    nodes: allContentfulNode(sortBy: "published_at", order: DESC) {
-      edges {
-        node {
-          id
-          title
-          hyperlink
-          heroImage {
-            file {
-              url
-            }
-          },
-        }
-      }
-    }
-  }
-</static-query>
-
 <script>
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 import {
@@ -182,10 +163,6 @@ export default {
   }),
   async mounted() {
     console.log("main mount");
-    this.$store.commit("setMainContent", this.$static.nodes.edges);
-    // falokorxizgajhqf7iwz
-
-    console.log(this.$static.nodes.edges);
 
     // await this.$gmapApiPromiseLazy();
 

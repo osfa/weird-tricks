@@ -84,7 +84,7 @@ export default {
     },
   },
   watch: {
-    // id, symbol, name
+    // slug, symbol, name
     search(val) {
       if (!this.search && !val) return;
 
@@ -100,9 +100,9 @@ export default {
 
       this.items = filteredResults.map((n) => {
         return {
-          id: n.node.id, // ctf id
+          id: n.node.title,
           hyperlink: n.node.hyperlink,
-          name: n.node.title,
+          name: n.node.name, // vs title
         };
       });
 

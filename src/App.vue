@@ -47,9 +47,9 @@
     nodes: allContentfulNode(sortBy: "published_at", order: DESC) {
       edges {
         node {
-          id
-          title
-          hyperlink
+          title,
+          name,
+          hyperlink,
           heroImage {
             file {
               url
@@ -158,8 +158,11 @@ export default {
       const allNodes = this.$static.nodes.edges;
       // let nextPost = allNodes[this.$store.state.currentBlockIdx];
       let nextPost = allNodes.sample();
+      while (this.$route.fullPath.includes(nextPost.node.title)) {
+        nextPost = allNodes.sample();
+      }
 
-      let nextRoutePath = `/nodes/${nextPost.node.id.toLowerCase()}`;
+      let nextRoutePath = `/nodes/${nextPost.node.title}`;
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
@@ -297,6 +300,9 @@ export default {
   },
   mounted() {
     console.log("App mount");
+    console.log("setting content:", this.$static.nodes.edges);
+    console.log("main structur:", this.$static.nodes.edges[0].node);
+    this.$store.commit("setMainContent", this.$static.nodes.edges);
   },
   destroyed() {
     if (process.isClient) {

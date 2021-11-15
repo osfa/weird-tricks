@@ -21,7 +21,7 @@
     <transition mode="out-in" appear :name="currentAnimation">
       <v-container
         class="fill-height fluid"
-        style="position: relative; display: none"
+        style="position: relative"
         :style="[
           {
             zIndex: randomZ, // below or above clouds
@@ -47,19 +47,21 @@
 <page-query>
   query Post($path: String!) {
     post: contentfulNode(path: $path) {
+      title,
+      name,
+      hyperlink, 
       heroImage {
         file {
           url
         }
       },
-      hyperlink
-      youTubeEmbed
-      title
     }
   }
 </page-query>
 
 <script>
+// youTubeEmbed
+
 import {
   random,
   randomIcon,
@@ -77,7 +79,7 @@ export default {
     };
   },
   mounted() {
-    console.log("====== node mount");
+    console.log("====== node mount: ", this.$page.post);
     if (this.$page.post.hyperlink != "null") {
       this.iframeUrl = this.$page.post.hyperlink;
     }
@@ -94,15 +96,5 @@ export default {
     randomZ: random(3, 5), // below or above clouds
     currentAnimation: randomAnimation(),
   }),
-  methods: {
-    forceNav() {
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
-    },
-  },
 };
 </script>
