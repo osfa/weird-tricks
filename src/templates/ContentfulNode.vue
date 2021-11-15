@@ -4,21 +4,25 @@
     <!-- COMPONENT -->
     <div
       v-if="$page.post.heroImage"
-      :style="`background-image: url('${$page.post.heroImage.file.url}?fit=fill&w=1280&h=720'); 
+      :style="`background-image: url('${
+        $page.post.heroImage.file.url
+      }?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
       pointer-events:none;
       z-index: 2;
-      opacity: 10%; background-size: cover;`"
+      opacity: ${random(10, 50)}%; background-size: cover;`"
     ></div>
+
     <!-- COMPONENT -->
     <node-dialog
+      v-if="!allHidden"
       style="z-index: 100"
       is-fixed
       :iframe-url="$page.post.hyperlink"
     />
 
-    <transition mode="out-in" appear :name="currentAnimation">
+    <transition mode="out-in" appear :name="currentAnimation" v-if="!allHidden">
       <v-container
         class="fill-height fluid"
         style="position: relative"
@@ -69,8 +73,12 @@ import {
 } from "~/util";
 import WeirdCard from "../components/WeirdCard.vue";
 import NodeDialog from "~/components/NodeDialog.vue";
+import { mapState } from "vuex";
+import { cardMixin } from "~/cardMixin";
 
 export default {
+  mixins: [cardMixin],
+
   components: { WeirdCard, NodeDialog },
   metaInfo() {
     return {
@@ -82,6 +90,9 @@ export default {
     if (this.$page.post.hyperlink != "null") {
       this.iframeUrl = this.$page.post.hyperlink;
     }
+  },
+  computed: {
+    ...mapState(["allHidden"]),
   },
   data: () => ({
     dialog: false,

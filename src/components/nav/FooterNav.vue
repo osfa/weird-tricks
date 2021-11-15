@@ -33,6 +33,8 @@ import {
   randomElevation,
 } from "~/util";
 import randomWords from "random-words";
+import { mapState } from "vuex";
+import { cardMixin } from "~/cardMixin";
 
 const randomMenuItems = () => {
   return [
@@ -59,6 +61,8 @@ const randomMenuItems = () => {
   ];
 };
 export default {
+  mixins: [cardMixin],
+
   data: () => ({
     value: 1,
     currentColor: randomMaterialColor(),
@@ -66,6 +70,7 @@ export default {
     randomZ: random(3, 5),
   }),
   computed: {
+    ...mapState(["allHidden"]),
     backgroundColor() {
       return this.currentColor;
     },
@@ -74,17 +79,6 @@ export default {
     },
   },
   methods: {
-    forceNavigate() {
-      console.log("emit?");
-      // map methods?
-      // https://stackoverflow.com/questions/42615445/vuejs-2-0-emit-event-from-grand-child-to-his-grand-parent-component
-      this.$emit("force-nav");
-      let vm = this.$parent;
-      while (vm) {
-        vm.$emit("force-nav");
-        vm = vm.$parent;
-      }
-    },
     randomElevation() {
       return randomElevation();
     },

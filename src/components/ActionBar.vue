@@ -14,24 +14,28 @@
         <v-icon>{{ muteState.icon }}</v-icon>
       </v-btn>
     </v-fab-transition>
+
+    <v-fab-transition>
+      <v-btn
+        class="mb-8"
+        :elevation="randomElevation()"
+        :color="hideState.color"
+        :key="hideState.icon"
+        fab
+        :large="$vuetify.breakpoint.lgAndUp"
+        :dark="false"
+        @click.native="toggleHide"
+      >
+        <v-icon>{{ hideState.icon }}</v-icon>
+      </v-btn>
+    </v-fab-transition>
     <v-btn
       class="mt-4"
       :elevation="randomElevation()"
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      :large="$vuetify.breakpoint.mdAndUp"
-      dark
-    >
-      <v-icon>{{ randomIcon() }}</v-icon>
-    </v-btn>
-    <v-btn
-      class="mt-4"
-      :elevation="randomElevation()"
-      :color="randomMaterialColor()"
-      @click="$emit('map-nav')"
-      fab
-      :large="$vuetify.breakpoint.mdAndUp"
+      :large="$vuetify.breakpoint.lgAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>
@@ -43,7 +47,7 @@
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      :large="$vuetify.breakpoint.mdAndUp"
+      :large="$vuetify.breakpoint.lgAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>
@@ -55,7 +59,7 @@
       :color="randomMaterialColor()"
       @click="$emit('map-nav')"
       fab
-      :large="$vuetify.breakpoint.mdAndUp"
+      :large="$vuetify.breakpoint.lgAndUp"
       dark
     >
       <v-icon>{{ randomIcon() }}</v-icon>
@@ -72,12 +76,11 @@ import {
 } from "~/util";
 import { cardMixin } from "~/cardMixin";
 
-import * as Tone from "tone";
-
 export default {
   mixins: [cardMixin],
   data: () => ({
     isMuted: true,
+    isHidden: false,
   }),
   computed: {
     muteState() {
@@ -86,11 +89,21 @@ export default {
         color: this.isMuted ? "red" : "primary",
       }; // mdi-volumne-medium /low
     },
+    hideState() {
+      return {
+        icon: this.isHidden ? "mdi-eye-outline" : "mdi-eye-off-outline",
+        color: this.isHidden ? "white" : "white",
+      }; // mdi-volumne-medium /low
+    },
   },
   methods: {
     toggleAudio() {
       this.isMuted = !this.isMuted;
       this.$emit("toggle-audio");
+    },
+    toggleHide() {
+      this.isHidden = !this.isHidden;
+      this.$store.commit("toggleHide");
     },
   },
 };

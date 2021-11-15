@@ -8,21 +8,23 @@
     max-width="1200"
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        style="z-index: 50; pointer-events: auto"
-        :style="isFixed ? 'bottom: 142px;' : ''"
-        :color="isFixed ? 'yellow darken-2' : 'primary'"
-        :elevation="3"
-        x-large
-        dark
-        v-bind="attrs"
-        v-on="on"
-        :fixed="isFixed"
-        right
-        mt-2
-      >
-        <v-icon>mdi-link</v-icon>
-      </v-btn>
+      <v-fab-transition>
+        <v-btn
+          style="z-index: 50; pointer-events: auto"
+          :style="isFixed ? 'bottom: 142px;' : ''"
+          :color="isFixed ? 'yellow darken-2' : 'primary'"
+          :elevation="3"
+          x-large
+          dark
+          v-bind="attrs"
+          v-on="on"
+          :fixed="isFixed"
+          right
+          mt-2
+        >
+          <v-icon>mdi-link</v-icon>
+        </v-btn>
+      </v-fab-transition>
     </template>
 
     <v-card>

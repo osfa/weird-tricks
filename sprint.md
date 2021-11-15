@@ -6,6 +6,9 @@
 
 - collapsaible node components
 - ui panic hide eveyrtihing button?
+
+  - elylines button hide ui stuff? and nav and stuff? temp
+
 - image lightbox...
 
 - obfuscate sarch
@@ -33,7 +36,11 @@
 
 - dialog bug
 - image placeholder broken
+- zindex search
+- static linkbutton that animats in and out to draw attention to it?
+- clouds dont show mobile...position...
 
 ---
 
 keywords hacking? just add lots of keywords and SEo stuff?
+add sliggght map movement

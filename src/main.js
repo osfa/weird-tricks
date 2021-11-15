@@ -10,8 +10,7 @@ import Vuex from "vuex";
 import colors from "vuetify/lib/util/colors";
 import * as GmapVue from "gmap-vue";
 import "~/assets/vue2-animate.min.css";
-// import articleBlocks from "./content/article_blocks";
-// import collageBlocks from "./content/collage_blocks";
+
 import { random } from "~/util";
 Array.prototype.sample = function () {
   return this[Math.floor(Math.random() * this.length)];
@@ -51,33 +50,17 @@ export default function (Vue, { appOptions, head, router }) {
 
   Vue.use(Vuex);
 
-  // all links n stuff in static file that can be read?
-  // state just index of where in this array? hmm
-  // or just seed store on load?
-
-  // all these diff blocks should be able to render in all components?
-
-  // force load in components on nav?
-  // uri or no...hmm. could have ids in store for blocks?
-
-  // need methods for splitting the article titles and populating? have sep store and splice into these components?
-  // like the cards and shit.
   appOptions.store = new Vuex.Store({
     state: {
       ctfBlocks: [],
-      // availableCommissionBlocks: [], // title, image url, body, author
-      // availableArticleBlocks: articleBlocks, // title & image url
-      // availableImageBlocks: collageBlocks, // large img url
-      // availableVideoBlocks: [], // video url
-      // availableMapBlocks: [],
-      // availableCollageBlocks: collageBlocks, // id, title, large img url
-      allBlocks: [],
       currentBlockIdx: 0,
       availableCoordinates: [],
       currentCoordinateIdx: 0,
       mapIdx: 0,
       center: { lat: 0.0, lng: 0.0 },
       isLoading: false,
+      isCollapsed: false,
+      allHidden: false,
       points: 0,
       jumps: 0,
     },
@@ -85,7 +68,6 @@ export default function (Vue, { appOptions, head, router }) {
       navigateForward(state) {
         state.currentBlockIdx =
           ++state.currentBlockIdx % state.ctfBlocks.length;
-        // state.points += state.points + random(0, 1000);
       },
       mapNav(state) {
         state.mapIdx += 1;
@@ -107,6 +89,12 @@ export default function (Vue, { appOptions, head, router }) {
       addPoints(state) {
         state.points += state.points + random(0, 1000);
         state.jumps += 1;
+      },
+      toggleCollapse(state) {
+        state.isCollapsed = !state.isCollapsed;
+      },
+      toggleHide(state) {
+        state.allHidden = !state.allHidden;
       },
     },
   });

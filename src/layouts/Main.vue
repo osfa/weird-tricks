@@ -210,7 +210,7 @@ export default {
         draggable: false,
         icon: icon,
       });
-      this.centerMarkers.push(centerMarker);
+      // this.centerMarkers.push(centerMarker);
     },
     mark(event) {
       console.log("click at:", event.latLng.lat(), event.latLng.lng());

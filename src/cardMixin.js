@@ -17,11 +17,17 @@ export const cardMixin = {
     randomText() {
       return randomText();
     },
+    random(min, max) {
+      return random(min, max);
+    },
     randomIcon() {
       return randomIcon();
     },
     forceNavigate() {
       this.$store.commit("navigateForward");
+    },
+    toggleCollapse() {
+      this.$store.commit("toggleCollapse");
     },
   },
 };
