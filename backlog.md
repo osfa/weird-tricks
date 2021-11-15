@@ -69,6 +69,9 @@ https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png
 
 ## maybe
 
+- star component?
+- share component?
+
 - leylines button should go to page at certain pos? refesh button on those? instead of link
 
 - ui sounds on nav

@@ -5,7 +5,7 @@
     <v-scroll-x-transition mode="out-in" :hide-on-leave="true">
       <div
         :key="$route.fullPath"
-        v-show="$page.post.heroImage"
+        v-if="$page.post.heroImage"
         :style="`background-image: url('${
           $page.post.heroImage.file.url
         }?fit=fill&w=1280&h=720'); 

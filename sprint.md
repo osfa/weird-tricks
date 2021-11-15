@@ -16,9 +16,9 @@
   - birds
   - tone
   - ramp volume etc
+  - ui sounds
 
-- star component?
-- share component?
+- youtube seed script..
 
 ## autocollage / tilesets
 
@@ -36,3 +36,4 @@
 
 keywords hacking? just add lots of keywords and SEo stuff?
 add sliggght map movement
+lelyines butons should hide,..not eye?
