@@ -1,5 +1,5 @@
 <template>
-  <transition mode="out-in" name="fade" v-if="!allHidden">
+  <div v-show="!allHidden">
     <div
       :style="[
         {
@@ -118,45 +118,26 @@
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn> -->
       </v-app-bar>
-
-      <!-- floating search -->
-      <transition mode="out-in" appear name="fade">
-        <div
-          v-if="extended"
-          flat
-          fab
-          style="
-            z-index: 1000;
-            width: 300px;
-            top: 85px;
-            right: 16px;
-            position: fixed;
-          "
-        >
-          <SearchBar />
-          <!-- <v-toolbar dense class="flex-grow-0">
-          <v-text-field
-            hide-details
-            prepend-icon="mdi-magnify"
-            single-line
-          ></v-text-field>
-
-          <v-btn icon>
-            <v-icon>mdi-crosshairs-gps</v-icon>
-          </v-btn>
-        </v-toolbar> -->
-          <!-- <v-autocomplete
-        dark
-        filled
-        dense
-        hide-details
-        v-if="extended"
-      ></v-autocomplete> -->
-        </div>
-      </transition>
-      <!-- <GameBar class="points-bar" /> -->
     </div>
-  </transition>
+
+    <!-- floating search -->
+    <transition mode="out-in" appear name="fade">
+      <div
+        v-if="extended"
+        flat
+        fab
+        style="
+          z-index: 1000;
+          width: 300px;
+          top: 85px;
+          right: 16px;
+          position: fixed;
+        "
+      >
+        <SearchBar />
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>

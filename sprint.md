@@ -1,15 +1,9 @@
 # Sprint 1
 
-- if satellite, more opacity. if opacity, no tile draw?
-
 - use correct dates and links for article
 
-- collapsaible node components
-- ui panic hide eveyrtihing button?
-
-  - elylines button hide ui stuff? and nav and stuff? temp
-
 - image lightbox...
+- dialog size...
 
 - obfuscate sarch
 
@@ -34,9 +28,7 @@
 
 ## bugs
 
-- dialog bug
 - image placeholder broken
-- zindex search
 - static linkbutton that animats in and out to draw attention to it?
 - clouds dont show mobile...position...
 

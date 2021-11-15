@@ -60,12 +60,13 @@ export default {
   align-items: center;
   margin: auto;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 10;
   position: fixed;
   bottom: 68px;
   right: 20px;
   font-family: "Roboto";
   color: white;
+  pointer-events: none;
 }
 .hour,
 .min,

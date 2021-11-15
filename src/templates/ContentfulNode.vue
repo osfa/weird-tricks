@@ -1,18 +1,23 @@
 <template>
   <Layout>
     <!-- background image overlay -->
-    <!-- COMPONENT -->
-    <div
-      v-if="$page.post.heroImage"
-      :style="`background-image: url('${
-        $page.post.heroImage.file.url
-      }?fit=fill&w=1280&h=720'); 
+    <!-- <transition mode="out-in" name="fade" hide-on-leave="true"> -->
+    <v-scroll-x-transition mode="out-in" :hide-on-leave="true">
+      <div
+        :key="$route.fullPath"
+        v-show="$page.post.heroImage"
+        :style="`background-image: url('${
+          $page.post.heroImage.file.url
+        }?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
       pointer-events:none;
       z-index: 2;
-      opacity: ${random(10, 50)}%; background-size: cover;`"
-    ></div>
+      opacity: ${random(10, 25)}%; background-size: cover;`"
+      ></div>
+    </v-scroll-x-transition>
+
+    <!-- </transition> -->
 
     <!-- COMPONENT -->
     <node-dialog
@@ -22,7 +27,12 @@
       :iframe-url="$page.post.hyperlink"
     />
 
-    <transition mode="out-in" appear :name="currentAnimation" v-if="!allHidden">
+    <transition
+      mode="out-in"
+      appear
+      :name="currentAnimation"
+      v-show="!allHidden"
+    >
       <v-container
         class="fill-height fluid"
         style="position: relative"
