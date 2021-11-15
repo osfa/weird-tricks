@@ -49,7 +49,8 @@
     post: contentfulNode(path: $path) {
       title,
       name,
-      hyperlink, 
+      hyperlink,
+      youTubeEmbed,
       heroImage {
         file {
           url
@@ -60,8 +61,6 @@
 </page-query>
 
 <script>
-// youTubeEmbed
-
 import {
   random,
   randomIcon,

@@ -19,7 +19,7 @@
     </v-img>
     <iframe
       v-if="$page.post.youTubeEmbed"
-      :src="$page.post.youTubeEmbed"
+      :src="`https://www.youtube.com/embed/${$page.post.youTubeEmbed}`"
       width="100%"
       height="200"
       title="YouTube video player"
