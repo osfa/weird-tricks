@@ -1,16 +1,20 @@
 <template>
-  <div class="d-flex flex-row align-center">
-    <h2 class="mr-2">{{ points }}</h2>
+  <div class="d-flex flex-row align-center justify-center">
+    <h2 class="mr-2">
+      <animated-number
+        :value="points"
+        :duration="1000"
+        :formatValue="formatToPrice"
+      />
+    </h2>
     <v-rating
-      v-model="stars"
+      v-if="false"
+      v-model="jumps"
       :background-color="randomMaterialColor()"
       :color="randomMaterialColor()"
       large
-      :length="stars + 30"
+      :length="5"
     ></v-rating>
-    <!-- empty-icon="$mdiStarOutline"
-    full-icon="$mdiStar"
-    half-icon="$mdiStarHalfFull" -->
   </div>
 </template>
 
@@ -25,27 +29,27 @@ import {
 } from "~/util";
 import WeirdText from "~/components/WeirdText.vue";
 import { cardMixin } from "~/cardMixin";
+import { mapState } from "vuex";
+import AnimatedNumber from "animated-number-vue";
 
 export default {
   mixins: [cardMixin],
-  components: { WeirdText },
+  components: { WeirdText, AnimatedNumber },
   props: {},
   data() {
     return {
       starCount: 0,
       availableStars: 20,
-      // points: 1000,
     };
   },
-  methods: {},
+  methods: {
+    formatToPrice(value) {
+      return `${value.toFixed()}`;
+    },
+  },
   watch: {},
   computed: {
-    points() {
-      return this.$store.state.points;
-    },
-    stars() {
-      return this.$store.state.jumps;
-    },
+    ...mapState(["points", "jumps"]),
   },
 };
 </script>

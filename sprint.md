@@ -1,14 +1,12 @@
 # Sprint 1
 
-- number id or hash in node key
-
 - if satellite, more opacity. if opacity, no tile draw?
+
+- use correct dates and links for article
 
 - collapsaible node components
 - ui panic hide eveyrtihing button?
 - image lightbox...
-
-#- safari mobile crash bug...
 
 - obfuscate sarch
 
@@ -22,11 +20,8 @@
   - tone
   - ramp volume etc
 
-- score revamp
-
-- use correct dates and links for article
-
-- button placement mobile...
+- star component?
+- share component?
 
 ## autocollage / tilesets
 
@@ -38,3 +33,7 @@
 
 - dialog bug
 - image placeholder broken
+
+---
+
+keywords hacking? just add lots of keywords and SEo stuff?

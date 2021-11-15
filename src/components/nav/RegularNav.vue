@@ -95,8 +95,8 @@
         hide-details
         v-if="extended"
       ></v-autocomplete> -->
-
       <v-spacer></v-spacer>
+      <GameBar />
 
       <!-- <SearchBar class="mx-auto" v-show="extended || true" /> -->
 
@@ -153,6 +153,7 @@
       ></v-autocomplete> -->
       </div>
     </transition>
+    <!-- <GameBar class="points-bar" /> -->
   </div>
 </template>
 
@@ -229,7 +230,6 @@ export default {
   methods: {
     home() {
       console.log("home click");
-      // this.$emit("force-nav");
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
       }
@@ -257,3 +257,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+.points-bar {
+  position: fixed;
+  pointer-events: none;
+  width: 100vw;
+  top: 75px;
+  z-index: 1000;
+}
+</style>

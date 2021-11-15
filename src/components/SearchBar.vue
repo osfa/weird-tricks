@@ -28,10 +28,7 @@
       </v-list-item>
     </template>
     <template v-slot:item="{ item }">
-      <v-list-item
-        link
-        :to="'/nodes/' + item.name.replace(' ', '-').toLowerCase()"
-      >
+      <v-list-item link :to="'/nodes/' + item.id">
         <v-list-item-avatar
           :color="randomMaterialColor()"
           class="font-weight-light white--text"

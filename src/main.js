@@ -12,7 +12,7 @@ import * as GmapVue from "gmap-vue";
 import "~/assets/vue2-animate.min.css";
 // import articleBlocks from "./content/article_blocks";
 // import collageBlocks from "./content/collage_blocks";
-
+import { random } from "~/util";
 Array.prototype.sample = function () {
   return this[Math.floor(Math.random() * this.length)];
 };
@@ -85,7 +85,7 @@ export default function (Vue, { appOptions, head, router }) {
       navigateForward(state) {
         state.currentBlockIdx =
           ++state.currentBlockIdx % state.ctfBlocks.length;
-        // state.points += state.points + 100
+        // state.points += state.points + random(0, 1000);
       },
       mapNav(state) {
         state.mapIdx += 1;
@@ -105,7 +105,7 @@ export default function (Vue, { appOptions, head, router }) {
         state.isLoading = payload;
       },
       addPoints(state) {
-        state.points += state.points + 100;
+        state.points += state.points + random(0, 1000);
         state.jumps += 1;
       },
     },
