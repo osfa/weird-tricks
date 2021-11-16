@@ -27,13 +27,9 @@
       :iframe-url="$page.post.hyperlink"
     />
 
-    <transition
-      mode="out-in"
-      appear
-      :name="currentAnimation"
-      v-show="!allHidden"
-    >
+    <transition mode="out-in" appear :name="currentAnimation">
       <v-container
+        v-show="!allHidden"
         class="fill-height fluid"
         style="position: relative"
         :style="[
