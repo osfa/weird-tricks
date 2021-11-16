@@ -31,30 +31,42 @@ import {
   randomIcon,
   random,
   randomElevation,
+  randomText,
 } from "~/util";
-import randomWords from "random-words";
 import { mapState } from "vuex";
 import { cardMixin } from "~/cardMixin";
 
 const randomMenuItems = () => {
   return [
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 15),
+      }),
       icon: randomIcon(),
       path: "/other/",
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 15),
+      }),
       icon: randomIcon(),
       path: "/nodes/",
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 15),
+      }),
       icon: randomIcon(),
       path: "/about/",
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 15),
+      }),
       icon: randomIcon(),
       path: "/",
     },

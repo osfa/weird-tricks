@@ -27,7 +27,6 @@
 
         <v-divider v-if="showAvatar"></v-divider>
 
-        <!-- <g-link to="/about/">About us</g-link> -->
         <v-list nav dense>
           <v-list-item link to="/">
             <v-list-item-icon>
@@ -73,11 +72,9 @@
       >
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <!--         v-show="$vuetify.breakpoint.smAndUp || !extended"
- -->
         <v-toolbar-title style="cursor: pointer" @click="home()"
-          >10 Weird Tricks</v-toolbar-title
-        >
+          ><WeirdText
+        /></v-toolbar-title>
         <v-progress-linear
           :active="loading"
           :indeterminate="loading"
@@ -86,20 +83,8 @@
           :color="currentDrawerColor"
         ></v-progress-linear>
 
-        <!-- <template v-slot:extension v-if="extended">
-        <SearchBar />
-      </template> -->
-        <!-- <v-autocomplete
-        dark
-        filled
-        dense
-        hide-details
-        v-if="extended"
-      ></v-autocomplete> -->
         <v-spacer></v-spacer>
         <GameBar />
-
-        <!-- <SearchBar class="mx-auto" v-show="extended || true" /> -->
 
         <v-btn icon @click="extended = !extended" v-if="!extended">
           <v-icon>mdi-magnify</v-icon>
@@ -110,13 +95,8 @@
           icon
           v-show="$vuetify.breakpoint.mdAndUp || true"
         >
-          <!-- <v-icon>mdi-heart</v-icon> -->
           <v-icon>{{ muteState.icon }}</v-icon>
         </v-btn>
-
-        <!-- <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn> -->
       </v-app-bar>
     </div>
 
@@ -146,31 +126,45 @@ import {
   randomIcon,
   random,
   randomElevation,
+  randomText,
 } from "~/util";
-import randomWords from "random-words";
+
 import Tree from "./Tree.vue";
 import Expander from "./Expander.vue";
 import SearchBar from "~/components/SearchBar.vue";
 import GameBar from "~/components/GameBar.vue";
 import { cardMixin } from "~/cardMixin";
 import { mapState } from "vuex";
+import WeirdText from "~/components/WeirdText.vue";
 
 const randomMenuItems = () => {
   return [
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 20),
+      }),
       icon: randomIcon(),
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 20),
+      }),
       icon: randomIcon(),
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 20),
+      }),
       icon: randomIcon(),
     },
     {
-      label: randomWords({ min: 1, max: 2, join: " " }),
+      label: randomText({
+        type: "clickbait",
+        length: random(10, 20),
+      }),
       icon: randomIcon(),
     },
   ];
@@ -183,6 +177,7 @@ export default {
     Expander,
     SearchBar,
     GameBar,
+    WeirdText,
   },
   data: () => ({
     showAvatar: false,

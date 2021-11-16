@@ -1,12 +1,17 @@
 import { randomFromPalette } from "~/assets/colors/palette1";
-import randomWords from "random-words";
 
 import { iconList } from "~/assets/icons";
+
+import { cb_run2_temp075 } from "~/data/cb_run2_temp075";
+import { cb_run2_temp2 } from "~/data/cb_run2_temp2";
+import { cb_run2_temp3 } from "~/data/cb_run2_temp3";
+
 export const randomMaterialColor = randomFromPalette;
 
 export const randomIcon = () => {
   return iconList[Math.floor(Math.random() * iconList.length)];
 };
+
 // export const Zindices Colors = Object.freeze({
 //   TOP_NAV:   Symbol("red"),
 //   TRANSP_IMAGE:
@@ -78,25 +83,55 @@ export const randomElevation = (array) => {
   return random(0, 24);
 };
 
-export const randomClickBait = (array) => {
-  return "clickbait";
+const cb_arrays = [cb_run2_temp2, cb_run2_temp3, cb_run2_temp075];
+export const generateAlphaChars = (targetLength) => {
+  const chars = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"];
+  const charCount = targetLength;
+  return [...Array(charCount)].map(
+    (i) => chars[(Math.random() * chars.length) | 0]
+  ).join``;
+};
+
+export const generateChars = (targetLength) => {
+  const weirdChar = ["*"];
+  const selectedChar = weirdChar.sample();
+  const charCount = targetLength;
+  return [...Array(charCount)].map((i) => selectedChar).join``;
+};
+
+export const randomClickBait = (targetLength) => {
+  if (random(0, 10) > 8) {
+    return generateAlphaChars(targetLength);
+  }
+
+  if (random(0, 10) > 8) {
+    return generateChars(targetLength);
+  }
+
+  const chosen = cb_arrays.sample().sample();
+  if (chosen.length <= targetLength) {
+    return chosen;
+  }
+  const split = chosen.split(" ");
+  let str = "";
+  let i = 0;
+  while (str.length < targetLength) {
+    i += 1;
+    str += split[i] + " ";
+  }
+  return str;
 };
 
 export const randomText = (configuration) => {
   switch (configuration.type) {
+    case "clickbait":
+      return randomClickBait(configuration.length);
+      break;
     case "sentence":
-      return randomWords({
-        min: 2,
-        max: 4,
-        join: " ",
-      });
+      return randomClickBait(random(30, 50));
       break;
     case "title":
-      return randomWords({
-        min: 1,
-        max: 2,
-        join: " ",
-      });
+      return randomClickBait(random(15, 30));
       break;
     default:
       return "default";

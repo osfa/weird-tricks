@@ -42,12 +42,14 @@
   </v-card>
 </template>
 <script>
-import { randomMaterialColor, randomIcon } from "~/util";
-import randomWords from "random-words";
+import { randomMaterialColor, randomIcon, randomText, random } from "~/util";
 
 const randomMenuItemString = () => {
-  let str = randomWords({ min: 1, max: 2, join: " " });
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  let str = randomText({
+    type: "clickbait",
+    length: random(10, 20),
+  });
+  return str;
 };
 export default {
   data: () => ({

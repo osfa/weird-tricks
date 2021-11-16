@@ -86,6 +86,8 @@ https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png
 
 - exif data for some of the miages just?
 
+- sponge tos read? tos gpt3 complte?
+
 ## fiverr
 
 -- fiverr essays on site? prmotps? scavenger hunt? you find and piece the little parts together?

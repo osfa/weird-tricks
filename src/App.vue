@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <v-app id="app">
-      <Clock />
+      <Clock v-show="!allHidden" />
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
@@ -75,6 +75,7 @@ import CloudDisplay from "~/components/clouds/CloudDisplay.vue";
 import Clock from "~/components/Clock.vue";
 import SearchBar from "~/components/SearchBar.vue";
 import ActionBar from "~/components/ActionBar.vue";
+import { mapState } from "vuex";
 
 import { cardMixin } from "~/cardMixin";
 
@@ -124,13 +125,7 @@ export default {
     };
   },
   computed: {
-    // switch (this.tabs) {
-    //   case 'one': return { color: 'success', icon: 'mdi-share-variant' }
-    //   case 'two': return { color: 'red', icon: 'mdi-pencil' }
-    //   case 'three': return { color: 'green', icon: 'mdi-chevron-up' }
-    //   default: return {}
-    // }
-    // },
+    ...mapState(["allHidden"]),
   },
   methods: {
     randomElevation() {
