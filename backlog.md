@@ -12,33 +12,39 @@
 
 <iframe src="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=chart&facet=none&country=~OWID_WRL" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
 
+- tweet embed test, sentinel bot
+
+- add some collages on for fullscreen effect
+- more detect stuff and less weapon stuff
+
+- shitty games seed. how? video ctf?
+
 ## node components
 
 - col offset listing stuff for nodes
 - button grids etc
 - snackbar
 - https://vuetifyjs.com/en/components/text-fields/#icons
+- somtimes nothing but high opac bkg
 
 ## major feature
 
 - gpt2 text stuff?
   - https://www.one-tab.com/page/eRG3WeTzQDq_GM6oAUfqwA
   - https://www.one-tab.com/page/feR2gsWeTSyacN8rdnbBow
-  - ** === just use whatever is in the vuetify demo? and randomly add image and ulr. text just garbled? **\*\*\*\*
-    -- make some strings be contitnous sentences in menu
 
 ## fixes
 
-- clouds and movement
+- real share buttons that copies link
+- more nodes per page more per page
 
-- search
+- scale anim on link as well as points
 
-  - multiple weird seraches?
-  - search result page?
+  - format point numbers? 000 etc
 
-- ui panic hide eveyrtihing button?
-
-- real share buttons that copies link?
+- hotjar? analytics?
+- longer clickbait stuff doesnt matter that breaks?
+- clickbalbe markers with garble text?
 
 ### map
 

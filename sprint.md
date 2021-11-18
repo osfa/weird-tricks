@@ -1,5 +1,15 @@
 # Sprint 1
 
+- cookie ask audio
+
+- no eye, leylines button hide
+
+- hide should hide opac layer
+
+- def need slow pan, on tick? so always moving
+
+- randomize menu item count
+
 - use correct dates and links for article
 
 - image lightbox...
@@ -17,6 +27,11 @@
   - tone
   - ramp volume etc
   - ui sounds
+  - tick tock asmr sound sample https://www.youtube.com/watch?v=CLKvhtS51us
+
+  - other button that toggle through voices. stepts through. breaks after awhile
+    - tos readers
+    - tos gpt continuetioan? just diff animals reading ToS
 
 - youtube seed script..
 
@@ -31,6 +46,12 @@
 - image placeholder broken
 - static linkbutton that animats in and out to draw attention to it?
 - clouds dont show mobile...position...
+
+- buttons occlude link mobile
+- mobile relaod bug something
+- clock btreaks mobile whhyy?
+
+- remove 6xmnfpsqsky6gwksn4kqds
 
 ---
 
