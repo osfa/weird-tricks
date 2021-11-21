@@ -53,6 +53,10 @@
 
 - remove 6xmnfpsqsky6gwksn4kqds
 
+- search thing color, dont see it?
+
+- text top doesnt regenreate
+
 ---
 
 keywords hacking? just add lots of keywords and SEo stuff?

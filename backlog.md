@@ -6,6 +6,8 @@
 
 ## content
 
+- stonehenge etc markers
+
 - more software screens
 - telegram chats
 
@@ -22,6 +24,8 @@
 - more detect stuff and less weapon stuff
 
 - shitty games seed. how? video ctf?
+
+- router faraday
 
 ## node components
 
@@ -78,6 +82,10 @@ https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png
 - log and track all interactions for user?
 
 ## maybe
+
+- add fake other cursors?
+
+- settimeout to navigate onwards?
 
 - star component?
 - share component?
