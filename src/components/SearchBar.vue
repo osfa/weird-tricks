@@ -1,24 +1,22 @@
 <template>
-  <!-- <v-col cols="12" md="6"> -->
+  <!-- <v-card class="px-4 py-2"> -->
   <v-autocomplete
-    v-model="model"
     :items="items"
     :loading="isLoading"
     :search-input.sync="search"
     hide-details
     hide-selected
+    :color="randomMaterialColor()"
     item-text="name"
     item-value="id"
+    filled
+    no-filter
+    dark
     :label="!$vuetify.breakpoint.smAndUp ? title : title"
     :dense="!$vuetify.breakpoint.mdAndUp"
-    dark
     append-outer-icon="mdi-magnify"
     :menu-props="{ closeOnContentClick: true }"
   >
-    <!-- mdi-map-marker -->
-    <!-- <v-icon slot="append-icon" large color="primary">comment</v-icon> -->
-    <!-- clearable solo-inverted     append-outer-icon="search"
--->
     <template v-slot:no-data>
       <v-list-item>
         <v-list-item-title>
@@ -36,7 +34,7 @@
           <span class="mb-1">{{ item.name.charAt(0) }}</span>
         </v-list-item-avatar>
         <v-list-item-content>
-          <v-list-item-title v-text="item.name"></v-list-item-title>
+          <v-list-item-title v-text="item.id"></v-list-item-title>
           <v-list-item-subtitle v-text="item.hyperlink"></v-list-item-subtitle>
         </v-list-item-content>
         <v-list-item-action>
@@ -45,17 +43,10 @@
       </v-list-item>
     </template>
   </v-autocomplete>
-  <!-- </v-col> -->
+  <!-- </v-card> -->
 </template>
 <script>
-import {
-  random,
-  randomIcon,
-  randomMaterialColor,
-  randomAnimation,
-  randomElevation,
-  randomText,
-} from "~/util";
+import { randomIcon, randomText } from "~/util";
 import WeirdText from "~/components/WeirdText.vue";
 import { cardMixin } from "~/cardMixin";
 
@@ -68,7 +59,6 @@ export default {
       title: "You won't believe it",
       isLoading: false,
       items: [],
-      model: null,
       search: null,
     };
   },
@@ -88,13 +78,14 @@ export default {
       this.isLoading = true;
 
       const filteredResults = this.$store.state.ctfBlocks.filter((post) => {
-        return post.node.title
-          .toLowerCase()
-          .includes(this.search.toLowerCase().trim());
+        const searchTermChars = this.search.toLowerCase().split("");
+        const titleChars = post.node.name.toLowerCase().split("");
+        return titleChars.some((r) => searchTermChars.indexOf(r) >= 0);
+        // return post.node.title
+        //   .toLowerCase()
+        //   .includes(this.search.toLowerCase().trim());
       });
-
-      // console.log(filteredResults);
-
+      console.log(filteredResults.length);
       this.items = filteredResults.map((n) => {
         return {
           id: n.node.title,
@@ -102,29 +93,8 @@ export default {
           name: n.node.name, // vs title
         };
       });
-
       this.isLoading = false;
     },
   },
-  //   computed: {
-  //     searchResults() {
-  //       if (this.search && this.search.toLowerCase().trim().length > 2) {
-  //         const filteredResults = this.$store.state.ctfBlocks.filter((post) => {
-  //           console.log(
-  //             post.node.title
-  //               .toLowerCase()
-  //               .includes(this.search.toLowerCase().trim())
-  //           );
-  //           return post.node.title
-  //             .toLowerCase()
-  //             .includes(this.search.toLowerCase().trim());
-  //         });
-  //         console.log(filteredResults.length);
-  //         return filteredResults;
-  //       } else {
-  //         return [];
-  //       }
-  //     },
-  //   },
 };
 </script>

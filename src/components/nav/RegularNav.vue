@@ -108,7 +108,7 @@
         fab
         style="
           z-index: 1000;
-          width: 300px;
+          width: 350px;
           top: 85px;
           right: 16px;
           position: fixed;
@@ -177,7 +177,7 @@ export default {
     },
     muteState() {
       return {
-        icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
+        icon: this.isMuted ? "mdi-volume-medium" : "mdi-volume-mute",
         color: this.isMuted ? "red" : "primary",
       }; // mdi-volumne-medium /low
     },

@@ -1,11 +1,5 @@
 # Sprint 1
 
-- obfuscate sarch
-
-  - search background?
-  - search algo that checks if letter ars in the word or something
-  - search position : own bar
-
 - more audio and audio shifts
 
   - birds
