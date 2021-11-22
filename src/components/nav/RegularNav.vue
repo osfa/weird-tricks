@@ -73,7 +73,7 @@
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
         <v-toolbar-title style="cursor: pointer" @click="home()"
-          ><WeirdText
+          ><WeirdText :key="$route.fullPath"
         /></v-toolbar-title>
         <v-progress-linear
           :active="loading"
@@ -138,36 +138,17 @@ import { mapState } from "vuex";
 import WeirdText from "~/components/WeirdText.vue";
 
 const randomMenuItems = () => {
-  return [
-    {
+  const menuArray = [];
+  for (var index = 0; index < random(2, 8); index++) {
+    menuArray.push({
       label: randomText({
         type: "clickbait",
         length: random(10, 20),
       }),
       icon: randomIcon(),
-    },
-    {
-      label: randomText({
-        type: "clickbait",
-        length: random(10, 20),
-      }),
-      icon: randomIcon(),
-    },
-    {
-      label: randomText({
-        type: "clickbait",
-        length: random(10, 20),
-      }),
-      icon: randomIcon(),
-    },
-    {
-      label: randomText({
-        type: "clickbait",
-        length: random(10, 20),
-      }),
-      icon: randomIcon(),
-    },
-  ];
+    });
+  }
+  return menuArray;
 };
 export default {
   mixins: [cardMixin],
@@ -185,7 +166,7 @@ export default {
     currentDrawerColor: "yellow darken-2",
     currentMainColor: "pink",
     currentMenuItems: randomMenuItems(),
-    randomZ: random(3, 5),
+    randomZ: random(3, 8),
     extended: false,
     loading: true,
   }),

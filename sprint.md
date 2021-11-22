@@ -1,13 +1,5 @@
 # Sprint 1
 
-- def need slow pan, on tick? so always moving
-
-- randomize menu item count
-
-- image lightbox...
-
-- dialog size...
-
 - obfuscate sarch
 
   - search background?
@@ -29,6 +21,8 @@
 - COMPONENTS
 
 - youtube seed script..
+- image lightbox
+- dialog size
 
 ## autocollage / tilesets
 
@@ -39,22 +33,19 @@
 ## maybe
 
 - hide should hide opac layer
+- def need slow pan, on tick? so always moving
 
 ## bugs
 
 - image placeholder broken
-- static linkbutton that animats in and out to draw attention to it?
-- clouds dont show mobile...position...
 
 - buttons occlude link mobile
 - mobile relaod bug something
-- clock btreaks mobile whhyy?
+- clock btreaks mobile why?
 
 - remove 6xmnfpsqsky6gwksn4kqds
 
 - search thing color, dont see it?
-
-- text top doesnt regenreate
 
 ---
 
