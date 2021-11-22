@@ -129,17 +129,15 @@ export default {
     ...mapState(["allHidden"]),
   },
   methods: {
-    randomElevation() {
-      return randomElevation();
-    },
-    random(min, max) {
-      return random(min, max);
-    },
     mapNav() {
       this.$store.commit("mapNav");
     },
     forceNav(backwards) {
       console.log("forceNav main");
+      if (this.allHidden) {
+        this.$store.commit("toggleHide");
+      }
+
       this.currentAnimation = randomAnimation();
 
       // if (backwards) {
@@ -171,7 +169,6 @@ export default {
       console.log(this.$store.state.currentBlockIdx);
     },
     nav(e) {
-      console.log("nav");
       switch (e.keyCode) {
         case 37: // left
           this.forceNav(true);
@@ -294,9 +291,7 @@ export default {
     this.$store.commit("setIsLoading", true);
   },
   mounted() {
-    console.log("App mount");
-    console.log("setting content:", this.$static.nodes.edges);
-    console.log("main structur:", this.$static.nodes.edges[0].node);
+    console.log("App mount: Setting content:", this.$static.nodes.edges);
     this.$store.commit("setMainContent", this.$static.nodes.edges);
   },
   destroyed() {

@@ -8,6 +8,7 @@
     ]"
   >
     <v-container
+      v-show="!allHidden"
       class="pt-12"
       style="
         max-width: 900px;
@@ -82,7 +83,7 @@
 
 <page-query>
 query Posts($page: Int) { 
-  posts: allContentfulNode(sortBy: "date", order: DESC, perPage: 10, page: $page) 
+  posts: allContentfulNode(sortBy: "date", order: DESC, perPage: 25, page: $page) 
   @paginate { 
     totalCount pageInfo 
     { totalPages currentPage } 
@@ -105,6 +106,7 @@ query Posts($page: Int) {
 <script>
 import { Pager } from "gridsome";
 import { randomIcon, randomMaterialColor, random } from "~/util";
+import { mapState } from "vuex";
 
 export default {
   metaInfo: {
@@ -120,6 +122,7 @@ export default {
     this.$store.commit("setCurrentBlock", {});
   },
   computed: {
+    ...mapState(["allHidden"]),
     colCount() {
       return 4;
     },

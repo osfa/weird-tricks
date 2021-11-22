@@ -15,7 +15,7 @@
       </v-btn>
     </v-fab-transition>
 
-    <v-fab-transition>
+    <v-fab-transition v-if="false">
       <v-btn
         class="mb-8"
         :elevation="randomElevation()"
@@ -29,11 +29,12 @@
         <v-icon>{{ hideState.icon }}</v-icon>
       </v-btn>
     </v-fab-transition>
+
     <v-btn
       class="mt-4"
       :elevation="randomElevation()"
       :color="randomMaterialColor()"
-      @click="$emit('map-nav')"
+      @click.native="mapNavButtonAction"
       fab
       :large="$vuetify.breakpoint.lgAndUp"
       dark
@@ -45,7 +46,7 @@
       class="mt-4"
       :elevation="randomElevation()"
       :color="randomMaterialColor()"
-      @click="$emit('map-nav')"
+      @click.native="mapNavButtonAction"
       fab
       :large="$vuetify.breakpoint.lgAndUp"
       dark
@@ -57,7 +58,7 @@
       class="mt-4"
       :elevation="randomElevation()"
       :color="randomMaterialColor()"
-      @click="$emit('map-nav')"
+      @click.native="mapNavButtonAction"
       fab
       :large="$vuetify.breakpoint.lgAndUp"
       dark
@@ -75,6 +76,7 @@ import {
   randomElevation,
 } from "~/util";
 import { cardMixin } from "~/cardMixin";
+import { mapState } from "vuex";
 
 export default {
   mixins: [cardMixin],
@@ -83,6 +85,7 @@ export default {
     isHidden: false,
   }),
   computed: {
+    ...mapState(["allHidden"]),
     muteState() {
       return {
         icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
@@ -91,8 +94,8 @@ export default {
     },
     hideState() {
       return {
-        icon: this.isHidden ? "mdi-eye-outline" : "mdi-eye-off-outline",
-        color: this.isHidden ? "white" : "white",
+        icon: this.allHidden ? "mdi-eye-outline" : "mdi-eye-off-outline",
+        color: this.allHidden ? "white" : "white",
       }; // mdi-volumne-medium /low
     },
   },
@@ -102,8 +105,13 @@ export default {
       this.$emit("toggle-audio");
     },
     toggleHide() {
-      this.isHidden = !this.isHidden;
       this.$store.commit("toggleHide");
+    },
+    mapNavButtonAction() {
+      this.$emit("map-nav");
+      if (!this.allHidden) {
+        this.toggleHide();
+      }
     },
   },
 };

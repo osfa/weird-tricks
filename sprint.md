@@ -2,17 +2,12 @@
 
 - cookie ask audio
 
-- no eye, leylines button hide
-
-- hide should hide opac layer
-
 - def need slow pan, on tick? so always moving
 
 - randomize menu item count
 
-- use correct dates and links for article
-
 - image lightbox...
+
 - dialog size...
 
 - obfuscate sarch
@@ -33,6 +28,8 @@
     - tos readers
     - tos gpt continuetioan? just diff animals reading ToS
 
+- COMPONENTS
+
 - youtube seed script..
 
 ## autocollage / tilesets
@@ -40,6 +37,10 @@
 - just try loading these autocollages into tiles?
 - star map layer? star charts? horoscopes?
 - game tilset tiles? srpitesheets?
+
+## maybe
+
+- hide should hide opac layer
 
 ## bugs
 
