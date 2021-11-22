@@ -5,7 +5,6 @@
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
-        @toggle-audio="toggleAudio"
         :elevation="randomElevation()"
       ></RegularNav>
 
@@ -17,7 +16,7 @@
         />
       </transition>
 
-      <ActionBar @map-nav="mapNav" @toggle-audio="toggleAudio" />
+      <ActionBar @map-nav="mapNav" />
       <FooterNav
         v-show="showFooter"
         app
@@ -31,6 +30,27 @@
         ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
       /></transition>
       <!-- <CloudDisplay /> -->
+
+      <v-dialog eager height="100vh" v-model="audioDialog" max-width="50vw">
+        <v-card>
+          <v-card-title>♪♪♪♪♪♪♪♪</v-card-title>
+          <v-card-text>
+            <v-btn class="mr-2" color="secondary" @click="audioDialog = false">
+              <v-icon x-large>mdi-volume-mute</v-icon>
+            </v-btn>
+            <v-btn color="primary" @click="$store.commit('toggleAudio')">
+              <v-icon x-large>mdi-volume-medium</v-icon>
+            </v-btn>
+          </v-card-text>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="$store.commit('toggleAudio')">
+              I Accept
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-app>
   </MainLayout>
 </template>
@@ -106,12 +126,12 @@ export default {
     rightEar: undefined,
     binauralBeat: INITIAL_FREQ,
     audioCtx: undefined,
-    isMuted: false,
     currentAnimation: randomAnimation(),
     crossFade: undefined,
     crossDirection: false,
     crossFadeInterval: undefined,
     rainMaker: undefined,
+    audioDialog: true,
   }),
   metaInfo() {
     return {
@@ -126,7 +146,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["allHidden"]),
+    ...mapState(["allHidden", "isMuted"]),
   },
   methods: {
     mapNav() {
@@ -180,6 +200,8 @@ export default {
     },
     toggleAudio() {
       console.log("toggleAudio");
+      this.audioDialog = false;
+
       if (!this.audioCtx) {
         this.initAudio();
         return;
@@ -189,12 +211,10 @@ export default {
         this.audioCtx.suspend().then(function () {
           console.log("suspended audio");
         });
-        this.isMuted = true;
       } else if (this.audioCtx.state === "suspended") {
         this.audioCtx.resume().then(function () {
           console.log("resumed audio");
         });
-        this.isMuted = false;
       }
     },
     doCrossFade() {
@@ -304,6 +324,9 @@ export default {
     "$store.state.currentBlockIdx": function () {
       console.log(this.$store.state.currentBlockIdx);
       this.forceNav();
+    },
+    "$store.state.isMuted": function () {
+      this.toggleAudio();
     },
   },
 };

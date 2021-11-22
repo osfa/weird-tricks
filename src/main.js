@@ -61,6 +61,7 @@ export default function (Vue, { appOptions, head, router }) {
       center: { lat: 0.0, lng: 0.0 },
       isLoading: false,
       isCollapsed: false,
+      isMuted: true,
       allHidden: false,
       points: 0,
       jumps: 0,
@@ -99,6 +100,9 @@ export default function (Vue, { appOptions, head, router }) {
       },
       toggleHide(state) {
         state.allHidden = !state.allHidden;
+      },
+      toggleAudio(state) {
+        state.isMuted = !state.isMuted;
       },
     },
   });

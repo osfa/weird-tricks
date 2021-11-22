@@ -188,10 +188,9 @@ export default {
     randomZ: random(3, 5),
     extended: false,
     loading: true,
-    isMuted: true,
   }),
   computed: {
-    ...mapState(["allHidden"]),
+    ...mapState(["allHidden", "isMuted"]),
     menuItems() {
       return this.currentMenuItems;
     },
@@ -216,8 +215,7 @@ export default {
       return randomElevation();
     },
     toggleAudio() {
-      this.isMuted = !this.isMuted;
-      this.$emit("toggle-audio");
+      this.$store.commit("toggleAudio");
     },
   },
   watch: {

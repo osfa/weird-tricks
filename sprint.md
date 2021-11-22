@@ -1,7 +1,5 @@
 # Sprint 1
 
-- cookie ask audio
-
 - def need slow pan, on tick? so always moving
 
 - randomize menu item count
@@ -12,9 +10,9 @@
 
 - obfuscate sarch
 
+  - search background?
   - search algo that checks if letter ars in the word or something
   - search position : own bar
-  - def need md5 hash genner? for search
 
 - more audio and audio shifts
 

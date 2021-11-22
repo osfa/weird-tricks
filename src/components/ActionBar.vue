@@ -80,12 +80,9 @@ import { mapState } from "vuex";
 
 export default {
   mixins: [cardMixin],
-  data: () => ({
-    isMuted: true,
-    isHidden: false,
-  }),
+  data: () => ({}),
   computed: {
-    ...mapState(["allHidden"]),
+    ...mapState(["allHidden", "isMuted"]),
     muteState() {
       return {
         icon: this.isMuted ? "mdi-volume-mute" : "mdi-volume-medium",
@@ -101,8 +98,7 @@ export default {
   },
   methods: {
     toggleAudio() {
-      this.isMuted = !this.isMuted;
-      this.$emit("toggle-audio");
+      this.$store.commit("toggleAudio");
     },
     toggleHide() {
       this.$store.commit("toggleHide");
