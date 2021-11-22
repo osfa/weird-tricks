@@ -184,7 +184,7 @@ export default {
   margin-left: -10px;
   margin-top: -10px;
   /* opacity: 0.5; */
-  will-change: transform;
+  /* will-change: transform; */
 }
 
 .cloudLayer {

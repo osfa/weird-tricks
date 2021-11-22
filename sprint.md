@@ -1,14 +1,23 @@
 # Sprint 1
 
 - COMPONENTS
+- CONTENT
 
 - youtube seed script
 - twitter seeds
-- auto collage block
+- auto collage blocks
+
+- stonehenge etc markers
+
+- leylines button should change zoom?
+
+  - if first press, dont move?
+  - allow more zoom?
+
+- analytics
 
 ## content
 
-- stonehenge etc markers
 - more software screens
 - telegram chats
 
@@ -36,6 +45,11 @@
 - buttons occlude link mobile
 
 - remove 6xmnfpsqsky6gwksn4kqds
+
+## meeting
+
+- need to find locations?
+- link stuff?
 
 ---
 

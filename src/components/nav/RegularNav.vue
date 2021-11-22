@@ -139,7 +139,7 @@ import WeirdText from "~/components/WeirdText.vue";
 
 const randomMenuItems = () => {
   const menuArray = [];
-  for (var index = 0; index < random(2, 8); index++) {
+  for (var index = 0; index < random(2, 4); index++) {
     menuArray.push({
       label: randomText({
         type: "clickbait",

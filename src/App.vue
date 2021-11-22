@@ -212,21 +212,6 @@ export default {
       this.$store.commit("navigateForward");
       console.log(this.$store.state.currentBlockIdx);
     },
-    navigateBack() {
-      console.log("navigateBack");
-      this.$store.commit("navigateBack");
-      console.log(this.$store.state.currentBlockIdx);
-    },
-    nav(e) {
-      switch (e.keyCode) {
-        case 37: // left
-          this.forceNav(true);
-          break;
-        case 39: // right
-          this.forceNav();
-          break;
-      }
-    },
     toggleAudio() {
       console.log("toggleAudio");
       this.audioDialog = false;
@@ -362,9 +347,6 @@ export default {
     },
   },
   created() {
-    if (process.isClient) {
-      window.addEventListener("keyup", this.nav);
-    }
     this.$store.commit("setIsLoading", true);
   },
   mounted() {
@@ -372,9 +354,6 @@ export default {
     this.$store.commit("setMainContent", this.$static.nodes.edges);
   },
   destroyed() {
-    if (process.isClient) {
-      window.removeEventListener("keyup", this.nav);
-    }
     clearInterval(this.crossFadeInterval);
   },
   watch: {
