@@ -2,20 +2,20 @@
   <Layout>
     <!-- background image overlay -->
     <!-- <transition mode="out-in" name="fade" hide-on-leave="true"> -->
-    <v-scroll-x-transition mode="out-in" :hide-on-leave="true">
-      <div
-        :key="$route.fullPath"
-        v-if="$page.post.heroImage"
-        :style="`background-image: url('${
-          $page.post.heroImage.file.url
-        }?fit=fill&w=1280&h=720'); 
+    <!-- <v-scroll-x-transition mode="out-in" :hide-on-leave="true"> -->
+    <div
+      :key="$route.fullPath"
+      v-if="$page.post.heroImage"
+      :style="`background-image: url('${
+        $page.post.heroImage.file.url
+      }?fit=fill&w=1280&h=720'); 
       position: fixed; top: 0; left: 0; 
       width: 100%; height: 100%;
       pointer-events:none;
       z-index: 2;
       opacity: ${random(10, 25)}%; background-size: cover;`"
-      ></div>
-    </v-scroll-x-transition>
+    ></div>
+    <!-- </v-scroll-x-transition> -->
 
     <!-- </transition> -->
 
