@@ -21,7 +21,7 @@
 
     <!-- COMPONENT -->
     <node-dialog
-      v-if="!allHidden"
+      v-if="!allHidden && $page.post.hyperlink != 'null'"
       style="z-index: 100"
       is-fixed
       :iframe-url="$page.post.hyperlink"
@@ -61,6 +61,7 @@
       name,
       hyperlink,
       youTubeEmbed,
+      date,
       heroImage {
         file {
           url
@@ -93,9 +94,7 @@ export default {
   },
   mounted() {
     console.log("====== node mount: ", this.$page.post);
-    if (this.$page.post.hyperlink != "null") {
-      this.iframeUrl = this.$page.post.hyperlink;
-    }
+    this.$store.commit("setCurrentBlock", this.$page.post);
   },
   computed: {
     ...mapState(["allHidden"]),
@@ -108,7 +107,6 @@ export default {
         lng: 15.0,
       },
     },
-    iframeUrl: "https://www.dn.se/",
     randomZ: random(3, 5), // below or above clouds
     currentAnimation: randomAnimation(),
   }),

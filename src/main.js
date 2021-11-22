@@ -28,7 +28,7 @@ export default function (Vue, { appOptions, head, router }) {
   });
 
   router.beforeEach((to, from, next) => {
-    console.log("route switch: need to update nav stuff here?");
+    console.log("route switch before each");
     next();
   });
 
@@ -54,6 +54,7 @@ export default function (Vue, { appOptions, head, router }) {
     state: {
       ctfBlocks: [],
       currentBlockIdx: 0,
+      currentBlock: {},
       availableCoordinates: [],
       currentCoordinateIdx: 0,
       mapIdx: 0,
@@ -79,6 +80,9 @@ export default function (Vue, { appOptions, head, router }) {
       },
       setMainContent(state, payload) {
         state.ctfBlocks = payload;
+      },
+      setCurrentBlock(state, payload) {
+        state.currentBlock = payload;
       },
       setCenter(state, payload) {
         state.center = payload;

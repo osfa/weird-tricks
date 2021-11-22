@@ -116,6 +116,9 @@ export default {
   data: () => ({
     randomZ: random(3, 5),
   }),
+  mounted() {
+    this.$store.commit("setCurrentBlock", {});
+  },
   computed: {
     colCount() {
       return 4;

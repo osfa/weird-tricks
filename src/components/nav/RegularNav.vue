@@ -207,9 +207,9 @@ export default {
   },
   methods: {
     home() {
-      console.log("home click");
       if (this.$route.name !== "home") {
         this.$router.push({ path: "/" });
+        this.$store.commit("setCurrentBlock", {});
       }
     },
     randomElevation() {
@@ -230,7 +230,6 @@ export default {
       this.currentMenuItems = randomMenuItems();
       this.randomZ = random(3, 5);
       this.extended = false;
-      console.log("route changed");
     },
   },
 };

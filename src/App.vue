@@ -47,6 +47,7 @@
           title,
           name,
           hyperlink,
+          date,
           heroImage {
             file {
               url
@@ -156,6 +157,8 @@ export default {
 
       let nextRoutePath = `/nodes/${nextPost.node.title}`;
       this.$router.push({ path: nextRoutePath });
+      // this.$store.commit("setCurrentBlock", nextPost.node);
+      // console.log(nextPost);
     },
     navigateForward() {
       console.log("navigateForward");

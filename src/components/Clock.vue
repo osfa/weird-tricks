@@ -1,7 +1,7 @@
 <template>
   <div class="clock-container font-weight-light">
     <div v-if="isUnixTime" class="clock-inner">
-      <div class="hour" style="color: red">16357097402</div>
+      <div class="hour" style="color: red">{{ postDate }}</div>
       <div class="hour text-black">{{ unix }}</div>
       <div class="hour" style="color: black">
         {{ this.$store.state.center.lat.toFixed(2) }}°,
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Clock",
   props: {
@@ -45,6 +47,17 @@ export default {
     },
     checkSingleDigit(digit) {
       return ("0" + digit).slice(-2);
+    },
+  },
+  computed: {
+    ...mapState(["currentBlock"]),
+    postDate() {
+      if (this.currentBlock.date) {
+        var date = new Date(this.currentBlock.date);
+        return date.getTime().toString().slice(0, -2);
+      } else {
+        return "";
+      }
     },
   },
   mounted() {
