@@ -6,11 +6,6 @@
 
 ## content
 
-- stonehenge etc markers
-
-- more software screens
-- telegram chats
-
 - tiles for map overlay
 - cookie prompts
 
@@ -35,16 +30,9 @@
 - https://vuetifyjs.com/en/components/text-fields/#icons
 - somtimes nothing but high opac bkg
 
-## major feature
-
-- gpt2 text stuff?
-  - https://www.one-tab.com/page/eRG3WeTzQDq_GM6oAUfqwA
-  - https://www.one-tab.com/page/feR2gsWeTSyacN8rdnbBow
-
 ## fixes
 
 - real share buttons that copies link
-- more nodes per page more per page
 
 - scale anim on link as well as points
 

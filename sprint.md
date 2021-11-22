@@ -1,45 +1,41 @@
 # Sprint 1
 
-- more audio and audio shifts
-
-  - birds
-  - tone
-  - ramp volume etc
-  - ui sounds
-  - tick tock asmr sound sample https://www.youtube.com/watch?v=CLKvhtS51us
-
-  - other button that toggle through voices. stepts through. breaks after awhile
-    - tos readers
-    - tos gpt continuetioan? just diff animals reading ToS
-
 - COMPONENTS
 
-- youtube seed script..
-- image lightbox
-- dialog size
+- youtube seed script
+- twitter seeds
+- auto collage block
+
+## content
+
+- stonehenge etc markers
+- more software screens
+- telegram chats
 
 ## autocollage / tilesets
 
-- just try loading these autocollages into tiles?
+- just try loading these autocollages into tiles
 - star map layer? star charts? horoscopes?
 - game tilset tiles? srpitesheets?
 
 ## maybe
 
+- image lightbox
+- dialog size
+
 - hide should hide opac layer
 - def need slow pan, on tick? so always moving
+- gpt2 tos for audio thing?
 
 ## bugs
 
-- image placeholder broken
-
-- buttons occlude link mobile
 - mobile relaod bug something
 - clock btreaks mobile why?
 
-- remove 6xmnfpsqsky6gwksn4kqds
+- image placeholder broken
+- buttons occlude link mobile
 
-- search thing color, dont see it?
+- remove 6xmnfpsqsky6gwksn4kqds
 
 ---
 

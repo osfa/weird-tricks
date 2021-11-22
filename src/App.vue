@@ -31,7 +31,7 @@
       /></transition>
       <!-- <CloudDisplay /> -->
 
-      <v-dialog eager height="100vh" v-model="audioDialog" max-width="50vw">
+      <v-dialog eager height="100vh" v-model="audioDialog" max-width="300">
         <v-card>
           <v-card-title>♪♪♪♪♪♪♪♪</v-card-title>
           <v-card-text>
@@ -132,6 +132,38 @@ export default {
     crossFadeInterval: undefined,
     rainMaker: undefined,
     audioDialog: true,
+    tosPlayer: undefined,
+    asmrChannel1: undefined,
+    asmrChannel2: undefined,
+    availableAsmr1: [
+      require("~/assets/audio/tapping1.mp3"),
+      require("~/assets/audio/tapping2.mp3"),
+      require("~/assets/audio/tapping3.mp3"),
+      require("~/assets/audio/server1.mp3"),
+      require("~/assets/audio/server2.mp3"),
+      require("~/assets/audio/rain1.mp3"),
+      require("~/assets/audio/rain2.mp3"),
+      require("~/assets/audio/rain3.mp3"),
+      require("~/assets/audio/tiktock.mp3"),
+    ],
+    availableAsmr2: [
+      require("~/assets/audio/cave.mp3"),
+      require("~/assets/audio/war-propeller.mp3"),
+      require("~/assets/audio/tropical.mp3"),
+      require("~/assets/audio/wind1.mp3"),
+      require("~/assets/audio/wind2.mp3"),
+      require("~/assets/audio/airplane1.mp3"),
+      require("~/assets/audio/airplane2.mp3"),
+      require("~/assets/audio/ocean.mp3"),
+      require("~/assets/audio/fireplace.mp3"),
+    ],
+    availableTos: [
+      require("~/assets/audio/tos/homer-facebook.mp3"),
+      require("~/assets/audio/tos/krusty-insta.mp3"),
+      require("~/assets/audio/tos/scooby-facebook.mp3"),
+      require("~/assets/audio/tos/shaggy-instagram.mp3"),
+      require("~/assets/audio/tos/sponge-tos-complete.mp3"),
+    ],
   }),
   metaInfo() {
     return {
@@ -158,6 +190,14 @@ export default {
         this.$store.commit("toggleHide");
       }
 
+      if (
+        !this.isMuted &&
+        this.tosPlayer.state === "stopped" &&
+        random(0, 10) > 7
+      ) {
+        this.tosPlayer.load(this.availableTos.sample());
+      }
+
       this.currentAnimation = randomAnimation();
 
       // if (backwards) {
@@ -175,8 +215,8 @@ export default {
 
       let nextRoutePath = `/nodes/${nextPost.node.title}`;
       this.$router.push({ path: nextRoutePath });
-      // this.$store.commit("setCurrentBlock", nextPost.node);
-      // console.log(nextPost);
+      this.frequencyShift();
+      this.rainShift();
     },
     navigateForward() {
       console.log("navigateForward");
@@ -218,14 +258,26 @@ export default {
       }
     },
     doCrossFade() {
+      const stepSize = 0.1;
       if (this.crossFade.fade.value === 1.0 || this.crossFade.fade.value <= 0) {
         this.crossDirection = !this.crossDirection;
+        if (this.crossFade.fade.value === 1.0) {
+          this.asmrChannel1.load(this.availableAsmr1.sample());
+        } else {
+          this.asmrChannel2.load(this.availableAsmr2.sample());
+        }
       }
       if (this.crossDirection) {
-        const val = Math.min(parseFloat(this.crossFade.fade.value + 0.1), 1);
+        const val = Math.min(
+          parseFloat(this.crossFade.fade.value + stepSize),
+          1
+        );
         this.crossFade.fade.value = val;
       } else {
-        const val = Math.max(parseFloat(this.crossFade.fade.value - 0.1), 0);
+        const val = Math.max(
+          parseFloat(this.crossFade.fade.value - stepSize),
+          0
+        );
         this.crossFade.fade.value = val;
       }
     },
@@ -236,7 +288,6 @@ export default {
       );
     },
     setRainVolume() {
-      // rainMaker.volume.value = -Infinity; //.rampTo(-Infinity, 10);
       let volume = this.rainVolume === -100 ? -Infinity : this.rainVolume;
       this.rainMaker.volume.value = volume;
     },
@@ -245,6 +296,18 @@ export default {
       console.log("setting: ", freqs);
       this.leftEar.frequency.value = freqs.leftFrequency;
       this.rightEar.frequency.value = freqs.rightFrequency;
+    },
+    frequencyShift() {
+      this.binauralBeat = random(1, 6);
+      const freqs = this.calculateFrequencies(this.binauralBeat);
+      const rampSeconds = 60;
+      this.leftEar.frequency.rampTo(freqs.leftFrequency, rampSeconds);
+      this.rightEar.frequency.rampTo(freqs.rightFrequency, rampSeconds);
+    },
+    rainShift() {
+      const rampSeconds = 15;
+      const targetVolume = random(-6, 3);
+      this.rainMaker.volume.rampTo(targetVolume, rampSeconds);
     },
     calculateCarrierFrequency(binauralBeat) {
       // Formula retrieved by using excel on Oster's curve. Can be enhanced with real maths ;)
@@ -279,21 +342,27 @@ export default {
       this.crossFade = new Tone.CrossFade().toDestination();
       this.crossFade.fade.value = 0.5; // 0-a
 
-      const sample1 = new Tone.Player(
-        require("~/assets/audio/tapping2.mp3")
-      ).connect(this.crossFade.a);
-      sample1.autostart = true;
-      sample1.loop = true;
-      sample1.volume.value = 12;
+      this.asmrChannel1 = new Tone.Player(this.availableAsmr1.sample()).connect(
+        this.crossFade.a
+      );
+      this.asmrChannel1.autostart = true;
+      this.asmrChannel1.loop = true;
+      this.asmrChannel1.volume.value = 12;
 
-      const sample2 = new Tone.Player(
-        require("~/assets/audio/ocean.mp3")
-      ).connect(this.crossFade.b);
-      sample2.autostart = true;
-      sample2.loop = true;
-      sample2.volume.value = 6;
-
+      this.asmrChannel2 = new Tone.Player(this.availableAsmr2.sample()).connect(
+        this.crossFade.b
+      );
+      this.asmrChannel2.autostart = true;
+      this.asmrChannel2.loop = true;
+      this.asmrChannel2.volume.value = 6;
       this.crossFadeInterval = setInterval(this.doCrossFade, 5000);
+
+      this.tosPlayer = new Tone.Player(
+        this.availableTos.sample()
+      ).toDestination();
+      this.tosPlayer.autostart = true;
+      this.tosPlayer.loop = false;
+      this.tosPlayer.volume.value = 0;
 
       this.setRainVolume();
       this.setVolume();
