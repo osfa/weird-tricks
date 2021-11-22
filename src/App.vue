@@ -184,30 +184,14 @@ export default {
     mapNav() {
       this.$store.commit("mapNav");
     },
-    forceNav(backwards) {
+    forceNav() {
       console.log("forceNav main");
       if (this.allHidden) {
         this.$store.commit("toggleHide");
       }
 
-      if (
-        !this.isMuted &&
-        this.tosPlayer.state === "stopped" &&
-        random(0, 10) > 7
-      ) {
-        this.tosPlayer.load(this.availableTos.sample());
-      }
-
       this.currentAnimation = randomAnimation();
-
-      // if (backwards) {
-      //   this.navigateBack();
-      // } else {
-      //   this.navigateForward();
-      // }
-
       const allNodes = this.$static.nodes.edges;
-      // let nextPost = allNodes[this.$store.state.currentBlockIdx];
       let nextPost = allNodes.sample();
       while (this.$route.fullPath.includes(nextPost.node.title)) {
         nextPost = allNodes.sample();
@@ -215,8 +199,13 @@ export default {
 
       let nextRoutePath = `/nodes/${nextPost.node.title}`;
       this.$router.push({ path: nextRoutePath });
-      this.frequencyShift();
-      this.rainShift();
+      if (!this.isMuted) {
+        this.frequencyShift();
+        this.rainShift();
+        if (this.tosPlayer.state === "stopped" && random(0, 10) > 7) {
+          this.tosPlayer.load(this.availableTos.sample());
+        }
+      }
     },
     navigateForward() {
       console.log("navigateForward");
@@ -293,7 +282,6 @@ export default {
     },
     setFrequencies() {
       const freqs = this.calculateFrequencies(this.binauralBeat);
-      console.log("setting: ", freqs);
       this.leftEar.frequency.value = freqs.leftFrequency;
       this.rightEar.frequency.value = freqs.rightFrequency;
     },
