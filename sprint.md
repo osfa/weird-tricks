@@ -29,6 +29,8 @@
 
 ## maybe
 
+- weird tos thing that you're forced to click through on start? for audio?
+
 - image lightbox
 - dialog size
 
