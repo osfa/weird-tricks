@@ -62,7 +62,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   /* background: blue; need sky? */
 }
 </style>
