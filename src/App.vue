@@ -23,12 +23,12 @@
         @force-nav="forceNav"
         :elevation="randomElevation()"
       />
-      <transition mode="out-in" appear :name="currentAnimation"
+      <!-- <transition mode="out-in" appear :name="currentAnimation"
         ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
       /></transition>
       <transition mode="out-in" appear :name="currentAnimation"
         ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
-      /></transition>
+      /></transition> -->
       <!-- <CloudDisplay /> -->
 
       <v-dialog eager height="100vh" v-model="audioDialog" max-width="300">
