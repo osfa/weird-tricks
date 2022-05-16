@@ -217,7 +217,7 @@ export default {
       this.audioDialog = false;
 
       if (!this.audioCtx) {
-        // this.initAudio();
+        this.initAudio();
         return;
       }
 
