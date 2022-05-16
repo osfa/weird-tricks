@@ -102,6 +102,7 @@ import { cloudMarkers, getTileBounds, getCircleMarkers } from "~/map-util";
 import { gmapApi } from "gmap-vue";
 import ActionBar from "~/components/ActionBar.vue";
 
+import { data as cables } from "~/data/geo/Cables";
 import { data as allLeyLinesData } from "~/data/geo/Leylines";
 import { data as currys } from "~/data/geo/Currys";
 
@@ -291,10 +292,16 @@ export default {
       });
     },
     async drawLeyLines() {
+      /* LISTENER */
       this.map.data.addListener("addfeature", function (e) {
+        if (e.feature.getGeometry().getType() === "MultiLineString") {
+          console.log("cables");
+          return;
+        }
         const isYinYang =
-          e.feature.getProperty("Name").includes("Yang") ||
-          e.feature.getProperty("Name").includes("Yin");
+          e.feature.getProperty("Name") &&
+          (e.feature.getProperty("Name").includes("Yang") ||
+            e.feature.getProperty("Name").includes("Yin"));
         if (e.feature.getGeometry().getType() === "LineString" && !isYinYang) {
           this.map.data.overrideStyle(e.feature, { visible: false });
           new google.maps.Polyline({
@@ -307,12 +314,13 @@ export default {
           });
         }
       });
+      /* END LISTENER */
 
       this.map.data.addGeoJson(allLeyLinesData);
 
       var featureStyle = {
         strokeColor: this.leyLinesColor,
-        strokeWeight: 1, // rand?
+        strokeWeight: 3, // rand?
         strokeOpacity: 0.5, // rand?
       };
 
@@ -320,6 +328,13 @@ export default {
       this.map.data.setStyle((feature) => {
         let color = this.leyLinesColor;
         let strokeWeight = random(1, 2);
+        if (!feature.getProperty("Name")) {
+          return {
+            strokeColor: "red",
+            strokeWeight: 1,
+            strokeOpacity: 0.5, // rand?
+          };
+        }
         const leyLineLayers = [
           ["Octahedrons", randomMaterialColor()],
           ["Rhombic Dodec", randomMaterialColor()],
@@ -355,6 +370,8 @@ export default {
           strokeOpacity: 0.5, // rand?
         };
       });
+
+      this.map.data.addGeoJson(cables);
     },
     strokeColor() {
       return randomMaterialColor();
