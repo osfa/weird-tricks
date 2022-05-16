@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <v-app id="app">
-      <Clock v-show="!allHidden" />
+      <!-- <Clock v-show="!allHidden" /> -->
       <RegularNav
         v-show="showHeader"
         @force-nav="forceNav"
@@ -217,7 +217,7 @@ export default {
       this.audioDialog = false;
 
       if (!this.audioCtx) {
-        this.initAudio();
+        // this.initAudio();
         return;
       }
 

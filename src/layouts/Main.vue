@@ -224,6 +224,7 @@ export default {
       );
     },
     mapNav() {
+      this.zoom = random(4, 12);
       let sampled = this.curryPoints.sample();
       this.map.panTo({
         lat: sampled[0],

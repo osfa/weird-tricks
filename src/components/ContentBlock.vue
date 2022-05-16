@@ -5,7 +5,7 @@
       :key="$page.post.heroImage.file.url"
       @load="onImgLoad"
       :src="`${$page.post.heroImage.file.url}?fit=scale&w=1600`"
-      min-height="200"
+      min-height="100"
       max-height="70vh"
     >
       <template v-slot:placeholder>
@@ -18,10 +18,32 @@
       </template>
     </v-img>
     <iframe
-      v-if="$page.post.youTubeEmbed"
+      v-if="$page.post.youTubeEmbed && isYoutube"
       :src="`https://www.youtube.com/embed/${$page.post.youTubeEmbed}`"
       width="100%"
-      height="200"
+      height="300"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <iframe
+      v-if="$page.post.youTubeEmbed && isTwitter"
+      :src="`https://twitframe.com/show?url=${$page.post.youTubeEmbed}`"
+      width="100%"
+      height="450"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <iframe
+      v-if="$page.post.youTubeEmbed && isVimeo"
+      :src="`https://player.vimeo.com/video/${$page.post.youTubeEmbed.replace(
+        'https://vimeo.com/',
+        ''
+      )}`"
+      width="100%"
+      height="300"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -37,7 +59,17 @@ export default {
   data: () => ({
     isLoaded: false,
   }),
-  computed: {},
+  computed: {
+    isYoutube() {
+      return this.$page.post.youTubeEmbed.includes("youtube.com");
+    },
+    isTwitter() {
+      return this.$page.post.youTubeEmbed.includes("twitter.com");
+    },
+    isVimeo() {
+      return this.$page.post.youTubeEmbed.includes("vimeo.com");
+    },
+  },
   methods: {
     onImgLoad() {
       console.log("onImgLoad");

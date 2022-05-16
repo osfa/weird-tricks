@@ -10,9 +10,9 @@
     <template v-slot:activator="{ on, attrs }">
       <v-fab-transition>
         <v-btn
-          style="z-index: 50; pointer-events: auto"
-          :style="isFixed ? 'bottom: 142px;' : ''"
-          :color="isFixed ? 'yellow darken-2' : 'primary'"
+          style="z-index: 1500; pointer-events: auto"
+          :style="isFixed ? 'bottom: 72px;' : ''"
+          :color="isFixed ? 'red darken-2' : 'primary'"
           :elevation="3"
           x-large
           dark
