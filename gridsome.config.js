@@ -14,7 +14,7 @@ module.exports = {
         space: process.env.CTF_SPACE_ID, // required
         accessToken: process.env.CTF_ACCESS_TOKEN, // required
         host: "cdn.contentful.com",
-        environment: "dev",
+        // environment: "dev",
         typeName: "Contentful",
       },
     },
