@@ -67,10 +67,36 @@
         app
         :color="currentMainColor"
         dark
+        :extended="hasHyperLink"
         :elevation="randomElevation()"
-        :extension-height="60"
+        :extension-height="30"
       >
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <template v-slot:extension v-if="hasHyperLink" color="white">
+          <node-dialog
+            v-if="hasArchiveLink && $vuetify.breakpoint.smAndUp"
+            style="z-index: 100"
+            :link-text="currentBlock.archiveLink"
+            :iframe-url="currentBlock.archiveLink"
+          />
+          <a
+            :href="
+              currentBlock.archiveLink
+                ? currentBlock.archiveLink
+                : currentBlock.hyperlink
+            "
+            target="_blank"
+            v-else
+            ><v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
+            ><span class="text-decoration-underline">
+              {{
+                currentBlock.archiveLink
+                  ? currentBlock.archiveLink
+                  : currentBlock.hyperlink
+              }}</span
+            ></a
+          >
+        </template>
 
         <v-toolbar-title style="cursor: pointer" @click="home()"
           ><WeirdText :key="$route.fullPath"
@@ -136,6 +162,7 @@ import GameBar from "~/components/GameBar.vue";
 import { cardMixin } from "~/cardMixin";
 import { mapState } from "vuex";
 import WeirdText from "~/components/WeirdText.vue";
+import NodeDialog from "~/components/NodeDialog.vue";
 
 const randomMenuItems = () => {
   const menuArray = [];
@@ -159,6 +186,7 @@ export default {
     SearchBar,
     GameBar,
     WeirdText,
+    NodeDialog,
   },
   data: () => ({
     showAvatar: false,
@@ -171,7 +199,7 @@ export default {
     loading: true,
   }),
   computed: {
-    ...mapState(["allHidden", "isMuted"]),
+    ...mapState(["allHidden", "isMuted", "currentBlock"]),
     menuItems() {
       return this.currentMenuItems;
     },
@@ -180,6 +208,20 @@ export default {
         icon: this.isMuted ? "mdi-volume-medium" : "mdi-volume-mute",
         color: this.isMuted ? "red" : "primary",
       }; // mdi-volumne-medium /low
+    },
+    hasHyperLink() {
+      return (
+        this.currentBlock &&
+        this.currentBlock.hyperlink &&
+        this.currentBlock.hyperlink != "null"
+      );
+    },
+    hasArchiveLink() {
+      return (
+        this.currentBlock &&
+        this.currentBlock.archiveLink &&
+        this.currentBlock.archiveLink != "null"
+      );
     },
   },
   mounted() {
@@ -203,6 +245,9 @@ export default {
     "$store.state.isLoading": function () {
       this.loading = this.$store.state.isLoading;
     },
+    "$store.state.currentBlock": function () {
+      this.loading = this.$store.state.isLoading;
+    },
     $route: function () {
       this.currentDrawerColor = randomMaterialColor();
       this.currentMainColor = randomMaterialColor();
@@ -220,5 +265,14 @@ export default {
   width: 100vw;
   top: 75px;
   z-index: 1000;
+}
+.v-application a {
+  color: blue !important;
+}
+</style>
+<style>
+div.v-toolbar__extension {
+  background-color: white;
+  color: blue;
 }
 </style>

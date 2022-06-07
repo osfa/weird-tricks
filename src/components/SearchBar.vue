@@ -78,9 +78,14 @@ export default {
       this.isLoading = true;
 
       const filteredResults = this.$store.state.ctfBlocks.filter((post) => {
-        const searchTermChars = this.search.toLowerCase().split("");
-        const titleChars = post.node.name.toLowerCase().split("");
-        return titleChars.some((r) => searchTermChars.indexOf(r) >= 0);
+        const searchTermChars = this.search.toLowerCase(); // .split("");
+        const searchField =
+          post.node.hyperlink && post.node.hyperlink != "null"
+            ? post.node.hyperlink
+            : post.node.name;
+        const titleChars = searchField.toLowerCase(); // .split("");
+        return titleChars.includes(searchTermChars); // .some((r) => searchTermChars.indexOf(r) >= 0);
+        // return titleChars.some((r) => searchTermChars.indexOf(r) >= 0);
       });
       this.items = filteredResults.map((n) => {
         return {
@@ -89,6 +94,8 @@ export default {
           name: n.node.name, // vs title
         };
       });
+      console.log(this.items.length);
+
       this.isLoading = false;
     },
   },

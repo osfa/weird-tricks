@@ -24,8 +24,9 @@
         :elevation="randomElevation()"
       />
       <transition mode="out-in" appear :name="currentAnimation"
-        ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
+        ><CloudPng v-if="random(0, 3) > 2" :key="$route.fullPath"
       /></transition>
+
       <!-- <transition mode="out-in" appear :name="currentAnimation"
         ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
       /></transition> -->
@@ -67,6 +68,7 @@
           title,
           name,
           hyperlink,
+          archiveLink,
           date,
           heroImage {
             file {
@@ -120,7 +122,7 @@ export default {
   data: () => ({
     showHeader: true,
     showFooter: true,
-    volume: -30,
+    volume: -26,
     rainVolume: -5,
     leftEar: undefined,
     rightEar: undefined,

@@ -10,9 +10,10 @@
     <template v-slot:activator="{ on, attrs }">
       <v-fab-transition>
         <v-btn
+          v-if="!linkText"
           style="z-index: 1500; pointer-events: auto"
           :style="isFixed ? 'bottom: 72px;' : ''"
-          :color="isFixed ? 'red darken-2' : 'primary'"
+          :color="isFixed ? 'red' : 'primary'"
           :elevation="3"
           x-large
           dark
@@ -24,6 +25,16 @@
         >
           <v-icon>mdi-link</v-icon>
         </v-btn>
+        <a
+          v-if="linkText"
+          style="z-index: 1500; pointer-events: auto"
+          v-bind="attrs"
+          v-on="on"
+          class="d-flex text-caption text-sm-button"
+        >
+          <v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
+          ><span class="text-decoration-underline"> {{ linkText }}</span>
+        </a>
       </v-fab-transition>
     </template>
 
@@ -51,6 +62,7 @@ export default {
     WeirdText,
   },
   props: {
+    linkText: { type: String },
     isFixed: { type: Boolean, default: false },
     iframeUrl: { type: String, default: "http://www.dn.se" },
   },
@@ -65,3 +77,8 @@ export default {
   methods: {},
 };
 </script>
+<style scoped>
+.v-application a {
+  color: blue !important;
+}
+</style>

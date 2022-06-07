@@ -21,7 +21,7 @@
 
     <!-- COMPONENT -->
     <node-dialog
-      v-if="!allHidden && $page.post.hyperlink != 'null'"
+      v-if="!allHidden && $page.post.hyperlink != 'null' && false"
       style="z-index: 100"
       is-fixed
       :iframe-url="$page.post.hyperlink"
@@ -60,6 +60,7 @@
       title,
       name,
       hyperlink,
+      archiveLink,
       youTubeEmbed,
       date,
       heroImage {

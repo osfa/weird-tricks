@@ -17,9 +17,16 @@
         </v-row>
       </template>
     </v-img>
+    <v-img
+      v-if="!$page.post.heroImage && !$page.post.youTubeEmbed"
+      src="http://via.placeholder.com/640x360"
+    />
     <iframe
       v-if="$page.post.youTubeEmbed && isYoutube"
-      :src="`https://www.youtube.com/embed/${$page.post.youTubeEmbed}`"
+      :src="`https://www.youtube.com/embed/${$page.post.youTubeEmbed.replace(
+        'https://www.youtube.com/watch?v=',
+        ''
+      )}`"
       width="100%"
       height="300"
       title="YouTube video player"

@@ -33,11 +33,11 @@
     <v-btn
       class="mt-4"
       :elevation="randomElevation()"
-      :color="randomMaterialColor()"
+      color="primary"
       @click.native="mapNavButtonAction"
       fab
-      :large="$vuetify.breakpoint.lgAndUp"
       dark
+      :large="$vuetify.breakpoint.lgAndUp"
     >
       <v-icon>{{ randomIcon() }}</v-icon>
     </v-btn>
@@ -45,11 +45,11 @@
     <v-btn
       class="mt-4"
       :elevation="randomElevation()"
-      :color="randomMaterialColor()"
+      color="primary"
       @click.native="mapNavButtonAction"
       fab
-      :large="$vuetify.breakpoint.lgAndUp"
       dark
+      :large="$vuetify.breakpoint.lgAndUp"
     >
       <v-icon>{{ randomIcon() }}</v-icon>
     </v-btn>
@@ -57,7 +57,7 @@
     <v-btn
       class="mt-4"
       :elevation="randomElevation()"
-      :color="randomMaterialColor()"
+      color="primary"
       @click.native="mapNavButtonAction"
       fab
       :large="$vuetify.breakpoint.lgAndUp"
