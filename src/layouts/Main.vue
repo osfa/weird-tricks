@@ -130,9 +130,11 @@ export default {
     zoom: 8,
     currentMapType: "terrain",
     imgMarkers: [],
+    cableFeatures: [],
     // cloudMarkers: [],
     centerMarkers: [],
     circleMarkers: [],
+    blinkInterval: undefined,
     availableOverlays: [
       require("~/assets/tiles/complete1.png"),
       require("~/assets/tiles/complete2.png"),
@@ -162,6 +164,9 @@ export default {
       { lat: centerStart.lat, lng: centerStart.lng },
     ],
   }),
+  destroyed() {
+    clearInterval(this.blinkInterval);
+  },
   async mounted() {
     console.log("main mount");
 
@@ -190,6 +195,13 @@ export default {
     },
   },
   methods: {
+    updateCableColor() {
+      this.cableFeatures.forEach((f) => {
+        this.map.data.overrideStyle(f, {
+          strokeColor: ["black", "white", "red"].sample(),
+        });
+      });
+    },
     markerClick(marker) {
       this.setCenter(marker.position);
       this.$emit("markerClicked");
@@ -293,9 +305,12 @@ export default {
     },
     async drawLeyLines() {
       /* LISTENER */
-      this.map.data.addListener("addfeature", function (e) {
+      this.map.data.addListener("addfeature", (e) => {
         if (e.feature.getGeometry().getType() === "MultiLineString") {
-          console.log("cables");
+          // console.log("cables");
+          // this.map.data.overrideStyle(e.feature, { visible: false });
+          this.cableFeatures.push(e.feature);
+
           return;
         }
         const isYinYang =
@@ -325,9 +340,12 @@ export default {
       };
 
       this.map.data.setStyle(featureStyle);
+
       this.map.data.setStyle((feature) => {
         let color = this.leyLinesColor;
         let strokeWeight = random(1, 2);
+
+        // cables
         if (!feature.getProperty("Name")) {
           return {
             strokeColor: "red",
@@ -372,6 +390,8 @@ export default {
       });
 
       this.map.data.addGeoJson(cables);
+
+      this.blinkInterval = setInterval(this.updateCableColor, 5000);
     },
     strokeColor() {
       return randomMaterialColor();

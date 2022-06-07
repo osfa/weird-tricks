@@ -5,7 +5,7 @@
       :key="$page.post.heroImage.file.url"
       @load="onImgLoad"
       :src="`${$page.post.heroImage.file.url}?fit=scale&w=1600`"
-      min-height="100"
+      min-height="40vh"
       max-height="70vh"
     >
       <template v-slot:placeholder>
