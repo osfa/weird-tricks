@@ -28,8 +28,59 @@ export default function (Vue, { appOptions, head, router }) {
   });
 
   head.meta.push({
+    name: "author",
+    content: "Jacob Broms Engblom",
+  });
+
+  head.meta.push({
     name: "keywords",
-    content: "HTML,CSS,XML,JavaScript",
+    content:
+      "data, bias, computing, scale, numbers, nature, money, technology, agency, meaning, language",
+  });
+
+  head.meta.push({
+    name: "description",
+    content: "You won't believe it.",
+  });
+
+  head.meta.push({
+    name: "og:image",
+    content: "/imgs/og-img.jpg",
+  });
+
+  head.meta.push({
+    name: "og:image:width",
+    content: "1200",
+  });
+
+  head.meta.push({
+    name: "og:image:height",
+    content: "630",
+  });
+
+  head.meta.push({
+    name: "og:title",
+    content: "Reality Harvester",
+  });
+
+  head.meta.push({
+    name: "og:description",
+    content: "You won't believe it.",
+  });
+
+  head.meta.push({
+    name: "twitter:image",
+    content: "https://reality.harvester.bargains/imgs/og-img.jpg",
+  });
+
+  head.meta.push({
+    name: "twitter:card",
+    content: "summary_large_image",
+  });
+
+  head.meta.push({
+    name: "twitter:creator",
+    content: "@osfa",
   });
 
   router.beforeEach((to, from, next) => {
