@@ -13,7 +13,7 @@
       width: 100%; height: 100%;
       pointer-events:none;
       z-index: 2;
-      opacity: ${random(10, 25)}%; background-size: cover;`"
+      opacity: ${random(0, 15)}%; background-size: cover;`"
     ></div>
     <!-- </v-scroll-x-transition> -->
 
