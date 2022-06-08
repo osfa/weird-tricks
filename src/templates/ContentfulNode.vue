@@ -40,12 +40,7 @@
       >
         <div class="row align-center justify-center">
           <div
-            class="
-              col-10 col-sm-8 col-md-8 col-lg-6 col-xl-6
-              flex
-              mb-16
-              mt-2 mt-md-6
-            "
+            class="col-10 col-lg-8 col-xl-8 flex mb-16 mt-2 mt-md-6"
             style="pointer-events: auto"
           >
             <weird-card

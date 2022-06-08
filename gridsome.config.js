@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Reality Harvester",
+  siteName: "602 Weird Tricks",
   titleTemplate: "%s", // %s - <siteName> is default
   plugins: [
     {

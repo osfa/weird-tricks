@@ -27,6 +27,11 @@ export default function (Vue, { appOptions, head, router }) {
     href: "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
   });
 
+  head.meta.push({
+    name: "keywords",
+    content: "HTML,CSS,XML,JavaScript",
+  });
+
   router.beforeEach((to, from, next) => {
     console.log("route switch before each");
     next();

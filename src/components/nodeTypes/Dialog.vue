@@ -1,6 +1,7 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="720">
+    <!-- -->
+    <v-dialog v-model="dialog" persistent max-width="1440">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           :color="randomMaterialColor()"

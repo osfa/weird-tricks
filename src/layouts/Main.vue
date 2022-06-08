@@ -198,7 +198,8 @@ export default {
     updateCableColor() {
       this.cableFeatures.forEach((f) => {
         this.map.data.overrideStyle(f, {
-          strokeColor: ["black", "white", "red"].sample(),
+          // strokeColor: ["#ff0000", "#0000ff", "white", "black"].sample(),
+          strokeWeight: [0.25, 0.5, 1, 2].sample(),
         });
       });
     },
@@ -391,7 +392,7 @@ export default {
 
       this.map.data.addGeoJson(cables);
 
-      this.blinkInterval = setInterval(this.updateCableColor, 5000);
+      this.blinkInterval = setInterval(this.updateCableColor, 1000);
     },
     strokeColor() {
       return randomMaterialColor();
