@@ -1,5 +1,13 @@
 <template>
-  <v-container fluid>
+  <v-container
+    class="fill-height fluid"
+    style="position: relative"
+    :style="[
+      {
+        zIndex: 10, // below or above clouds
+      },
+    ]"
+  >
     <v-row>
       <v-col cols="12" sm="12" md="6" offset-md="3">
         <v-card>
