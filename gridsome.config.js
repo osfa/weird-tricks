@@ -18,6 +18,8 @@ module.exports = {
         typeName: "Contentful",
       },
     },
+
+    // doesn't work?
     {
       use: "gridsome-plugin-gtag",
       options: {

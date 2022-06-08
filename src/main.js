@@ -17,6 +17,21 @@ Array.prototype.sample = function () {
 };
 
 export default function (Vue, { appOptions, head, router }) {
+  const trid = process.env.GOOGLE_ANALYTICS_ID;
+  head.script.push({
+    src: `<https://www.googletagmanager.com/gtag/jsid=${trid}>`,
+    async: true,
+  });
+  if (process.isClient) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", trid);
+    window.gtag = gtag; // expose gtag function to global scope
+  }
+
   head.link.push({
     rel: "stylesheet",
     href: "https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css",

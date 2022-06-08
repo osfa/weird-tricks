@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    <FloatingAction class="mt-6"></FloatingAction>
+    <FloatingAction class="mt-6">
+      “We live in a world where there is more and more information, and less and
+      less meaning”.
+    </FloatingAction>
   </Layout>
 </template>
 <script>
@@ -10,32 +13,8 @@ export default {
   components: {
     FloatingAction,
   },
-  data: () => ({
-    markers: [
-      {
-        position: {
-          lat: 15.0,
-          lng: 15.0,
-        },
-        weight: 100,
-      },
-      {
-        position: {
-          lat: 14.0,
-          lng: 13.0,
-        },
-        weight: 50,
-      },
-    ],
-    center: { lat: 10, lng: 10 },
-  }),
+  data: () => ({}),
   async mounted() {},
-  methods: {
-    markerClick(marker) {
-      console.log("potato");
-      this.center = marker.position;
-      this.$emit("markerClicked");
-    },
-  },
+  methods: {},
 };
 </script>
