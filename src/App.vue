@@ -34,20 +34,24 @@
 
       <v-dialog eager height="100vh" v-model="audioDialog" max-width="300">
         <v-card>
-          <v-card-title>♪♪♪♪♪♪♪♪</v-card-title>
+          <v-card-title><weird-text /></v-card-title>
           <v-card-text>
-            <v-btn class="mr-2" color="secondary" @click="audioDialog = false">
-              <v-icon x-large>mdi-volume-mute</v-icon>
-            </v-btn>
-            <v-btn color="primary" @click="$store.commit('toggleAudio')">
-              <v-icon x-large>mdi-volume-medium</v-icon>
-            </v-btn>
+            {{ tosBody() }}
           </v-card-text>
+          <!-- <v-btn class="mr-2" color="red" @click="audioDialog = false">
+            <v-icon x-large>mdi-volume-mute</v-icon>
+          </v-btn>
+          <v-btn color="green" dark @click="$store.commit('toggleAudio')">
+            <v-icon large>mdi-volume-medium</v-icon>
+          </v-btn> -->
           <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="$store.commit('toggleAudio')">
-              I Accept
+            <v-btn color="error" text @click="audioDialog = false">
+              <v-icon large>mdi-volume-mute</v-icon> No
+            </v-btn>
+            <v-btn color="success" text @click="$store.commit('toggleAudio')">
+              <v-icon large>mdi-volume-medium</v-icon> I Accept
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -88,6 +92,7 @@ import {
   randomMaterialColor,
   randomAnimation,
   randomElevation,
+  randomText,
 } from "~/util";
 
 import MainLayout from "~/layouts/Main.vue";
@@ -103,6 +108,7 @@ import { mapState } from "vuex";
 import { cardMixin } from "~/cardMixin";
 
 import * as Tone from "tone";
+import WeirdText from "./components/WeirdText.vue";
 
 const INITIAL_FREQ = 2;
 
@@ -118,6 +124,7 @@ export default {
     FooterNav,
     Clock,
     SearchBar,
+    WeirdText,
   },
   data: () => ({
     showHeader: true,
@@ -185,6 +192,12 @@ export default {
   methods: {
     mapNav() {
       this.$store.commit("mapNav");
+    },
+    tosBody() {
+      return randomText({
+        type: "clickbait",
+        length: random(500, 750),
+      });
     },
     forceNav() {
       console.log("forceNav main");

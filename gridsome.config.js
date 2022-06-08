@@ -18,16 +18,6 @@ module.exports = {
         typeName: "Contentful",
       },
     },
-
-    // doesn't work?
-    {
-      use: "gridsome-plugin-gtag",
-      options: {
-        config: {
-          id: process.env.GOOGLE_ANALYTICS_ID,
-        },
-      },
-    },
   ],
   templates: {
     ContentfulNode: "/nodes/:title",

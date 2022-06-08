@@ -9,12 +9,12 @@
   >
     <v-container
       v-show="!allHidden"
-      class="pt-12"
+      class="pt-6 pt-md-12"
       style="
         max-width: 900px;
         position: relative;
         padding-bottom: 200px;
-        <!-- pointer-events: auto; -->
+        pointer-events: auto;
       "
     >
       <v-row align="center">
@@ -35,7 +35,7 @@
             <v-img
               v-if="node.heroImage"
               :key="node.heroImage.file.url"
-              :src="`${node.heroImage.file.url}?fit=scale&w=800`"
+              :src="nodeImg(node)"
             >
               <template v-slot:placeholder>
                 <v-row
@@ -50,7 +50,20 @@
                 </v-row>
               </template>
             </v-img>
-
+            <v-img v-else :key="node.title" :src="nodeImg(node)">
+              <template v-slot:placeholder>
+                <v-row
+                  class="fill-height ma-0 p-10"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    :color="randomMaterialColor()"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
             <v-card-actions>
               <v-spacer></v-spacer>
 
@@ -73,10 +86,18 @@
           </v-card>
         </v-col>
       </v-row>
-      <pager
-        v-if="$page.posts.pageInfo.totalPages > 1 && false"
+      <!-- <pager
+        v-if="$page.posts.pageInfo.totalPages > 1"
         :info="$page.posts.pageInfo"
-      />
+      /> -->
+      <v-pagination
+        class="mt-12"
+        v-model="$page.posts.pageInfo.currentPage"
+        :length="$page.posts.pageInfo.totalPages"
+        @input="pageTo"
+        @prev="next"
+        @next="prev"
+      ></v-pagination>
     </v-container>
   </Layout>
 </template>
@@ -117,8 +138,10 @@ export default {
   },
   data: () => ({
     randomZ: random(3, 5),
+    pageCount: 10,
   }),
   mounted() {
+    console.log(this.$page.posts.pageInfo);
     this.$store.commit("setCurrentBlock", {});
   },
   computed: {
@@ -131,6 +154,29 @@ export default {
     },
   },
   methods: {
+    nodeImg(node) {
+      console.log(node.heroImage);
+      const img = node.heroImage
+        ? `${node.heroImage.file.url}?fit=scale&w=800`
+        : "http://via.placeholder.com/640x360";
+      return img;
+    },
+    pageTo(page) {
+      const nextRoutePath = `/nodes/${page}`;
+      this.$router.push({ path: nextRoutePath });
+    },
+    next() {
+      const nextRoutePath = `/nodes/${
+        this.$page.posts.pageInfo.currentPage + 1
+      }`;
+      this.$router.push({ path: nextRoutePath });
+    },
+    prev() {
+      const nextRoutePath = `/nodes/${
+        this.$page.posts.pageInfo.currentPage - 1
+      }`;
+      this.$router.push({ path: nextRoutePath });
+    },
     randomElevation() {
       return random(1, 16);
     },
