@@ -31,7 +31,7 @@
           v-for="child in item.items"
           :key="child.title"
           link
-          :to="`/nodes/${Math.floor(Math.random() * 5) + 2}`"
+          :to="`/nodes/${randomPage()}`"
         >
           <v-list-item-content>
             <v-list-item-title v-text="child.title"></v-list-item-title>
@@ -98,6 +98,11 @@ export default {
       },
     ],
   }),
+  methods: {
+    randomPage() {
+      return random(0, 24);
+    },
+  },
   computed: {
     title() {
       return randomMenuItemString();

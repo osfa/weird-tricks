@@ -26,22 +26,22 @@
               territory relations.
             </p>
             <p>
-              It is an extension of the collage of reality we all make as we try
-              to fill in the blanks and draw connections between memetic
-              headlines, image macros and rotted hyperlinks, all semblances of
-              context slowly fading.
+              It is an extension of the reality collage we all make as we try to
+              fill in the blanks and draw connections between memetic headlines,
+              image macros and rotted hyperlinks, all semblances of context
+              slowly fading.
             </p>
             <p>
               As more and more data is harvested it begins to occlude reality
-              and as a slow, roiling data fog settles in, metrics and KPIs start
+              and as a slow, roiling data fog settles in. Metrics and KPIs start
               to dictate reality rather than predict it, acting as fuel for
               neural networks reflecting the past into the future. Data as
               masking reality. Data as your boss.
             </p>
-            <p>
+            <!-- <p>
               It has become increasingly difficult to know if you’re in a hall
               of mirrors, Plato’s cave, a casino or a combination of the three.
-            </p>
+            </p> -->
             <p>
               “We live in a world where there is more and more information, and
               less and less meaning”.
