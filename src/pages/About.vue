@@ -33,10 +33,10 @@
             </p>
             <p>
               As more and more data is harvested it begins to occlude reality
-              and as a slow, roiling data fog settles in. Metrics and KPIs start
-              to dictate reality rather than predict it, acting as fuel for
-              neural networks reflecting the past into the future. Data as
-              masking reality. Data as your boss.
+              and a slow, roiling data fog settles in. Metrics and KPIs start to
+              dictate reality rather than predict it, acting as fuel for neural
+              networks reflecting the past into the future. Data as masking
+              reality. Data as your boss.
             </p>
             <!-- <p>
               It has become increasingly difficult to know if you’re in a hall
