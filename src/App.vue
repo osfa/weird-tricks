@@ -367,6 +367,11 @@ export default {
   mounted() {
     console.log("App mount: Setting content:", this.$static.nodes.edges);
     this.$store.commit("setMainContent", this.$static.nodes.edges);
+    gtag("event", "page_view", {
+      page_title: "App Mount",
+      // page_location: "Root",
+      page_path: "/",
+    });
   },
   destroyed() {
     clearInterval(this.crossFadeInterval);
