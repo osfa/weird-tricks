@@ -19,7 +19,7 @@ Array.prototype.sample = function () {
 export default function (Vue, { appOptions, head, router }) {
   const trid = process.env.GOOGLE_ANALYTICS_ID;
   head.script.push({
-    src: `<https://www.googletagmanager.com/gtag/jsid=${trid}>`,
+    src: `https://www.googletagmanager.com/gtag/jsid=${trid}`,
     async: true,
   });
   if (process.isClient) {
