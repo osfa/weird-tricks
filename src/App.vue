@@ -187,7 +187,6 @@ export default {
     this.$store.commit("setMainContent", this.$static.nodes.edges);
     gtag("event", "page_view", {
       page_title: "App Mount",
-      // page_location: "Root",
       page_path: "/",
     });
   },

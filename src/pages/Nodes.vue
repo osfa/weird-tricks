@@ -8,14 +8,10 @@
     ]"
   >
     <v-container
+      fluid
       v-show="!allHidden"
-      class="pt-6 pt-md-12"
-      style="
-        max-width: 900px;
-        position: relative;
-        padding-bottom: 200px;
-        pointer-events: auto;
-      "
+      class="pt-12 pt-md-12 px-12"
+      style="position: relative; padding-bottom: 200px; pointer-events: auto"
     >
       <v-row align="center">
         <v-col
@@ -91,7 +87,7 @@
         :info="$page.posts.pageInfo"
       /> -->
       <v-pagination
-        class="mt-12"
+        style="margin-top: 200px"
         v-model="$page.posts.pageInfo.currentPage"
         :length="$page.posts.pageInfo.totalPages"
         @input="pageTo"

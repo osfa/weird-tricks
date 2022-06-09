@@ -349,7 +349,7 @@ export default {
         // cables
         if (!feature.getProperty("Name")) {
           return {
-            strokeColor: "red",
+            strokeColor: "black",
             strokeWeight: 1,
             strokeOpacity: 0.5, // rand?
           };
