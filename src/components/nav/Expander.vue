@@ -100,7 +100,7 @@ export default {
   }),
   methods: {
     randomPage() {
-      return random(0, 24);
+      return random(0, 28);
     },
   },
   computed: {

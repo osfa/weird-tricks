@@ -28,10 +28,11 @@
         ><CloudPng v-if="random(0, 3) > 2" :key="$route.fullPath"
       /></transition>
 
-      <!-- <transition mode="out-in" appear :name="currentAnimation"
-        ><CloudPng v-if="random(0, 4) > 2" :key="$route.fullPath"
-      /></transition> -->
-      <!-- <CloudDisplay /> -->
+      <transition mode="out-in" appear :name="currentAnimation"
+        ><CloudPng
+          v-if="random(0, 4) > 2 && $vuetify.breakpoint.lgAndUp"
+          :key="$route.fullPath"
+      /></transition>
 
       <v-dialog eager height="100vh" v-model="audioDialog" max-width="300">
         <v-card>

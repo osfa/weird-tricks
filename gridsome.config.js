@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "602 Weird Tricks",
+  siteName: "680 Weird Tricks",
   titleTemplate: "%s", // %s - <siteName> is default
   plugins: [
     {
@@ -14,7 +14,7 @@ module.exports = {
         space: process.env.CTF_SPACE_ID, // required
         accessToken: process.env.CTF_ACCESS_TOKEN, // required
         host: "cdn.contentful.com",
-        // environment: "dev",
+        environment: "staging",
         typeName: "Contentful",
       },
     },

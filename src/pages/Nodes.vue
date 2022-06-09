@@ -21,8 +21,6 @@
           style="pointer-events: auto"
           class="col-12 col-sm-6 col-md-4"
         >
-          <g-image v-if="false" :src="node.heroImage.file.url" />
-
           <v-card
             :to="`/nodes/${node.title}`"
             style="pointer-events: auto"
@@ -62,6 +60,16 @@
             </v-img>
             <v-card-actions>
               <v-spacer></v-spacer>
+              <v-btn v-if="node.youTubeEmbed" icon color="error">
+                <v-icon>mdi-play</v-icon>
+              </v-btn>
+              <v-btn
+                v-if="node.archiveLink && node.archiveLink !== 'null'"
+                icon
+                color="success"
+              >
+                <v-icon>mdi-link</v-icon>
+              </v-btn>
 
               <v-btn icon>
                 <v-icon>{{ randomIcon() }}</v-icon>
@@ -107,7 +115,9 @@ query Posts($page: Int) {
     edges { 
         node { 
           name 
-          title 
+          title
+          archiveLink
+          youTubeEmbed
           date(format: "MMMM D, Y")
           heroImage {
             file {
@@ -137,7 +147,6 @@ export default {
     pageCount: 10,
   }),
   mounted() {
-    console.log(this.$page.posts.pageInfo);
     this.$store.commit("setCurrentBlock", {});
   },
   computed: {
@@ -151,7 +160,6 @@ export default {
   },
   methods: {
     nodeImg(node) {
-      console.log(node.heroImage);
       const img = node.heroImage
         ? `${node.heroImage.file.url}?fit=scale&w=800`
         : "http://via.placeholder.com/640x360";

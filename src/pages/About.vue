@@ -10,7 +10,7 @@
       ]"
     >
       <v-card class="mx-auto scroll" max-width="600" max-height="80vh">
-        <v-card-text>
+        <v-card-text style="pointer-events: auto">
           <div>About</div>
           <p class="text-h4 text--primary">re•al•i•ty•har•vest•er</p>
           <p>noun</p>

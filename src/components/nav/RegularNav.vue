@@ -88,11 +88,11 @@
             target="_blank"
             v-else
             ><v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
-            ><span class="text-decoration-underline">
+            ><span class="text-decoration-underline text-caption text-button">
               {{
                 currentBlock.archiveLink
                   ? currentBlock.archiveLink
-                  : currentBlock.hyperlink
+                  : "HYPERLINK"
               }}</span
             ></a
           >
