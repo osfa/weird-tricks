@@ -22,6 +22,7 @@
           class="col-12 col-sm-6 col-md-4"
         >
           <v-card
+            class="force-navigate"
             :to="`/nodes/${node.title}`"
             style="pointer-events: auto"
             :elevation="randomElevation()"
