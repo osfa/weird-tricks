@@ -248,7 +248,7 @@ export default {
     },
     drawOverlay() {
       console.log("draw at:", this.center);
-      const tileExtent = random(0, 3);
+      const tileExtent = random(0, 8);
 
       console.log("tilextent: ", tileExtent);
       const tileSource = `https://khms3.google.com/kh/v=908?x=${random(
@@ -349,9 +349,9 @@ export default {
         // cables
         if (!feature.getProperty("Name")) {
           return {
-            strokeColor: "black",
+            strokeColor: " white",
             strokeWeight: 1,
-            strokeOpacity: 0.5, // rand?
+            strokeOpacity: 1, // rand?
           };
         }
         const leyLineLayers = [

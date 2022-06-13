@@ -28,6 +28,7 @@
         </template>
 
         <v-list-item
+          class="sidebar-link"
           v-for="child in item.items"
           :key="child.title"
           link

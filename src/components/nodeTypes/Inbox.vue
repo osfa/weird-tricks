@@ -33,6 +33,7 @@
 
           <v-list-item
             v-else
+            class="force-navigator"
             :key="item.title"
             @click="forceNavigate()"
             style="cursor: pointer"

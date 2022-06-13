@@ -28,7 +28,7 @@
         <v-divider v-if="showAvatar"></v-divider>
 
         <v-list nav dense>
-          <v-list-item link to="/">
+          <v-list-item class="home" link to="/">
             <v-list-item-icon>
               <v-icon color="black">mdi-home</v-icon>
             </v-list-item-icon>
@@ -40,7 +40,7 @@
             </v-list-item-icon>
             <v-list-item-title class="black--text">/***</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/about/">
+          <v-list-item class="about" link to="/about/">
             <v-list-item-icon>
               <v-icon color="black">mdi-information-outline</v-icon>
             </v-list-item-icon>
@@ -48,6 +48,7 @@
           </v-list-item>
           <v-divider class="black my-4"></v-divider>
           <v-list-item
+            class="menu-item"
             :key="index"
             v-for="(m, index) in menuItems"
             link
@@ -86,6 +87,7 @@
                 : currentBlock.hyperlink
             "
             target="_blank"
+            class="archive-link"
             v-else
             ><v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
             ><span class="text-decoration-underline text-caption text-button">
@@ -112,7 +114,12 @@
         <v-spacer></v-spacer>
         <GameBar />
 
-        <v-btn icon @click="extended = !extended" v-if="!extended">
+        <v-btn
+          class="search-toggle"
+          icon
+          @click="extended = !extended"
+          v-if="!extended"
+        >
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 

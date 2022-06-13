@@ -21,10 +21,20 @@
         <v-card-text><weird-text /></v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="forceNavigate()">
+          <v-btn
+            class="force-navigator"
+            color="green darken-1"
+            text
+            @click="forceNavigate()"
+          >
             <weird-text />
           </v-btn>
-          <v-btn color="green darken-1" text @click="forceNavigate()">
+          <v-btn
+            class="force-navigator"
+            color="green darken-1"
+            text
+            @click="forceNavigate()"
+          >
             <weird-text />
           </v-btn>
         </v-card-actions>

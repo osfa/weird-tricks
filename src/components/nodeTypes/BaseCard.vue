@@ -6,6 +6,7 @@
       <node-dialog :iframe-url="hyperlink" />
     </v-card-text>
     <v-btn
+      class="force-navigator"
       @click="forceNavigate"
       fab
       :color="randomMaterialColor()"
@@ -18,7 +19,12 @@
     </v-btn>
     <v-card-actions>
       <v-flex class="text-right">
-        <v-btn :color="randomMaterialColor()" text @click="forceNavigate">
+        <v-btn
+          class="force-navigator"
+          :color="randomMaterialColor()"
+          text
+          @click="forceNavigate"
+        >
           <weird-text />
         </v-btn>
       </v-flex>

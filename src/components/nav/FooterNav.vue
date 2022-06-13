@@ -14,6 +14,7 @@
     ]"
   >
     <v-btn
+      class="footer-nav force-navigator"
       :key="index"
       v-for="(m, index) in menuItems"
       link
