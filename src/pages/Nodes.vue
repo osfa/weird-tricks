@@ -134,7 +134,7 @@ import { mapState } from "vuex";
 
 export default {
   metaInfo: {
-    title: "Index",
+    title: "Index of /nodes",
   },
   components: {
     Pager,

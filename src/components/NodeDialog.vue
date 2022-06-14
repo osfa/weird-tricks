@@ -30,7 +30,7 @@
           style="z-index: 1500; pointer-events: auto"
           v-bind="attrs"
           v-on="on"
-          class="archive-link d-flex text-caption text-sm-button"
+          class="archive-link d-flex text-caption text-sm-button no-underline"
         >
           <v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
           ><span class="text-decoration-underline"> {{ linkText }}</span>

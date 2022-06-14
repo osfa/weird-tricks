@@ -131,10 +131,12 @@ export default {
     currentMapType: "terrain",
     imgMarkers: [],
     cableFeatures: [],
+    leylineFeatures: [],
     // cloudMarkers: [],
     centerMarkers: [],
     circleMarkers: [],
     blinkInterval: undefined,
+    blinkIntervalYY: undefined,
     availableOverlays: [
       require("~/assets/tiles/complete1.png"),
       require("~/assets/tiles/complete2.png"),
@@ -166,6 +168,7 @@ export default {
   }),
   destroyed() {
     clearInterval(this.blinkInterval);
+    clearInterval(this.blinkIntervalYY);
   },
   async mounted() {
     console.log("main mount");
@@ -200,6 +203,14 @@ export default {
         this.map.data.overrideStyle(f, {
           // strokeColor: ["#ff0000", "#0000ff", "white", "black"].sample(),
           strokeWeight: [0.25, 0.5, 1, 2].sample(),
+        });
+      });
+    },
+    updateYYColor() {
+      this.leylineFeatures.forEach((f) => {
+        this.map.data.overrideStyle(f, {
+          strokeColor: ["white", "black"].sample(),
+          // strokeWeight: [0.25, 0.5, 1, 2].sample(),
         });
       });
     },
@@ -318,6 +329,10 @@ export default {
           e.feature.getProperty("Name") &&
           (e.feature.getProperty("Name").includes("Yang") ||
             e.feature.getProperty("Name").includes("Yin"));
+
+        if (isYinYang) {
+          this.leylineFeatures.push(e.feature);
+        }
         if (e.feature.getGeometry().getType() === "LineString" && !isYinYang) {
           this.map.data.overrideStyle(e.feature, { visible: false });
           new google.maps.Polyline({
@@ -393,6 +408,7 @@ export default {
       this.map.data.addGeoJson(cables);
 
       this.blinkInterval = setInterval(this.updateCableColor, 1000);
+      this.blinkIntervalYY = setInterval(this.updateYYColor, 5000);
     },
     strokeColor() {
       return randomMaterialColor();
@@ -400,7 +416,7 @@ export default {
   },
   watch: {
     "$store.state.mapIdx": function () {
-      console.log(this.$store.state.mapIdx);
+      // console.log(this.$store.state.mapIdx);
       this.mapNav();
     },
     $route: function () {

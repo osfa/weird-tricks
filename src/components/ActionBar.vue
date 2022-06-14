@@ -104,9 +104,10 @@ export default {
       this.$store.commit("toggleHide");
     },
     mapNavButtonAction() {
-      this.$emit("map-nav");
       if (!this.allHidden) {
         this.toggleHide();
+      } else {
+        this.$emit("map-nav");
       }
     },
   },

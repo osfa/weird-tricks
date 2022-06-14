@@ -82,6 +82,7 @@
           />
 
           <a
+            class="no-underline"
             :href="
               currentBlock.archiveLink
                 ? currentBlock.archiveLink

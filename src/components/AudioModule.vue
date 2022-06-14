@@ -88,7 +88,7 @@ export default {
       }
     },
     doCrossFade() {
-      const stepSize = 0.1;
+      const stepSize = 0.2;
       if (this.crossFade.fade.value === 1.0 || this.crossFade.fade.value <= 0) {
         this.crossDirection = !this.crossDirection;
         if (this.crossFade.fade.value === 1.0) {
