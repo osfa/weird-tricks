@@ -40,12 +40,6 @@
           <v-card-text>
             {{ tosBody() }}
           </v-card-text>
-          <!-- <v-btn class="mr-2" color="red" @click="audioDialog = false">
-            <v-icon x-large>mdi-volume-mute</v-icon>
-          </v-btn>
-          <v-btn color="green" dark @click="$store.commit('toggleAudio')">
-            <v-icon large>mdi-volume-medium</v-icon>
-          </v-btn> -->
           <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -179,13 +173,23 @@ export default {
       this.$store.commit("navigateForward");
       console.log(this.$store.state.currentBlockIdx);
     },
+    shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    },
   },
   created() {
     this.$store.commit("setIsLoading", true);
   },
   mounted() {
     console.log("App mount: Setting content:", this.$static.nodes.edges);
-    this.$store.commit("setMainContent", this.$static.nodes.edges);
+    this.$store.commit(
+      "setMainContent",
+      this.shuffleArray(this.$static.nodes.edges)
+    );
     gtag("event", "page_view", {
       page_title: "App Mount",
       page_path: "/",

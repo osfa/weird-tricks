@@ -34,7 +34,7 @@
             </v-list-item-icon>
             <v-list-item-title class="black--text">/</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/nodes/">
+          <v-list-item link to="/meta">
             <v-list-item-icon>
               <v-icon color="black">mdi-format-list-bulleted-square</v-icon>
             </v-list-item-icon>
@@ -87,7 +87,6 @@
                 : currentBlock.hyperlink
             "
             target="_blank"
-            class="archive-link"
             v-else
             ><v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
             ><span class="text-decoration-underline text-caption text-button">

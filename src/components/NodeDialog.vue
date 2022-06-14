@@ -75,6 +75,11 @@ export default {
     },
   },
   methods: {},
+  watch: {
+    "$store.state.allHidden": function () {
+      this.dialog = false;
+    },
+  },
 };
 </script>
 <style scoped>

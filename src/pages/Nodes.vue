@@ -91,10 +91,6 @@
           </v-card>
         </v-col>
       </v-row>
-      <!-- <pager
-        v-if="$page.posts.pageInfo.totalPages > 1"
-        :info="$page.posts.pageInfo"
-      /> -->
       <v-pagination
         style="margin-top: 200px"
         v-model="$page.posts.pageInfo.currentPage"
@@ -145,7 +141,7 @@ export default {
   },
   data: () => ({
     randomZ: random(3, 5),
-    pageCount: 10,
+    perPage: 25,
   }),
   mounted() {
     this.$store.commit("setCurrentBlock", {});
@@ -156,7 +152,14 @@ export default {
       return 4;
     },
     shuffledContent() {
-      return this.shuffleArray(this.$page.posts.edges);
+      const items = this.$store.state.ctfBlocks
+        ? this.paginate(
+            this.$store.state.ctfBlocks,
+            this.perPage,
+            this.$page.posts.pageInfo.currentPage
+          )
+        : this.$page.posts.edges;
+      return items;
     },
   },
   methods: {
@@ -181,6 +184,12 @@ export default {
         this.$page.posts.pageInfo.currentPage - 1
       }`;
       this.$router.push({ path: nextRoutePath });
+    },
+    paginate(array, page_size, page_number) {
+      return array.slice(
+        (page_number - 1) * page_size,
+        page_number * page_size
+      );
     },
     randomElevation() {
       return random(1, 16);

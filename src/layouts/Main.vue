@@ -248,7 +248,7 @@ export default {
     },
     drawOverlay() {
       console.log("draw at:", this.center);
-      const tileExtent = random(0, 6);
+      const tileExtent = random(0, 5);
 
       console.log("tilextent: ", tileExtent);
       const tileSource = `https://khms3.google.com/kh/v=908?x=${random(
