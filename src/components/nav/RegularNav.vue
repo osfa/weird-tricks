@@ -76,10 +76,11 @@
         <template v-slot:extension v-if="hasHyperLink" color="white">
           <node-dialog
             v-if="hasArchiveLink && $vuetify.breakpoint.smAndUp"
-            style="z-index: 100"
+            style="z-index: 100; animation-duration: 2500ms"
             :link-text="currentBlock.archiveLink"
             :iframe-url="currentBlock.archiveLink"
           />
+
           <a
             :href="
               currentBlock.archiveLink

@@ -74,6 +74,7 @@ export default {
     this.items = this.$static.nodes.edges.filter((post) => {
       return post.node.hyperlink && post.node.hyperlink != "null";
     });
+    this.$store.commit("setCurrentBlock", {});
   },
   computed: {
     ...mapState(["allHidden"]),

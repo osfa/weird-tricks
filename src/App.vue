@@ -153,7 +153,7 @@ export default {
       });
     },
     forceNav() {
-      console.log("forceNav main");
+      // console.log("forceNav main");
       if (this.allHidden) {
         this.$store.commit("toggleHide");
       }
@@ -169,9 +169,9 @@ export default {
       this.$router.push({ path: nextRoutePath });
     },
     navigateForward() {
-      console.log("navigateForward");
+      // console.log("navigateForward");
       this.$store.commit("navigateForward");
-      console.log(this.$store.state.currentBlockIdx);
+      // console.log(this.$store.state.currentBlockIdx);
     },
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -190,6 +190,7 @@ export default {
       "setMainContent",
       this.shuffleArray(this.$static.nodes.edges)
     );
+    this.$store.commit("setCurrentBlock", {});
     gtag("event", "page_view", {
       page_title: "App Mount",
       page_path: "/",
@@ -200,7 +201,7 @@ export default {
   },
   watch: {
     "$store.state.currentBlockIdx": function () {
-      console.log(this.$store.state.currentBlockIdx);
+      // console.log(this.$store.state.currentBlockIdx);
       this.forceNav();
     },
     "$store.state.isMuted": function () {

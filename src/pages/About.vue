@@ -61,7 +61,9 @@
 export default {
   components: {},
   data: () => ({}),
-  async mounted() {},
+  mounted() {
+    this.$store.commit("setCurrentBlock", {});
+  },
   methods: {},
 };
 </script>

@@ -39,7 +39,8 @@
             style="cursor: pointer"
           >
             <v-list-item-avatar>
-              <v-img :src="item.avatar"></v-img>
+              <!-- <v-img :src="item.avatar"></v-img> -->
+              <v-icon>{{ randomIcon() }}</v-icon>
             </v-list-item-avatar>
 
             <v-list-item-content>
