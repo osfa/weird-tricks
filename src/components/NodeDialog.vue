@@ -27,12 +27,17 @@
         </v-btn>
         <a
           v-if="linkText"
-          style="z-index: 1500; pointer-events: auto"
+          style="z-index: 1500; pointer-events: auto; text-decoration: none"
           v-bind="attrs"
           v-on="on"
-          class="archive-link d-flex text-caption text-sm-button no-underline"
+          class="archive-link d-flex text-caption text-sm-button"
         >
-          <v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
+          <v-icon
+            class="mr-1"
+            small
+            color="#0000ff"
+            style="text-decoration: none"
+            >mdi-link</v-icon
           ><span class="text-decoration-underline"> {{ linkText }}</span>
         </a>
       </v-fab-transition>

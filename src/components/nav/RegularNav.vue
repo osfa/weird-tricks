@@ -82,15 +82,20 @@
           />
 
           <a
-            class="no-underline"
             :href="
               currentBlock.archiveLink
                 ? currentBlock.archiveLink
                 : currentBlock.hyperlink
             "
+            style="text-decoration: none"
             target="_blank"
             v-else
-            ><v-icon class="mr-1" small color="#0000ff">mdi-link</v-icon
+            ><v-icon
+              class="mr-1"
+              small
+              color="#0000ff"
+              style="text-decoration: none"
+              >mdi-link</v-icon
             ><span class="text-decoration-underline text-caption text-button">
               {{
                 currentBlock.archiveLink
