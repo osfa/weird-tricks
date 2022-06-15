@@ -408,7 +408,7 @@ export default {
       this.map.data.addGeoJson(cables);
 
       this.blinkInterval = setInterval(this.updateCableColor, 1000);
-      this.blinkIntervalYY = setInterval(this.updateYYColor, 5000);
+      // this.blinkIntervalYY = setInterval(this.updateYYColor, 5000);
     },
     strokeColor() {
       return randomMaterialColor();
