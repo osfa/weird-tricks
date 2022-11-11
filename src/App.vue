@@ -180,6 +180,12 @@ export default {
       }
       return array;
     },
+    queueNav() {
+      setTimeout(() => {
+        this.queueNav();
+        this.forceNav();
+      }, random(7500, 12000));
+    },
   },
   created() {
     this.$store.commit("setIsLoading", true);
@@ -195,6 +201,10 @@ export default {
       page_title: "App Mount",
       page_path: "/",
     });
+    if (this.$route.query.kioskMode) {
+      console.log("entering kiosk mode");
+      this.queueNav();
+    }
   },
   destroyed() {
     clearInterval(this.crossFadeInterval);
